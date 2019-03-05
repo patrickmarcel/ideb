@@ -15,22 +15,33 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.query.ProjectionFragment;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
+import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
+import fr.univ_tours.li.mdjedaini.ideb.user.UserHistory;
+
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+
+import org.apache.commons.math.MathException;
+import org.apache.commons.math.distribution.NormalDistributionImpl;
+import org.apache.commons.math.stat.StatUtils;
+
 import mondrian.olap.Axis;
 import mondrian.olap.Cell;
 import mondrian.olap.Member;
 import mondrian.olap.Position;
+import fr.univ_tours.li.mdjedaini.ideb.interestingness.Metrics;
+
 
 /**
  *
  * @author mahfoud
  */
-public class EAB_Cell {
+public class EAB_Cell implements Metrics{
     
     //
     mondrian.olap.Cell mondrianCell;
@@ -612,4 +623,221 @@ public class EAB_Cell {
         
     }
     
+    
+    public  Collection<EAB_Cell> detailedAreaOfInterest(){
+    	HashSet<EAB_Cell> col=new HashSet<EAB_Cell>();
+    	col.add(this);
+    	return(detail(col));
+    	
+      }
+    
+    public static Collection<EAB_Cell> detail(Collection<EAB_Cell> col){
+    	if(containsBottom(col)){
+    		//System.out.println(col.toString());
+    		
+    		return(col);
+    	}
+    	else{	
+    		HashSet<EAB_Cell> result=new HashSet<EAB_Cell>();
+    	 	for(EAB_Cell c : col){
+    	 		EAB_Cube cube = c.getCube();
+    	 		Set<EAB_Hierarchy> s = cube.getHierarchyList();
+    	 		for(EAB_Hierarchy h:s){
+    	 			if(!c.mostDetailed(h))
+    	 				result.addAll(detail(c.drillOnHierarchy(h)));
+    	 		}
+    	 	} 
+    	 	return result;
+    	}
+		
+    }
+    
+    
+    
+    
+   
+    private static boolean containsBottom(Collection<EAB_Cell> theDrill){
+    	Iterator<EAB_Cell> it = theDrill.iterator();
+    	// use only the first one, assuming drill down is "regular" ie all cells at the same level
+    	EAB_Cell first=it.next();
+    	if(first.mostDetailed())
+    		return true;
+    	else
+    		return false;
+    				
+    }
+    
+    
+    public boolean mostDetailed(){
+    	boolean res=true;
+    	EAB_Cube c = this.getCube();
+    	Set<EAB_Hierarchy> s = c.getHierarchyList();
+    	for(EAB_Hierarchy h:s){
+    		if(!this.mostDetailed(h)){
+    			res=false;
+    		}
+    	}
+    	return res;
+    }
+    
+    public boolean mostDetailed(EAB_Hierarchy h){
+//    	if(this.getMemberByHierarchy(h).getLevel().getLevelDepth()==h.getNumberOfLevels())
+    	if(this.getMemberByHierarchy(h).getLevel().equals(h.getMostDetailedLevel()))
+    		return true;
+    	else
+    		return false;
+    }
+    
+    // other must be of the same cube
+    public boolean sameLevel(EAB_Cell other){
+    	boolean res=true;
+    	EAB_Cube cube=this.getCube();
+       	Set<EAB_Hierarchy> s = cube.getHierarchyList();
+    	for(EAB_Hierarchy h:s){
+    		if(!this.getMemberByHierarchy(h).getLevel().equals(other.getMemberByHierarchy(h).getLevel())){
+    			res=false;
+    		}
+    	}
+    	return res;
+        
+
+    }
+    
+    // INTERESTINGNESS METRICS
+    
+	@Override
+	public int nbAll() {
+		EAB_Cube cube=this.getCube();
+        int val=0;
+        for(EAB_Hierarchy h : cube.getHierarchyList()){
+        	//System.out.println(c.getMemberByHierarchy(h));
+        	if(this.getMemberByHierarchy(h).isAll()){
+        		val++;
+        	}       	
+        }
+        return val;
+	}
+	
+	public double ratioAll() {
+		EAB_Cube cube=this.getCube();
+        double val=0;
+        for(EAB_Hierarchy h : cube.getHierarchyList()){
+        	//System.out.println(c.getMemberByHierarchy(h));
+        	if(this.getMemberByHierarchy(h).isAll()){
+        		val++;
+        	}       	
+        }
+        return val/cube.getHierarchyList().size();
+	}
+	
+	
+	
+	
+	public boolean binaryNovelty(UserHistory h){
+		boolean found=false;
+		if(h.contains(this)) found=true;
+		return found;
+		
+	}
+	
+	
+	// this one should not be defined if too few cells in cl
+	public double outlierness(CellList cl) throws MathException{
+		
+		
+		
+		double sf=0;
+		Collection<EAB_Cell> col=cl.getCellCollection();
+		//Iterator<EAB_Cell> it = col.iterator();
+		//EAB_Cell[] a=new EAB_Cell[1];
+		//a=col.toArray(a);
+		
+		double[] d=new double[col.size()];
+		int i=0;
+		for(EAB_Cell c : col){
+			//  check if all at the same level
+			if(this.sameLevel(c)){
+				d[i]=c.getValueAsDouble();
+				//System.out.println(d[i]);
+				i++;	
+			}
+		}
+		
+				
+		double variance = StatUtils.variance(d);
+	    double sd = Math.sqrt(variance);
+	    double mean = StatUtils.mean(d);
+	    NormalDistributionImpl nd = new NormalDistributionImpl();
+	    
+	    for (double value: d ) {
+	    	
+	        if(this.getValueAsDouble()==value){
+	        	
+	        	double stdscore = (value-mean)/sd;
+		        sf = 1.0 - nd.cumulativeProbability(Math.abs(stdscore));
+		        
+	        }
+	    	
+	    }
+		return sf;
+	}
+    
+	
+	public boolean matchRelevance(Query q){
+		boolean res=false;
+		if(q.getResult().getCellList().contains(this)) res=true;
+		return res;
+	}
+	
+	
+	/**
+	 * The number of direct ancestors this has in cl
+	 * @param cl
+	 * @return
+	 */
+	public int numberOfAncestorIn(CellList cl){
+		int res=0;
+		Iterator<EAB_Cell> it=cl.getCellCollection().iterator();
+		while(it.hasNext()){
+			if(this.isDirectChildOfCell(it.next()))
+				res++;
+		}
+		return res;
+	}
+	
+	
+	/**
+	 * The number of direct children this has in cl
+	 * @param cl
+	 * @return
+	 */
+	public int numberOfChildrenIn(CellList cl){
+		int res=0;
+		Iterator<EAB_Cell> it=cl.getCellCollection().iterator();
+		while(it.hasNext()){
+			if(it.next().isDirectChildOfCell(this))
+				res++;
+		}
+		return res;
+	}
+	
+	public int numberOfRelatives(CellList cl){
+		return numberOfAncestorIn(cl) + numberOfChildrenIn(cl);
+	}
+	
+	public int sizeOfDetailedArea(){
+		return this.detailedAreaOfInterest().size();
+	}
+	
+	
+	public double simpleRelevance(UserHistory uh){
+		DetailedAreaOfInterest dthis=new DetailedAreaOfInterest(this);
+		DetailedAreaOfInterest duh=new DetailedAreaOfInterest(uh);
+		
+		CellList clthis=dthis.getCellList();
+		CellList cluh=duh.getCellList();
+		CellList inter=clthis.intersection(cluh);
+		
+		return inter.nbOfCells()/clthis.nbOfCells();
+	}
 }

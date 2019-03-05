@@ -9,9 +9,11 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -37,6 +39,7 @@ public class CellList {
      * @param arg_cellList 
      */
     public CellList(Collection<EAB_Cell> arg_cellList) {
+    	this();
         for(EAB_Cell c_tmp : arg_cellList) {
             this.addCell(c_tmp);
         }
@@ -51,6 +54,7 @@ public class CellList {
         return this.cellList.contains(arg_cell);
     }
     
+        
     /**
      * 
      * @return 

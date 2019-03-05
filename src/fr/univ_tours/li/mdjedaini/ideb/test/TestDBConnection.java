@@ -5,13 +5,29 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.test;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+
+import org.apache.commons.math.MathException;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.infrastructure.MonetDB;
 import fr.univ_tours.li.mdjedaini.ideb.io.CsvLogLoader;
+import fr.univ_tours.li.mdjedaini.ideb.io.SaikuLogLoader;
 import fr.univ_tours.li.mdjedaini.ideb.io.SimpleLogLoader;
+import fr.univ_tours.li.mdjedaini.ideb.io.XMLLogLoader;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
+import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
+import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
+import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
+import fr.univ_tours.li.mdjedaini.ideb.user.UserHistory;
+import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
+import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
+import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
+
 
 
 /**
@@ -23,41 +39,189 @@ public class TestDBConnection {
     /*
     Main function
     */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MathException {
         TestDBConnection tdbc   = new TestDBConnection();
         
+        //tdbc.testSQLServer();
+
+        
+        tdbc.testSmartBImysql();    
+        
 //        tdbc.testVegaOracle();
-        tdbc.testSmartBIOracle();
+//        tdbc.testSmartBIOracle();
+        //tdbc.testMonetDB();
+
+    
     }
     
+ 
+    public void testInterestingness(Log l) throws MathException{
+ 	   	Query qtest=l.getQueryList().get(0);
+        System.out.println("EXECUTED QUERY: " + qtest);
+
+        Result res= qtest.execute(true);
+        CellList cl = res.getCellList();
+        System.out.println(cl);
+        
+        Collection<EAB_Cell> coll = cl.getCellCollection();
+        Iterator<EAB_Cell> it = coll.iterator();
+        EAB_Cell c = it.next();
+        System.out.println(c.getMeasure().getName());
+        System.out.println(c.getValue());
+        
+        UserHistory testUH = new UserHistory();  
+        cl=l.getCellList();
+        testUH.add(cl);
+        
+        
+        System.out.println("METRICS FOR CELL "+    c.toString());
+
+        
+        System.out.println("metric nb of alls: " + c.nbAll() );
+        System.out.println("metric ratio of alls: " + c.ratioAll() );
+        System.out.println("metric novelty: " + c.binaryNovelty(testUH) );
+        System.out.println("metric outlierness: " + c.outlierness(cl) );
+        System.out.println("metric number of relatives: " + c.numberOfRelatives(cl));
+        System.out.println("metric size of detailed area: " + c.sizeOfDetailedArea());
+        System.out.println("metric simpleRelevance: " + c.simpleRelevance(testUH));
+        
+        
+        
+        testUH.printMeasures();
+        
+        
+        
+        
+        
+        /*
+        EAB_Cube cube=c.getCube();
+        for(EAB_Hierarchy h : cube.getHierarchyList()){
+        	System.out.println(c.getMemberByHierarchy(h).getLevel().getLevelDepth());
+        	System.out.println(h.getMostDetailedLevel().getName());
+        	System.out.println(h.getNumberOfLevels());
+        }
+        
+        
+        Collection<EAB_Cell> col=c.detailedAreaOfInterest();
+        Iterator<EAB_Cell> it2 = col.iterator();
+        while(it2.hasNext()){
+        	System.out.println(it2.next().toString());
+        }
+        */
+ 	   
+    }
+    
+    
     /**
+     * @throws MathException 
      * 
      */
-    public void testVegaOracle() {
+    public void testSmartBImysql() throws MathException {
         Parameters params   = new Parameters();
         
-        params.driver   = "oracle.jdbc.OracleDriver";
-        params.jdbcUrl  = "jdbc:oracle:thin:@127.0.0.1:11521:db01";
-        params.user     = "mahfoud";
-        params.password = "djedaini";
-        params.schemaFilePath   = "res/ipums/ipums500K.xml";
-        params.cubeName         = "IPUMS";
+        params.driver   = "com.mysql.jdbc.Driver";
+        params.jdbcUrl  = "jdbc:mysql://127.0.0.1/smartbi";
+        params.user     = "root";
+        params.password = "";
+        params.schemaFilePath   = "res/cubeSchemas/smartBI.xml";
+        //params.cubeName         = "IPUMS";
         params.rebuildConnectionString();
         
         BenchmarkEngine be  = new BenchmarkEngine(params);
         
         be.initDatasource();
         
-        SimpleLogLoader sll = new SimpleLogLoader(be, "res/ipums/logs/BDTLN/0_139191_23-05-2014-04-24-59.txt");
+        CsvLogLoader sll = new CsvLogLoader(be, "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/smartBI/IS_ADBIS/logs/user-a_session-3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE_analysis-1.csv");
+//        CsvLogLoader sll = new CsvLogLoader(be, "/home/mahfoud/Desktop/IS_ADBIS/logs/debug_user-I050648_session-B34FE261C41F1CECA723A22B5D5BB74C4AC140931465D2DA8F3A7033ABC96D46.csv");
         Log l   = sll.loadLog();
         
-        System.out.println(l.logSummary());
+        testInterestingness(l);
         
-        System.out.println(be.getParameters().getMondrianConnectionString());
+        //l.execute(Boolean.FALSE);
+        
+        /*
+         * list queries in log
+         * 
+        for(Query q_tmp : l.getQueryList()) {
+            System.out.println("Query");
+            System.out.println(q_tmp);
+        }
+        
+        System.out.println(l);
+        */
+        
+        
+        //System.out.println(be.getParameters().getMondrianConnectionString());
     }
     
+    
+
+    
+    
+    
     /**
+     * @throws MathException 
      * 
+     */
+    public void testSQLServer() throws MathException {
+        Parameters params   = new Parameters();
+        
+        params.driver           = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        params.jdbcUrl          = "jdbc:sqlserver://10.195.25.10:54027";
+        //params.user             = "mahfoud";
+        //params.password         = "AvH4My327-vd";
+        params.user             = "patrick";       
+        params.password         = "oopi7taing7shahD";
+        //params.schemaFilePath   = "res/dopan/dopan_dw3.xml";
+        params.schemaFilePath   = "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/dopan/DOPAN_DW3.xml";
+        //params.cubeName         = "Cube1MobProInd";
+        params.cubeName         = "Cube4Chauffage";
+        
+        BenchmarkEngine be  = new BenchmarkEngine(params);
+        
+        be.initDatasource();
+        
+        
+        SaikuLogLoader sll = new SaikuLogLoader(be, "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/logs/DopanLogsNettoyes/cleanLogs/dibstudent03--2016-09-24--23-01.log");
+        Log l   = sll.loadLog();
+              
+        System.out.println("Log summary:");
+        System.out.println(l.logSummary());
+        
+        for(Session s_tmp : l.getSessionList()) {           
+            System.out.println(s_tmp.getSummary());
+            
+        }
+        
+       testInterestingness(l); 
+      
+      //l.execute(Boolean.FALSE);
+      
+      /*
+       * list queries in log
+       * 
+      for(Query q_tmp : l.getQueryList()) {
+          System.out.println("Query");
+          System.out.println(q_tmp);
+      }
+      
+      System.out.println(l);
+      */
+      
+      
+      
+      
+    }
+    
+    
+    
+    
+    
+    
+    
+    /**
+     * original
+     *
      */
     public void testSmartBIOracle() {
         Parameters params   = new Parameters();
@@ -90,9 +254,46 @@ public class TestDBConnection {
         //System.out.println(be.getParameters().getMondrianConnectionString());
     }
     
+    
+  
+    
+    
+    
+    
     /**
      * 
-     */
+    */
+    public void testMonetDB() {
+        Parameters params   = new Parameters();
+        
+        params.driver   = "nl.cwi.monetdb.jdbc.MonetDriver";
+        params.jdbcUrl  = "jdbc:monetdb://127.0.0.1:50000/SSB";
+        params.user     = "monetdb";
+        params.password = "monetdb";
+        //params.schemaFilePath   = "ideb/res/cubeSchemas/ssb.xml";
+        params.schemaFilePath   = "/Users/patrick/Documents/ENSEIGNEMENTS/BD/BDMA/Lab/querying/SSBMonetDB-f23.xml";
+
+        params.cubeName         = "SSB";
+        params.rebuildConnectionString();
+        
+        BenchmarkEngine be  = new BenchmarkEngine(params);
+                
+        be.initDatasource();
+        
+        XMLLogLoader sll = new XMLLogLoader(be, "res/logs/ssb/generatedByCubeload/Workload.xml");
+        Log l   = sll.loadLog();
+        
+        System.out.println(l.logSummary());
+        
+        System.out.println(be.getParameters().getMondrianConnectionString());
+    }
+    
+    
+    
+    
+    /**
+     * original version
+    
     public void testMonetDB() {
         Parameters params   = new Parameters();
         
@@ -108,6 +309,7 @@ public class TestDBConnection {
         
         System.out.println(be.getParameters().getMondrianConnectionString());
     }
+     */
 
     /**
      * 
@@ -132,17 +334,28 @@ public class TestDBConnection {
     /**
      * 
      */
-    public void testSQLServer() {
+    public void testVegaOracle() {
         Parameters params   = new Parameters();
         
-        params.driver           = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        params.jdbcUrl          = "jdbc:sqlserver://10.195.25.10:54027";
-        params.user             = "mahfoud";
-        params.password         = "AvH4My327-vd";
-        params.schemaFilePath   = "res/dopan/dopan_dw3.xml";
+        params.driver   = "oracle.jdbc.OracleDriver";
+        params.jdbcUrl  = "jdbc:oracle:thin:@127.0.0.1:11521:db01";
+        params.user     = "mahfoud";
+        params.password = "djedaini";
+        params.schemaFilePath   = "res/ipums/ipums500K.xml";
+        params.cubeName         = "IPUMS";
+        params.rebuildConnectionString();
         
         BenchmarkEngine be  = new BenchmarkEngine(params);
         
         be.initDatasource();
+        
+        SimpleLogLoader sll = new SimpleLogLoader(be, "res/ipums/logs/BDTLN/0_139191_23-05-2014-04-24-59.txt");
+        Log l   = sll.loadLog();
+        
+        System.out.println(l.logSummary());
+        
+        System.out.println(be.getParameters().getMondrianConnectionString());
     }
+    
+  
 }
