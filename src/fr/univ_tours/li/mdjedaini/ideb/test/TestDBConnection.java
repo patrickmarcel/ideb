@@ -81,7 +81,7 @@ public class TestDBConnection {
         System.out.println("metric ratio of alls: " + c.ratioAll() );
         System.out.println("metric novelty: " + c.binaryNovelty(testUH) );
         System.out.println("metric outlierness: " + c.outlierness(cl) );
-        System.out.println("metric number of relatives: " + c.numberOfRelatives(cl));
+        System.out.println("metric number of relatives: " + c.numberOfRelatives(cl)); // always 0 in the logs we have
         System.out.println("metric size of detailed area: " + c.sizeOfDetailedArea());
         System.out.println("metric simpleRelevance: " + c.simpleRelevance(testUH));
         
@@ -101,13 +101,18 @@ public class TestDBConnection {
         	System.out.println(h.getNumberOfLevels());
         }
         
-        
+
+       
+
         Collection<EAB_Cell> col=c.detailedAreaOfInterest();
         Iterator<EAB_Cell> it2 = col.iterator();
         while(it2.hasNext()){
         	System.out.println(it2.next().toString());
+//        	System.out.println(it2.next().hashCode());
+
         }
         */
+        
  	   
     }
     

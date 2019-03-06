@@ -12,6 +12,7 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -25,12 +26,14 @@ public class CellList {
     
     // 
     Collection<EAB_Cell> cellList;
+    HashMap<Integer,EAB_Cell> listByIDs;
     
     /**
      * 
      */
     public CellList() {
         this.cellList   = new HashSet<>();
+        //this.listByIDs = new HashMap<Integer,EAB_Cell>();
         //this.cellList   = new ArrayList<>();
     }
     
@@ -182,6 +185,37 @@ public class CellList {
         
         return result;
     }
+    
+    public void projectIDs(){
+    	 this.listByIDs = new HashMap<Integer,EAB_Cell>();
+    	 Iterator<EAB_Cell> it = this.cellList.iterator();
+    	 while(it.hasNext()){
+    		 EAB_Cell c = it.next();
+    		 listByIDs.put(c.hashCode(), c);
+    	 }
+    	 
+    }
+    
+    public CellList rapidIntersection(CellList arg_cellList) {
+        CellList result = new CellList();
+        
+        this.projectIDs();
+        arg_cellList.projectIDs();
+        
+        Set<Integer> thisIDs= this.listByIDs.keySet();
+        Set<Integer> argIDs= arg_cellList.listByIDs.keySet();
+        
+        thisIDs.retainAll(argIDs);
+        
+        // add cells from this collection
+        for(int i : thisIDs) {
+            result.addCell(this.listByIDs.get(i));
+        }
+        
+        return result;
+    }
+    
+    
     
     /**
      * 

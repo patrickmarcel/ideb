@@ -466,6 +466,37 @@ public class EAB_Cell implements Metrics{
     }
     
     /**
+     * Returns a query for this cell that retrieves its most detailed descendants.
+     * @return 
+     */
+    public Query getMostDetailedQueryForCell() {
+        EAB_Cube cube       = this.getResult().getCube();
+        QueryTriplet result = new QueryTriplet(cube);
+        
+        // ! do not forget measure!
+        MeasureFragment mf_tmp  = new MeasureFragment(result, this.measure);
+        result.addMeasure(mf_tmp);
+        
+        // now add the member for each hierarchy
+        for(EAB_Hierarchy h_tmp : cube.getHierarchyList()) {
+            EAB_Member m_tmp        = this.getMemberByHierarchy(h_tmp);
+            SelectionFragment sf    = new SelectionFragment(result, m_tmp);
+            result.addSelection(sf);
+            
+            
+           ProjectionFragment pf   = new ProjectionFragment(result, h_tmp.getMostDetailedLevel());
+           result.addProjection(pf);
+           
+        }
+        
+        return result;
+    }
+    
+    
+    
+    
+    
+    /**
      * 
      * @param arg_c2
      * @return 
@@ -579,8 +610,8 @@ public class EAB_Cell implements Metrics{
      * @param arg_cell
      * @return 
      */
-    @Override
-    public boolean equals(Object arg_cell) {
+    
+    public boolean OLDequals(Object arg_cell) {
         EAB_Cell c_tmp  = (EAB_Cell)arg_cell;
         
         boolean result  = true;
@@ -593,6 +624,14 @@ public class EAB_Cell implements Metrics{
         
         return result;
     }
+    
+    @Override
+    public boolean equals(Object arg_cell) {
+        EAB_Cell c_tmp  = (EAB_Cell)arg_cell;
+        
+        return this.hashCode()==c_tmp.hashCode();
+    }
+    
     
     /**
      * 
@@ -624,7 +663,23 @@ public class EAB_Cell implements Metrics{
     }
     
     
+
+    
     public  Collection<EAB_Cell> detailedAreaOfInterest(){
+    	Query q = this.getMostDetailedQueryForCell();
+    	System.out.println(q.toString());
+    	Result r = q.getResult();
+    	CellList cl=r.getCellList();
+    	Collection<EAB_Cell> col=cl.getCellCollection();
+    	return col;  	
+    	
+    	
+      }
+    
+    
+    
+    
+    public  Collection<EAB_Cell> OLDdetailedAreaOfInterest(){
     	HashSet<EAB_Cell> col=new HashSet<EAB_Cell>();
     	col.add(this);
     	return(detail(col));
@@ -635,7 +690,7 @@ public class EAB_Cell implements Metrics{
     	if(containsBottom(col)){
     		//System.out.println(col.toString());
     		
-    		return(col);
+    		return(nonEmptyCells(col));
     	}
     	else{	
     		HashSet<EAB_Cell> result=new HashSet<EAB_Cell>();
@@ -643,17 +698,60 @@ public class EAB_Cell implements Metrics{
     	 		EAB_Cube cube = c.getCube();
     	 		Set<EAB_Hierarchy> s = cube.getHierarchyList();
     	 		for(EAB_Hierarchy h:s){
+    	 			//if(!c.mostDetailed(h) && !c.isEmpty())
     	 			if(!c.mostDetailed(h))
     	 				result.addAll(detail(c.drillOnHierarchy(h)));
     	 		}
     	 	} 
+    	 	//checkDuplicate(result);
     	 	return result;
     	}
 		
     }
     
+    private static Collection<EAB_Cell> nonEmptyCells(Collection<EAB_Cell> col){
+    	HashSet<EAB_Cell> result=new HashSet<EAB_Cell>();
+    	Iterator<EAB_Cell> it = col.iterator();
+    	while(it.hasNext()){
+    		EAB_Cell curr=it.next();
+    		if(!curr.isEmpty()){
+    			result.add(curr);
+    			//System.out.println("found one non empty");
+    		}
+    	}
+    	return result;
+    }
     
+    public boolean isEmpty(){
+    	Query q = this.getQueryForCell();
+    	Result r = q.getResult();
+    	//System.out.println(r.getNumberOfCells());
+    	CellList cl=r.getCellList();
+    	Collection<EAB_Cell> col=cl.getCellCollection();
+    	Iterator<EAB_Cell> it=col.iterator();
+    	boolean empty=true;
+    	while(it.hasNext()){
+    		if((Double) it.next().getValue()!=0){ // better use getMondrianCell().isNull
+    			empty=false;
+    		}
+    	}
+    	return empty;
+    }
     
+    /*
+    public static void checkDuplicate(Collection<EAB_Cell> col){
+    	Iterator<EAB_Cell> it=col.iterator();
+    	boolean found=false;
+    	EAB_Cell first=it.next();
+    	while(it.hasNext() && !found){
+    		if(first.equals(it.next())){
+    			found=true;
+    		}
+    	}
+    	if(found)
+    		System.out.println("found=" + found);
+    }
+    */
     
    
     private static boolean containsBottom(Collection<EAB_Cell> theDrill){
@@ -836,7 +934,8 @@ public class EAB_Cell implements Metrics{
 		
 		CellList clthis=dthis.getCellList();
 		CellList cluh=duh.getCellList();
-		CellList inter=clthis.intersection(cluh);
+		//CellList inter=clthis.intersection(cluh);
+		CellList inter=clthis.rapidIntersection(cluh);
 		
 		return inter.nbOfCells()/clthis.nbOfCells();
 	}
