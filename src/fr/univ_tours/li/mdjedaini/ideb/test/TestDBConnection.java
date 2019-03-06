@@ -55,67 +55,7 @@ public class TestDBConnection {
     }
     
  
-    public void testInterestingness(Log l) throws MathException{
- 	   	Query qtest=l.getQueryList().get(0);
-        System.out.println("EXECUTED QUERY: " + qtest);
 
-        Result res= qtest.execute(true);
-        CellList cl = res.getCellList();
-        System.out.println(cl);
-        
-        Collection<EAB_Cell> coll = cl.getCellCollection();
-        Iterator<EAB_Cell> it = coll.iterator();
-        EAB_Cell c = it.next();
-        System.out.println(c.getMeasure().getName());
-        System.out.println(c.getValue());
-        
-        UserHistory testUH = new UserHistory();  
-        cl=l.getCellList();
-        testUH.add(cl);
-        
-        
-        System.out.println("METRICS FOR CELL "+    c.toString());
-
-        
-        System.out.println("metric nb of alls: " + c.nbAll() );
-        System.out.println("metric ratio of alls: " + c.ratioAll() );
-        System.out.println("metric novelty: " + c.binaryNovelty(testUH) );
-        System.out.println("metric outlierness: " + c.outlierness(cl) );
-        System.out.println("metric number of relatives: " + c.numberOfRelatives(cl)); // always 0 in the logs we have
-        System.out.println("metric size of detailed area: " + c.sizeOfDetailedArea());
-        System.out.println("metric simpleRelevance: " + c.simpleRelevance(testUH));
-        
-        
-        
-        testUH.printMeasures();
-        
-        
-        
-        
-        
-        /*
-        EAB_Cube cube=c.getCube();
-        for(EAB_Hierarchy h : cube.getHierarchyList()){
-        	System.out.println(c.getMemberByHierarchy(h).getLevel().getLevelDepth());
-        	System.out.println(h.getMostDetailedLevel().getName());
-        	System.out.println(h.getNumberOfLevels());
-        }
-        
-
-       
-
-        Collection<EAB_Cell> col=c.detailedAreaOfInterest();
-        Iterator<EAB_Cell> it2 = col.iterator();
-        while(it2.hasNext()){
-        	System.out.println(it2.next().toString());
-//        	System.out.println(it2.next().hashCode());
-
-        }
-        */
-        
- 	   
-    }
-    
     
     /**
      * @throws MathException 
@@ -140,7 +80,7 @@ public class TestDBConnection {
 //        CsvLogLoader sll = new CsvLogLoader(be, "/home/mahfoud/Desktop/IS_ADBIS/logs/debug_user-I050648_session-B34FE261C41F1CECA723A22B5D5BB74C4AC140931465D2DA8F3A7033ABC96D46.csv");
         Log l   = sll.loadLog();
         
-        testInterestingness(l);
+        //testInterestingness(l);
         
         //l.execute(Boolean.FALSE);
         
@@ -198,7 +138,7 @@ public class TestDBConnection {
             
         }
         
-       testInterestingness(l); 
+      //testInterestingness(l); 
       
       //l.execute(Boolean.FALSE);
       

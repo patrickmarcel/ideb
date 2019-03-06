@@ -6,8 +6,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
+import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Measure;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.MeasureFragment;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.ProjectionFragment;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
@@ -20,6 +26,7 @@ public class UserHistory {
 	HashMap<EAB_Member, Integer> theMembers;
 	HashMap<EAB_Measure, Integer> theMeasures;
 	
+	Belief userBelief=null;
 	
 	public UserHistory(){
 		theCells=new HashMap<EAB_Cell, Integer> ();
@@ -27,8 +34,23 @@ public class UserHistory {
 		theMeasures=new HashMap<EAB_Measure, Integer> ();
 	}
 	
+	public void computeBelief(){
+		userBelief=new Belief(this);
+	}
+	
 	public Collection<EAB_Cell> getCollection(){
 		return this.theCells.keySet();
+	}
+	
+	public double getBelief(EAB_Member m){
+		if(userBelief==null)
+			computeBelief();
+		if(userBelief.memberMap.containsKey(m)){
+			return userBelief.memberMap.get(m);
+		}
+		else{
+			return 0;
+		}
 	}
 	
 	/**
@@ -73,9 +95,25 @@ public class UserHistory {
 			theMeasures.put(meas, theMeasures.get(meas)+1);
 		}
 		else{
-			theMeasures.put(meas, 1);
-			
+			theMeasures.put(meas, 1);			
 		}
+		
+		EAB_Cube cube = c.getCube();
+	    
+		for(EAB_Hierarchy h_tmp : cube.getHierarchyList()) {
+			EAB_Member m_tmp        = c.getMemberByHierarchy(h_tmp);
+			
+			if(theMembers.containsKey(m_tmp)){
+				theMembers.put(m_tmp, theMembers.get(m_tmp)+1);
+			}
+			else{
+				theMembers.put(m_tmp, 1);			
+			}    
+	           
+		}
+	        
+		
+		
 		
 	}
 
@@ -86,6 +124,17 @@ public class UserHistory {
 		while(it.hasNext()){
 			EAB_Measure meas=it.next();
 			System.out.println(meas.getName() + ": " + theMeasures.get(meas));
+			
+		}
+	}
+	
+	public void printMembers(){
+		
+		Set<EAB_Member> sm = theMembers.keySet();
+		Iterator<EAB_Member> it=sm.iterator();
+		while(it.hasNext()){
+			EAB_Member memb=it.next();
+			System.out.println(memb.getName() + ": " + theMembers.get(memb));
 			
 		}
 	}

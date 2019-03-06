@@ -667,7 +667,7 @@ public class EAB_Cell implements Metrics{
     
     public  Collection<EAB_Cell> detailedAreaOfInterest(){
     	Query q = this.getMostDetailedQueryForCell();
-    	System.out.println(q.toString());
+    	//System.out.println(q.toString());
     	Result r = q.getResult();
     	CellList cl=r.getCellList();
     	Collection<EAB_Cell> col=cl.getCellCollection();
@@ -938,5 +938,21 @@ public class EAB_Cell implements Metrics{
 		CellList inter=clthis.rapidIntersection(cluh);
 		
 		return inter.nbOfCells()/clthis.nbOfCells();
+	}
+	
+	
+	public double surprise(UserHistory uh){
+		int cnt=0;
+		double acc=0;
+		for(EAB_Hierarchy h  : this.getCube().getHierarchyList()){
+			EAB_Member m = this.getMemberByHierarchy(h);
+			double proba_m=uh.getBelief(m);
+			double log_m = Math.log(proba_m);
+			acc=acc+log_m;
+			cnt++;
+		}
+		return acc/cnt;
+		
+		
 	}
 }

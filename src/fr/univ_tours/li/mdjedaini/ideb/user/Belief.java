@@ -3,11 +3,14 @@ package fr.univ_tours.li.mdjedaini.ideb.user;
 import java.util.HashMap;
 
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
+import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 
 public class Belief {
+	// double is probability that member is used
 	HashMap<EAB_Cell, Double> cellMap;
+	HashMap<EAB_Member, Double> memberMap;
 	
 	public Belief(UserHistory h, Log l, EAB_Cube c){
 		// belief comes from user history, global log a,d cube schema
@@ -15,7 +18,20 @@ public class Belief {
 		// belief is given under ND4J INDArray output by page rank
 		// whose link to cells is given by a Map<Object, Integer>
 		// where object is the representation of a cell (well ony query parts are supported so far)
+
+	
+	
 	}
+	
+	public Belief(UserHistory h){
+		memberMap=new HashMap<EAB_Member,Double>();
+		int size=h.theMembers.keySet().size();
+		for(EAB_Member m : h.theMembers.keySet()){
+			memberMap.put(m, (double) h.theMembers.get(m)/size);
+		}		
+	}
+	
+	
 	
 	public double beliefOf(EAB_Cell c){
 		return cellMap.get(c);	
