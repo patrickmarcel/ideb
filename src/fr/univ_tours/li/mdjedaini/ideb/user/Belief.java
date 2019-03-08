@@ -18,8 +18,6 @@ public class Belief {
 		// belief is given under ND4J INDArray output by page rank
 		// whose link to cells is given by a Map<Object, Integer>
 		// where object is the representation of a cell (well ony query parts are supported so far)
-
-	
 	
 	}
 	
@@ -35,6 +33,14 @@ public class Belief {
 	
 	public double beliefOf(EAB_Cell c){
 		return cellMap.get(c);	
+	}
+	
+	public String toString(){
+		String result="";
+		for(EAB_Cell c : cellMap.keySet()){
+			result+= "cell: " + c.toString() + "belief: " + cellMap.get(c) + "\n";
+		}
+		return result;
 	}
 	
 	/*

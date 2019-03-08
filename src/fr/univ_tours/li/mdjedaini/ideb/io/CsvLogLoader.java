@@ -103,6 +103,9 @@ public class CsvLogLoader implements I_LogLoader {
     public Session loadSession(String arg_sessionFilePath) {
         
         Session result  = new Session();
+        // add the name as metadata of the session
+        result.addMetaData("path", arg_sessionFilePath);
+        result.addMetaData("filename", new File(arg_sessionFilePath).getName());
         
         try {
             
@@ -216,14 +219,14 @@ public class CsvLogLoader implements I_LogLoader {
                 
                 QueryConverter qc   = new QueryConverter(this.be);
                 
-                
+                // moche, a changer...
                 try{
-                    System.out.println("******************");
-                    System.out.println("Record:" + record);
+                    //System.out.println("******************");
+                    //System.out.println("Record:" + record);
 
                     QueryMdx q_mdx  = qc.toMdx(q_tmp);
-                    System.out.println("MDX with my converter:");
-                    System.out.println(q_mdx);
+                    //System.out.println("MDX with my converter:");
+                    //System.out.println(q_mdx);
                     q_mdx.execute(Boolean.TRUE);
 //                    System.out.println("-----");
 //                    System.out.println("Query: " + q_tmp);

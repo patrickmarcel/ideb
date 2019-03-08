@@ -1,5 +1,6 @@
 package fr.univ_tours.li.mdjedaini.ideb.user;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,6 +18,7 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
+import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 
 public class UserHistory {
 	//Set<EAB_Cell> theCells;
@@ -25,14 +27,49 @@ public class UserHistory {
 	HashMap<EAB_Cell, Integer> theCells;
 	HashMap<EAB_Member, Integer> theMembers;
 	HashMap<EAB_Measure, Integer> theMeasures;
+	ArrayList<Session> theSessions;
 	
 	Belief userBelief=null;
+	String name;
 	
 	public UserHistory(){
 		theCells=new HashMap<EAB_Cell, Integer> ();
 		theMembers=new HashMap<EAB_Member, Integer> ();
 		theMeasures=new HashMap<EAB_Measure, Integer> ();
+		theSessions=new ArrayList<Session>();
 	}
+	
+	public UserHistory(String name){
+		this();
+		this.name=name;
+	}
+	
+	public UserHistory(String name, CellList cl){
+		this(name);
+		this.add(cl);
+	}
+	
+	public UserHistory(String name, Result r){
+		this(name);
+		this.add(r);
+	}
+	
+	public UserHistory(String name, Session s){
+		this(name);
+		this.addSession(s);
+	}
+	
+	public void addSession(Session s){
+		theSessions.add(s);
+		this.add(s.getCellList());
+			
+	}
+	
+	
+	public String getName(){
+		return name;
+	}
+	
 	
 	public void computeBelief(){
 		userBelief=new Belief(this);
@@ -52,6 +89,13 @@ public class UserHistory {
 			return 0;
 		}
 	}
+	
+	public Belief getBelief(){
+		if(userBelief==null)
+			computeBelief();
+		return userBelief;
+	}
+	
 	
 	/**
 	 * Add c to this user history. If c already there, increment number of views.

@@ -103,7 +103,10 @@ public class SaikuLogLoader implements I_LogLoader {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss,SSS");
         
         // add the name as metadata of the session
-        result.addMetaData("name", arg_sessionFilePath);
+        //result.addMetaData("name", arg_sessionFilePath);
+        result.addMetaData("path", arg_sessionFilePath);
+        result.addMetaData("filename", new File(arg_sessionFilePath).getName());
+        
         
         System.out.println("I am parsing the file: " + arg_sessionFilePath);
         

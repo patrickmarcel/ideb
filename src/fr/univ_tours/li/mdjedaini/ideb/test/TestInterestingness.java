@@ -3,6 +3,8 @@ package fr.univ_tours.li.mdjedaini.ideb.test;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -29,32 +31,82 @@ public class TestInterestingness {
 	
 	static BenchmarkEngine be ;
 	static Log l;
-	 
+	static HashMap<String, UserHistory> userList;
 	
 	public static void main(String[] args) throws MathException, FileNotFoundException {
         
 		// DOPAN
-        //tdbc.testSQLServer();
+        //testSQLServer();
         
 		// local SmartBI
         testSmartBImysql();   
         
+        createUsers();
+        for(String name : userList.keySet()){
+        	UserHistory uh=userList.get(name);
+        	System.out.println("user:" + uh.getName());
+        	System.out.println(uh.getBelief().toString());
+        }
+        
         //testInterestingness();
-        testLabelRead();
+        //testLabelRead();
     
     }
 	
 	
 	public static void testLabelRead() throws FileNotFoundException{
-		String path = "res/Labels/dopan/agreedMetricsWithLabels.csv";
+		//String path = "res/Labels/dopan/agreedMetricsWithLabels.csv";
+		//File f=new File("path");
+		//Scanner scanner = new Scanner(f);
+		//doesn't work for a reason???
 		
-		Scanner scanner = new Scanner(new File("path"));
+		Scanner scanner = new Scanner(new File("/Users/patrick/git/ideb/res/Labels/dopan/agreedMetricsWithLabels.csv"));
         scanner.useDelimiter(";");
-        while(scanner.hasNext()){
-            System.out.print(scanner.next()+"|");
-        }
-        scanner.close();
         
+        
+        //while(scanner.hasNextLine()){
+        	scanner.nextLine(); // reads header line
+        	String line = scanner.nextLine();
+        	String[] ts = line.split(";");
+        	System.out.println(ts[0]);
+        	System.out.println(ts[ts.length -1]);
+            //System.out.print(scanner.next()+"|");
+        	
+        	Session s =l.getSessionByQueryId(0);
+        	System.out.println(s.getSid()+" "+ s.getUser());
+        	System.out.println(s.getSummary());
+        	//System.out.println(s.getNumberOfQueries());
+        	
+        //}
+        scanner.close();
+       
+	}
+	
+	
+	public static void createUsers(){
+		userList=new HashMap<String, UserHistory>();
+		
+		int i=1;
+		for(Session s :l.getSessionList()){
+			System.out.println("processing session "+ i++);
+			
+			String filename=s.getMetadata("filename");
+//			String username=filename.split("--")[0]; //warning only for dopan!!! should be done in logLoader!!
+			String username=filename.split("_session")[0]; //warning only for smartBI!!! should be done in logLoader!!
+			
+			if(userList.containsKey(username)){
+				UserHistory uh=userList.get(username);
+				uh.addSession(s);
+				userList.put(username, uh);
+			}
+			else{
+				UserHistory uh=new UserHistory(username,s);				
+				userList.put(username, uh);
+				
+			}
+		}
+		
+		System.out.println("Nb of users: " + userList.size());
 	}
 	
 	
@@ -120,6 +172,7 @@ public class TestInterestingness {
 
     
     /**
+     * This one has smaller cube and is for test purpose. Its logs are not labeled.
      * @throws MathException 
      * 
      */
@@ -137,22 +190,34 @@ public class TestInterestingness {
         
         be.initDatasource();
         
-        //CsvLogLoader sll = new CsvLogLoader(be, "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/smartBI/IS_ADBIS/logs/user-a_session-3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE_analysis-1.csv");
-        CsvLogLoader sll = new CsvLogLoader(be, "res/logs/smartBI/IS_ADBIS/logs/user-a_session-3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE_analysis-1.csv");
+        //CsvLogLoader sll = new CsvLogLoader(be, "res/logs/smartBI/IS_ADBIS/logs/user-a_session-3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE_analysis-1.csv");
+        
+       // read all log files in directory       
+        CsvLogLoader sll = new CsvLogLoader(be, "res/logs/smartBI/IS_ADBIS/logs/");
         l   = sll.loadLog();
+        
+        
        // System.out.println(l);
        
         //l.execute(Boolean.FALSE);
         
         /*
          * list queries in log
-         * 
+         *
+        
         for(Query q_tmp : l.getQueryList()) {
             System.out.println("Query");
             System.out.println(q_tmp);
+            
+        }
+        for(Session q_tmp : l.getSessionList()) {
+            System.out.println("session user, id, filenamemetadata");
+            System.out.println(q_tmp.getUser());
+            System.out.println(q_tmp.getMetadata("filename"));
+            
         }
         
-        System.out.println(l);
+        //System.out.println(l);
         */
         
         
@@ -189,7 +254,8 @@ public class TestInterestingness {
         
         //SaikuLogLoader sll = new SaikuLogLoader(be, "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/logs/DopanLogsNettoyes/cleanLogs/dibstudent03--2016-09-24--23-01.log");
         SaikuLogLoader sll = new SaikuLogLoader(be, "res/logs/dopan/cleanLogs/dibstudent03--2016-09-24--23-01.log");
-        Log l   = sll.loadLog();
+        
+        l   = sll.loadLog();
               
         System.out.println("Log summary:");
         System.out.println(l.logSummary());
