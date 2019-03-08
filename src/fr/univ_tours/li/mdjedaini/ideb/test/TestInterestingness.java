@@ -1,7 +1,10 @@
 package fr.univ_tours.li.mdjedaini.ideb.test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Scanner;
 
 import org.apache.commons.math.MathException;
 
@@ -28,7 +31,7 @@ public class TestInterestingness {
 	static Log l;
 	 
 	
-	public static void main(String[] args) throws MathException {
+	public static void main(String[] args) throws MathException, FileNotFoundException {
         
 		// DOPAN
         //tdbc.testSQLServer();
@@ -36,10 +39,23 @@ public class TestInterestingness {
 		// local SmartBI
         testSmartBImysql();   
         
-        testInterestingness();
-        
+        //testInterestingness();
+        testLabelRead();
     
     }
+	
+	
+	public static void testLabelRead() throws FileNotFoundException{
+		String path = "res/Labels/dopan/agreedMetricsWithLabels.csv";
+		
+		Scanner scanner = new Scanner(new File("path"));
+        scanner.useDelimiter(";");
+        while(scanner.hasNext()){
+            System.out.print(scanner.next()+"|");
+        }
+        scanner.close();
+        
+	}
 	
 	
     public static void testInterestingness() throws MathException{
@@ -115,14 +131,14 @@ public class TestInterestingness {
         params.user     = "root";
         params.password = "";
         params.schemaFilePath   = "res/cubeSchemas/smartBI.xml";
-        //params.cubeName         = "IPUMS";
         params.rebuildConnectionString();
         
          be  = new BenchmarkEngine(params);
         
         be.initDatasource();
         
-        CsvLogLoader sll = new CsvLogLoader(be, "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/smartBI/IS_ADBIS/logs/user-a_session-3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE_analysis-1.csv");
+        //CsvLogLoader sll = new CsvLogLoader(be, "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/smartBI/IS_ADBIS/logs/user-a_session-3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE_analysis-1.csv");
+        CsvLogLoader sll = new CsvLogLoader(be, "res/logs/smartBI/IS_ADBIS/logs/user-a_session-3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE_analysis-1.csv");
         l   = sll.loadLog();
        // System.out.println(l);
        
@@ -161,8 +177,8 @@ public class TestInterestingness {
         //params.password         = "AvH4My327-vd";
         params.user             = "patrick";       
         params.password         = "oopi7taing7shahD";
-        //params.schemaFilePath   = "res/dopan/dopan_dw3.xml";
-        params.schemaFilePath   = "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/dopan/DOPAN_DW3.xml";
+        params.schemaFilePath   = "res/cubeSchemas/DOPAN_DW3.xml";
+        //params.schemaFilePath   = "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/dopan/DOPAN_DW3.xml";
         //params.cubeName         = "Cube1MobProInd";
         params.cubeName         = "Cube4Chauffage";
         
@@ -171,7 +187,8 @@ public class TestInterestingness {
         be.initDatasource();
         
         
-        SaikuLogLoader sll = new SaikuLogLoader(be, "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/logs/DopanLogsNettoyes/cleanLogs/dibstudent03--2016-09-24--23-01.log");
+        //SaikuLogLoader sll = new SaikuLogLoader(be, "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/logs/DopanLogsNettoyes/cleanLogs/dibstudent03--2016-09-24--23-01.log");
+        SaikuLogLoader sll = new SaikuLogLoader(be, "res/logs/dopan/cleanLogs/dibstudent03--2016-09-24--23-01.log");
         Log l   = sll.loadLog();
               
         System.out.println("Log summary:");

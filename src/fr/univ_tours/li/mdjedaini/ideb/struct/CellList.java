@@ -202,10 +202,10 @@ public class CellList {
         this.projectIDs();
         arg_cellList.projectIDs();
         
-        Set<Integer> thisIDs= this.listByIDs.keySet();
+        Set<Integer> thisIDs= this.listByIDs.keySet(); //should it be cloned?
         Set<Integer> argIDs= arg_cellList.listByIDs.keySet();
         
-        thisIDs.retainAll(argIDs);
+        thisIDs.retainAll(argIDs); //anything quicker than this?
         
         // add cells from this collection
         for(int i : thisIDs) {
