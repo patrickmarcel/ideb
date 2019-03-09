@@ -1,4 +1,4 @@
-package fr.univ_tours.li.mdjedaini.ideb.user;
+package fr.univ_tours.li.mdjedaini.ideb.interestingness;
 
 import java.util.HashMap;
 

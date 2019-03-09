@@ -13,6 +13,7 @@ import org.apache.commons.math.MathException;
 
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.infrastructure.MonetDB;
+import fr.univ_tours.li.mdjedaini.ideb.interestingness.UserHistory;
 import fr.univ_tours.li.mdjedaini.ideb.io.CsvLogLoader;
 import fr.univ_tours.li.mdjedaini.ideb.io.SaikuLogLoader;
 import fr.univ_tours.li.mdjedaini.ideb.io.SimpleLogLoader;
@@ -23,7 +24,6 @@ import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
-import fr.univ_tours.li.mdjedaini.ideb.user.UserHistory;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;

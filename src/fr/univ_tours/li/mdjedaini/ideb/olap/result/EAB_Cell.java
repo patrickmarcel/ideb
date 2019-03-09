@@ -16,7 +16,6 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
-import fr.univ_tours.li.mdjedaini.ideb.user.UserHistory;
 
 import java.util.Collection;
 import java.util.Comparator;
@@ -35,6 +34,7 @@ import mondrian.olap.Cell;
 import mondrian.olap.Member;
 import mondrian.olap.Position;
 import fr.univ_tours.li.mdjedaini.ideb.interestingness.Metrics;
+import fr.univ_tours.li.mdjedaini.ideb.interestingness.UserHistory;
 
 
 /**

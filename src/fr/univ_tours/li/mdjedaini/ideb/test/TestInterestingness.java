@@ -2,7 +2,12 @@ package fr.univ_tours.li.mdjedaini.ideb.test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -11,6 +16,9 @@ import java.util.Scanner;
 import org.apache.commons.math.MathException;
 
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
+import fr.univ_tours.li.mdjedaini.ideb.interestingness.Belief;
+import fr.univ_tours.li.mdjedaini.ideb.interestingness.User;
+import fr.univ_tours.li.mdjedaini.ideb.interestingness.UserHistory;
 import fr.univ_tours.li.mdjedaini.ideb.io.CsvLogLoader;
 import fr.univ_tours.li.mdjedaini.ideb.io.SaikuLogLoader;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
@@ -20,8 +28,6 @@ import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
-import fr.univ_tours.li.mdjedaini.ideb.user.Belief;
-import fr.univ_tours.li.mdjedaini.ideb.user.UserHistory;
 
 /**
  * @author patrick
@@ -32,34 +38,81 @@ public class TestInterestingness {
 	
 	static BenchmarkEngine be ;
 	static Log l;
-	static HashMap<String, UserHistory> userList;
+	static HashMap<String, User> userList;
+	static double percentageOfPast=0.3;
+	static String pathToResult="output/interestingness/";
 	
-	public static void main(String[] args) throws MathException, FileNotFoundException {
+	public static void main(String[] args) throws MathException, IOException {
         
 		// DOPAN
         //testSQLServer();
         
-		// local SmartBI
+		// local SmartBI - for tests
         testSmartBImysql();   
         
         createUsers();
         
+        
+        
+        //testInterestingness();
+        readLabels();
+        
+        testCorrelation();
+        
         /*
         for(String name : userList.keySet()){
-        	UserHistory uh=userList.get(name);
-        	System.out.println("user:" + uh.getName());
-        	Belief b = uh.getBelief();
+        	User u=userList.get(name);
+        	System.out.println("user:" + u.getName());
+        	u.computeHistory(5);
+        	Belief b = u.getBelief();
         	System.out.println(b.toString());
         }
         */
         
-        //testInterestingness();
-        testLabelRead();
     
     }
 	
+	public static void computeHistory(User u, int numberOfPastQueries){
+		if(numberOfPastQueries<=u.getNumberOfQueries()){
+			u.computeHistory(numberOfPastQueries);
+		}
+	}
+		
+	public static void computeHistory(User u){
+			u.computeHistory(percentageOfPast);		
+	}
 	
-	public static void testLabelRead() throws FileNotFoundException{
+	public static void testCorrelation() throws IOException, MathException{
+		//set result file
+		 String timestamp=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+	     String fileName = pathToResult  + "test" +"-" +  timestamp + ".csv";	        
+	     FileWriter writer   = new FileWriter(fileName);
+	     writer.write("user;cell hashcode;novelty\n");
+	        
+		for(User u : userList.values()){
+			String username=u.getName() + ";";
+			
+			computeHistory(u);	
+		
+			for(EAB_Cell c: u.getCurrentQuery().getResult().getCellList().getCellCollection()){
+				String current=username;
+				current = current+c.hashCode() + ";";
+				current = current+c.binaryNovelty(u.getHistory()) + ";";
+				current = current+c.outlierness(u.getCurrentQuery().getResult().getCellList()) + ";";
+				current = current+u.getCurrentQueryLabel() + ";";
+				
+				
+				current = current+"\n";
+				writer.write(current);
+			}
+			
+			
+		}
+		writer.close();
+	}
+	
+	
+	public static void readLabels() throws FileNotFoundException{
 		//String path = "res/Labels/dopan/agreedMetricsWithLabels.csv";
 		//File f=new File("path");
 		//Scanner scanner = new Scanner(f);
@@ -86,17 +139,16 @@ public class TestInterestingness {
         	//System.out.println(queryNb);
         	String end="log-"+queryNb;
         	String sessionName=filename.replace(end,"log"); 
-        	System.out.println(sessionName);
-
-        	
-        	// get user history
+        	//System.out.println(sessionName);
+      	
+        	// get user history and put labels
         	if(userList.containsKey(username)){
-            	System.out.println(username);
+            	//System.out.println(username);
 
-        		UserHistory uh=userList.get(username);
-            	System.out.println(sessionName);
-            	System.out.println(queryNb);
-        		uh.putLabel(sessionName, queryNb, label);
+        		User u=userList.get(username);
+            	//System.out.println(sessionName);
+            	//System.out.println(queryNb);
+        		u.putLabel(sessionName, queryNb, label);
         	}
         	
         	/*
@@ -115,7 +167,7 @@ public class TestInterestingness {
 	
 	
 	public static void createUsers(){
-		userList=new HashMap<String, UserHistory>();
+		userList=new HashMap<String, User>();
 		
 		int i=1;
 		for(Session s :l.getSessionList()){
@@ -128,13 +180,15 @@ public class TestInterestingness {
 //			String username=filename.split("_session")[0]; //warning only for smartBI!!! should be done in logLoader!!
 			
 			if(userList.containsKey(username)){
-				UserHistory uh=userList.get(username);
-				uh.addSession(s);
-				userList.put(username, uh);
+				User u=userList.get(username);
+				u.addSession(s);
+				userList.put(username, u);
 			}
 			else{
-				UserHistory uh=new UserHistory(username,s);				
-				userList.put(username, uh);
+				User u=new User(username,s);
+				
+				//UserHistory uh=new UserHistory(s);				
+				userList.put(username, u);
 				
 			}
 		}

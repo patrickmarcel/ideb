@@ -1,4 +1,4 @@
-package fr.univ_tours.li.mdjedaini.ideb.user;
+package fr.univ_tours.li.mdjedaini.ideb.interestingness;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,76 +27,31 @@ public class UserHistory {
 	HashMap<EAB_Cell, Integer> theCells;
 	HashMap<EAB_Member, Integer> theMembers;
 	HashMap<EAB_Measure, Integer> theMeasures;
-	HashMap<String, Session> theSessions;
-	HashMap<EAB_Cell, ArrayList<Integer>> theLabels;
 	
 	Belief userBelief=null;
-	String name;
 	
 	public UserHistory(){
 		theCells=new HashMap<EAB_Cell, Integer> ();
 		theMembers=new HashMap<EAB_Member, Integer> ();
 		theMeasures=new HashMap<EAB_Measure, Integer> ();
-		theSessions=new HashMap<String, Session>();
-		theLabels=new  HashMap<EAB_Cell, ArrayList<Integer>> ();
+
 	}
 	
-	public UserHistory(String name){
-		this();
-		this.name=name;
-	}
+
 	
-	public UserHistory(String name, CellList cl){
-		this(name);
+	public UserHistory(CellList cl){
 		this.add(cl);
 	}
 	
-	public UserHistory(String name, Result r){
-		this(name);
+	public UserHistory(Result r){
 		this.add(r);
 	}
 	
-	public UserHistory(String name, Session s){
-		this(name);
-		this.addSession(s);
-	}
+
+
+
 	
-	public void addSession(Session s){
-		String sessionName=s.getMetadata("filename");
-		theSessions.put(sessionName,s);
-		this.add(s.getCellList());
-			
-	}
-	
-	
-	public String getName(){
-		return name;
-	}
-	
-	public void putLabel(String sessionName, int queryNb, int label){
-		if(theSessions.containsKey(sessionName)){
-			System.out.println(" FOUND: " + sessionName);
-			//find session
-			Session s = theSessions.get(sessionName);
-			//find query
-			Query q = s.getQueryByPosition(queryNb);
-			//associate cells of q with label
-			for(EAB_Cell c : q.getResult().getCellList().getCellCollection()){
-				if(theLabels.containsKey(c)){
-					theLabels.get(c).add(label);
-				}
-				else{
-					ArrayList<Integer> labels=new ArrayList<Integer>();
-					labels.add(label);
-					theLabels.put(c, labels);
-				}				
-			}
-		}
-		else
-			System.out.println("NOT FOUND: " + sessionName);
-		
-	}
-	
+
 	
 	public void computeBelief(){
 		userBelief=new Belief(this);

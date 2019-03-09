@@ -4,7 +4,6 @@ import org.apache.commons.math.MathException;
 
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
-import fr.univ_tours.li.mdjedaini.ideb.user.UserHistory;
 
 public interface Metrics {
 	

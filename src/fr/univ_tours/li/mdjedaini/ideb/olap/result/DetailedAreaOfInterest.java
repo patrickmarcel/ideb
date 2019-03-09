@@ -6,8 +6,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import fr.univ_tours.li.mdjedaini.ideb.interestingness.UserHistory;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
-import fr.univ_tours.li.mdjedaini.ideb.user.UserHistory;
 
 /**
  * @author patrick
