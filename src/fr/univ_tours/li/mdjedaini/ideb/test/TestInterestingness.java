@@ -87,7 +87,7 @@ public class TestInterestingness {
 		 String timestamp=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 	     String fileName = pathToResult  + "test" +"-" +  timestamp + ".csv";	        
 	     FileWriter writer   = new FileWriter(fileName);
-	     writer.write("user;cell hashcode;novelty\n");
+	     writer.write("user;cell hashcode;novelty;outlierness;relevance;surprise;query label\n");
 	        
 		for(User u : userList.values()){
 			String username=u.getName() + ";";
@@ -99,6 +99,8 @@ public class TestInterestingness {
 				current = current+c.hashCode() + ";";
 				current = current+c.binaryNovelty(u.getHistory()) + ";";
 				current = current+c.outlierness(u.getCurrentQuery().getResult().getCellList()) + ";";
+				current = current+c.simpleRelevance(u.getHistory()) + ";";
+				current = current+c.surprise(u.getHistory()) + ";";
 				current = current+u.getCurrentQueryLabel() + ";";
 				
 				
