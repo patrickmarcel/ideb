@@ -944,7 +944,7 @@ public class EAB_Cell implements Metrics{
 	public double surprise(UserHistory uh){
 		int cnt=0;
 		double acc=0;
-		for(EAB_Hierarchy h  : this.getCube().getHierarchyList()){
+		for(EAB_Hierarchy h  : this.getCube().getHierarchyList()){ // put that in belief??
 			EAB_Member m = this.getMemberByHierarchy(h);
 			double proba_m=uh.getBelief(m);
 			double log_m = Math.log(proba_m);

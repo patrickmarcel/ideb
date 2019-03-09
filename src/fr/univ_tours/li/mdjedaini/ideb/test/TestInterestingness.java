@@ -20,6 +20,7 @@ import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
+import fr.univ_tours.li.mdjedaini.ideb.user.Belief;
 import fr.univ_tours.li.mdjedaini.ideb.user.UserHistory;
 
 /**
@@ -42,14 +43,18 @@ public class TestInterestingness {
         testSmartBImysql();   
         
         createUsers();
+        
+        /*
         for(String name : userList.keySet()){
         	UserHistory uh=userList.get(name);
         	System.out.println("user:" + uh.getName());
-        	System.out.println(uh.getBelief().toString());
+        	Belief b = uh.getBelief();
+        	System.out.println(b.toString());
         }
+        */
         
         //testInterestingness();
-        //testLabelRead();
+        testLabelRead();
     
     }
 	
@@ -60,24 +65,50 @@ public class TestInterestingness {
 		//Scanner scanner = new Scanner(f);
 		//doesn't work for a reason???
 		
-		Scanner scanner = new Scanner(new File("/Users/patrick/git/ideb/res/Labels/dopan/agreedMetricsWithLabels.csv"));
-        scanner.useDelimiter(";");
+		//Scanner scanner = new Scanner(new File("/Users/patrick/git/ideb/res/Labels/dopan/dopanCleanLogWithVeronikaLabels-FOCUS.csv"));
+		Scanner scanner = new Scanner(new File("/Users/patrick/git/ideb/res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv"));
+		scanner.useDelimiter(";");
         
-        
-        //while(scanner.hasNextLine()){
-        	scanner.nextLine(); // reads header line
+        scanner.nextLine(); // reads header line
+        while(scanner.hasNextLine()){
+        	
+        	// get username, query nb and query label
         	String line = scanner.nextLine();
         	String[] ts = line.split(";");
-        	System.out.println(ts[0]);
-        	System.out.println(ts[ts.length -1]);
-            //System.out.print(scanner.next()+"|");
+        	String filename=ts[1];
+        	int label = new Integer(ts[ts.length -1]);
+        	//System.out.println(label);
+        	String namesplit[]=filename.split("--");
+        	String username=namesplit[0];
+        	//System.out.println(username);
+        	String remainder[]=namesplit[namesplit.length-1].split("-");
+        	int queryNb = new Integer(remainder[remainder.length-1]);
+        	//System.out.println(queryNb);
+        	String end="log-"+queryNb;
+        	String sessionName=filename.replace(end,"log"); 
+        	System.out.println(sessionName);
+
         	
+        	// get user history
+        	if(userList.containsKey(username)){
+            	System.out.println(username);
+
+        		UserHistory uh=userList.get(username);
+            	System.out.println(sessionName);
+            	System.out.println(queryNb);
+        		uh.putLabel(sessionName, queryNb, label);
+        	}
+        	
+        	/*
         	Session s =l.getSessionByQueryId(0);
         	System.out.println(s.getSid()+" "+ s.getUser());
         	System.out.println(s.getSummary());
         	//System.out.println(s.getNumberOfQueries());
+        	*/
         	
-        //}
+        	
+        	
+        }
         scanner.close();
        
 	}
@@ -91,8 +122,10 @@ public class TestInterestingness {
 			System.out.println("processing session "+ i++);
 			
 			String filename=s.getMetadata("filename");
-//			String username=filename.split("--")[0]; //warning only for dopan!!! should be done in logLoader!!
-			String username=filename.split("_session")[0]; //warning only for smartBI!!! should be done in logLoader!!
+			String username=filename.split("--")[0]; //warning only for dopan!!! should be done in logLoader!!
+			//System.out.println("username: " + username);
+			//System.out.println("sessionname: " + filename);
+//			String username=filename.split("_session")[0]; //warning only for smartBI!!! should be done in logLoader!!
 			
 			if(userList.containsKey(username)){
 				UserHistory uh=userList.get(username);
@@ -106,7 +139,7 @@ public class TestInterestingness {
 			}
 		}
 		
-		System.out.println("Nb of users: " + userList.size());
+		//System.out.println("Nb of users: " + userList.size());
 	}
 	
 	
@@ -193,7 +226,9 @@ public class TestInterestingness {
         //CsvLogLoader sll = new CsvLogLoader(be, "res/logs/smartBI/IS_ADBIS/logs/user-a_session-3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE_analysis-1.csv");
         
        // read all log files in directory       
-        CsvLogLoader sll = new CsvLogLoader(be, "res/logs/smartBI/IS_ADBIS/logs/");
+       // CsvLogLoader sll = new CsvLogLoader(be, "res/logs/smartBI/IS_ADBIS/logs/");
+        // fake logs for tests
+        CsvLogLoader sll = new CsvLogLoader(be, "res/logs/smartBI/fakeForTestOnly/");
         l   = sll.loadLog();
         
         
@@ -253,7 +288,8 @@ public class TestInterestingness {
         
         
         //SaikuLogLoader sll = new SaikuLogLoader(be, "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/logs/DopanLogsNettoyes/cleanLogs/dibstudent03--2016-09-24--23-01.log");
-        SaikuLogLoader sll = new SaikuLogLoader(be, "res/logs/dopan/cleanLogs/dibstudent03--2016-09-24--23-01.log");
+        //SaikuLogLoader sll = new SaikuLogLoader(be, "res/logs/dopan/cleanLogs/dibstudent03--2016-09-24--23-01.log");
+        SaikuLogLoader sll = new SaikuLogLoader(be, "res/logs/dopan/forTests/");
         
         l   = sll.loadLog();
               

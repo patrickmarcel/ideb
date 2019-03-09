@@ -13,6 +13,7 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Measure;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.MeasureFragment;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.ProjectionFragment;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
@@ -21,13 +22,13 @@ import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 
 public class UserHistory {
-	//Set<EAB_Cell> theCells;
-	// use hashmap where key is cell and value is number time seen
+	
 
 	HashMap<EAB_Cell, Integer> theCells;
 	HashMap<EAB_Member, Integer> theMembers;
 	HashMap<EAB_Measure, Integer> theMeasures;
-	ArrayList<Session> theSessions;
+	HashMap<String, Session> theSessions;
+	HashMap<EAB_Cell, ArrayList<Integer>> theLabels;
 	
 	Belief userBelief=null;
 	String name;
@@ -36,7 +37,8 @@ public class UserHistory {
 		theCells=new HashMap<EAB_Cell, Integer> ();
 		theMembers=new HashMap<EAB_Member, Integer> ();
 		theMeasures=new HashMap<EAB_Measure, Integer> ();
-		theSessions=new ArrayList<Session>();
+		theSessions=new HashMap<String, Session>();
+		theLabels=new  HashMap<EAB_Cell, ArrayList<Integer>> ();
 	}
 	
 	public UserHistory(String name){
@@ -60,7 +62,8 @@ public class UserHistory {
 	}
 	
 	public void addSession(Session s){
-		theSessions.add(s);
+		String sessionName=s.getMetadata("filename");
+		theSessions.put(sessionName,s);
 		this.add(s.getCellList());
 			
 	}
@@ -68,6 +71,30 @@ public class UserHistory {
 	
 	public String getName(){
 		return name;
+	}
+	
+	public void putLabel(String sessionName, int queryNb, int label){
+		if(theSessions.containsKey(sessionName)){
+			System.out.println(" FOUND: " + sessionName);
+			//find session
+			Session s = theSessions.get(sessionName);
+			//find query
+			Query q = s.getQueryByPosition(queryNb);
+			//associate cells of q with label
+			for(EAB_Cell c : q.getResult().getCellList().getCellCollection()){
+				if(theLabels.containsKey(c)){
+					theLabels.get(c).add(label);
+				}
+				else{
+					ArrayList<Integer> labels=new ArrayList<Integer>();
+					labels.add(label);
+					theLabels.put(c, labels);
+				}				
+			}
+		}
+		else
+			System.out.println("NOT FOUND: " + sessionName);
+		
 	}
 	
 	
@@ -81,7 +108,7 @@ public class UserHistory {
 	
 	public double getBelief(EAB_Member m){
 		if(userBelief==null)
-			computeBelief();
+			this.computeBelief();
 		if(userBelief.memberMap.containsKey(m)){
 			return userBelief.memberMap.get(m);
 		}
@@ -92,7 +119,7 @@ public class UserHistory {
 	
 	public Belief getBelief(){
 		if(userBelief==null)
-			computeBelief();
+			this.computeBelief();
 		return userBelief;
 	}
 	

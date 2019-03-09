@@ -3,6 +3,7 @@ package fr.univ_tours.li.mdjedaini.ideb.user;
 import java.util.HashMap;
 
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
+import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
@@ -21,12 +22,35 @@ public class Belief {
 	
 	}
 	
-	public Belief(UserHistory h){
+	public Belief(UserHistory uh){
 		memberMap=new HashMap<EAB_Member,Double>();
-		int size=h.theMembers.keySet().size();
-		for(EAB_Member m : h.theMembers.keySet()){
-			memberMap.put(m, (double) h.theMembers.get(m)/size);
-		}		
+		//int size=h.theMembers.keySet().size();
+		int count=0;
+		for(EAB_Member m : uh.theMembers.keySet()){
+			count= count + uh.theMembers.get(m);
+		}	
+		for(EAB_Member m : uh.theMembers.keySet()){
+			memberMap.put(m, (double) uh.theMembers.get(m)/count);
+		}	
+		
+		/* not sure what to do here
+		// populate cellMap;
+		cellMap= new HashMap<EAB_Cell, Double>();
+
+		for(EAB_Cell c : uh.theCells.keySet()){
+			
+			double acc=0;
+			for(EAB_Hierarchy h  : c.getCube().getHierarchyList()){ 
+				EAB_Member m = c.getMemberByHierarchy(h);
+				double proba_m= memberMap.get(m); // uh.getBelief(m);
+				double log_m = Math.log(proba_m);
+				acc=acc+log_m;
+				
+			}
+			cellMap.put(c, acc)   ;
+		}
+		*/
+		
 	}
 	
 	
@@ -37,8 +61,10 @@ public class Belief {
 	
 	public String toString(){
 		String result="";
-		for(EAB_Cell c : cellMap.keySet()){
-			result+= "cell: " + c.toString() + "belief: " + cellMap.get(c) + "\n";
+		if(memberMap!=null){
+			for(EAB_Member c : memberMap.keySet()){
+				result+= "member: " + c.toString() + " belief: " + memberMap.get(c) + "\n";
+			}
 		}
 		return result;
 	}
