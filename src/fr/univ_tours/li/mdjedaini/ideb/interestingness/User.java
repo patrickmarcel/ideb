@@ -26,13 +26,14 @@ public class User {
 	HashMap<String, Session> theSessions;
 	//HashMap<EAB_Cell, ArrayList<Integer>> theLabels;
 	HashMap<Query, Integer> theLabels;
-
+	HashMap<Session, Character> sessionLabels;
 	
 	public User(String name){
 		this.name=name;
 		numberOfQueries=0;
 		theSessions=new HashMap<String, Session>();
 		theLabels=new  HashMap<Query, Integer> ();
+		sessionLabels=new  HashMap<Session, Character> ();
 		//theLabels=new  HashMap<EAB_Cell, ArrayList<Integer>> ();
 		//history=new UserHistory();
 	}
@@ -48,6 +49,10 @@ public class User {
 	
 	public Query getCurrentQuery(){
 		return currentQuery;
+	}
+	
+	public Session getCurrentSession(){
+		return currentSession;
 	}
 	
 	public UserHistory getHistory(){
@@ -113,6 +118,19 @@ public class User {
 		return  theLabels;
 	}
 	
+	public HashMap<Session, Character> getSessionLabels(){
+		return  sessionLabels;
+	}
+	
+	public void putSessionLabel(String sessionName, Character label){
+		Session s = theSessions.get(sessionName);
+		sessionLabels.put(s, label);
+	}
+	
+	public Character getSessionLabel(Session s){
+		return sessionLabels.get(s);
+	}
+	
 	public void putLabel(String sessionName, int queryNb, int label){
 		if(theSessions.containsKey(sessionName)){
 			//System.out.println(" FOUND: " + sessionName);
@@ -128,6 +146,9 @@ public class User {
 			System.out.println("NOT FOUND: " + sessionName);
 		
 	}
+	
+	
+	
 	
 	/*
 	public HashMap<EAB_Cell, ArrayList<Integer>> getLabels(){

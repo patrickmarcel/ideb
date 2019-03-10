@@ -85,9 +85,9 @@ public class TestInterestingness {
 	public static void testCorrelation() throws IOException, MathException{
 		//set result file
 		 String timestamp=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-	     String fileName = pathToResult  + "test" +"-" +  timestamp + ".csv";	        
+	     String fileName = pathToResult  + "past=" + percentageOfPast + "-" +  timestamp + ".csv";	        
 	     FileWriter writer   = new FileWriter(fileName);
-	     writer.write("user;cell hashcode;novelty;outlierness;relevance;surprise;query label\n");
+	     writer.write("user;cell hashcode;novelty;outlierness;relevance;surprise;query label;session label\n");
 	        
 		for(User u : userList.values()){
 			String username=u.getName() + ";";
@@ -102,6 +102,7 @@ public class TestInterestingness {
 				current = current+c.simpleRelevance(u.getHistory()) + ";";
 				current = current+c.surprise(u.getHistory()) + ";";
 				current = current+u.getCurrentQueryLabel() + ";";
+				current = current+u.getSessionLabel(u.getCurrentSession()) + ";";
 				
 				
 				current = current+"\n";
@@ -165,6 +166,39 @@ public class TestInterestingness {
         }
         scanner.close();
        
+        // read session labels
+		scanner = new Scanner(new File("/Users/patrick/git/ideb/res/Labels/fakeForTest/skillScorePerExploration.csv"));
+		scanner.useDelimiter(";");
+        
+        scanner.nextLine(); // reads header line
+        while(scanner.hasNextLine()){
+        	
+        	// get session and query label
+        	String line = scanner.nextLine();
+        	String[] ts = line.split(";");
+        	String filename=ts[0];
+        	Character label = new Character(ts[1].charAt(0));
+        	//System.out.println(label);
+        	String namesplit[]=filename.split("--");
+        	String username=namesplit[0];
+        	//System.out.println(username);
+        	
+        	User u=userList.get(username);
+            	
+        	u.putSessionLabel(filename, label);
+        }
+        	
+        	/*
+        	Session s =l.getSessionByQueryId(0);
+        	System.out.println(s.getSid()+" "+ s.getUser());
+        	System.out.println(s.getSummary());
+        	//System.out.println(s.getNumberOfQueries());
+        	*/
+        	
+
+        scanner.close();
+       
+        
 	}
 	
 	
