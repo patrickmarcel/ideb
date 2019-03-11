@@ -47,11 +47,6 @@ public class UserHistory {
 		this.add(r);
 	}
 	
-
-
-
-	
-
 	
 	public void computeBelief(){
 		userBelief=new Belief(this);

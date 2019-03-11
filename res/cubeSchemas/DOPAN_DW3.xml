@@ -164,7 +164,7 @@
     </Dimension>
 	
 	<Dimension name="Niveau d'instruction">
-      <Hierarchy hasAll="true" name="Niveau_Instruction_Hierarchie" primaryKey="niveau_id"
+      <Hierarchy hasAll="true" name="Niveau_Instruction_Hierarchie" primaryKey="niveau_inst_id"
 		allMemberName = "tous les niveaux confondus" allLevelName = "Tout" caption ="Niveau_Instruction_Hierarchie">
         <Table name="niveau_instruction" />
 		<Level type="String" name="Categorie 1" column="categorie1_id" nameColumn="categorie1_nom">
@@ -183,7 +183,7 @@
 				</SQL>
 			</OrdinalExpression>
 		</Level>
-        <Level type="String" name="Niveau d'instruction" column="niveau_id" nameColumn="niveau_nom" ordinalColumn = "niveau_nom"/>
+        <Level type="String" name="Niveau d'instruction" column="niveau_inst_id" nameColumn="niveau_nom" ordinalColumn = "niveau_nom"/>
       </Hierarchy>
     </Dimension>
 	

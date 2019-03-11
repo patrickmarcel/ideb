@@ -42,8 +42,29 @@ public class TestInterestingness {
 	static double percentageOfPast=0.3;
 	static String pathToResult="output/interestingness/";
 	
+	// test data (smartBI DB + fake labels)
+	static String queryLabelFile="/Users/patrick/git/ideb/res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
+	static String sessionLabelFile="/Users/patrick/git/ideb/res/Labels/fakeForTest/skillScorePerExploration.csv";
+	static String logDirectory="res/logs/smartBI/fakeForTestOnly/";
+
+	//dopan
+	//static String queryLabelFile="/Users/patrick/git/ideb/res/Labels/dopan/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
+	//static String sessionLabelFile="/Users/patrick/git/ideb/res/Labels/dopan/skillScorePerExploration.csv";
+	//static String logDirectory="res/logs/dopan/cleanLogs/";
+	
+	
+	// dopan - test
+	//static String queryLabelFile="/Users/patrick/git/ideb/res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
+	//static String sessionLabelFile="/Users/patrick/git/ideb/res/Labels/fakeForTest/skillScorePerExploration.csv";
+	//static String logDirectory="res/logs/dopan/forTests/";
+	
+	
+	
 	public static void main(String[] args) throws MathException, IOException {
-        
+		
+		long startTime = System.currentTimeMillis();
+
+       
 		// DOPAN
         //testSQLServer();
         
@@ -52,35 +73,97 @@ public class TestInterestingness {
         
         createUsers();
         
-        
-        
-        //testInterestingness();
         readLabels();
         
-        testCorrelation();
-        
-        /*
-        for(String name : userList.keySet()){
-        	User u=userList.get(name);
-        	System.out.println("user:" + u.getName());
-        	u.computeHistory(5);
-        	Belief b = u.getBelief();
-        	System.out.println(b.toString());
+        // printing users
+        for(User u: userList.values()){
+        	System.out.println(u.toString());
         }
-        */
         
+        
+        
+        //testCorrelation();
+        
+        metricsBySessionGrade();
+        
+        long stopTime = System.currentTimeMillis();        
+        System.out.println("Done in: " + (double) (stopTime - startTime)/1000 + " seconds");
     
     }
 	
 	public static void computeHistory(User u, int numberOfPastQueries){
 		if(numberOfPastQueries<=u.getNumberOfQueries()){
-			u.computeHistory(numberOfPastQueries);
+			u.computeHistoryIterative(numberOfPastQueries);
 		}
 	}
 		
 	public static void computeHistory(User u){
 			u.computeHistory(percentageOfPast);		
 	}
+	
+	public static void metricsBySessionGrade() throws MathException, IOException{
+			
+		//set result file
+		 String timestamp=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+	     String fileName = pathToResult  + "compareToSessionGrade" +"-" +  timestamp + ".csv";	        
+	     FileWriter writer   = new FileWriter(fileName);
+	     writer.write("session ;user;query position;cell hashcode;novelty;outlierness;relevance;surprise;query label;session label\n");
+		
+		
+		for(User u : userList.values()){
+			String username=u.getName();
+			HashMap<Session, Character> us = u.getSessionLabels();
+			for(Session s : us.keySet()){
+				Character sessionLabel= us.get(s);
+				int sessionHashcode=s.hashCode();
+				String sessionName = s.getMetadata("filename");
+				int queryPos=0;
+				for(Query q : s.getQueryList()){
+					int queryHashcode = q.hashCode();
+					computeHistory(u,queryPos);
+					//u.getHistory().printMembers();
+					int queryLabel=u.getCurrentQueryLabel();
+					for(EAB_Cell c : q.getResult().getCellList().getCellCollection()){
+						int cellHashcode=c.hashCode();
+						boolean novelty=c.binaryNovelty(u.getHistory());
+						double outlierness=c.outlierness(q.getResult().getCellList());
+						double relevance=c.simpleRelevance(u.getHistory());
+						double surprise=c.surprise(u.getHistory()); // can be infinity, should be transformed before going to csv/excel?
+						
+						// put in file
+						String current="";
+						current = current + sessionName + ";";
+						current = current+ username + ";";
+						//current = current+ queryHashcode + ";";
+						current = current+ (queryPos+1) + ";";
+						current = current+ cellHashcode + ";";
+						current = current+novelty + ";";
+						current = current+outlierness+ ";";
+						current = current+relevance + ";";
+						current = current+surprise + ";";
+						current = current+queryLabel + ";";
+						current = current+sessionLabel + ";";
+						
+						
+						current = current+"\n";
+						writer.write(current);
+						
+						System.out.println(current);
+					}
+					queryPos++;
+				}
+				
+			}
+			
+			
+		}
+		
+		writer.close();
+		
+	}
+	
+	
+	
 	
 	public static void testCorrelation() throws IOException, MathException{
 		//set result file
@@ -116,13 +199,20 @@ public class TestInterestingness {
 	
 	
 	public static void readLabels() throws FileNotFoundException{
+		System.out.println("Reading labels");
+		
 		//String path = "res/Labels/dopan/agreedMetricsWithLabels.csv";
 		//File f=new File("path");
 		//Scanner scanner = new Scanner(f);
 		//doesn't work for a reason???
 		
+		// CLEAN FILES, REMOVE NAMES IN FILES AND IN FILENAMES!!!!!!
+		
+		
+		System.out.println("First reading query labels");
+		
 		//Scanner scanner = new Scanner(new File("/Users/patrick/git/ideb/res/Labels/dopan/dopanCleanLogWithVeronikaLabels-FOCUS.csv"));
-		Scanner scanner = new Scanner(new File("/Users/patrick/git/ideb/res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv"));
+		Scanner scanner = new Scanner(new File(queryLabelFile));
 		scanner.useDelimiter(";");
         
         scanner.nextLine(); // reads header line
@@ -165,9 +255,12 @@ public class TestInterestingness {
         	
         }
         scanner.close();
+        
+		System.out.println("Then reading session labels");
+
        
         // read session labels
-		scanner = new Scanner(new File("/Users/patrick/git/ideb/res/Labels/fakeForTest/skillScorePerExploration.csv"));
+		scanner = new Scanner(new File(sessionLabelFile));
 		scanner.useDelimiter(";");
         
         scanner.nextLine(); // reads header line
@@ -203,13 +296,16 @@ public class TestInterestingness {
 	
 	
 	public static void createUsers(){
+		System.out.println("Creating users");
+		
 		userList=new HashMap<String, User>();
 		
 		int i=1;
 		for(Session s :l.getSessionList()){
-			System.out.println("processing session "+ i++);
 			
 			String filename=s.getMetadata("filename");
+			System.out.println("processing session "+ i++ + ": " + filename);
+			
 			String username=filename.split("--")[0]; //warning only for dopan!!! should be done in logLoader!!
 			//System.out.println("username: " + username);
 			//System.out.println("sessionname: " + filename);
@@ -228,11 +324,12 @@ public class TestInterestingness {
 				
 			}
 		}
-		
+		System.out.println("End of creating users");
 		//System.out.println("Nb of users: " + userList.size());
 	}
 	
 	
+	/*
     public static void testInterestingness() throws MathException{
  	   	Query qtest=l.getQueryList().get(0);
         System.out.println("EXECUTED QUERY: " + qtest);
@@ -285,10 +382,10 @@ public class TestInterestingness {
 //        	System.out.println(it2.next().hashCode());
 
         }
-        */
+       
         
  	   
-    }
+    }*/
     
     
 
@@ -318,7 +415,7 @@ public class TestInterestingness {
        // read all log files in directory       
        // CsvLogLoader sll = new CsvLogLoader(be, "res/logs/smartBI/IS_ADBIS/logs/");
         // fake logs for tests
-        CsvLogLoader sll = new CsvLogLoader(be, "res/logs/smartBI/fakeForTestOnly/");
+        CsvLogLoader sll = new CsvLogLoader(be, logDirectory);
         l   = sll.loadLog();
         
         
@@ -379,17 +476,17 @@ public class TestInterestingness {
         
         //SaikuLogLoader sll = new SaikuLogLoader(be, "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/logs/DopanLogsNettoyes/cleanLogs/dibstudent03--2016-09-24--23-01.log");
         //SaikuLogLoader sll = new SaikuLogLoader(be, "res/logs/dopan/cleanLogs/dibstudent03--2016-09-24--23-01.log");
-        SaikuLogLoader sll = new SaikuLogLoader(be, "res/logs/dopan/forTests/");
+        SaikuLogLoader sll = new SaikuLogLoader(be, logDirectory);
         
         l   = sll.loadLog();
               
-        System.out.println("Log summary:");
-        System.out.println(l.logSummary());
+       // System.out.println("Log summary:");
+       // System.out.println(l.logSummary());
         
-        for(Session s_tmp : l.getSessionList()) {           
-            System.out.println(s_tmp.getSummary());
+       // for(Session s_tmp : l.getSessionList()) {           
+       //     System.out.println(s_tmp.getSummary());
             
-        }
+        //}
              
       //l.execute(Boolean.FALSE);
       

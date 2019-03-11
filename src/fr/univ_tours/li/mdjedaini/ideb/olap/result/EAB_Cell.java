@@ -75,6 +75,12 @@ public class EAB_Cell implements Metrics{
     // value of the cell
     Object value;
     
+    
+    DetailedAreaOfInterest detailedArea=null;
+    
+    public void setDetailedArea(DetailedAreaOfInterest d){
+    	detailedArea=d;
+    }
     /**
      *
      */
@@ -483,7 +489,7 @@ public class EAB_Cell implements Metrics{
             SelectionFragment sf    = new SelectionFragment(result, m_tmp);
             result.addSelection(sf);
             
-            
+           
            ProjectionFragment pf   = new ProjectionFragment(result, h_tmp.getMostDetailedLevel());
            result.addProjection(pf);
            
@@ -663,16 +669,37 @@ public class EAB_Cell implements Metrics{
     }
     
     
-
+    public DetailedAreaOfInterest getDetailedAreaOfInterest(){
+    	if(detailedArea!=null)
+    		return detailedArea;
+    	else{
+    		computeDetailedAreaOfInterest();
+    		return detailedArea;
+    	}
+    }
     
-    public  Collection<EAB_Cell> detailedAreaOfInterest(){
-    	Query q = this.getMostDetailedQueryForCell();
-    	//System.out.println(q.toString());
-    	Result r = q.getResult();
-    	CellList cl=r.getCellList();
-    	Collection<EAB_Cell> col=cl.getCellCollection();
-    	return col;  	
-    	
+    public Collection<EAB_Cell> getDetailedAreaCells(){
+    	if(detailedArea!=null)
+    		return  detailedArea.getCellList().getCellCollection();
+    	else{
+    		computeDetailedAreaOfInterest();
+    		return  detailedArea.getCellList().getCellCollection();
+    	}
+    }
+    
+    
+    public  void computeDetailedAreaOfInterest(){
+    	if(detailedArea!=null){
+    		//do nothing
+    	}
+    	else{
+    		Query q = this.getMostDetailedQueryForCell();
+    		detailedArea=new DetailedAreaOfInterest(q);
+    		// for debugging
+    		//System.out.println(q.toString());
+    	  	
+    		
+    	}
     	
       }
     
@@ -832,9 +859,9 @@ public class EAB_Cell implements Metrics{
 	
 	
 	public boolean binaryNovelty(UserHistory h){
-		boolean found=false;
-		if(h.contains(this)) found=true;
-		return found;
+		boolean result=true;
+		if(h.contains(this)) result=false;
+		return result;
 		
 	}
 	
@@ -924,12 +951,13 @@ public class EAB_Cell implements Metrics{
 	}
 	
 	public int sizeOfDetailedArea(){
-		return this.detailedAreaOfInterest().size();
+		return this.getDetailedAreaOfInterest().size();
 	}
 	
 	
 	public double simpleRelevance(UserHistory uh){
-		DetailedAreaOfInterest dthis=new DetailedAreaOfInterest(this);
+		
+		DetailedAreaOfInterest dthis= this.getDetailedAreaOfInterest(); 
 		DetailedAreaOfInterest duh=new DetailedAreaOfInterest(uh);
 		
 		CellList clthis=dthis.getCellList();
@@ -940,18 +968,26 @@ public class EAB_Cell implements Metrics{
 		return inter.nbOfCells()/clthis.nbOfCells();
 	}
 	
+	/*
+	public double simpleRelevance(UserHistory uh){
+		return 0;
+	}
+	*/
+	
 	
 	public double surprise(UserHistory uh){
-		int cnt=0;
+		
 		double acc=0;
 		for(EAB_Hierarchy h  : this.getCube().getHierarchyList()){ // put that in belief??
 			EAB_Member m = this.getMemberByHierarchy(h);
 			double proba_m=uh.getBelief(m);
-			double log_m = Math.log(proba_m);
+			double log_m = -Math.log(proba_m);
 			acc=acc+log_m;
-			cnt++;
+			
 		}
-		return acc/cnt;
+
+		return acc/this.getCube().getHierarchyList().size(); 
+		
 		
 		
 	}
