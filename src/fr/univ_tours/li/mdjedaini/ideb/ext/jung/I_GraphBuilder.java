@@ -5,9 +5,10 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.ext.jung;
 
+import java.util.Collection;
+
 import edu.uci.ics.jung.graph.Graph;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
-import java.util.Collection;
 
 /**
  *

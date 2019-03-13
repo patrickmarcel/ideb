@@ -1,5 +1,17 @@
 package fr.univ_tours.li.mdjedaini.ideb.olap.query;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+
+import org.olap4j.CellSet;
+import org.olap4j.layout.RectangularCellSetFormatter;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryConverter;
 import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryOperationDifferential;
@@ -10,16 +22,6 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Level;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.ResultStructure;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import org.olap4j.CellSet;
-import org.olap4j.layout.RectangularCellSetFormatter;
 
 /**
  * This class represents a formal model of an OLAP query.
@@ -661,6 +663,8 @@ public class QueryTriplet extends Query implements java.io.Serializable {
             QueryConverter qc   = new QueryConverter(be);
             QueryMdx q_mdx      = qc.toMdx(this);
             
+            //System.out.println("mdx:" + q_mdx.toString());
+            
             return q_mdx.execute(arg_store);
         } catch(Exception arg_e) {
             System.out.println("Problem when executing the query!");
@@ -710,6 +714,7 @@ public class QueryTriplet extends Query implements java.io.Serializable {
         ResultStructure res = new ResultStructure(this);
         
         res.computeMemberListByHierarchy();
+        //res.computeCellList();
         
         return res;        
     }
@@ -722,7 +727,8 @@ public class QueryTriplet extends Query implements java.io.Serializable {
         if(this.result != null) {
             return this.result;
         } else {
-            return this.execute(Boolean.FALSE);
+        	return this.execute(Boolean.TRUE);
+        	//return this.execute(Boolean.FALSE);
         }
     }
     

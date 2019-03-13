@@ -5,6 +5,9 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.query;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Level;
@@ -13,8 +16,6 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.query.MeasureFragment;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *

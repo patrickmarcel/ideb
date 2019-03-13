@@ -3,7 +3,6 @@ package fr.univ_tours.li.mdjedaini.ideb.interestingness;
 import java.util.HashMap;
 
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
-import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;

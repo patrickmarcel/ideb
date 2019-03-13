@@ -1,12 +1,11 @@
 package fr.univ_tours.li.mdjedaini.ideb.olap.query;
 
+import mondrian.olap.Axis;
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.EAB_Connection;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
-import mondrian.olap.Axis;
-import mondrian.server.Execution;
 
 /**
  * This class represents a formal model of an OLAP query.
@@ -46,6 +45,9 @@ public class QueryMdx extends Query implements java.io.Serializable {
         mondrian.olap.Query mq      = mc.parseQuery(this.mdx);
         mondrian.olap.Result r      = mc.execute(mq);
         
+        //System.out.println("RESULT MONDRIAN: "+ r);
+        
+        
         connection.close();
         
         Result  res = new Result(this, r);
@@ -67,7 +69,9 @@ public class QueryMdx extends Query implements java.io.Serializable {
                 }
                 
                 EAB_Cell eab_c              = new EAB_Cell(res, c_tmp);
-
+                
+                //System.out.println("creating Cell: "+ eab_c.toString());
+                
                 res.addCell(eab_c);
             }
         }
@@ -79,6 +83,8 @@ public class QueryMdx extends Query implements java.io.Serializable {
         
         // Closes the query and releases resources
         mq.close();
+        
+        //System.out.println("RESULT: "+ res.toString());
         
         return res;
     }

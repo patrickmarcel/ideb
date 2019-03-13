@@ -5,13 +5,13 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.algo.gen.log.CubeloadGenerator;
 import fr.univ_tours.li.mdjedaini.ideb.io.CubeloadLogLoader;
 import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**

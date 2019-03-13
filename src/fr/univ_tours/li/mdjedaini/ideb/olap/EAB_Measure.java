@@ -6,6 +6,7 @@
 package fr.univ_tours.li.mdjedaini.ideb.olap;
 
 import java.util.Objects;
+
 import mondrian.olap.Member;
 
 
@@ -34,6 +35,8 @@ public class EAB_Measure {
         this.name               = this.mondrianMeasure.getName();
         this.uniqueName         = this.mondrianMeasure.getUniqueName();
     }
+    
+    
     
     /**
      *

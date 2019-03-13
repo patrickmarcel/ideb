@@ -5,14 +5,6 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.io;
 
-import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.MeasureFragment;
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.ProjectionFragment;
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
-
 import java.io.File;
 import java.util.ArrayList;
 
@@ -23,6 +15,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.MeasureFragment;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.ProjectionFragment;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
+import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
+import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 
 /**
  *

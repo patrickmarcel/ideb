@@ -5,13 +5,14 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
 import fr.univ_tours.li.mdjedaini.ideb.struct.DiscoveryAsCellWithOlapNeighbors;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *

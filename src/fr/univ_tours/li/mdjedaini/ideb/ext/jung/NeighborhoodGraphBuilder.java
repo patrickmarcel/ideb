@@ -5,13 +5,14 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.ext.jung;
 
-import fr.univ_tours.li.mdjedaini.ideb.neighborhood.cell.I_CellNeighborhood;
-import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
+import java.util.ArrayList;
+import java.util.Collection;
+
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.UndirectedSparseGraph;
 import fr.univ_tours.li.mdjedaini.ideb.neighborhood.cell.CellNeighborhoodSimple;
-import java.util.ArrayList;
-import java.util.Collection;
+import fr.univ_tours.li.mdjedaini.ideb.neighborhood.cell.I_CellNeighborhood;
+import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 
 /**
  *

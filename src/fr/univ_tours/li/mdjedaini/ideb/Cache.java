@@ -5,9 +5,10 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb;
 
+import java.util.Map;
+
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
-import java.util.Map;
 
 /**
  *

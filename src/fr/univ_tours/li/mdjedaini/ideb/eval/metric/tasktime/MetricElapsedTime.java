@@ -5,11 +5,12 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval.metric.tasktime;
 
+import java.util.ArrayList;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
-import java.util.ArrayList;
 
 /**
  * This metric evaluates the time taken to resolve a task.

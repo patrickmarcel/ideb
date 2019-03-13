@@ -7,6 +7,7 @@ package fr.univ_tours.li.mdjedaini.ideb.examples;
 
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.EAB_Connection;
+import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryConverter;
 import fr.univ_tours.li.mdjedaini.ideb.io.MondrianResultWriter;
 import fr.univ_tours.li.mdjedaini.ideb.io.SaikuLogLoader;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
@@ -15,7 +16,6 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
 import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
-import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryConverter;
 
 
 /**

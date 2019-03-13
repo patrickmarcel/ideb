@@ -4,11 +4,12 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.olap.result;
 
+import java.util.Map;
+import java.util.Set;
+
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
-import java.util.Map;
-import java.util.Set;
 
 /**
  *

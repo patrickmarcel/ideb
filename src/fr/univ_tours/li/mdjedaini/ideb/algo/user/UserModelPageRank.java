@@ -5,6 +5,18 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.user;
 
+import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import javax.swing.JFrame;
+
+import org.apache.commons.collections15.Transformer;
+
 import edu.uci.ics.jung.algorithms.layout.ISOMLayout;
 import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.algorithms.scoring.PageRank;
@@ -15,18 +27,9 @@ import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
 import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 import fr.univ_tours.li.mdjedaini.ideb.eval.TaskBundle;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
-import fr.univ_tours.li.mdjedaini.ideb.struct.UserLog;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
+import fr.univ_tours.li.mdjedaini.ideb.struct.UserLog;
 import fr.univ_tours.li.mdjedaini.ideb.tools.Pair;
-import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import javax.swing.JFrame;
-import org.apache.commons.collections15.Transformer;
 
 /**
  *

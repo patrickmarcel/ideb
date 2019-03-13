@@ -5,6 +5,10 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval.metric.novelty;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.algo.misc.IPF_Query;
 import fr.univ_tours.li.mdjedaini.ideb.algo.misc.KL_Divergence;
@@ -14,9 +18,6 @@ import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * This metric evaluates the evolution of the access area.

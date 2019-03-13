@@ -2,8 +2,6 @@ package fr.univ_tours.li.mdjedaini.ideb.algo.query;
 
 
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryMdx;
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

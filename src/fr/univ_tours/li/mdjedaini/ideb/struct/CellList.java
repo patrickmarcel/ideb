@@ -5,18 +5,17 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.struct;
 
-import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
-import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
-import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
-
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+
+import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
+import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
+import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 
 /**
  *

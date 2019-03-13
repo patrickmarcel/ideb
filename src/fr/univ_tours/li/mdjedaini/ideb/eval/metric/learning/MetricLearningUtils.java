@@ -5,6 +5,11 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval.metric.learning;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import edu.uci.ics.jung.graph.Graph;
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.algo.user.UserModelMarkov;
@@ -19,10 +24,6 @@ import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import fr.univ_tours.li.mdjedaini.ideb.tools.Utils;
 import fr.univ_tours.li.mdjedaini.ideb.user.User;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * This metric evaluates the evolution of the access area.

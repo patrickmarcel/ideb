@@ -5,12 +5,12 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval;
 
+import java.util.Collection;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.struct.AbstractDiscovery;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import fr.univ_tours.li.mdjedaini.ideb.user.User;
-import java.util.Collection;
-import java.util.List;
 
 /**
  *

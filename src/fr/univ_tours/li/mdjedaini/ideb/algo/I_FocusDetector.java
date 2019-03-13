@@ -5,8 +5,9 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo;
 
-import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import java.util.List;
+
+import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 
 /**
  *

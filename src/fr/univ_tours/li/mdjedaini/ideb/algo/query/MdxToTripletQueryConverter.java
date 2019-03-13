@@ -5,6 +5,14 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.query;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import mondrian.olap.Axis;
+import mondrian.olap.Member;
+import mondrian.olap.Position;
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Level;
@@ -16,13 +24,6 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryMdx;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import mondrian.olap.Axis;
-import mondrian.olap.Member;
-import mondrian.olap.Position;
 
 /**
  *

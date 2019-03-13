@@ -5,6 +5,9 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.examples;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.algo.suts.CellCoverageRecommander;
 import fr.univ_tours.li.mdjedaini.ideb.algo.suts.I_SUT;
@@ -16,8 +19,6 @@ import fr.univ_tours.li.mdjedaini.ideb.eval.metric.sut.MetricTaskSuccessSecondar
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.tasktime.MetricElapsedTime;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.I_SUTScorer;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.SutResolutionScore;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**

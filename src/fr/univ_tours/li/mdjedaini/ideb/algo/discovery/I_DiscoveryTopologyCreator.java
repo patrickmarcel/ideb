@@ -5,9 +5,10 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.discovery;
 
-import fr.univ_tours.li.mdjedaini.ideb.struct.DiscoveryTopology;
-import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 import java.util.Collection;
+
+import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
+import fr.univ_tours.li.mdjedaini.ideb.struct.DiscoveryTopology;
 
 /**
  *

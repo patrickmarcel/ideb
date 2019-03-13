@@ -5,7 +5,17 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.stats;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import mondrian.olap.Member;
+import mondrian.olap.Position;
 import fr.univ_tours.li.mdjedaini.ideb.algo.query.MdxToTripletQueryConverter;
+import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryConverter;
 import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
@@ -19,16 +29,7 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryMdx;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
-import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryConverter;
 import fr.univ_tours.li.mdjedaini.ideb.tools.Stats;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import mondrian.olap.Member;
-import mondrian.olap.Position;
 
 /**
  *

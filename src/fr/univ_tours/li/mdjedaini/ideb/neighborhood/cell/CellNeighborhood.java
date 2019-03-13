@@ -5,10 +5,11 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.neighborhood.cell;
 
+import java.util.Set;
+
 import fr.univ_tours.li.mdjedaini.ideb.neighborhood.member.MemberNeighborhood;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
-import java.util.Set;
 
 /**
  * This is the base neighborhood for cells.

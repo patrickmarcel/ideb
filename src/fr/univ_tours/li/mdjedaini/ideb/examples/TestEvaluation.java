@@ -10,24 +10,19 @@ import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.algo.DistanceBasedFocusDetection;
 import fr.univ_tours.li.mdjedaini.ideb.algo.FocusOnFirstQuery;
 import fr.univ_tours.li.mdjedaini.ideb.algo.suts.CineCube;
-import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
-import fr.univ_tours.li.mdjedaini.ideb.eval.metric.sut.MetricUserEngagementPrimary;
-import fr.univ_tours.li.mdjedaini.ideb.eval.metric.sut.MetricUserEngagementSecondary;
+import fr.univ_tours.li.mdjedaini.ideb.eval.metric.novelty.MetricRelevantNewInformation;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.sut.MetricNoveltyPrimary;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.sut.MetricNoveltySecondary;
-import fr.univ_tours.li.mdjedaini.ideb.eval.metric.novelty.MetricRelevantNewInformation;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.sut.MetricTaskSuccessPrimary;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.sut.MetricTaskSuccessSecondary;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.sut.MetricTaskTimePrimary;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.sut.MetricTaskTimeSecondary;
-import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.ExplorationScore;
+import fr.univ_tours.li.mdjedaini.ideb.eval.metric.sut.MetricUserEngagementPrimary;
+import fr.univ_tours.li.mdjedaini.ideb.eval.metric.sut.MetricUserEngagementSecondary;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.ExplorationScorer;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.SUTScorer;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.SutResolutionScore;
-import fr.univ_tours.li.mdjedaini.ideb.io.SaikuLogLoader;
 import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 
 
 /**

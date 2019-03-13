@@ -5,7 +5,6 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.ext.jung;
 
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.MeasureFragment;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 
 /**

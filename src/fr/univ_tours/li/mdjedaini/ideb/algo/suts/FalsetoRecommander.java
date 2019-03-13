@@ -5,6 +5,11 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.suts;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+
 import fr.univ_tours.li.jaligon.falseto.QueryStructure.QuerySession;
 import fr.univ_tours.li.jaligon.falseto.Recommendation.FalsetoRecommenderSys;
 import fr.univ_tours.li.mdjedaini.ideb.eval.TaskBundle;
@@ -13,10 +18,6 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  *

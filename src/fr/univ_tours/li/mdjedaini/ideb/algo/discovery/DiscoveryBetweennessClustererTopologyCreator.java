@@ -5,20 +5,21 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.discovery;
 
-import fr.univ_tours.li.mdjedaini.ideb.struct.DiscoveryTopology;
+import java.util.ArrayList;
+import java.util.Collection;
+
 import edu.uci.ics.jung.algorithms.cluster.EdgeBetweennessClusterer;
 import edu.uci.ics.jung.algorithms.filters.KNeighborhoodFilter;
 import edu.uci.ics.jung.algorithms.importance.BetweennessCentrality;
 import edu.uci.ics.jung.algorithms.importance.Ranking;
 import edu.uci.ics.jung.algorithms.scoring.PageRank;
 import edu.uci.ics.jung.graph.Graph;
-import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 import fr.univ_tours.li.mdjedaini.ideb.ext.jung.EAB_Edge;
 import fr.univ_tours.li.mdjedaini.ideb.ext.jung.EAB_Vertex;
 import fr.univ_tours.li.mdjedaini.ideb.ext.jung.GraphBuilder;
+import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
+import fr.univ_tours.li.mdjedaini.ideb.struct.DiscoveryTopology;
 import fr.univ_tours.li.mdjedaini.ideb.tools.Pair;
-import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  *

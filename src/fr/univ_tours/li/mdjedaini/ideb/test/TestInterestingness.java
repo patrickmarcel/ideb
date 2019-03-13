@@ -5,27 +5,20 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Scanner;
 
 import org.apache.commons.math.MathException;
 
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
-import fr.univ_tours.li.mdjedaini.ideb.interestingness.Belief;
 import fr.univ_tours.li.mdjedaini.ideb.interestingness.User;
-import fr.univ_tours.li.mdjedaini.ideb.interestingness.UserHistory;
 import fr.univ_tours.li.mdjedaini.ideb.io.CsvLogLoader;
 import fr.univ_tours.li.mdjedaini.ideb.io.SaikuLogLoader;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
-import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
 import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
-import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 
@@ -42,29 +35,43 @@ public class TestInterestingness {
 	static double percentageOfPast=0.3;
 	static String pathToResult="output/interestingness/";
 	
+	static String schemaSmartBI="res/cubeSchemas/smartBI.xml";
+	static String schemaDOPAN="res/cubeSchemas/DOPAN_DW3.xml";
+
+	
+	
 	// test data (smartBI DB + fake labels)
-	static String queryLabelFile="/Users/patrick/git/ideb/res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
-	static String sessionLabelFile="/Users/patrick/git/ideb/res/Labels/fakeForTest/skillScorePerExploration.csv";
+	static String queryLabelFile="res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
+	static String sessionLabelFile="res/Labels/fakeForTest/skillScorePerExploration.csv";
 	static String logDirectory="res/logs/smartBI/fakeForTestOnly/";
+	
+	//smartBI
+	//static String queryLabelFile="res/Labels/smartBI/queryLabels.csv";
+	//static String sessionLabelFile="res/Labels/smartBI/sessionLabels.csv";
+	//static String logDirectory="res/logs/smartBI/logs-orig/";
+	
 
 	//dopan
-	//static String queryLabelFile="/Users/patrick/git/ideb/res/Labels/dopan/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
-	//static String sessionLabelFile="/Users/patrick/git/ideb/res/Labels/dopan/skillScorePerExploration.csv";
+	//static String queryLabelFile="res/Labels/dopan/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
+	//       //static String sessionLabelFile="res/Labels/dopan/skillScorePerExploration.csv";
+	//static String sessionLabelFile="res/Labels/dopan/sessionFocusLabels.csv";
 	//static String logDirectory="res/logs/dopan/cleanLogs/";
 	
-	
 	// dopan - test
-	//static String queryLabelFile="/Users/patrick/git/ideb/res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
-	//static String sessionLabelFile="/Users/patrick/git/ideb/res/Labels/fakeForTest/skillScorePerExploration.csv";
+	//static String queryLabelFile="res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
+	//static String sessionLabelFile="res/Labels/fakeForTest/skillScorePerExploration.csv";
 	//static String logDirectory="res/logs/dopan/forTests/";
-	
-	
+	// dopan - debug
+	//static String queryLabelFile="res/Labels/fakeForTest/fake12-queries.csv";
+	//static String logDirectory="res/logs/dopan/cleanLogs/dibstudent12--2016-09-26--07-49.log";
+	//static String sessionLabelFile="res/Labels/fakeForTest/fake12sessionLabel.csv";
 	
 	public static void main(String[] args) throws MathException, IOException {
 		
 		long startTime = System.currentTimeMillis();
 
-       
+		//generateSmartLabels();
+		
 		// DOPAN
         //testSQLServer();
         
@@ -146,11 +153,13 @@ public class TestInterestingness {
 						
 						
 						current = current+"\n";
-						writer.write(current);
+						writer.write(current); // flush sometimes???
+						
 						
 						System.out.println(current);
 					}
 					queryPos++;
+					writer.flush();
 				}
 				
 			}
@@ -198,6 +207,7 @@ public class TestInterestingness {
 	}
 	
 	
+	// for DOPAN format
 	public static void readLabels() throws FileNotFoundException{
 		System.out.println("Reading labels");
 		
@@ -270,7 +280,8 @@ public class TestInterestingness {
         	String line = scanner.nextLine();
         	String[] ts = line.split(";");
         	String filename=ts[0];
-        	Character label = new Character(ts[1].charAt(0));
+        	//Character label = new Character(ts[1].charAt(0)); //for ABC labels
+        	Character label = new Character(ts[2].charAt(0)); //for ABCD labels
         	//System.out.println(label);
         	String namesplit[]=filename.split("--");
         	String username=namesplit[0];
@@ -294,7 +305,7 @@ public class TestInterestingness {
         
 	}
 	
-	
+	// for DOPAN
 	public static void createUsers(){
 		System.out.println("Creating users");
 		
@@ -329,64 +340,105 @@ public class TestInterestingness {
 	}
 	
 	
-	/*
-    public static void testInterestingness() throws MathException{
- 	   	Query qtest=l.getQueryList().get(0);
-        System.out.println("EXECUTED QUERY: " + qtest);
-
-        Result res= qtest.execute(true);
-        CellList cl = res.getCellList();
-        System.out.println(cl);
-        
-        Collection<EAB_Cell> coll = cl.getCellCollection();
-        Iterator<EAB_Cell> it = coll.iterator();
-        EAB_Cell c = it.next();
-        System.out.println(c.getMeasure().getName());
-        System.out.println(c.getValue());
-        
-        UserHistory testUH = new UserHistory();  
-        cl=l.getCellList();
-        testUH.add(cl);
-        
-        
-        System.out.println("METRICS FOR CELL "+    c.toString());
-
-        
-        System.out.println("metric nb of alls: " + c.nbAll() );
-        System.out.println("metric ratio of alls: " + c.ratioAll() );
-        System.out.println("metric novelty: " + c.binaryNovelty(testUH) );
-        System.out.println("metric outlierness: " + c.outlierness(cl) );
-        System.out.println("metric number of relatives: " + c.numberOfRelatives(cl)); // always 0 in the logs we have
-        System.out.println("metric size of detailed area: " + c.sizeOfDetailedArea());
-        System.out.println("metric simpleRelevance: " + c.simpleRelevance(testUH));
-        System.out.println("metric surprise: " + c.surprise(testUH));
-              
-        
-        //testUH.printMeasures();
-        //testUH.printMembers();
-              
-        
-        /*
-        EAB_Cube cube=c.getCube();
-        for(EAB_Hierarchy h : cube.getHierarchyList()){
-        	System.out.println(c.getMemberByHierarchy(h).getLevel().getLevelDepth());
-        	System.out.println(h.getMostDetailedLevel().getName());
-        	System.out.println(h.getNumberOfLevels());
-        }
-         
-
-        Collection<EAB_Cell> col=c.detailedAreaOfInterest();
-        Iterator<EAB_Cell> it2 = col.iterator();
-        while(it2.hasNext()){
-        	System.out.println(it2.next().toString());
-//        	System.out.println(it2.next().hashCode());
-
-        }
-       
-        
- 	   
-    }*/
-    
+	public static void createUsersSmartBI(){
+		System.out.println("Creating users");
+		
+		userList=new HashMap<String, User>();
+		
+		int i=1;
+		for(Session s :l.getSessionList()){
+			
+			String filename=s.getMetadata("filename");
+			System.out.println("processing session "+ i++ + ": " + filename);
+			
+			//String username=filename.split("--")[0]; //warning only for dopan!!! should be done in logLoader!!
+			//System.out.println("username: " + username);
+			//System.out.println("sessionname: " + filename);
+			String username=filename.split("_session")[0]; //warning only for smartBI!!! should be done in logLoader!!
+			
+			if(userList.containsKey(username)){
+				User u=userList.get(username);
+				u.addSession(s);
+				userList.put(username, u);
+			}
+			else{
+				User u=new User(username,s);
+				
+				//UserHistory uh=new UserHistory(s);				
+				userList.put(username, u);
+				
+			}
+		}
+		System.out.println("End of creating users");
+		//System.out.println("Nb of users: " + userList.size());
+	}
+	
+	
+    public static void generateSmartLabels() throws IOException{
+    	
+    	FileWriter writer   = new FileWriter("/Users/patrick/git/ideb/res/Labels/smartBI/queryLabels.csv");
+ 	    writer.write("log;query; label\n");
+ 		 
+    	Scanner scanner = new Scanner(new File("/Users/patrick/git/ideb/res/Labels/smartBI/forQueryLabels.csv"));
+    			
+    	scanner.useDelimiter(";");
+    	        
+    	scanner.nextLine(); // reads header line
+    	while(scanner.hasNextLine()){
+    	        	
+    		String line = scanner.nextLine();
+    		System.out.println(line);
+    	    String[] ts = line.split(";");
+    	    String user=ts[0];
+    	    String session=ts[1];
+    	    String analysis=ts[2];
+    	    int nbQueries=new Integer(ts[4]);
+    	    String contribution=ts[5];
+    	    contribution=contribution.replace(" ","");
+    	    
+    	    String toWrite="user-"+user+"_session-"+session+ "_analysis-"+analysis +".csv;";
+    	    
+    	    //1-7, 10, 14-15
+    	    
+    	    if(contribution.compareTo("-")==0){
+    	    	for(int i=0;i<nbQueries;i++){
+    	    		writer.write(toWrite+i+";"+0+"\n");
+    	    	}
+    	    }
+    	    else{
+    	    	HashSet<Integer> hs=new HashSet<Integer>();
+        	    String[] cts=contribution.split(",");
+        	    for(int i=0;i<cts.length;i++){
+        	    	System.out.println(cts[i]);
+        	    	String[] nb=cts[i].split("-");
+        	    	if(nb.length==1){
+        	    		hs.add(new Integer(nb[0]));
+        	    	}
+        	    	else{
+        	    		for(int k=new Integer(nb[0]);k<=new Integer(nb[1]);k++)
+        	    			hs.add(k);
+        	    	}
+        	    	
+        	    }
+        	    
+        	    for(int i=0;i<nbQueries;i++){
+        	    	 toWrite="user-"+user+"_session-"+session+ "_analysis-"+analysis +".csv;";
+        	    	if(hs.contains(i)){
+        	    		writer.write(toWrite+i+";"+1+"\n");
+        	    	}
+        	    	else{
+        	    		writer.write(toWrite+i+";"+0+"\n");
+        	    	}
+        	    }
+    	    }
+    	        
+    	    
+    	        	
+    	    writer.flush();
+    	}
+    	scanner.close();
+    	writer.close();
+    }
     
 
 
@@ -403,7 +455,8 @@ public class TestInterestingness {
         params.jdbcUrl  = "jdbc:mysql://127.0.0.1/smartbi";
         params.user     = "root";
         params.password = "";
-        params.schemaFilePath   = "res/cubeSchemas/smartBI.xml";
+        params.schemaFilePath   = schemaSmartBI;
+        //params.schemaFilePath   = "res/cubeSchemas/smartBI.xml";
         params.rebuildConnectionString();
         
          be  = new BenchmarkEngine(params);
@@ -459,12 +512,14 @@ public class TestInterestingness {
         Parameters params   = new Parameters();
         
         params.driver           = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        params.jdbcUrl          = "jdbc:sqlserver://10.195.25.10:54027";
+//        params.jdbcUrl          = "jdbc:sqlserver://10.195.25.10:54027";
+        params.jdbcUrl          = "jdbc:sqlserver://localhost:1433"; // when executed on vera server
         //params.user             = "mahfoud";
         //params.password         = "AvH4My327-vd";
         params.user             = "patrick";       
         params.password         = "oopi7taing7shahD";
-        params.schemaFilePath   = "res/cubeSchemas/DOPAN_DW3.xml";
+        //params.schemaFilePath   = "res/cubeSchemas/DOPAN_DW3.xml";
+        params.schemaFilePath   = schemaDOPAN;
         //params.schemaFilePath   = "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/dopan/DOPAN_DW3.xml";
         //params.cubeName         = "Cube1MobProInd";
         params.cubeName         = "Cube4Chauffage";

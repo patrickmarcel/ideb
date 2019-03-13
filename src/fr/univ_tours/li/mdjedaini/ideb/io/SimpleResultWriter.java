@@ -5,13 +5,12 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.io;
 
-import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
-import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+
 import mondrian.olap.Cell;
-import org.olap4j.CellSet;
-import org.olap4j.layout.RectangularCellSetFormatter;
+import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
+import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
 
 /**
  *

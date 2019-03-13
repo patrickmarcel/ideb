@@ -7,8 +7,6 @@ package fr.univ_tours.li.mdjedaini.ideb.examples;
 
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.algo.gen.log.CubeloadGenerator;
-import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryEditionDistance;
-import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryOperationDifferential;
 import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 

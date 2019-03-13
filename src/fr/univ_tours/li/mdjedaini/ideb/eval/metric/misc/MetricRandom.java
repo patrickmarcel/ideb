@@ -5,12 +5,13 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval.metric.misc;
 
+import java.util.Random;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
 import fr.univ_tours.li.mdjedaini.ideb.tools.Stats;
-import java.util.Random;
 
 /**
  *

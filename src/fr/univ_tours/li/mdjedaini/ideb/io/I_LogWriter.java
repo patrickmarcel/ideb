@@ -5,7 +5,6 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.io;
 
-import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 
 /**
  *

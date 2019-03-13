@@ -1,11 +1,11 @@
 package fr.univ_tours.li.mdjedaini.ideb.user;
 
-import fr.univ_tours.li.mdjedaini.ideb.algo.user.I_UserSimulator;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
-import fr.univ_tours.li.mdjedaini.ideb.algo.user.UserModelPageRank;
+import fr.univ_tours.li.mdjedaini.ideb.algo.user.I_UserSimulator;
 import fr.univ_tours.li.mdjedaini.ideb.eval.TaskBundle;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
-import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

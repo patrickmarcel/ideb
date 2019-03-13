@@ -39,6 +39,12 @@ public class ResultStructure {
         this.memberListByHierarchy  = new HashMap<>();
     }
 
+    
+    public ResultStructure(Map<EAB_Hierarchy, Set<EAB_Member>> memberListByHierarchy) {
+        //this.q                      = arg_q;
+        this.memberListByHierarchy  =memberListByHierarchy;
+    }
+    
     /**
      * 
      * @return 

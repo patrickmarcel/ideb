@@ -5,9 +5,10 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.user;
 
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.eval.TaskBundle;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
-import java.util.List;
 
 /**
  *

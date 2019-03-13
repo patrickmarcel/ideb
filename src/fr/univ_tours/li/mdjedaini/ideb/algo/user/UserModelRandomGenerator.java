@@ -5,13 +5,13 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.user;
 
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
-import fr.univ_tours.li.mdjedaini.ideb.struct.UserLog;
-import fr.univ_tours.li.mdjedaini.ideb.algo.suts.RandomRecommander;
-import fr.univ_tours.li.mdjedaini.ideb.eval.TaskBundle;
-import fr.univ_tours.li.mdjedaini.ideb.user.User;
 import java.util.ArrayList;
 import java.util.List;
+
+import fr.univ_tours.li.mdjedaini.ideb.algo.suts.RandomRecommander;
+import fr.univ_tours.li.mdjedaini.ideb.eval.TaskBundle;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
+import fr.univ_tours.li.mdjedaini.ideb.user.User;
 
 /**
  *

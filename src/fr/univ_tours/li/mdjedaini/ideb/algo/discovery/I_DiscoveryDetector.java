@@ -5,8 +5,9 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.discovery;
 
-import fr.univ_tours.li.mdjedaini.ideb.struct.AbstractDiscovery;
 import java.util.Collection;
+
+import fr.univ_tours.li.mdjedaini.ideb.struct.AbstractDiscovery;
 
 /**
  *

@@ -5,6 +5,9 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval.metric.misc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.algo.similarity.AligonSessionSimilarity;
 import fr.univ_tours.li.mdjedaini.ideb.algo.similarity.I_SessionSimilarity;
@@ -13,8 +16,6 @@ import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import fr.univ_tours.li.mdjedaini.ideb.user.User;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *

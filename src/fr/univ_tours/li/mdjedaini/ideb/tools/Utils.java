@@ -5,16 +5,12 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.tools;
 
-import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
-import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+
+import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
+import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
 
 /**
  *

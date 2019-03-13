@@ -6,9 +6,9 @@ import fr.univ_tours.li.jaligon.falseto.QueryStructure.Qfset;
 import fr.univ_tours.li.jaligon.falseto.QueryStructure.QuerySession;
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryConverter;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
+import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

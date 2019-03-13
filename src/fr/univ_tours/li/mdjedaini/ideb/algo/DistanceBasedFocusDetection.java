@@ -5,13 +5,14 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryEditionDistance;
 import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.MetricIterativeDistance;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *

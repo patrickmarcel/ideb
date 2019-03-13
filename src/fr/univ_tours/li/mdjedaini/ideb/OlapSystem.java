@@ -5,15 +5,6 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb;
 
-import fr.univ_tours.li.jaligon.falseto.Generics.Connection;
-import fr.univ_tours.li.mdjedaini.ideb.user.User;
-import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
-import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
-import fr.univ_tours.li.mdjedaini.ideb.struct.AbstractDiscovery;
-import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
-import fr.univ_tours.li.mdjedaini.ideb.struct.UserLog;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -22,6 +13,15 @@ import java.util.Set;
 
 import mondrian.olap.Schema;
 import mondrian.olap.SchemaReader;
+import fr.univ_tours.li.jaligon.falseto.Generics.Connection;
+import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
+import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
+import fr.univ_tours.li.mdjedaini.ideb.struct.AbstractDiscovery;
+import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
+import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
+import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
+import fr.univ_tours.li.mdjedaini.ideb.struct.UserLog;
+import fr.univ_tours.li.mdjedaini.ideb.user.User;
 
 /**
  *

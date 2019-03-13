@@ -5,13 +5,14 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.io;
 
-import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
-import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
 import java.util.List;
+
 import mondrian.olap.Cell;
 import mondrian.olap.Member;
 import mondrian.olap.Position;
 import mondrian.olap.Util;
+import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
+import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
 
 /**
  *

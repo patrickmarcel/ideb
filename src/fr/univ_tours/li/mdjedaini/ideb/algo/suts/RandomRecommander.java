@@ -5,6 +5,10 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.suts;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import fr.univ_tours.li.mdjedaini.ideb.eval.TaskBundle;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
@@ -16,9 +20,6 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 /**
  * The random recommender recommends random queries.

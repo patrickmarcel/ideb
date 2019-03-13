@@ -5,8 +5,10 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.io;
 
-import fr.univ_tours.li.jaligon.falseto.Generics.MondrianObject;
-import fr.univ_tours.li.jaligon.falseto.QueryStructure.Qfset;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.univ_tours.li.jaligon.falseto.QueryStructure.QuerySession;
 import fr.univ_tours.li.jaligon.falseto.QueryStructure.SelectionFragment;
 import fr.univ_tours.li.jaligon.falseto.logParsing.gpsj.StatisticalStudentSessionLogParsing;
@@ -15,20 +17,6 @@ import fr.univ_tours.li.mdjedaini.ideb.ext.falseto.FalsetoSessionConverter;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.MeasureFragment;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.ProjectionFragment;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
-import java.io.BufferedReader;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.StringTokenizer;
-import java.util.logging.Logger;
-import mondrian.olap.Hierarchy;
-import mondrian.olap.Level;
-import mondrian.olap.Member;
 
 /**
  *

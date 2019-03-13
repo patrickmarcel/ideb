@@ -5,8 +5,9 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.clustering;
 
-import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import java.util.Collection;
+
+import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 
 /**
  *

@@ -5,17 +5,19 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.io;
 
-import edu.uci.ics.jung.graph.Graph;
-import edu.uci.ics.jung.io.GraphMLWriter;
-import fr.univ_tours.li.mdjedaini.ideb.ext.jung.EAB_Edge;
-import fr.univ_tours.li.mdjedaini.ideb.ext.jung.EAB_Vertex;
 import java.awt.Color;
 import java.awt.Paint;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+
 import org.apache.commons.collections15.Transformer;
+
+import edu.uci.ics.jung.graph.Graph;
+import edu.uci.ics.jung.io.GraphMLWriter;
+import fr.univ_tours.li.mdjedaini.ideb.ext.jung.EAB_Edge;
+import fr.univ_tours.li.mdjedaini.ideb.ext.jung.EAB_Vertex;
 
 /**
  *

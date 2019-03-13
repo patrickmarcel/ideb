@@ -1,10 +1,13 @@
 package fr.univ_tours.li.mdjedaini.ideb;
 
 
-import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
 import java.sql.DriverManager;
+
 import mondrian.olap.Cube;
+
 import org.olap4j.OlapConnection;
+
+import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
 
 
 /**

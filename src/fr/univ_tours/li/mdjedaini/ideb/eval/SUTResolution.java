@@ -5,11 +5,12 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval;
 
-import fr.univ_tours.li.mdjedaini.ideb.algo.suts.I_SUT;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import fr.univ_tours.li.mdjedaini.ideb.algo.suts.I_SUT;
+import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 
 /**
  * A task resolution extends a session.

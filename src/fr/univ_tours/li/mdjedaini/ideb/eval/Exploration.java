@@ -5,20 +5,19 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.algo.FocusZone;
 import fr.univ_tours.li.mdjedaini.ideb.algo.I_FocusDetector;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.struct.AbstractDiscovery;
-import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
 import fr.univ_tours.li.mdjedaini.ideb.struct.DiscoveryAsCellList;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import fr.univ_tours.li.mdjedaini.ideb.struct.UserLog;
 import fr.univ_tours.li.mdjedaini.ideb.user.User;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 /**
  * Task resolution  objects contains all the details of what happened during a

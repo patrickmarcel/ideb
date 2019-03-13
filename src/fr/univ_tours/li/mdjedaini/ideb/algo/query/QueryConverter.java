@@ -5,6 +5,9 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.query;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.ext.falseto.FalsetoQueryConverter;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Level;
@@ -15,8 +18,6 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryMdx;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *

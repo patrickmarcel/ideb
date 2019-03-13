@@ -5,6 +5,9 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.stats;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Level;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
@@ -12,8 +15,6 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *

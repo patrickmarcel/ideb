@@ -5,13 +5,13 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval.metric.engagement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This metric evaluates the evolution of the access area.

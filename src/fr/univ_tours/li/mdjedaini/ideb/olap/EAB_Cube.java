@@ -5,7 +5,6 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.olap;
 
-import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,13 +13,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+
 import mondrian.olap.Cube;
 import mondrian.olap.Dimension;
 import mondrian.olap.Hierarchy;
 import mondrian.olap.Level;
 import mondrian.olap.Member;
-
 import mondrian.olap.SchemaReader;
+import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 
 
 /**

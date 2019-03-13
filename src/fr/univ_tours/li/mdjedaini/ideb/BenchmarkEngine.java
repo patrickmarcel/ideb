@@ -5,37 +5,38 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb;
 
-import fr.univ_tours.li.mdjedaini.ideb.algo.FocusOnFirstQuery;
-import fr.univ_tours.li.mdjedaini.ideb.algo.I_FocusDetector;
-import fr.univ_tours.li.mdjedaini.ideb.eval.SUT_Evaluator;
-import fr.univ_tours.li.mdjedaini.ideb.algo.suts.I_SUT;
-import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.SutResolutionScore;
-import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
-import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
-import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
-import fr.univ_tours.li.mdjedaini.ideb.algo.clustering.I_SessionClusteringAlgorithm;
-import fr.univ_tours.li.mdjedaini.ideb.algo.clustering.NicolasSessionClustering;
-import fr.univ_tours.li.mdjedaini.ideb.algo.discovery.DiscoveryManager;
-import fr.univ_tours.li.mdjedaini.ideb.algo.similarity.AligonSessionSimilarity;
-import fr.univ_tours.li.mdjedaini.ideb.algo.similarity.I_SessionSimilarity;
-import fr.univ_tours.li.mdjedaini.ideb.algo.user.I_UserSimulator;
-import fr.univ_tours.li.mdjedaini.ideb.algo.user.UserModelMarkov;
-import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
-import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.I_SUTScorer;
-import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.SUTScorer;
-import fr.univ_tours.li.mdjedaini.ideb.io.I_LogLoader;
-import fr.univ_tours.li.mdjedaini.ideb.io.XMLLogLoader;
-import fr.univ_tours.li.mdjedaini.ideb.struct.AbstractDiscovery;
-import fr.univ_tours.li.mdjedaini.ideb.struct.UserLog;
-import fr.univ_tours.li.mdjedaini.ideb.user.User;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import mondrian.olap.Cube;
 import mondrian.olap.SchemaReader;
+import fr.univ_tours.li.mdjedaini.ideb.algo.FocusOnFirstQuery;
+import fr.univ_tours.li.mdjedaini.ideb.algo.I_FocusDetector;
+import fr.univ_tours.li.mdjedaini.ideb.algo.clustering.I_SessionClusteringAlgorithm;
+import fr.univ_tours.li.mdjedaini.ideb.algo.clustering.NicolasSessionClustering;
+import fr.univ_tours.li.mdjedaini.ideb.algo.discovery.DiscoveryManager;
+import fr.univ_tours.li.mdjedaini.ideb.algo.similarity.AligonSessionSimilarity;
+import fr.univ_tours.li.mdjedaini.ideb.algo.similarity.I_SessionSimilarity;
+import fr.univ_tours.li.mdjedaini.ideb.algo.suts.I_SUT;
+import fr.univ_tours.li.mdjedaini.ideb.algo.user.I_UserSimulator;
+import fr.univ_tours.li.mdjedaini.ideb.algo.user.UserModelMarkov;
+import fr.univ_tours.li.mdjedaini.ideb.eval.SUT_Evaluator;
+import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
+import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.I_SUTScorer;
+import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.SUTScorer;
+import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.SutResolutionScore;
+import fr.univ_tours.li.mdjedaini.ideb.io.I_LogLoader;
+import fr.univ_tours.li.mdjedaini.ideb.io.XMLLogLoader;
+import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
+import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
+import fr.univ_tours.li.mdjedaini.ideb.struct.AbstractDiscovery;
+import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
+import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
+import fr.univ_tours.li.mdjedaini.ideb.struct.UserLog;
+import fr.univ_tours.li.mdjedaini.ideb.user.User;
 
 /**
  *

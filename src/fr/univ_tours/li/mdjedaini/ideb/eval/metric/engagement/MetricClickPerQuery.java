@@ -15,8 +15,6 @@ import fr.univ_tours.li.mdjedaini.ideb.neighborhood.QueryNeighborhood;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import fr.univ_tours.li.mdjedaini.ideb.tools.Stats;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * This metric evaluates the evolution of the access area.

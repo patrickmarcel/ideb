@@ -5,20 +5,20 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval.scoring;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import fr.univ_tours.li.mdjedaini.ideb.algo.suts.I_SUT;
 import fr.univ_tours.li.mdjedaini.ideb.eval.SUTResolution;
 import fr.univ_tours.li.mdjedaini.ideb.eval.Task;
 import fr.univ_tours.li.mdjedaini.ideb.eval.TaskResolution;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
 import fr.univ_tours.li.mdjedaini.ideb.tools.Stats;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  *

@@ -5,15 +5,15 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval.metric.tasktime;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import fr.univ_tours.li.mdjedaini.ideb.tools.Stats;
-import java.util.ArrayList;
-import java.util.List;
-import oracle.net.aso.i;
 
 /**
  * This metric evaluates the time taken to resolve a task.

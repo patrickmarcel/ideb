@@ -1,9 +1,7 @@
 package fr.univ_tours.li.mdjedaini.ideb.interestingness;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -11,15 +9,9 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Measure;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.MeasureFragment;
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.ProjectionFragment;
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 
 public class UserHistory {
 	

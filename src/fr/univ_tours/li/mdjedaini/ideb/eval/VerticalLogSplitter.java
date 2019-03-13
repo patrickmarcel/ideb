@@ -5,12 +5,13 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval;
 
-import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
+import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
+import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 
 /**
  *

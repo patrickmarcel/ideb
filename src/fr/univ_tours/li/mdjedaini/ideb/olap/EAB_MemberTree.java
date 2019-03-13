@@ -5,12 +5,12 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.olap;
 
-import edu.uci.ics.jung.graph.DelegateTree;
-import edu.uci.ics.jung.graph.Tree;
 import java.util.Map;
 import java.util.Set;
+
 import mondrian.olap.Member;
 import mondrian.olap.SchemaReader;
+import edu.uci.ics.jung.graph.DelegateTree;
 
 /**
  *

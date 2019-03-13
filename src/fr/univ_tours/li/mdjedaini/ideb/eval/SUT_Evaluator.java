@@ -5,24 +5,22 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval;
 
-import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.SutResolutionScore;
-import fr.univ_tours.li.mdjedaini.ideb.algo.suts.I_SUT;
-import fr.univ_tours.li.mdjedaini.ideb.params.EvaluationParameters;
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.algo.FocusZone;
+import fr.univ_tours.li.mdjedaini.ideb.algo.suts.I_SUT;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.ExplorationScore;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.ExplorationScorer;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.SUTScorer;
+import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.SutResolutionScore;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.TaskResolutionScore;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
-import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
-import fr.univ_tours.li.mdjedaini.ideb.struct.AbstractDiscovery;
-import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
+import fr.univ_tours.li.mdjedaini.ideb.params.EvaluationParameters;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 import fr.univ_tours.li.mdjedaini.ideb.user.User;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * todo

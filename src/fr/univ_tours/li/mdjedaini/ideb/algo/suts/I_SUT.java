@@ -1,8 +1,9 @@
 package fr.univ_tours.li.mdjedaini.ideb.algo.suts;
 
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.eval.TaskBundle;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
-import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

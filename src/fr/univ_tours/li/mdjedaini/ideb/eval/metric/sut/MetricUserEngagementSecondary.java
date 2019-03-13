@@ -9,7 +9,6 @@ import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.engagement.MetricClickDepth;
-import fr.univ_tours.li.mdjedaini.ideb.eval.metric.engagement.MetricDispersion;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
 
 /**

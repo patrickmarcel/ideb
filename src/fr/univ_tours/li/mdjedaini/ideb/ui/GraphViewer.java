@@ -5,20 +5,16 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.ui;
 
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
+
 import edu.uci.ics.jung.algorithms.layout.ISOMLayout;
 import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.visualization.VisualizationViewer;
 import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
 import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
-import fr.univ_tours.li.mdjedaini.ideb.ext.jung.EAB_Edge;
-import fr.univ_tours.li.mdjedaini.ideb.ext.jung.EAB_Vertex;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Paint;
-import javax.swing.JFrame;
-import oracle.net.aso.g;
-import org.apache.commons.collections15.Transformer;
 
 /**
  *

@@ -5,16 +5,17 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.gen.log;
 
-import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
-import fr.univ_tours.li.mdjedaini.ideb.io.XMLLogLoader;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 import it.unibo.csr.big.cubeload.generator.OlapGenerator;
 import it.unibo.csr.big.cubeload.generator.Profile;
 import it.unibo.csr.big.cubeload.io.XMLReader;
+
 import java.io.File;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+
+import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
+import fr.univ_tours.li.mdjedaini.ideb.io.XMLLogLoader;
+import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 
 
 /**

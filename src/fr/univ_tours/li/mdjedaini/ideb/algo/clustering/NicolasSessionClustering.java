@@ -5,15 +5,18 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.clustering;
 
-import clustering.FCMd;
-import comparator.Comparator;
-import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
-import fr.univ_tours.li.mdjedaini.ideb.algo.similarity.I_SessionSimilarity;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
+
+import clustering.FCMd;
+
+import comparator.Comparator;
+
+import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
+import fr.univ_tours.li.mdjedaini.ideb.algo.similarity.I_SessionSimilarity;
+import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 
 /**
  *

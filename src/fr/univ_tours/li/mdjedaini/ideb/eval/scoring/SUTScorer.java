@@ -5,12 +5,13 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval.scoring;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.eval.SUTResolution;
 import fr.univ_tours.li.mdjedaini.ideb.eval.TaskResolution;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Responsible for scoring a SUT.

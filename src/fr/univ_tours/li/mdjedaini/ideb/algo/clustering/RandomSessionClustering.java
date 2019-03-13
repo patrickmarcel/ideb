@@ -5,11 +5,12 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.algo.clustering;
 
-import fr.univ_tours.li.mdjedaini.ideb.algo.similarity.I_SessionSimilarity;
-import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Random;
+
+import fr.univ_tours.li.mdjedaini.ideb.algo.similarity.I_SessionSimilarity;
+import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 
 /**
  *

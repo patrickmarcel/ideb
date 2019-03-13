@@ -6,6 +6,9 @@
 
 package fr.univ_tours.li.mdjedaini.ideb.eval.metric.learning;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.AggregationDepth;
@@ -36,9 +39,6 @@ import fr.univ_tours.li.mdjedaini.ideb.eval.metric.tasktime.MetricExecutionTime;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.tasktime.MetricQueryFrequency;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
 import fr.univ_tours.li.mdjedaini.ideb.tools.Stats;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * This metric evaluates the evolution of the access area.

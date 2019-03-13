@@ -1,7 +1,8 @@
 package fr.univ_tours.li.mdjedaini.ideb.olap.query;
 
-import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Level;
 import java.util.Objects;
+
+import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Level;
 
 /**
  *

@@ -7,7 +7,6 @@ package fr.univ_tours.li.mdjedaini.ideb.struct;
 
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
-import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 
 /**

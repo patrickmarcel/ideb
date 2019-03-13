@@ -1,7 +1,6 @@
 package fr.univ_tours.li.mdjedaini.ideb.olap.query;
 
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Measure;
-import java.util.Objects;
 
 /**
  *

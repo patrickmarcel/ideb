@@ -4,8 +4,27 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.olap.result;
 
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import mondrian.olap.Axis;
+import mondrian.olap.Cell;
+import mondrian.olap.Member;
+import mondrian.olap.Position;
+
+import org.apache.commons.math.MathException;
+import org.apache.commons.math.distribution.NormalDistributionImpl;
+import org.apache.commons.math.stat.StatUtils;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.ext.falseto.FalsetoQueryConverter;
+import fr.univ_tours.li.mdjedaini.ideb.interestingness.Metrics;
+import fr.univ_tours.li.mdjedaini.ideb.interestingness.UserHistory;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Measure;
@@ -16,25 +35,6 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
-
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
-import org.apache.commons.math.MathException;
-import org.apache.commons.math.distribution.NormalDistributionImpl;
-import org.apache.commons.math.stat.StatUtils;
-
-import mondrian.olap.Axis;
-import mondrian.olap.Cell;
-import mondrian.olap.Member;
-import mondrian.olap.Position;
-import fr.univ_tours.li.mdjedaini.ideb.interestingness.Metrics;
-import fr.univ_tours.li.mdjedaini.ideb.interestingness.UserHistory;
 
 
 /**
@@ -85,6 +85,7 @@ public class EAB_Cell implements Metrics{
      *
      */
     public EAB_Cell() {
+    	memberByHierarchy=new HashMap<EAB_Hierarchy, EAB_Member> ();
         this.cellId     = EAB_Cell.cidIterator;
         EAB_Cell.cidIterator++;
     }
@@ -200,6 +201,11 @@ public class EAB_Cell implements Metrics{
             this.memberByHierarchy.put(h_tmp, arg_cell.getMemberByHierarchy(h_tmp));
         }
                 
+    }
+    
+    
+    public void setMeasure(EAB_Measure m){
+    	this.measure=m;
     }
 
     /**
@@ -600,6 +606,7 @@ public class EAB_Cell implements Metrics{
      */
     @Override
     public int hashCode() {
+    	
         int result  = 5;
         
         result      = result + this.measure.hashCode();
@@ -678,6 +685,7 @@ public class EAB_Cell implements Metrics{
     	}
     }
     
+    /*
     public Collection<EAB_Cell> getDetailedAreaCells(){
     	if(detailedArea!=null)
     		return  detailedArea.getCellList().getCellCollection();
@@ -686,7 +694,7 @@ public class EAB_Cell implements Metrics{
     		return  detailedArea.getCellList().getCellCollection();
     	}
     }
-    
+    */
     
     public  void computeDetailedAreaOfInterest(){
     	if(detailedArea!=null){
@@ -694,7 +702,7 @@ public class EAB_Cell implements Metrics{
     	}
     	else{
     		Query q = this.getMostDetailedQueryForCell();
-    		detailedArea=new DetailedAreaOfInterest(q);
+    		detailedArea=new DetailedAreaOfInterest(q,this.getCube());
     		// for debugging
     		//System.out.println(q.toString());
     	  	
@@ -956,23 +964,35 @@ public class EAB_Cell implements Metrics{
 	
 	
 	public double simpleRelevance(UserHistory uh){
-		
 		DetailedAreaOfInterest dthis= this.getDetailedAreaOfInterest(); 
-		DetailedAreaOfInterest duh=new DetailedAreaOfInterest(uh);
+		DetailedAreaOfInterest duh=new DetailedAreaOfInterest(uh,this.getCube());
 		
-		CellList clthis=dthis.getCellList();
-		CellList cluh=duh.getCellList();
-		//CellList inter=clthis.intersection(cluh);
-		CellList inter=clthis.rapidIntersection(cluh);
-		
-		return inter.nbOfCells()/clthis.nbOfCells();
+		DetailedAreaOfInterest res=dthis.intersect(duh);
+		return res.size()/dthis.size();
 	}
 	
 	/*
 	public double simpleRelevance(UserHistory uh){
-		return 0;
-	}
-	*/
+		
+		//System.out.println("computing relevance for cell: " + this.toString());;
+		
+		DetailedAreaOfInterest dthis= this.getDetailedAreaOfInterest(); 
+		DetailedAreaOfInterest duh=new DetailedAreaOfInterest(uh);
+		
+		
+		CellList clthis=dthis.getCellList();
+		CellList cluh=duh.getCellList();
+
+		CellList inter=clthis.rapidIntersection(cluh);
+		
+		//System.out.println(dthis.toString());
+		if(clthis.nbOfCells()!=0)
+			return inter.nbOfCells()/clthis.nbOfCells();
+		else
+			return 0;
+	}*/
+	
+	
 	
 	
 	public double surprise(UserHistory uh){

@@ -5,6 +5,10 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.eval;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.algo.suts.I_SUT;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
@@ -14,10 +18,6 @@ import fr.univ_tours.li.mdjedaini.ideb.struct.AbstractDiscovery;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import fr.univ_tours.li.mdjedaini.ideb.tools.Pair;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 /**
  * Task resolution  objects contains all the details of what happened during a
