@@ -67,6 +67,10 @@ public class User {
 		return currentQueryLabel;
 	}
 	
+	public HashMap<String, Session> getTheSessions(){
+		return theSessions;
+	}
+	
 	public void addSession(Session s){
 		String sessionName=s.getMetadata("filename");
 		theSessions.put(sessionName,s);

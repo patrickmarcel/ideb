@@ -35,27 +35,30 @@ public class TestInterestingness {
 	static double percentageOfPast=0.3;
 	static String pathToResult="output/interestingness/";
 	
-	static String schemaSmartBI="res/cubeSchemas/smartBI.xml";
+	//static String schemaSmartBI="res/cubeSchemas/smartBI.xml";
+	static String schemaSmartBI="res/cubeSchemas/smartBI-march2019.xml";
 	static String schemaDOPAN="res/cubeSchemas/DOPAN_DW3.xml";
 
-	
+	static String test="smartbi";
+	//static String test="dopan-from-local";
+	//static String test="dopan-on-server";
 	
 	// test data (smartBI DB + fake labels)
-	static String queryLabelFile="res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
-	static String sessionLabelFile="res/Labels/fakeForTest/skillScorePerExploration.csv";
-	static String logDirectory="res/logs/smartBI/fakeForTestOnly/";
+	//static String queryLabelFile="res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
+	//static String sessionLabelFile="res/Labels/fakeForTest/skillScorePerExploration.csv";
+	//static String logDirectory="res/logs/smartBI/fakeForTestOnly/";
 	
 	//smartBI
-	//static String queryLabelFile="res/Labels/smartBI/queryLabels.csv";
-	//static String sessionLabelFile="res/Labels/smartBI/sessionLabels.csv";
-	//static String logDirectory="res/logs/smartBI/logs-orig/";
+	static String SMARTBIqueryLabelFile="res/Labels/smartBI/queryLabels.csv";
+	static String SMARTBIsessionLabelFile="res/Labels/smartBI/sessionLabels.csv";
+	static String SMARTBIlogDirectory="res/logs/smartBI/logs-orig/";
+	//static String SMARTBIlogDirectory="res/logs/smartBI/IS_ADBIS/logs/";
 	
 
 	//dopan
-	//static String queryLabelFile="res/Labels/dopan/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
-	//       //static String sessionLabelFile="res/Labels/dopan/skillScorePerExploration.csv";
-	//static String sessionLabelFile="res/Labels/dopan/sessionFocusLabels.csv";
-	//static String logDirectory="res/logs/dopan/cleanLogs/";
+	static String DOPANqueryLabelFile="res/Labels/dopan/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
+	static String DOPANsessionLabelFile="res/Labels/dopan/sessionFocusLabels.csv";
+	static String DOPANlogDirectory="res/logs/dopan/cleanLogs/";
 	
 	// dopan - test
 	//static String queryLabelFile="res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
@@ -68,26 +71,38 @@ public class TestInterestingness {
 	
 	public static void main(String[] args) throws MathException, IOException {
 		
+		
 		long startTime = System.currentTimeMillis();
 
-		//generateSmartLabels();
+		if(test.equals("dopan-from-local")){
+			// DOPAN 
+			connectDopanSQLServer("jdbc:sqlserver://10.195.25.10:54027");
+			//connectDopanSQLServer("jdbc:sqlserver://10.195.25.10:54437/db_test_20190313");
+	        createUsersDOPAN();
+	        readLabelsDOPAN();
+		}
+		else{
+			if(test.equals("dopan-on-server")){
+				// DOPAN with local url
+				connectDopanSQLServer("jdbc:sqlserver://localhost:1433");
+		        createUsersDOPAN();
+		        readLabelsDOPAN();
+			}else{
+				if(test.equals("smartbi")){
+					//generateSmartLabels();
+					 connectSmartBImysql(); 
+					createUsersSmartBI();
+					readLabelsSmartBI();
+				}
+			}
+		}
 		
-		// DOPAN
-        //testSQLServer();
-        
-		// local SmartBI - for tests
-        testSmartBImysql();   
-        
-        createUsers();
-        
-        readLabels();
-        
+	
         // printing users
         for(User u: userList.values()){
         	System.out.println(u.toString());
         }
-        
-        
+         
         
         //testCorrelation();
         
@@ -111,16 +126,24 @@ public class TestInterestingness {
 	public static void metricsBySessionGrade() throws MathException, IOException{
 			
 		//set result file
-		 String timestamp=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-	     String fileName = pathToResult  + "compareToSessionGrade" +"-" +  timestamp + ".csv";	        
-	     FileWriter writer   = new FileWriter(fileName);
-	     writer.write("session ;user;query position;cell hashcode;novelty;outlierness;relevance;surprise;query label;session label\n");
+		 //String timestamp=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+	     //String fileName = pathToResult  + "compareToSessionGrade" +"-" +  timestamp + ".csv";	        
+	     //FileWriter writer   = new FileWriter(fileName);
+	     //writer.write("session ;user;query position;cell hashcode;novelty;outlierness;relevance;surprise;query label;session label\n");
 		
 		
 		for(User u : userList.values()){
 			String username=u.getName();
 			HashMap<Session, Character> us = u.getSessionLabels();
 			for(Session s : us.keySet()){
+				
+				//set result file
+				String timestamp=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+				String fileName=pathToResult +"RESULT-" +timestamp + "-" +s.getMetadata("filename")+".csv";
+				FileWriter writer   = new FileWriter(fileName);
+			    writer.write("session ;user;query position;cell hashcode;novelty;outlierness;relevance;surprise;query label;session label\n");
+				
+				
 				Character sessionLabel= us.get(s);
 				int sessionHashcode=s.hashCode();
 				String sessionName = s.getMetadata("filename");
@@ -149,11 +172,11 @@ public class TestInterestingness {
 						current = current+relevance + ";";
 						current = current+surprise + ";";
 						current = current+queryLabel + ";";
-						current = current+sessionLabel + ";";
+						current = current+sessionLabel ;
 						
 						
 						current = current+"\n";
-						writer.write(current); // flush sometimes???
+						writer.write(current); 
 						
 						
 						System.out.println(current);
@@ -161,13 +184,13 @@ public class TestInterestingness {
 					queryPos++;
 					writer.flush();
 				}
-				
+				writer.close();
 			}
 			
 			
 		}
 		
-		writer.close();
+		
 		
 	}
 	
@@ -208,21 +231,16 @@ public class TestInterestingness {
 	
 	
 	// for DOPAN format
-	public static void readLabels() throws FileNotFoundException{
+	public static void readLabelsDOPAN() throws FileNotFoundException{
 		System.out.println("Reading labels");
 		
-		//String path = "res/Labels/dopan/agreedMetricsWithLabels.csv";
-		//File f=new File("path");
-		//Scanner scanner = new Scanner(f);
-		//doesn't work for a reason???
-		
+			
 		// CLEAN FILES, REMOVE NAMES IN FILES AND IN FILENAMES!!!!!!
 		
 		
 		System.out.println("First reading query labels");
 		
-		//Scanner scanner = new Scanner(new File("/Users/patrick/git/ideb/res/Labels/dopan/dopanCleanLogWithVeronikaLabels-FOCUS.csv"));
-		Scanner scanner = new Scanner(new File(queryLabelFile));
+		Scanner scanner = new Scanner(new File(DOPANqueryLabelFile));
 		scanner.useDelimiter(";");
         
         scanner.nextLine(); // reads header line
@@ -270,7 +288,7 @@ public class TestInterestingness {
 
        
         // read session labels
-		scanner = new Scanner(new File(sessionLabelFile));
+		scanner = new Scanner(new File(DOPANsessionLabelFile));
 		scanner.useDelimiter(";");
         
         scanner.nextLine(); // reads header line
@@ -305,8 +323,101 @@ public class TestInterestingness {
         
 	}
 	
+	
+	
+	// for SmartBI format
+	public static void readLabelsSmartBI() throws FileNotFoundException{
+		System.out.println("Reading labels");
+		
+		
+		// CLEAN FILES, REMOVE NAMES IN FILES AND IN FILENAMES!!!!!!
+		
+		
+		System.out.println("First reading query labels");
+		
+		Scanner scanner = new Scanner(new File(SMARTBIqueryLabelFile));
+		scanner.useDelimiter(";");
+        
+        scanner.nextLine(); // reads header line
+        while(scanner.hasNextLine()){
+        	
+        	// get username, query nb and query label
+        	String line = scanner.nextLine();
+        	String[] ts = line.split(";");
+        	String filename=ts[0];
+        	int label = new Integer(ts[2]);
+        	
+        	int queryNb = new Integer(ts[1]);
+        	
+        	//System.out.println(queryNb);
+        	//System.out.println(sessionName);
+        	
+        	String username=filename.split("_session")[0];
+      	
+        	// get user history and put labels
+        	if(userList.containsKey(username)){
+            	//System.out.println(username);
+
+        		User u=userList.get(username);
+            	//System.out.println(filename);
+            	//System.out.println(queryNb);
+            	//System.out.println(u.getTheSessions().get(filename).getNumberOfQueries());
+        		u.putLabel(filename, queryNb, label);
+        	}
+        	
+        	/*
+        	Session s =l.getSessionByQueryId(0);
+        	System.out.println(s.getSid()+" "+ s.getUser());
+        	System.out.println(s.getSummary());
+        	//System.out.println(s.getNumberOfQueries());
+        	*/
+        	
+        	
+        	
+        }
+        scanner.close();
+        
+		System.out.println("Then reading session labels");
+
+       
+        // read session labels
+		scanner = new Scanner(new File(SMARTBIsessionLabelFile));
+		scanner.useDelimiter(";");
+        
+        //scanner.nextLine(); // reads header line
+        while(scanner.hasNextLine()){
+        	
+        	// get session and query label
+        	String line = scanner.nextLine();
+        	String[] ts = line.split(";");
+        	String filename=ts[0];
+        	Character label = new Character(ts[1].charAt(0)); //for ABCD labels
+        	//System.out.println(label);
+        	String username=filename.split("_session")[0];
+        	//System.out.println(username);
+        	
+        	User u=userList.get(username);
+            	
+        	u.putSessionLabel(filename, label);
+        }
+        	
+        	/*
+        	Session s =l.getSessionByQueryId(0);
+        	System.out.println(s.getSid()+" "+ s.getUser());
+        	System.out.println(s.getSummary());
+        	//System.out.println(s.getNumberOfQueries());
+        	*/
+        	
+
+        scanner.close();
+       
+        
+	}
+	
+	
+	
 	// for DOPAN
-	public static void createUsers(){
+	public static void createUsersDOPAN(){
 		System.out.println("Creating users");
 		
 		userList=new HashMap<String, User>();
@@ -320,7 +431,6 @@ public class TestInterestingness {
 			String username=filename.split("--")[0]; //warning only for dopan!!! should be done in logLoader!!
 			//System.out.println("username: " + username);
 			//System.out.println("sessionname: " + filename);
-//			String username=filename.split("_session")[0]; //warning only for smartBI!!! should be done in logLoader!!
 			
 			if(userList.containsKey(username)){
 				User u=userList.get(username);
@@ -329,8 +439,6 @@ public class TestInterestingness {
 			}
 			else{
 				User u=new User(username,s);
-				
-				//UserHistory uh=new UserHistory(s);				
 				userList.put(username, u);
 				
 			}
@@ -340,6 +448,7 @@ public class TestInterestingness {
 	}
 	
 	
+	// for SmartBI
 	public static void createUsersSmartBI(){
 		System.out.println("Creating users");
 		
@@ -351,10 +460,11 @@ public class TestInterestingness {
 			String filename=s.getMetadata("filename");
 			System.out.println("processing session "+ i++ + ": " + filename);
 			
-			//String username=filename.split("--")[0]; //warning only for dopan!!! should be done in logLoader!!
 			//System.out.println("username: " + username);
 			//System.out.println("sessionname: " + filename);
 			String username=filename.split("_session")[0]; //warning only for smartBI!!! should be done in logLoader!!
+			
+			//System.out.println("USERNAME: " + username);
 			
 			if(userList.containsKey(username)){
 				User u=userList.get(username);
@@ -363,8 +473,6 @@ public class TestInterestingness {
 			}
 			else{
 				User u=new User(username,s);
-				
-				//UserHistory uh=new UserHistory(s);				
 				userList.put(username, u);
 				
 			}
@@ -374,7 +482,83 @@ public class TestInterestingness {
 	}
 	
 	
-    public static void generateSmartLabels() throws IOException{
+	
+	
+	
+ 
+
+
+    
+    /**
+     * This one has smaller cube and is for test purpose. Its logs are not labeled.
+     * @throws MathException 
+     * 
+     */
+    public static void connectSmartBImysql() throws MathException {
+        Parameters params   = new Parameters();
+        
+        params.driver   = "com.mysql.jdbc.Driver";
+        params.jdbcUrl  = "jdbc:mysql://127.0.0.1/smartbi";
+        params.user     = "root";
+        params.password = "";
+        params.schemaFilePath   = schemaSmartBI;
+        //params.schemaFilePath   = "res/cubeSchemas/smartBI.xml";
+        params.rebuildConnectionString();
+        
+         be  = new BenchmarkEngine(params);
+        
+        be.initDatasource();
+        
+       
+        System.out.println("Importing logs");
+        CsvLogLoader sll = new CsvLogLoader(be, SMARTBIlogDirectory);      
+        l   = sll.loadLog();
+        
+        
+      
+    }
+    
+    
+
+    
+    
+    
+    /**
+     * @throws MathException 
+     * 
+     */
+    public static void connectDopanSQLServer(String url) throws MathException {
+        Parameters params   = new Parameters();
+        
+        params.driver           = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        params.jdbcUrl          = url;
+        //params.user             = "mahfoud";
+        //params.password         = "AvH4My327-vd";
+        params.user             = "patrick";       
+        params.password         = "oopi7taing7shahD";
+        //params.schemaFilePath   = "res/cubeSchemas/DOPAN_DW3.xml";
+        params.schemaFilePath   = schemaDOPAN;
+        //params.schemaFilePath   = "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/dopan/DOPAN_DW3.xml";
+        //params.cubeName         = "Cube1MobProInd";
+        //params.cubeName         = "Cube4Chauffage";
+        
+        BenchmarkEngine be  = new BenchmarkEngine(params);
+        
+        be.initDatasource();
+        
+        
+        //SaikuLogLoader sll = new SaikuLogLoader(be, "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/logs/DopanLogsNettoyes/cleanLogs/dibstudent03--2016-09-24--23-01.log");
+        //SaikuLogLoader sll = new SaikuLogLoader(be, "res/logs/dopan/cleanLogs/dibstudent03--2016-09-24--23-01.log");
+        SaikuLogLoader sll = new SaikuLogLoader(be, DOPANlogDirectory);
+        
+        l   = sll.loadLog();
+             
+      
+      
+    }
+    
+    
+   public static void generateSmartLabels() throws IOException{
     	
     	FileWriter writer   = new FileWriter("/Users/patrick/git/ideb/res/Labels/smartBI/queryLabels.csv");
  	    writer.write("log;query; label\n");
@@ -439,129 +623,6 @@ public class TestInterestingness {
     	scanner.close();
     	writer.close();
     }
-    
-
-
-    
-    /**
-     * This one has smaller cube and is for test purpose. Its logs are not labeled.
-     * @throws MathException 
-     * 
-     */
-    public static void testSmartBImysql() throws MathException {
-        Parameters params   = new Parameters();
-        
-        params.driver   = "com.mysql.jdbc.Driver";
-        params.jdbcUrl  = "jdbc:mysql://127.0.0.1/smartbi";
-        params.user     = "root";
-        params.password = "";
-        params.schemaFilePath   = schemaSmartBI;
-        //params.schemaFilePath   = "res/cubeSchemas/smartBI.xml";
-        params.rebuildConnectionString();
-        
-         be  = new BenchmarkEngine(params);
-        
-        be.initDatasource();
-        
-        //CsvLogLoader sll = new CsvLogLoader(be, "res/logs/smartBI/IS_ADBIS/logs/user-a_session-3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE_analysis-1.csv");
-        
-       // read all log files in directory       
-       // CsvLogLoader sll = new CsvLogLoader(be, "res/logs/smartBI/IS_ADBIS/logs/");
-        // fake logs for tests
-        CsvLogLoader sll = new CsvLogLoader(be, logDirectory);
-        l   = sll.loadLog();
-        
-        
-       // System.out.println(l);
-       
-        //l.execute(Boolean.FALSE);
-        
-        /*
-         * list queries in log
-         *
-        
-        for(Query q_tmp : l.getQueryList()) {
-            System.out.println("Query");
-            System.out.println(q_tmp);
-            
-        }
-        for(Session q_tmp : l.getSessionList()) {
-            System.out.println("session user, id, filenamemetadata");
-            System.out.println(q_tmp.getUser());
-            System.out.println(q_tmp.getMetadata("filename"));
-            
-        }
-        
-        //System.out.println(l);
-        */
-        
-        
-        //System.out.println(be.getParameters().getMondrianConnectionString());
-    }
-    
-    
-
-    
-    
-    
-    /**
-     * @throws MathException 
-     * 
-     */
-    public static void testSQLServer() throws MathException {
-        Parameters params   = new Parameters();
-        
-        params.driver           = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-//        params.jdbcUrl          = "jdbc:sqlserver://10.195.25.10:54027";
-        params.jdbcUrl          = "jdbc:sqlserver://localhost:1433"; // when executed on vera server
-        //params.user             = "mahfoud";
-        //params.password         = "AvH4My327-vd";
-        params.user             = "patrick";       
-        params.password         = "oopi7taing7shahD";
-        //params.schemaFilePath   = "res/cubeSchemas/DOPAN_DW3.xml";
-        params.schemaFilePath   = schemaDOPAN;
-        //params.schemaFilePath   = "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/dopan/DOPAN_DW3.xml";
-        //params.cubeName         = "Cube1MobProInd";
-        params.cubeName         = "Cube4Chauffage";
-        
-        BenchmarkEngine be  = new BenchmarkEngine(params);
-        
-        be.initDatasource();
-        
-        
-        //SaikuLogLoader sll = new SaikuLogLoader(be, "/Users/patrick/Documents/RECHERCHE/STUDENTS/Mahfoud/logs/DopanLogsNettoyes/cleanLogs/dibstudent03--2016-09-24--23-01.log");
-        //SaikuLogLoader sll = new SaikuLogLoader(be, "res/logs/dopan/cleanLogs/dibstudent03--2016-09-24--23-01.log");
-        SaikuLogLoader sll = new SaikuLogLoader(be, logDirectory);
-        
-        l   = sll.loadLog();
-              
-       // System.out.println("Log summary:");
-       // System.out.println(l.logSummary());
-        
-       // for(Session s_tmp : l.getSessionList()) {           
-       //     System.out.println(s_tmp.getSummary());
-            
-        //}
-             
-      //l.execute(Boolean.FALSE);
-      
-      /*
-       * list queries in log
-       * 
-      for(Query q_tmp : l.getQueryList()) {
-          System.out.println("Query");
-          System.out.println(q_tmp);
-      }
-      
-      System.out.println(l);
-      */
-      
-      
-      
-      
-    }
-    
-    
     
     
     

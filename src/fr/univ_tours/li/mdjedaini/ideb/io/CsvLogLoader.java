@@ -107,6 +107,7 @@ public class CsvLogLoader implements I_LogLoader {
         // add the name as metadata of the session
         result.addMetaData("path", arg_sessionFilePath);
         result.addMetaData("filename", new File(arg_sessionFilePath).getName());
+        System.out.println("Loading session: " + result.getMetadata("filename"));
         
         try {
             
@@ -116,7 +117,7 @@ public class CsvLogLoader implements I_LogLoader {
             // each record is a query
             for (CSVRecord record : records) {
                 
-//                System.out.println("I am parsing the line: " + record);
+                System.out.println("I am parsing the line: " + record);
                 
                 String cubeName = record.get("cube");
                 EAB_Cube cube   = this.be.getBenchmarkData().getInternalCubeList().get(cubeName);
@@ -149,6 +150,7 @@ public class CsvLogLoader implements I_LogLoader {
                     
                 }
                 
+                
                 // extract GBS
                 String currentProjection    = record.get("GroupBy");
                 
@@ -174,6 +176,7 @@ public class CsvLogLoader implements I_LogLoader {
                     }
                     
                 }
+                
                 
                 // extract filters
                 String currentSelection     = record.get("Filters");
@@ -215,8 +218,10 @@ public class CsvLogLoader implements I_LogLoader {
                     
                 }
                 
+                
                 // add the query to the session
                 result.addQuery(q_tmp);
+                //System.out.println(q_tmp.toString());
                 
                 QueryConverter qc   = new QueryConverter(this.be);
                 
@@ -228,7 +233,11 @@ public class CsvLogLoader implements I_LogLoader {
                     QueryMdx q_mdx  = qc.toMdx(q_tmp);
                     //System.out.println("MDX with my converter:");
                     //System.out.println(q_mdx);
+                    
+                    //System.out.println(q_mdx.toString());
+                   
                     q_mdx.execute(Boolean.TRUE);
+                    //q_mdx.execute(Boolean.FALSE);
 //                    System.out.println("-----");
 //                    System.out.println("Query: " + q_tmp);
 //                    System.out.println("-----");
@@ -251,6 +260,7 @@ public class CsvLogLoader implements I_LogLoader {
             
         } catch(Exception arg_e) {
             arg_e.printStackTrace();
+            System.out.println("FOR SESSION: " + result.getMetadata("filename"));
         }
         
    

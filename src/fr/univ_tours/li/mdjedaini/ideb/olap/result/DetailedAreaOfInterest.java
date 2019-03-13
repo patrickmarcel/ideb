@@ -100,6 +100,7 @@ public class DetailedAreaOfInterest {
 	 * @param cl
 	 */
 	public DetailedAreaOfInterest(CellList cl, EAB_Cube cube){
+		
 		Map<EAB_Hierarchy,Set<EAB_Member>> memberListByHierarchy=new HashMap<EAB_Hierarchy,Set<EAB_Member>>();
 
 		for(EAB_Hierarchy h : cube.getHierarchyList()){
@@ -125,12 +126,22 @@ public class DetailedAreaOfInterest {
 			*/
 			EAB_Cell c=it.next();
 			
+			
+			if(cube.equals(c.getCube())){
+				
+		
+			
 			Query q =c.getMostDetailedQueryForCell();
+			//System.out.println(q.toString());
 			ResultStructure currs=((QueryTriplet) q).executePartially(Boolean.FALSE);
 		
 			
 			for(EAB_Hierarchy h : cube.getHierarchyList()){
-				for(EAB_Member m : currs.computeMemberListByHierarchy(h)){
+//				for(EAB_Member m : currs.computeMemberListByHierarchy(h)){
+				//System.out.println(h.toString());
+				//System.out.println(cube.getName());
+				//System.out.println(currs.memberListByHierarchy.get(h));
+				for(EAB_Member m : currs.memberListByHierarchy.get(h)){
 					if(!memberListByHierarchy.get(h).contains(m)){
 						
 						memberListByHierarchy.get(h).add(m);
@@ -138,11 +149,14 @@ public class DetailedAreaOfInterest {
 
 					}
 				}
+				
 			}			
-			
+			}
 		}
 		this.memberListByHierarchy=memberListByHierarchy;
 		this.size=this.computeNumberOfCells();
+		
+		
 		
 	}
 	

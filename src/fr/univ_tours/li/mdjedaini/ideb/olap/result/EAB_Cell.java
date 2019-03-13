@@ -966,9 +966,16 @@ public class EAB_Cell implements Metrics{
 	public double simpleRelevance(UserHistory uh){
 		DetailedAreaOfInterest dthis= this.getDetailedAreaOfInterest(); 
 		DetailedAreaOfInterest duh=new DetailedAreaOfInterest(uh,this.getCube());
+		// relevance has sense only for this.cube
 		
 		DetailedAreaOfInterest res=dthis.intersect(duh);
-		return res.size()/dthis.size();
+		if(dthis.size()==0){
+			return 0;
+		}
+		else{
+			return res.size()/dthis.size();
+		}
+		
 	}
 	
 	/*
