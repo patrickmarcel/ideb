@@ -28,8 +28,11 @@ public class DetailedAreaOfInterest {
 	//Query mostDetailedQuery;
 	//ResultStructure rs;
 	Map<EAB_Hierarchy,Set<EAB_Member>> memberListByHierarchy;
+	HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> memberScoreByHierarchy;
+
 	int size;
 	EAB_Cube cube;
+	UserHistory uh;
 	
 	public DetailedAreaOfInterest(){
 		//theCells=new HashMap<EAB_Cell, Integer> ();
@@ -103,10 +106,18 @@ public class DetailedAreaOfInterest {
 		
 		Map<EAB_Hierarchy,Set<EAB_Member>> memberListByHierarchy=new HashMap<EAB_Hierarchy,Set<EAB_Member>>();
 
+		HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> memberScoreByHierarchy = new HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> ();;
+		
 		for(EAB_Hierarchy h : cube.getHierarchyList()){
 			HashSet<EAB_Member> hm=new HashSet<EAB_Member>();
 			memberListByHierarchy.put(h, hm);
+			
+			HashMap<EAB_Member,Integer> hmembfreq = new HashMap<EAB_Member,Integer>();
+			memberScoreByHierarchy.put(h, hmembfreq);
 		}
+		
+
+		
 		//this();
 		this.cube=cube;
 		Collection<EAB_Cell> col = cl.getCellCollection();
@@ -125,42 +136,57 @@ public class DetailedAreaOfInterest {
 			}
 			*/
 			EAB_Cell c=it.next();
-			
-			
+					
 			if(cube.equals(c.getCube())){
-				
-		
-			
+							
 			Query q =c.getMostDetailedQueryForCell();
 			//System.out.println(q.toString());
-			ResultStructure currs=((QueryTriplet) q).executePartially(Boolean.FALSE);
-		
+			ResultStructure currs=((QueryTriplet) q).executePartially(Boolean.FALSE);		
 			
 			for(EAB_Hierarchy h : cube.getHierarchyList()){
+				
+				
 //				for(EAB_Member m : currs.computeMemberListByHierarchy(h)){
 				//System.out.println(h.toString());
 				//System.out.println(cube.getName());
 				//System.out.println(currs.memberListByHierarchy.get(h));
 				for(EAB_Member m : currs.memberListByHierarchy.get(h)){
+					
+					//list members
 					if(!memberListByHierarchy.get(h).contains(m)){
 						
 						memberListByHierarchy.get(h).add(m);
 						memberListByHierarchy.put(h, memberListByHierarchy.get(h));
 
 					}
+					
+					//score members
+					
+					if(memberScoreByHierarchy.get(h).containsKey(m)){
+						memberScoreByHierarchy.get(h).put(m, memberScoreByHierarchy.get(h).get(m)+1);
+					}
+					else{
+						memberScoreByHierarchy.get(h).put(m, 1);
+					}
 				}
+				//memberScoreByHierarchy.put(h, memberScoreByHierarchy.get(h));
 				
 			}			
 			}
 		}
+		
+		this.memberScoreByHierarchy=memberScoreByHierarchy;
 		this.memberListByHierarchy=memberListByHierarchy;
-		this.size=this.computeNumberOfCells();
-		
-		
+		this.size=this.computeNumberOfCells();	
 		
 	}
 	
-	public DetailedAreaOfInterest (Map<EAB_Hierarchy,Set<EAB_Member>>  map, EAB_Cube c){
+	
+	
+	public DetailedAreaOfInterest (Map<EAB_Hierarchy,Set<EAB_Member>>  map, 
+			HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> memberScoreByHierarchy,
+			EAB_Cube c){
+		this.memberScoreByHierarchy=memberScoreByHierarchy;
 		this.memberListByHierarchy=map;
 		this.cube=c;
 		this.size=this.computeNumberOfCells();
@@ -170,17 +196,34 @@ public class DetailedAreaOfInterest {
 	public DetailedAreaOfInterest intersect(DetailedAreaOfInterest other){
 		Map<EAB_Hierarchy,Set<EAB_Member>> memberListByHierarchy=new HashMap<EAB_Hierarchy,Set<EAB_Member>>();
 		
+		HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> memberScoreByHierarchy = new HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> ();;
+
+		
 		// intersect members by hierarchy
 		for(EAB_Hierarchy h : cube.getHierarchyList()){
 			Set<EAB_Member> cur = new HashSet<EAB_Member>();
 			cur.addAll(this.memberListByHierarchy.get(h));
 			cur.retainAll(other.memberListByHierarchy.get(h));
 			memberListByHierarchy.put(h, cur);
+						
 			
 		}
+		// 
+		// get other's uh members
+		//HashMap<EAB_Member, Integer> othersMembers = other.uh.getTheMembers();
+	
+		// for each m of this.memberlist
+		// lookup uh membs, get its score
+		// put the score for this one
 		
-		DetailedAreaOfInterest result = new DetailedAreaOfInterest(memberListByHierarchy,this.cube);
+		DetailedAreaOfInterest result = new DetailedAreaOfInterest(memberListByHierarchy,memberScoreByHierarchy,this.cube);
 		return result;
+	}
+	
+	
+	
+	public void setUH(UserHistory uh){
+		this.uh=uh;
 	}
 	
 	public int size(){

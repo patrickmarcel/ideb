@@ -47,7 +47,9 @@ public class TripletToMdxQueryConverter implements I_QueryConverter {
         
         String mdx  = "SELECT " + columns + " ON COLUMNS ";
         
-        if(!rows.isEmpty()) {
+        if(!rows.isEmpty() ) {
+            //System.out.println("rows.isEmpty: "+rows.isEmpty());
+            //System.out.println("rows: "+rows);
             mdx         += ",";
             mdx         += System.lineSeparator();
             mdx         += rows + " ON ROWS ";
@@ -227,6 +229,11 @@ public class TripletToMdxQueryConverter implements I_QueryConverter {
             
         }
         
+        // if on rows is {}, this clause should be removed from the mdx query
+        // this is why en empty string is returned
+        if(mdxRows.compareTo("{} ")==0){
+        	return "";
+        }
         return mdxRows;
     }
     

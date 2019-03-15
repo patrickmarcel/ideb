@@ -663,6 +663,7 @@ public class QueryTriplet extends Query implements java.io.Serializable {
             QueryConverter qc   = new QueryConverter(be);
             QueryMdx q_mdx      = qc.toMdx(this);
             
+            //System.out.println("triplet:" + this.toString());
             //System.out.println("mdx:" + q_mdx.toString());
             
             return q_mdx.execute(arg_store);

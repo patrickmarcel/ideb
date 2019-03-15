@@ -44,6 +44,10 @@ public class UserHistory {
 		userBelief=new Belief(this);
 	}
 	
+	public 	HashMap<EAB_Member, Integer>  getTheMembers(){
+		return theMembers;
+	}
+	
 	public Collection<EAB_Cell> getCollection(){
 		return this.theCells.keySet();
 	}

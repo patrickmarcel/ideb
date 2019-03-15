@@ -44,15 +44,14 @@ public class TestInterestingness {
 	//static String test="dopan-on-server";
 	
 	// test data (smartBI DB + fake labels)
-	//static String queryLabelFile="res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
-	//static String sessionLabelFile="res/Labels/fakeForTest/skillScorePerExploration.csv";
-	//static String logDirectory="res/logs/smartBI/fakeForTestOnly/";
+	static String SMARTBIqueryLabelFile="res/Labels/fakeForTest/fake1sessionQueries.csv";
+	static String SMARTBIsessionLabelFile="res/Labels/fakeForTest/fake1sessionSession.csv";
+	static String SMARTBIlogDirectory="res/logs/smartBI/fakeForTestOnly/user-a_session-3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE_analysis-1.csv";
 	
 	//smartBI
-	static String SMARTBIqueryLabelFile="res/Labels/smartBI/queryLabels.csv";
-	static String SMARTBIsessionLabelFile="res/Labels/smartBI/sessionLabels.csv";
-	static String SMARTBIlogDirectory="res/logs/smartBI/logs-orig/";
-	//static String SMARTBIlogDirectory="res/logs/smartBI/IS_ADBIS/logs/";
+	//static String SMARTBIqueryLabelFile="res/Labels/smartBI/queryLabels.csv";
+	//static String SMARTBIsessionLabelFile="res/Labels/smartBI/sessionLabels.csv";
+	//static String SMARTBIlogDirectory="res/logs/smartBI/logs-orig/";
 	
 
 	//dopan
@@ -153,6 +152,7 @@ public class TestInterestingness {
 					computeHistory(u,queryPos);
 					//u.getHistory().printMembers();
 					int queryLabel=u.getCurrentQueryLabel();
+					System.out.println(q.getResult().getCellList().getCellCollection());
 					for(EAB_Cell c : q.getResult().getCellList().getCellCollection()){
 						int cellHashcode=c.hashCode();
 						boolean novelty=c.binaryNovelty(u.getHistory());
@@ -169,7 +169,7 @@ public class TestInterestingness {
 						current = current+ cellHashcode + ";";
 						current = current+novelty + ";";
 						current = current+outlierness+ ";";
-						current = current+relevance + ";";
+						current = current+ relevance + ";";
 						current = current+surprise + ";";
 						current = current+queryLabel + ";";
 						current = current+sessionLabel ;
@@ -179,9 +179,10 @@ public class TestInterestingness {
 						writer.write(current); 
 						
 						
-						System.out.println(current);
+						//System.out.println(current);
 					}
 					queryPos++;
+					System.out.println("Flushing session: "+fileName);
 					writer.flush();
 				}
 				writer.close();

@@ -963,10 +963,37 @@ public class EAB_Cell implements Metrics{
 	}
 	
 	
+	
 	public double simpleRelevance(UserHistory uh){
 		DetailedAreaOfInterest dthis= this.getDetailedAreaOfInterest(); 
 		DetailedAreaOfInterest duh=new DetailedAreaOfInterest(uh,this.getCube());
 		// relevance has sense only for this.cube
+		duh.setUH(uh);
+		
+		DetailedAreaOfInterest res=dthis.intersect(duh);
+		
+		// res get members
+		// by dimensions: cumulate members's score, then multiply across dimensions
+		
+		if(dthis.size()==0){
+			return 0;
+		}
+		else{
+			//System.out.println(res.size() +"/"+ dthis.size());
+			return (double) res.size()/dthis.size();
+		}
+		
+	}
+	
+	
+	/*
+	// second version: detailed queries partially executed
+	// much faster since no access to facts and cartesian product not computed 
+	public double simpleRelevance(UserHistory uh){
+		DetailedAreaOfInterest dthis= this.getDetailedAreaOfInterest(); 
+		DetailedAreaOfInterest duh=new DetailedAreaOfInterest(uh,this.getCube());
+		// relevance has sense only for this.cube
+		duh.setUH(uh);
 		
 		DetailedAreaOfInterest res=dthis.intersect(duh);
 		if(dthis.size()==0){
@@ -978,7 +1005,7 @@ public class EAB_Cell implements Metrics{
 		
 	}
 	
-	/*
+	// first version, when detailed queries were (entirely) executed
 	public double simpleRelevance(UserHistory uh){
 		
 		//System.out.println("computing relevance for cell: " + this.toString());;
@@ -1000,22 +1027,59 @@ public class EAB_Cell implements Metrics{
 	}*/
 	
 	
-	
-	
+	/**
+	 * The surprise is the log of the product of the member's probability of appearance
+	 * if one member's probability of appearance is 0 then the cell's surprise is infinite
+	 * @param uh
+	 * @return
+	 */
 	public double surprise(UserHistory uh){
+		
+		//TODO not always the same cube in history (but members can be the same)
+		
+		double acc=1;
+		for(EAB_Hierarchy h  : this.getCube().getHierarchyList()){ // put that in belief??
+			EAB_Member m = this.getMemberByHierarchy(h);
+			double proba_m=uh.getBelief(m);
+			
+			//double log_m = -Math.log(proba_m);
+			//System.out.println("log:" +log_m);
+			acc=acc*proba_m; //but the probas are not independent
+			
+		}
+		//System.out.println("acc:" +acc);
+		return -Math.log(acc);
+		//return acc/this.getCube().getHierarchyList().size();	
+		
+	}
+	
+	
+	
+	/**
+	 * Average surprise of each member 
+	 * if one member's surprise is infinity then the cell's surprise is infinity
+	 * @param uh
+	 * @return
+	 *
+	public double surprise(UserHistory uh){
+		
+		//TODO not always the same cube in history (but members can be the same)
 		
 		double acc=0;
 		for(EAB_Hierarchy h  : this.getCube().getHierarchyList()){ // put that in belief??
 			EAB_Member m = this.getMemberByHierarchy(h);
 			double proba_m=uh.getBelief(m);
+			//System.out.println("proba:"+proba_m);
 			double log_m = -Math.log(proba_m);
+			//System.out.println("log:" +log_m);
 			acc=acc+log_m;
 			
 		}
 
 		return acc/this.getCube().getHierarchyList().size(); 
 		
-		
-		
 	}
+	*/
+	
+	
 }

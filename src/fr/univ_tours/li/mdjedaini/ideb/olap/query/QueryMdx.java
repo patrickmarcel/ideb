@@ -53,6 +53,30 @@ public class QueryMdx extends Query implements java.io.Serializable {
         Result  res = new Result(this, r);
         //System.out.println("La requete a " + r.getAxes().length + " axes...");
         
+        if(r.getAxes().length==1){
+        	// if only one axis, it is the on column axis, where only measures can appear
+        	// ie no "on rows" means only one cell (projection fragment is empty)
+        	// we just generate one cell
+        	 Axis columnAxis = r.getAxes()[0];
+             
+             Axis slicerAxis = r.getSlicerAxis();
+             
+                     int[] position  = {0};
+                     
+                     mondrian.olap.Cell c_tmp    = r.getCell(position);
+                     
+                     if(c_tmp == null ) {
+                         Integer m = 1;
+                     }
+                     
+                     EAB_Cell eab_c              = new EAB_Cell(res, c_tmp);
+                     
+                     //System.out.println("creating Cell: "+ eab_c.toString());
+                     
+                     res.addCell(eab_c);
+                 
+        }
+        else{
         Axis columnAxis = r.getAxes()[0];
         Axis rowAxis    = r.getAxes()[1];
         
@@ -74,6 +98,7 @@ public class QueryMdx extends Query implements java.io.Serializable {
                 
                 res.addCell(eab_c);
             }
+        }
         }
         
         // we store the result if ok...
