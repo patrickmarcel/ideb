@@ -1,0 +1,1 @@
+To activate mondrian logging (with MDX and SQL statements logged), rename src/log4j2-mondrianLogs.xml to src/log4j2.xml 

@@ -887,7 +887,7 @@
 	
 	<DimensionUsage name="Statut d'emploi du referent" source="Statut d'emploi" foreignKey="ref_statut_emploi"/> 
 	
-	<!--J-ai du definir une vieu de la table indicateur lieu sinon Mondrian gere mal ces alias et les expressions MDX-->
+	<!--J-ai du definir une vue de la table indicateur lieu sinon Mondrian gere mal ces alias et les expressions MDX-->
 	<Dimension name="Indicateur du lieu d'etudes du referent" foreignKey="ref_indicateur_lieu_etud">
       <Hierarchy hasAll="true" name="REF_INDLIEUETUD_Hierarchie_1" primaryKey="indicateur_id"
 		allMemberName = "tous les lieux confondus" allLevelName = "Tout" caption ="REF_INDLIEUETUD_Hierarchie_1">

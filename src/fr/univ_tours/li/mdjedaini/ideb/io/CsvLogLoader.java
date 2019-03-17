@@ -115,7 +115,9 @@ public class CsvLogLoader implements I_LogLoader {
             Iterable<CSVRecord> records = CSVFormat.newFormat(';').withFirstRecordAsHeader().parse(in);
             
             // each record is a query
+            int nbRec=0;
             for (CSVRecord record : records) {
+                nbRec++;
                 
                 System.out.println("I am parsing the line: " + record);
                 
@@ -201,6 +203,8 @@ public class CsvLogLoader implements I_LogLoader {
                         if(null == l_tmp) {
                             int i = 2;
                         }
+                        
+                        //System.out.println("nbRec:" +nbRec);
                         
                         String dimName  = l_tmp.getHierarchy().getDimension().getMondrianDimension().getName();
                         String hieName  = l_tmp.getHierarchy().getName();

@@ -37,21 +37,22 @@ public class TestInterestingness {
 	
 	//static String schemaSmartBI="res/cubeSchemas/smartBI.xml";
 	static String schemaSmartBI="res/cubeSchemas/smartBI-march2019.xml";
-	static String schemaDOPAN="res/cubeSchemas/DOPAN_DW3.xml";
+	//static String schemaDOPAN="res/cubeSchemas/DOPAN_DW3.xml";
+	static String schemaDOPAN="res/cubeSchemas/DOPAN_DW3-agg.xml";
 
-	static String test="smartbi";
+	//static String test="smartbi";
 	//static String test="dopan-from-local";
-	//static String test="dopan-on-server";
+	static String test="dopan-on-server";
 	
 	// test data (smartBI DB + fake labels)
-	static String SMARTBIqueryLabelFile="res/Labels/fakeForTest/fake1sessionQueries.csv";
-	static String SMARTBIsessionLabelFile="res/Labels/fakeForTest/fake1sessionSession.csv";
-	static String SMARTBIlogDirectory="res/logs/smartBI/fakeForTestOnly/user-a_session-3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE_analysis-1.csv";
+	//static String SMARTBIqueryLabelFile="res/Labels/fakeForTest/fake1sessionQueries.csv";
+	//static String SMARTBIsessionLabelFile="res/Labels/fakeForTest/fake1sessionSession.csv";
+	//static String SMARTBIlogDirectory="res/logs/smartBI/fakeForTestOnly/user-a_session-3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE_analysis-1.csv";
 	
 	//smartBI
-	//static String SMARTBIqueryLabelFile="res/Labels/smartBI/queryLabels.csv";
-	//static String SMARTBIsessionLabelFile="res/Labels/smartBI/sessionLabels.csv";
-	//static String SMARTBIlogDirectory="res/logs/smartBI/logs-orig/";
+	static String SMARTBIqueryLabelFile="res/Labels/smartBI/queryLabels.csv";
+	static String SMARTBIsessionLabelFile="res/Labels/smartBI/sessionLabels.csv";
+	static String SMARTBIlogDirectory="res/logs/smartBI/logs-orig/";
 	
 
 	//dopan
@@ -64,9 +65,9 @@ public class TestInterestingness {
 	//static String sessionLabelFile="res/Labels/fakeForTest/skillScorePerExploration.csv";
 	//static String logDirectory="res/logs/dopan/forTests/";
 	// dopan - debug
-	//static String queryLabelFile="res/Labels/fakeForTest/fake12-queries.csv";
-	//static String logDirectory="res/logs/dopan/cleanLogs/dibstudent12--2016-09-26--07-49.log";
-	//static String sessionLabelFile="res/Labels/fakeForTest/fake12sessionLabel.csv";
+	//static String DOPANqueryLabelFile="res/Labels/fakeForTest/fake12-queries.csv";
+	//static String DOPANlogDirectory="res/logs/dopan/cleanLogs/dibstudent12--2016-09-26--07-49.log";
+	//static String DOPANsessionLabelFile="res/Labels/fakeForTest/fake12sessionLabel.csv";
 	
 	public static void main(String[] args) throws MathException, IOException {
 		
@@ -140,7 +141,7 @@ public class TestInterestingness {
 				String timestamp=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 				String fileName=pathToResult +"RESULT-" +timestamp + "-" +s.getMetadata("filename")+".csv";
 				FileWriter writer   = new FileWriter(fileName);
-			    writer.write("session ;user;query position;cell hashcode;novelty;outlierness;relevance;surprise;query label;session label\n");
+			    writer.write("session ;user;query position;cell hashcode;cell computation time;novelty;outlierness;relevance;surprise;query label;session label\n");
 				
 				
 				Character sessionLabel= us.get(s);
@@ -149,16 +150,33 @@ public class TestInterestingness {
 				int queryPos=0;
 				for(Query q : s.getQueryList()){
 					int queryHashcode = q.hashCode();
+					//long startHistoryTime = System.currentTimeMillis();
 					computeHistory(u,queryPos);
+					//System.out.println("history computed in: " + (System.currentTimeMillis()-startHistoryTime));
+
 					//u.getHistory().printMembers();
 					int queryLabel=u.getCurrentQueryLabel();
-					System.out.println(q.getResult().getCellList().getCellCollection());
+					//System.out.println(q.getResult().getCellList().getCellCollection());
 					for(EAB_Cell c : q.getResult().getCellList().getCellCollection()){
+						
+						long startCellTime = System.currentTimeMillis();
 						int cellHashcode=c.hashCode();
-						boolean novelty=c.binaryNovelty(u.getHistory());
+						boolean novelty=c.binaryNovelty(u.getHistory());					
+						//System.out.println("novelty computed in: " + (System.currentTimeMillis()-startCellTime));
+
+						//long startOutlierTime = System.currentTimeMillis();
 						double outlierness=c.outlierness(q.getResult().getCellList());
+						//System.out.println("outlier computed in: " + (System.currentTimeMillis()-startOutlierTime));
+						
+						//long startRelevanceTime = System.currentTimeMillis();
 						double relevance=c.simpleRelevance(u.getHistory());
+						//System.out.println("relevance computed in: " + (System.currentTimeMillis()-startRelevanceTime));
+						
+						//long startSurpriseTime = System.currentTimeMillis();
 						double surprise=c.surprise(u.getHistory()); // can be infinity, should be transformed before going to csv/excel?
+						//System.out.println("surprise computed in: " + (System.currentTimeMillis()-startSurpriseTime));
+					
+						long stopCellTime = System.currentTimeMillis();
 						
 						// put in file
 						String current="";
@@ -167,6 +185,7 @@ public class TestInterestingness {
 						//current = current+ queryHashcode + ";";
 						current = current+ (queryPos+1) + ";";
 						current = current+ cellHashcode + ";";
+						current = current+ (stopCellTime-startCellTime) + ";";
 						current = current+novelty + ";";
 						current = current+outlierness+ ";";
 						current = current+ relevance + ";";

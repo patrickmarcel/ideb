@@ -9,6 +9,7 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Measure;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
+import fr.univ_tours.li.mdjedaini.ideb.olap.result.DetailedAreaOfInterest;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
@@ -20,13 +21,15 @@ public class UserHistory {
 	HashMap<EAB_Member, Integer> theMembers;
 	HashMap<EAB_Measure, Integer> theMeasures;
 	
+	HashMap<EAB_Cube,DetailedAreaOfInterest> theDetailedAreas;
+	
 	Belief userBelief=null;
 	
 	public UserHistory(){
 		theCells=new HashMap<EAB_Cell, Integer> ();
 		theMembers=new HashMap<EAB_Member, Integer> ();
 		theMeasures=new HashMap<EAB_Measure, Integer> ();
-
+		theDetailedAreas=new HashMap<EAB_Cube,DetailedAreaOfInterest>();
 	}
 	
 
@@ -60,6 +63,20 @@ public class UserHistory {
 		}
 		else{
 			return 0;
+		}
+	}
+	
+	
+	public DetailedAreaOfInterest getDetailedArea(EAB_Cube cube){
+		return theDetailedAreas.get(cube);
+	}
+	
+	public boolean isEmptyForCube(EAB_Cube c){
+		if( theDetailedAreas.containsKey(c)){
+			return false;
+		}
+		else{
+			return true;
 		}
 	}
 	
@@ -169,6 +186,13 @@ public class UserHistory {
 		CellList cl = r.getCellList();
 		this.add(cl);
 		
+		DetailedAreaOfInterest toModify;
+		if(!theDetailedAreas.containsKey(r.getCube()))
+			toModify=new DetailedAreaOfInterest(r.getCube());	
+		else
+			toModify=theDetailedAreas.get(r.getCube());
+		toModify.add(cl,r.getCube());
+		theDetailedAreas.put(r.getCube(), toModify);   
 	}
 	
 	

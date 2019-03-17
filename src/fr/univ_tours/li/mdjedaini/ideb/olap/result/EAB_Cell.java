@@ -876,9 +876,7 @@ public class EAB_Cell implements Metrics{
 	
 	// this one should not be defined if too few cells in cl
 	public double outlierness(CellList cl) throws MathException{
-		
-		
-		
+			
 		double sf=0;
 		Collection<EAB_Cell> col=cl.getCellCollection();
 		//Iterator<EAB_Cell> it = col.iterator();
@@ -966,9 +964,16 @@ public class EAB_Cell implements Metrics{
 	
 	public double simpleRelevance(UserHistory uh){
 		DetailedAreaOfInterest dthis= this.getDetailedAreaOfInterest(); 
-		DetailedAreaOfInterest duh=new DetailedAreaOfInterest(uh,this.getCube());
+		//DetailedAreaOfInterest duh=new DetailedAreaOfInterest(uh,this.getCube());
+		if(uh.isEmptyForCube(this.getCube())){
+			return 0;
+		}
+		
+		DetailedAreaOfInterest duh=uh.getDetailedArea(this.getCube());
+		
+		
 		// relevance has sense only for this.cube
-		duh.setUH(uh);
+		//duh.setUH(uh);
 		
 		DetailedAreaOfInterest res=dthis.intersect(duh);
 		

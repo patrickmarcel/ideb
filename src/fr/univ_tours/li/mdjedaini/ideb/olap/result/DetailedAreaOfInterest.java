@@ -32,12 +32,15 @@ public class DetailedAreaOfInterest {
 
 	int size;
 	EAB_Cube cube;
-	UserHistory uh;
+	UserHistory uh; //needed?->remove
 	
 	public DetailedAreaOfInterest(){
 		//theCells=new HashMap<EAB_Cell, Integer> ();
 	}
 	
+	public DetailedAreaOfInterest(EAB_Cube cube){
+		this.cube=cube;
+	}
 	
 	/**
 	 * store the cells of q's result as this detailed area
@@ -50,7 +53,7 @@ public class DetailedAreaOfInterest {
 		this.cube=cube;
 		//System.out.println(cube.toString());
 		
-		ResultStructure rs=((QueryTriplet) q).executePartially(Boolean.FALSE);
+		ResultStructure rs=((QueryTriplet) q).executePartially(Boolean.TRUE);
 		memberListByHierarchy = rs.getMemberListByHierarchy();
 		size=this.computeNumberOfCells();
 		
@@ -193,17 +196,106 @@ public class DetailedAreaOfInterest {
 	}
 	
 	
+	
+	// TOCHECK
+	public void add(CellList cl, EAB_Cube cube){
+		if(this.memberListByHierarchy==null){
+			Map<EAB_Hierarchy,Set<EAB_Member>> memberListByHierarchy=new HashMap<EAB_Hierarchy,Set<EAB_Member>>();
+
+			HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> memberScoreByHierarchy = new HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> ();;
+
+			for(EAB_Hierarchy h : cube.getHierarchyList()){
+				HashSet<EAB_Member> hm=new HashSet<EAB_Member>();
+				memberListByHierarchy.put(h, hm);
+				
+				HashMap<EAB_Member,Integer> hmembfreq = new HashMap<EAB_Member,Integer>();
+				memberScoreByHierarchy.put(h, hmembfreq);
+			}
+			
+			this.memberScoreByHierarchy=memberScoreByHierarchy;
+			this.memberListByHierarchy=memberListByHierarchy;
+		}
+			
+		//this.cube=cube;
+		Collection<EAB_Cell> col = cl.getCellCollection();
+		Iterator<EAB_Cell> it = col.iterator();
+		while(it.hasNext()){
+			/*
+			Collection<EAB_Cell> currentDetail=it.next().getDetailedAreaCells();
+			for(EAB_Cell c : currentDetail){
+				if(theCells.containsKey(c)){
+					theCells.put(c, theCells.get(c)+1);
+				}
+				else{
+					theCells.put(c, 1);
+				}
+				
+			}
+			*/
+			EAB_Cell c=it.next();
+					
+			if(cube.equals(c.getCube())){ // useless, remove
+							
+			Query q =c.getMostDetailedQueryForCell();
+			//System.out.println(q.toString());
+			ResultStructure currs=((QueryTriplet) q).executePartially(Boolean.TRUE);		
+			
+			for(EAB_Hierarchy h : cube.getHierarchyList()){
+				
+				
+//				for(EAB_Member m : currs.computeMemberListByHierarchy(h)){
+				//System.out.println(h.toString());
+				//System.out.println(cube.getName());
+				//System.out.println(currs.memberListByHierarchy.get(h));
+				for(EAB_Member m : currs.memberListByHierarchy.get(h)){
+					
+					//list members
+					if(!memberListByHierarchy.get(h).contains(m)){
+						
+						memberListByHierarchy.get(h).add(m);
+						memberListByHierarchy.put(h, memberListByHierarchy.get(h));
+
+					}
+					
+					//score members
+					
+					if(memberScoreByHierarchy.get(h).containsKey(m)){
+						memberScoreByHierarchy.get(h).put(m, memberScoreByHierarchy.get(h).get(m)+1);
+					}
+					else{
+						memberScoreByHierarchy.get(h).put(m, 1);
+					}
+				}
+				//memberScoreByHierarchy.put(h, memberScoreByHierarchy.get(h));
+				
+			}			
+			}
+		}
+		
+		
+		this.size=this.computeNumberOfCells();	
+		
+	}
+	
+	
+	
+	
+	
+	
 	public DetailedAreaOfInterest intersect(DetailedAreaOfInterest other){
 		Map<EAB_Hierarchy,Set<EAB_Member>> memberListByHierarchy=new HashMap<EAB_Hierarchy,Set<EAB_Member>>();
 		
 		HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> memberScoreByHierarchy = new HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> ();;
 
-		
+
 		// intersect members by hierarchy
 		for(EAB_Hierarchy h : cube.getHierarchyList()){
 			Set<EAB_Member> cur = new HashSet<EAB_Member>();
-			cur.addAll(this.memberListByHierarchy.get(h));
-			cur.retainAll(other.memberListByHierarchy.get(h));
+			if(!other.memberListByHierarchy.isEmpty()){
+				cur.addAll(this.memberListByHierarchy.get(h));
+				cur.retainAll(other.memberListByHierarchy.get(h));
+			}
+			
 			memberListByHierarchy.put(h, cur);
 						
 			
@@ -225,6 +317,7 @@ public class DetailedAreaOfInterest {
 	public void setUH(UserHistory uh){
 		this.uh=uh;
 	}
+	
 	
 	public int size(){
 		//return theCells.size();
