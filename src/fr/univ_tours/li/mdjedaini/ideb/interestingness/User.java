@@ -177,7 +177,12 @@ public class User {
 		currentSession=s;
 		//positionInCurrentSession=positionInCurrentSession+1;
 		currentQuery=q;
-		currentQueryLabel=theLabels.get(q);
+		if(theLabels.containsKey(q)){
+			currentQueryLabel=theLabels.get(q);
+		}
+		else{
+			currentQueryLabel=999;
+		}
 		//currentSessionNumber=nbSession;
 		history.computeBelief();
 	}

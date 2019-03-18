@@ -40,14 +40,16 @@ public class TestInterestingness {
 	//static String schemaDOPAN="res/cubeSchemas/DOPAN_DW3.xml";
 	static String schemaDOPAN="res/cubeSchemas/DOPAN_DW3-agg.xml";
 
-	//static String test="smartbi";
+	static String test="smartbi";
 	//static String test="dopan-from-local";
-	static String test="dopan-on-server";
+	//static String test="dopan-on-server";
 	
 	// test data (smartBI DB + fake labels)
 	//static String SMARTBIqueryLabelFile="res/Labels/fakeForTest/fake1sessionQueries.csv";
 	//static String SMARTBIsessionLabelFile="res/Labels/fakeForTest/fake1sessionSession.csv";
-	//static String SMARTBIlogDirectory="res/logs/smartBI/fakeForTestOnly/user-a_session-3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE_analysis-1.csv";
+	//static String SMARTBIlogDirectory="res/logs/smartBI/fakeForTestOnly/user-I051435_session-61125156E07AA4689839C9821FE65B05F7C2143440172F36ADC94A8AB93CE330_analysis-1.csv";
+	
+	
 	
 	//smartBI
 	static String SMARTBIqueryLabelFile="res/Labels/smartBI/queryLabels.csv";

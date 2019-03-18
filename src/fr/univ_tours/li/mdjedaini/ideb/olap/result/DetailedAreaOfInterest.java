@@ -30,7 +30,7 @@ public class DetailedAreaOfInterest {
 	Map<EAB_Hierarchy,Set<EAB_Member>> memberListByHierarchy;
 	HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> memberScoreByHierarchy;
 
-	int size;
+	long size;
 	EAB_Cube cube;
 	UserHistory uh; //needed?->remove
 	
@@ -53,7 +53,7 @@ public class DetailedAreaOfInterest {
 		this.cube=cube;
 		//System.out.println(cube.toString());
 		
-		ResultStructure rs=((QueryTriplet) q).executePartially(Boolean.TRUE);
+		ResultStructure rs=((QueryTriplet) q).executePartially(Boolean.FALSE);
 		memberListByHierarchy = rs.getMemberListByHierarchy();
 		size=this.computeNumberOfCells();
 		
@@ -283,9 +283,9 @@ public class DetailedAreaOfInterest {
 	
 	
 	public DetailedAreaOfInterest intersect(DetailedAreaOfInterest other){
-		Map<EAB_Hierarchy,Set<EAB_Member>> memberListByHierarchy=new HashMap<EAB_Hierarchy,Set<EAB_Member>>();
+		Map<EAB_Hierarchy,Set<EAB_Member>> localMemberListByHierarchy=new HashMap<EAB_Hierarchy,Set<EAB_Member>>();
 		
-		HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> memberScoreByHierarchy = new HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> ();;
+		HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> localMemberScoreByHierarchy = new HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> ();;
 
 
 		// intersect members by hierarchy
@@ -296,19 +296,26 @@ public class DetailedAreaOfInterest {
 				cur.retainAll(other.memberListByHierarchy.get(h));
 			}
 			
-			memberListByHierarchy.put(h, cur);
-						
+			localMemberListByHierarchy.put(h, cur);						
 			
 		}
-		// 
-		// get other's uh members
-		//HashMap<EAB_Member, Integer> othersMembers = other.uh.getTheMembers();
 	
-		// for each m of this.memberlist
-		// lookup uh membs, get its score
-		// put the score for this one
+		// 
+		// TOCHECK
+		HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> othersMembers = other.memberScoreByHierarchy;
+		for(EAB_Hierarchy h : cube.getHierarchyList()){
+			Set<EAB_Member> cur = localMemberListByHierarchy.get(h);
+			HashMap<EAB_Member,Integer> hs = new HashMap<EAB_Member,Integer>();
+			for(EAB_Member m : cur){
+				int score=othersMembers.get(h).get(m);
+				hs.put(m, score);
+				localMemberScoreByHierarchy.put(h, hs);
+			}
+			
+		}
 		
-		DetailedAreaOfInterest result = new DetailedAreaOfInterest(memberListByHierarchy,memberScoreByHierarchy,this.cube);
+		
+		DetailedAreaOfInterest result = new DetailedAreaOfInterest(localMemberListByHierarchy,localMemberScoreByHierarchy,this.cube);
 		return result;
 	}
 	
@@ -319,7 +326,7 @@ public class DetailedAreaOfInterest {
 	}
 	
 	
-	public int size(){
+	public long size(){
 		//return theCells.size();
 		//return rs.computeNumberOfCells();
 		return size;
@@ -340,8 +347,8 @@ public class DetailedAreaOfInterest {
 	}
 	*/
 	
-	public int computeNumberOfCells() {
-        Integer result  = 1;
+	public long computeNumberOfCells() {
+        long result  = 1;
         
         //this.computeMemberListByHierarchy();
         //System.out.println(cube.getHierarchyList().size());
@@ -350,10 +357,7 @@ public class DetailedAreaOfInterest {
             result  = result * this.memberListByHierarchy.get(eab_h).size();
         }
         
-        // result may be negative ?????
-        if(result < 0) {
-            return Integer.MAX_VALUE;
-        }
+        
         
         return result;
     }
@@ -368,4 +372,15 @@ public class DetailedAreaOfInterest {
 		}
 		return result;
 	}
+	
+	public void printDimensionSize(){
+		
+		for(EAB_Hierarchy h : cube.getHierarchyList()){
+			System.out.println(h.toString() + ": "+ this.memberListByHierarchy.get(h).size());
+			
+		}
+		
+	}
+	
+	
 }

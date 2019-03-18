@@ -728,8 +728,8 @@ public class QueryTriplet extends Query implements java.io.Serializable {
         if(this.result != null) {
             return this.result;
         } else {
-        	return this.execute(Boolean.TRUE);
-        	//return this.execute(Boolean.FALSE);
+        	//return this.execute(Boolean.TRUE);
+        	return this.execute(Boolean.FALSE);
         }
     }
     

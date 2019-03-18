@@ -898,19 +898,23 @@ public class EAB_Cell implements Metrics{
 		double variance = StatUtils.variance(d);
 	    double sd = Math.sqrt(variance);
 	    double mean = StatUtils.mean(d);
-	    NormalDistributionImpl nd = new NormalDistributionImpl();
+	    //NormalDistributionImpl nd = new NormalDistributionImpl();
+	    
+	    double stdscore=0;
 	    
 	    for (double value: d ) {
 	    	
 	        if(this.getValueAsDouble()==value){
 	        	
-	        	double stdscore = (value-mean)/sd;
-		        sf = 1.0 - nd.cumulativeProbability(Math.abs(stdscore));
+	        	stdscore = (value-mean)/sd;
+		        //sf = 1.0 - nd.cumulativeProbability(Math.abs(stdscore));
+		        
+		        
 		        
 	        }
 	    	
 	    }
-		return sf;
+		return stdscore;
 	}
     
 	
@@ -956,7 +960,7 @@ public class EAB_Cell implements Metrics{
 		return numberOfAncestorIn(cl) + numberOfChildrenIn(cl);
 	}
 	
-	public int sizeOfDetailedArea(){
+	public long sizeOfDetailedArea(){
 		return this.getDetailedAreaOfInterest().size();
 	}
 	
@@ -972,19 +976,14 @@ public class EAB_Cell implements Metrics{
 		DetailedAreaOfInterest duh=uh.getDetailedArea(this.getCube());
 		
 		
-		// relevance has sense only for this.cube
-		//duh.setUH(uh);
 		
 		DetailedAreaOfInterest res=dthis.intersect(duh);
 		
-		// res get members
-		// by dimensions: cumulate members's score, then multiply across dimensions
 		
 		if(dthis.size()==0){
 			return 0;
 		}
 		else{
-			//System.out.println(res.size() +"/"+ dthis.size());
 			return (double) res.size()/dthis.size();
 		}
 		
