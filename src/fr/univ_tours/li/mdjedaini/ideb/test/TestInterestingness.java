@@ -40,9 +40,9 @@ public class TestInterestingness {
 	//static String schemaDOPAN="res/cubeSchemas/DOPAN_DW3.xml";
 	static String schemaDOPAN="res/cubeSchemas/DOPAN_DW3-agg.xml";
 
-	static String test="smartbi";
+	//static String test="smartbi";
 	//static String test="dopan-from-local";
-	//static String test="dopan-on-server";
+	static String test="dopan-on-server";
 	
 	// test data (smartBI DB + fake labels)
 	//static String SMARTBIqueryLabelFile="res/Labels/fakeForTest/fake1sessionQueries.csv";
@@ -73,6 +73,7 @@ public class TestInterestingness {
 	
 	public static void main(String[] args) throws MathException, IOException {
 		
+		mergeInXLS();
 		
 		long startTime = System.currentTimeMillis();
 
@@ -646,6 +647,79 @@ public class TestInterestingness {
     	writer.close();
     }
     
+   
+   public static void mergeInXLS() throws IOException{
+	   
+	   File file   = new File("/Users/patrick/git/ideb/output/interestingness/SmartBI/results18032019");
+       
+	   
+	   String timestamp=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+	   String fileName=pathToResult +"RESULT-" +timestamp + ".csv";
+	   FileWriter writer   = new FileWriter(fileName);
+	   writer.write("session ;user;query position;cell hashcode;cell computation time;novelty;outlierness;relevance;surprise;query label;session label\n");
+		
+	   
+	   for(String currentFileName : file.list()) {
+		   String absoluteFileName = file.getAbsolutePath() + "/" + currentFileName;
+		   File f_tmp              = new File(absoluteFileName);    
+               
+		   Scanner scanner = new Scanner(f_tmp); 
+	    	        
+		   scanner.nextLine(); // reads header line
+	    	while(scanner.hasNextLine()){
+	    	        	
+	    		String line = scanner.nextLine();
+	    		String[] ts = line.split(";");
+	    		String toWrite="";
+	    		
+	    		for(int i = 0;i<ts.length;i++){
+	    			if(i==5){
+	    				if(ts[i].equals("true")){
+		    				toWrite=toWrite+1+";";
+		    			}
+	    				else{
+		    				toWrite=toWrite+0+";";
+		    			}
+	    			}
+	    			if(i==10){
+	    				if(ts[i].equals("A")){
+		    				toWrite=toWrite+1+";";
+		    			}
+	    				else{
+	    					if(ts[i].equals("B")){
+			    				toWrite=toWrite+2+";";
+			    			}
+		    				else{
+		    					if(ts[i].equals("C")){
+				    				toWrite=toWrite+3+";";
+				    			}
+			    				else{
+			    					if(ts[i].equals("D")){
+					    				toWrite=toWrite+4+";";
+					    			}
+				    			}
+			    			}
+		    			}
+	    			}
+	    			
+	    			if(i==6 || i==7 || i==8){
+	    				toWrite=toWrite+ts[i].replace('.', ',')+";";
+	    			}
+	    			if(i!=5 && i!=6 && i!=7 && i!=8 && i!=10){
+	    				toWrite=toWrite+ts[i]+";";	
+	    			}
+	    			
+	    		}
+	    		
+	    		writer.write(toWrite);
+	    		writer.write("\n");
+               
+	    	}
+	    	scanner.close();
+      
+	   
+	   }
+	   writer.close();
     
-    
+   }
 }
