@@ -68,19 +68,23 @@ public class TestInterestingness {
 	//static String logDirectory="res/logs/dopan/forTests/";
 	// dopan - debug
 	//static String DOPANqueryLabelFile="res/Labels/fakeForTest/fake12-queries.csv";
-	//static String DOPANlogDirectory="res/logs/dopan/cleanLogs/dibstudent12--2016-09-26--07-49.log";
+	//static String DOPANlogDirectory="res/logs/dopan/forTests/dibstudent09--2016-09-26--20-47.log";
 	//static String DOPANsessionLabelFile="res/Labels/fakeForTest/fake12sessionLabel.csv";
 	
 	public static void main(String[] args) throws MathException, IOException {
 		
-		mergeInXLS();
+		//mergeInXLS();
 		
 		long startTime = System.currentTimeMillis();
 
 		if(test.equals("dopan-from-local")){
 			// DOPAN 
-			connectDopanSQLServer("jdbc:sqlserver://10.195.25.10:54027");
+			//connectDopanSQLServer("jdbc:sqlserver://10.195.25.10:54027");
+			
 			//connectDopanSQLServer("jdbc:sqlserver://10.195.25.10:54437/db_test_20190313");
+			
+			connectDopanSQLServer("jdbc:sqlserver://10.195.25.10\\db_dopan:54437;databaseName=db_dopan;user=dopan;password=diblois"); 
+			
 	        createUsersDOPAN();
 	        readLabelsDOPAN();
 		}

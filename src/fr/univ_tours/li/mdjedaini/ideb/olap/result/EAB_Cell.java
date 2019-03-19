@@ -960,7 +960,7 @@ public class EAB_Cell implements Metrics{
 		return numberOfAncestorIn(cl) + numberOfChildrenIn(cl);
 	}
 	
-	public long sizeOfDetailedArea(){
+	public double sizeOfDetailedArea(){
 		return this.getDetailedAreaOfInterest().size();
 	}
 	
@@ -975,10 +975,11 @@ public class EAB_Cell implements Metrics{
 		
 		DetailedAreaOfInterest duh=uh.getDetailedArea(this.getCube());
 		
-		
-		
 		DetailedAreaOfInterest res=dthis.intersect(duh);
 		
+		System.out.println(dthis.size);
+		System.out.println(duh.size);
+		System.out.println(res.size);
 		
 		if(dthis.size()==0){
 			return 0;

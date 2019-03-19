@@ -33,7 +33,7 @@ public interface Metrics {
 	
 	public int numberOfRelatives(CellList cl);
 	
-	public long sizeOfDetailedArea();
+	public double sizeOfDetailedArea();
 	
 	public double simpleRelevance(UserHistory h);
 }

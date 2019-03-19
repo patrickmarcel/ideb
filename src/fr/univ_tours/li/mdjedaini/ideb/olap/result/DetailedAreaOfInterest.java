@@ -30,7 +30,7 @@ public class DetailedAreaOfInterest {
 	Map<EAB_Hierarchy,Set<EAB_Member>> memberListByHierarchy;
 	HashMap<EAB_Hierarchy,HashMap<EAB_Member,Integer>> memberScoreByHierarchy;
 
-	long size;
+	double size;
 	EAB_Cube cube;
 	UserHistory uh; //needed?->remove
 	
@@ -326,7 +326,7 @@ public class DetailedAreaOfInterest {
 	}
 	
 	
-	public long size(){
+	public double size(){
 		//return theCells.size();
 		//return rs.computeNumberOfCells();
 		return size;
@@ -347,17 +347,15 @@ public class DetailedAreaOfInterest {
 	}
 	*/
 	
-	public long computeNumberOfCells() {
-        long result  = 1;
+	public double computeNumberOfCells() {
+        double result  = 1;
         
         //this.computeMemberListByHierarchy();
         //System.out.println(cube.getHierarchyList().size());
         
         for(EAB_Hierarchy eab_h : cube.getHierarchyList()) {
             result  = result * this.memberListByHierarchy.get(eab_h).size();
-        }
-        
-        
+        }       
         
         return result;
     }
