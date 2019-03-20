@@ -977,9 +977,10 @@ public class EAB_Cell implements Metrics{
 		
 		DetailedAreaOfInterest res=dthis.intersect(duh);
 		
-		System.out.println(dthis.size);
+		/*System.out.println(dthis.size);
 		System.out.println(duh.size);
 		System.out.println(res.size);
+		*/
 		
 		if(dthis.size()==0){
 			return 0;

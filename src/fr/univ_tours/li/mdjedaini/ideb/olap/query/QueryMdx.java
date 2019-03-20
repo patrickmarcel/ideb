@@ -36,6 +36,8 @@ public class QueryMdx extends Query implements java.io.Serializable {
      */
     @Override
     public Result execute(Boolean arg_store) {
+    	
+    	System.out.println(this.mdx);
         
         BenchmarkEngine be          = this.getCube().getBencharkEngine();
         EAB_Connection connection   = be.getConnection();
