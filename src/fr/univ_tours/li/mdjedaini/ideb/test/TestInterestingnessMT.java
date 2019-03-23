@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.commons.math.MathException;
 
@@ -40,8 +42,8 @@ public class TestInterestingnessMT {
 	//static String schemaDOPAN="res/cubeSchemas/DOPAN_DW3.xml";
 	static String schemaDOPAN="res/cubeSchemas/DOPAN_DW3-agg.xml";
 
-	//static String test="smartbi";
-	static String test="dopan-from-local";
+	static String test="smartbi";
+	//static String test="dopan-from-local";
 	//static String test="dopan-on-server";
 	
 	// test data (smartBI DB + fake labels)
@@ -58,21 +60,21 @@ public class TestInterestingnessMT {
 	
 
 	//dopan
-	//static String DOPANqueryLabelFile="res/Labels/dopan/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
-	//static String DOPANsessionLabelFile="res/Labels/dopan/sessionFocusLabels.csv";
-	//static String DOPANlogDirectory="res/logs/dopan/cleanLogs/";
+	static String DOPANqueryLabelFile="res/Labels/dopan/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
+	static String DOPANsessionLabelFile="res/Labels/dopan/sessionFocusLabels.csv";
+	static String DOPANlogDirectory="res/logs/dopan/cleanLogs/";
 	
 	// dopan - test
 	//static String queryLabelFile="res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
 	//static String sessionLabelFile="res/Labels/fakeForTest/skillScorePerExploration.csv";
 	//static String logDirectory="res/logs/dopan/forTests/";
 	// dopan - debug
-	static String DOPANqueryLabelFile="res/Labels/fakeForTest/fake12-queries.csv";
-	static String DOPANlogDirectory="res/logs/dopan/forTests/dibstudent09--2016-09-26--20-47.log";
-	static String DOPANsessionLabelFile="res/Labels/fakeForTest/fake12sessionLabel.csv";
+	//static String DOPANqueryLabelFile="res/Labels/fakeForTest/fake12-queries.csv";
+	//static String DOPANlogDirectory="res/logs/dopan/forTests/dibstudent09--2016-09-26--20-47.log";
+	//static String DOPANsessionLabelFile="res/Labels/fakeForTest/fake12sessionLabel.csv";
 	
 	public static void main(String[] args) throws MathException, IOException {
-		
+
 		//mergeInXLS();
 		
 		long startTime = System.currentTimeMillis();
@@ -113,7 +115,8 @@ public class TestInterestingnessMT {
          
         
         //testCorrelation();
-        
+		System.out.println("Initial memory consumption: " +  (Runtime.getRuntime().totalMemory()/1024)/1024 + " MB");
+
         metricsBySessionGrade();
         
         long stopTime = System.currentTimeMillis();        
@@ -139,34 +142,28 @@ public class TestInterestingnessMT {
 	     //FileWriter writer   = new FileWriter(fileName);
 	     //writer.write("session ;user;query position;cell hashcode;novelty;outlierness;relevance;surprise;query label;session label\n");
 		
+		int nbProc = Runtime.getRuntime().availableProcessors();
+		
+		ExecutorService executor = Executors.newFixedThreadPool(nbProc);
+
 		
 		for(User u : userList.values()){
 			
 			Thread t=new Thread(new  userThread(u));
-			t.start();
+			//t.start();	
 			
+			executor.execute(t);	
 			
-			
-			
-			
+			//t.join();
 		}
-		
-		
+		executor.shutdown();			        	        
+        while (!executor.isTerminated()) {
+        }
 		
 	}
 	
 	
 	
-	public static synchronized void writeResult(FileWriter writer, String line) throws IOException{
-		
-		writer.write(line);
-		//writer.append(line);
-		//System.out.println(line);
-		//writer.append("\n");
-		//System.out.println("Flushing session: "+fileName);
-		writer.flush();
-		//writer.close();	
-	}
 	
 	
 	

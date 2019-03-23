@@ -9,6 +9,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.math.MathException;
 
@@ -26,7 +30,7 @@ import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
  * @author patrick
  *
  */
-public class TestInterestingness {
+public class TestInterestingnessMTC {
 
 	
 	static BenchmarkEngine be ;
@@ -71,7 +75,7 @@ public class TestInterestingness {
 	//static String DOPANlogDirectory="res/logs/dopan/forTests/dibstudent09--2016-09-26--20-47.log";
 	//static String DOPANsessionLabelFile="res/Labels/fakeForTest/fake12sessionLabel.csv";
 	
-	public static void main(String[] args) throws MathException, IOException {
+	public static void main(String[] args) throws MathException, IOException, InterruptedException {
 		
 		//mergeInXLS();
 		
@@ -130,7 +134,7 @@ public class TestInterestingness {
 			u.computeHistory(percentageOfPast);		
 	}
 	
-	public static void metricsBySessionGrade() throws MathException, IOException{
+	public static void metricsBySessionGrade() throws MathException, IOException, InterruptedException{
 			
 		//set result file
 		 //String timestamp=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
@@ -138,6 +142,8 @@ public class TestInterestingness {
 	     //FileWriter writer   = new FileWriter(fileName);
 	     //writer.write("session ;user;query position;cell hashcode;novelty;outlierness;relevance;surprise;query label;session label\n");
 		
+		int nbProc = Runtime.getRuntime().availableProcessors();
+		//System.out.println("nb proc: "+nbProc);
 		
 		for(User u : userList.values()){
 			String username=u.getName();
@@ -164,54 +170,28 @@ public class TestInterestingness {
 					//u.getHistory().printMembers();
 					int queryLabel=u.getCurrentQueryLabel();
 					//System.out.println(q.getResult().getCellList().getCellCollection());
-					for(EAB_Cell c : q.getResult().getCellList().getCellCollection()){
-						
-						
-						
-						long startCellTime = System.currentTimeMillis();
-						int cellHashcode=c.hashCode();
-						boolean novelty=c.binaryNovelty(u.getHistory());					
-						//System.out.println("novelty computed in: " + (System.currentTimeMillis()-startCellTime));
-
-						//long startOutlierTime = System.currentTimeMillis();
-						double outlierness=c.outlierness(q.getResult().getCellList());
-						//System.out.println("outlier computed in: " + (System.currentTimeMillis()-startOutlierTime));
-						
-						//long startRelevanceTime = System.currentTimeMillis();
-						double relevance=c.simpleRelevance(u.getHistory());
-						//System.out.println("relevance computed in: " + (System.currentTimeMillis()-startRelevanceTime));
-						
-						//long startSurpriseTime = System.currentTimeMillis();
-						double surprise=c.surprise(u.getHistory()); // can be infinity, should be transformed before going to csv/excel?
-						//System.out.println("surprise computed in: " + (System.currentTimeMillis()-startSurpriseTime));
 					
-						long stopCellTime = System.currentTimeMillis();
+					ExecutorService executor = Executors.newFixedThreadPool(nbProc);
+
+					
+					for(EAB_Cell c : q.getResult().getCellList().getCellCollection()){					
+															
+						Thread t=new Thread(new  cellThread(c, u,q, sessionName, 
+								username,  queryPos,  queryLabel,  sessionLabel, writer));
+						//t.start();
+						//t.join();				
+
+						executor.execute(t);		 		
 						
-						// put in file
-						String current="";
-						current = current + sessionName + ";";
-						current = current+ username + ";";
-						//current = current+ queryHashcode + ";";
-						current = current+ (queryPos+1) + ";";
-						current = current+ cellHashcode + ";";
-						current = current+ (stopCellTime-startCellTime) + ";";
-						current = current+novelty + ";";
-						current = current+outlierness+ ";";
-						current = current+ relevance + ";";
-						current = current+surprise + ";";
-						current = current+queryLabel + ";";
-						current = current+sessionLabel ;
-						
-						
-						current = current+"\n";
-						writer.write(current); 
-						
-						System.gc();
-						//System.out.println(current);
-					}
+					}				   	            
+			        executor.shutdown();			        	        
+			        while (!executor.isTerminated()) {
+			        }
 					queryPos++;
-					//System.out.println("Flushing session: "+fileName);
-					writer.flush();
+					
+					//System.gc();
+					
+					
 					
 				}
 				writer.close();
@@ -228,6 +208,18 @@ public class TestInterestingness {
 	}
 	
 	
+	
+
+	public static synchronized void writeResult(FileWriter writer, String line) throws IOException{
+		//System.gc();
+		writer.write(line);
+		//writer.append(line);
+		//System.out.println(line);
+		//writer.append("\n");
+		//System.out.println("Flushing session: "+fileName);
+		writer.flush();
+		//writer.close();	
+	}
 	
 	
 	public static void testCorrelation() throws IOException, MathException{

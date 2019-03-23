@@ -32,7 +32,7 @@ public class DetailedAreaOfInterest {
 
 	double size;
 	EAB_Cube cube;
-	UserHistory uh; //needed?->remove
+	//UserHistory uh; //needed?->remove
 	
 	public DetailedAreaOfInterest(){
 		//theCells=new HashMap<EAB_Cell, Integer> ();
@@ -320,11 +320,11 @@ public class DetailedAreaOfInterest {
 	}
 	
 	
-	
+	/*
 	public void setUH(UserHistory uh){
 		this.uh=uh;
 	}
-	
+	*/
 	
 	public double size(){
 		//return theCells.size();
