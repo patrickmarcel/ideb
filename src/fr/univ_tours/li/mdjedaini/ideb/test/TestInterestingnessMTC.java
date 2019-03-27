@@ -44,8 +44,8 @@ public class TestInterestingnessMTC {
 	//static String schemaDOPAN="res/cubeSchemas/DOPAN_DW3.xml";
 	static String schemaDOPAN="res/cubeSchemas/DOPAN_DW3-agg.xml";
 
-	static String test="smartbi";
-	//static String test="dopan-from-local";
+	//static String test="smartbi";
+	static String test="dopan-from-local";
 	//static String test="dopan-on-server";
 	
 	// test data (smartBI DB + fake labels)
@@ -64,7 +64,7 @@ public class TestInterestingnessMTC {
 	//dopan
 	static String DOPANqueryLabelFile="res/Labels/dopan/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
 	static String DOPANsessionLabelFile="res/Labels/dopan/sessionFocusLabels.csv";
-	static String DOPANlogDirectory="res/logs/dopan/cleanLogs/";
+	static String DOPANlogDirectory="res/logs/dopan/cleanLogs/68/"; ///6/10/14?
 	
 	// dopan - test
 	//static String queryLabelFile="res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
@@ -145,6 +145,9 @@ public class TestInterestingnessMTC {
 		int nbProc = Runtime.getRuntime().availableProcessors();
 		//System.out.println("nb proc: "+nbProc);
 		
+		
+
+		
 		for(User u : userList.values()){
 			String username=u.getName();
 			HashMap<Session, Character> us = u.getSessionLabels();
@@ -171,6 +174,8 @@ public class TestInterestingnessMTC {
 					int queryLabel=u.getCurrentQueryLabel();
 					//System.out.println(q.getResult().getCellList().getCellCollection());
 					
+					
+					// move this outside!
 					ExecutorService executor = Executors.newFixedThreadPool(nbProc);
 
 					
@@ -183,10 +188,14 @@ public class TestInterestingnessMTC {
 
 						executor.execute(t);		 		
 						
-					}				   	            
+					}	
+					//long timeout=2;
+					//executor.awaitTermination(timeout, TimeUnit.SECONDS);
+					
 			        executor.shutdown();			        	        
 			        while (!executor.isTerminated()) {
 			        }
+			        
 					queryPos++;
 					
 					//System.gc();
@@ -202,7 +211,7 @@ public class TestInterestingnessMTC {
 
 			
 		}
-		
+		//executor.shutdown();
 		
 		
 	}
@@ -330,9 +339,11 @@ public class TestInterestingnessMTC {
         	String username=namesplit[0];
         	//System.out.println(username);
         	
-        	User u=userList.get(username);
+        	if(userList.containsKey(username)){
+        		User u=userList.get(username);
             	
-        	u.putSessionLabel(filename, label);
+        		u.putSessionLabel(filename, label);
+        	}
         }
         	
         	/*
