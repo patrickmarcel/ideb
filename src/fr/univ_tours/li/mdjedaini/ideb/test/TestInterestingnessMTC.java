@@ -64,7 +64,7 @@ public class TestInterestingnessMTC {
 	//dopan
 	static String DOPANqueryLabelFile="res/Labels/dopan/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
 	static String DOPANsessionLabelFile="res/Labels/dopan/sessionFocusLabels.csv";
-	static String DOPANlogDirectory="res/logs/dopan/cleanLogs/68/"; ///6/10/14?
+	static String DOPANlogDirectory="res/logs/dopan/cleanLogs/dibstudent03--2016-09-24--23-01.log"; ///6/10/14?
 	
 	// dopan - test
 	//static String queryLabelFile="res/Labels/fakeForTest/dopanCleanLogWithVeronikaLabels-FOCUS.csv";
@@ -339,10 +339,11 @@ public class TestInterestingnessMTC {
         	String username=namesplit[0];
         	//System.out.println(username);
         	
-        	if(userList.containsKey(username)){
+        	if(userList.containsKey(username) && userList.get(username).getTheSessions().containsKey(filename)){
         		User u=userList.get(username);
             	
         		u.putSessionLabel(filename, label);
+        		//System.out.println(u.getTheSessions().size());
         	}
         }
         	
