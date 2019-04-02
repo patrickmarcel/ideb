@@ -44,7 +44,6 @@ public class FalsetoQueryConverter {
                 be.parameters.dbms,
                 be.parameters.schemaFilePath,
                 be.parameters.provider,
-                be.parameters.cubeName,
                 be.parameters.driver,
                 be.parameters.jdbcUrl,
                 be.parameters.user,
@@ -70,8 +69,6 @@ public class FalsetoQueryConverter {
         QueryTriplet arg_qt = (QueryTriplet)arg_q;
         
         Qfset result    = new Qfset();
-        result.cubeName = arg_qt.getCube().getName();
-        result.cube     = arg_qt.getCube().getMondrianCube();
         
         for(MeasureFragment mf_tmp : arg_qt.getMeasures()) {
             result.addMeasure(mf_tmp.getMeasure().getMondrianMeasure());
