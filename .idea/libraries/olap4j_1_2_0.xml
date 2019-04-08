@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="olap4j-1.2.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/olap4j-1.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="http://www.olap4j.org/api/index.html" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
