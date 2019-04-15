@@ -1,0 +1,2375 @@
+{
+  "user": {
+    "id": "dibstudent04",
+    "name": "Willeme",
+    "group": "groupe1"
+  },
+  "cube": "Cube mobpro",
+  "title": "Analyse de distances par niveau d\u0027instruction et type de menage",
+  "comment": "Obs: realisé cote à cote de dibstudent10",
+  "queries": [
+    {
+      "id": 7347,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:33:50,424",
+      "duration": 63,
+      "result": {
+        "values": [
+          [
+            23.866205730561035
+          ],
+          [
+            19.822702269293725
+          ],
+          [
+            20.129193501597456
+          ],
+          [
+            21.295103623955825
+          ],
+          [
+            21.382498236154532
+          ],
+          [
+            22.025025607039666
+          ],
+          [
+            23.708545144287694
+          ],
+          [
+            28.34536793761458
+          ],
+          [
+            25.516993962029975
+          ],
+          [
+            26.89482649110725
+          ],
+          [
+            32.83594167086794
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Duree trajet domicile - travail (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              },
+              {
+                "value": "Aucun diplôme mais scolarité au delà du collège",
+                "children": null
+              },
+              {
+                "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                "children": null
+              },
+              {
+                "value": "BEPC, brevet élémentaire, brevet des collèges",
+                "children": null
+              },
+              {
+                "value": "Certificat d\u0027études primaires",
+                "children": null
+              },
+              {
+                "value": "Brevet d\u0027études professionnelles",
+                "children": null
+              },
+              {
+                "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                "children": null
+              },
+              {
+                "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                "children": null
+              },
+              {
+                "value": "Baccalauréat général, brevet supérieur",
+                "children": null
+              },
+              {
+                "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                "children": null
+              },
+              {
+                "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 7454,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:34:14,862",
+      "duration": 359,
+      "result": {
+        "values": [
+          [
+            26.670833881248747
+          ],
+          [
+            19.267761314334507
+          ],
+          [
+            20.239010389978255
+          ],
+          [
+            19.208959916159518
+          ],
+          [
+            21.59658545484941
+          ],
+          [
+            18.293499012171182
+          ],
+          [
+            23.945342069389287
+          ],
+          [
+            19.19885008705787
+          ],
+          [
+            25.219817006012878
+          ],
+          [
+            19.14725788343945
+          ],
+          [
+            23.47245559209741
+          ],
+          [
+            20.47774969388181
+          ],
+          [
+            26.02702891068209
+          ],
+          [
+            18.934957683891845
+          ],
+          [
+            30.75738275237173
+          ],
+          [
+            25.589919972372922
+          ],
+          [
+            32.58704518312879
+          ],
+          [
+            20.712413406033562
+          ],
+          [
+            33.5827342496646
+          ],
+          [
+            21.98839630233003
+          ],
+          [
+            34.60121317576214
+          ],
+          [
+            31.1358772315449
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Duree trajet domicile - travail (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Aucun diplôme mais scolarité au delà du collège",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "BEPC, brevet élémentaire, brevet des collèges",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Certificat d\u0027études primaires",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Brevet d\u0027études professionnelles",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Baccalauréat général, brevet supérieur",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 7514,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:34:21,612",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            23.866205730561035
+          ],
+          [
+            19.822702269293725
+          ],
+          [
+            20.129193501597456
+          ],
+          [
+            21.295103623955825
+          ],
+          [
+            21.382498236154532
+          ],
+          [
+            22.025025607039666
+          ],
+          [
+            23.708545144287694
+          ],
+          [
+            28.34536793761458
+          ],
+          [
+            25.516993962029975
+          ],
+          [
+            26.89482649110725
+          ],
+          [
+            32.83594167086794
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Duree trajet domicile - travail (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              },
+              {
+                "value": "Aucun diplôme mais scolarité au delà du collège",
+                "children": null
+              },
+              {
+                "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                "children": null
+              },
+              {
+                "value": "BEPC, brevet élémentaire, brevet des collèges",
+                "children": null
+              },
+              {
+                "value": "Certificat d\u0027études primaires",
+                "children": null
+              },
+              {
+                "value": "Brevet d\u0027études professionnelles",
+                "children": null
+              },
+              {
+                "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                "children": null
+              },
+              {
+                "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                "children": null
+              },
+              {
+                "value": "Baccalauréat général, brevet supérieur",
+                "children": null
+              },
+              {
+                "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                "children": null
+              },
+              {
+                "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 7774,
+      "query": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:36:41,268",
+      "duration": 172,
+      "result": {
+        "values": [
+          [
+            9.56450560703448,
+            56.92598627568472,
+            37.34525024570582,
+            22.57341799714343,
+            48.25600902265748,
+            174.27630071983825,
+            11.44683070682523,
+            131.48970480812952,
+            71.2714154127753,
+            107.44763680408644
+          ],
+          [
+            216.26657509004912,
+            351.9092596834902,
+            136.93637595402896,
+            97.1040413409365,
+            323.41615900143205,
+            3391.9984148082954,
+            100.84025499473988,
+            596.5331380351519,
+            330.1090014014978,
+            16.00078875369154
+          ],
+          [
+            502.43760719581303,
+            877.3806606237683,
+            271.16866212810186,
+            264.5378474100472,
+            772.7170686945567,
+            5135.063246906508,
+            284.46703189402086,
+            1353.2883834470074,
+            976.3049864780189,
+            301.8123555962863
+          ],
+          [
+            473.2419494302487,
+            388.12795666271506,
+            154.93084364232521,
+            128.6094883382254,
+            636.9313716776256,
+            4478.646645886419,
+            122.58116275257701,
+            527.3905428114349,
+            756.8352614532112,
+            92.09411163350863
+          ],
+          [
+            549.8936745212844,
+            284.48561130322787,
+            109.06408177510983,
+            52.963334098512355,
+            288.3653773210439,
+            2548.4813273785235,
+            34.6532630924646,
+            443.6198588201848,
+            1203.08173661885,
+            16.99301130602526
+          ],
+          [
+            760.9357898102944,
+            1133.8967901820977,
+            291.934494258019,
+            296.89371962822077,
+            1025.7954710271538,
+            11048.977978129082,
+            176.6965480849423,
+            1052.1418788140695,
+            928.8181390493758,
+            117.32885408351378
+          ],
+          [
+            999.3336584970854,
+            2526.238957596286,
+            550.8756126275437,
+            647.1137143947684,
+            1261.6307889912978,
+            17437.008023071212,
+            331.65112498420433,
+            2658.020710904455,
+            1438.8888398993256,
+            132.91503685653643
+          ],
+          [
+            739.4438520558523,
+            1085.1976478580864,
+            242.06460530279435,
+            287.5610315214967,
+            533.1121658560974,
+            9549.99712177139,
+            184.9007619964281,
+            974.15741342397,
+            597.5517342879372,
+            75.20395772631045
+          ],
+          [
+            737.4713377157591,
+            735.2229007928606,
+            222.09039070438126,
+            96.8395267897654,
+            679.520996688461,
+            6232.710188114603,
+            92.56987069153708,
+            556.4893735472332,
+            527.2511325037419,
+            78.66472970933494
+          ],
+          [
+            1278.8428655342684,
+            1180.0135392292968,
+            341.8058597082876,
+            234.50305386003095,
+            1064.7323675977884,
+            12802.982608519686,
+            195.59739853387248,
+            1043.6970825760022,
+            851.6847994361965,
+            33.09265800793254
+          ],
+          [
+            1267.7713732784935,
+            1265.6832730681806,
+            289.0586549666423,
+            199.87615755960422,
+            591.2636353293365,
+            9445.728057005877,
+            96.65621415295408,
+            1337.6839187550918,
+            550.4460247444556,
+            72.28282496238884
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Femme vivant seule",
+                "children": null
+              },
+              {
+                "value": "Homme vivant seul",
+                "children": null
+              },
+              {
+                "value": "Plusieurs personnes sans famille",
+                "children": null
+              },
+              {
+                "value": "Famille principale monoparentale composée d\u0027un homme avec enfant(s)",
+                "children": null
+              },
+              {
+                "value": "Famille principale monoparentale composée d\u0027une femme avec enfant(s)",
+                "children": null
+              },
+              {
+                "value": "Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"",
+                "children": null
+              },
+              {
+                "value": "Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"",
+                "children": null
+              },
+              {
+                "value": "Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"",
+                "children": null
+              },
+              {
+                "value": "Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"",
+                "children": null
+              },
+              {
+                "value": "Hors logement ordinaire",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              },
+              {
+                "value": "Aucun diplôme mais scolarité au delà du collège",
+                "children": null
+              },
+              {
+                "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                "children": null
+              },
+              {
+                "value": "BEPC, brevet élémentaire, brevet des collèges",
+                "children": null
+              },
+              {
+                "value": "Certificat d\u0027études primaires",
+                "children": null
+              },
+              {
+                "value": "Brevet d\u0027études professionnelles",
+                "children": null
+              },
+              {
+                "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                "children": null
+              },
+              {
+                "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                "children": null
+              },
+              {
+                "value": "Baccalauréat général, brevet supérieur",
+                "children": null
+              },
+              {
+                "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                "children": null
+              },
+              {
+                "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 7825,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (moyenne)]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:36:41,784",
+      "duration": 109,
+      "result": {
+        "values": [
+          [
+            2.9206736128931703,
+            2.9496795186431055,
+            2.5955037627352087,
+            2.9040337319755403,
+            2.894940100286146,
+            2.8794192965232703
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Non Scolarisé",
+                "children": null
+              },
+              {
+                "value": "Scolarisé sans diplôme",
+                "children": null
+              },
+              {
+                "value": "CEP, BEPC",
+                "children": null
+              },
+              {
+                "value": "CAP, BEP",
+                "children": null
+              },
+              {
+                "value": "Bac",
+                "children": null
+              },
+              {
+                "value": "Bac + 1 et plus",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Nombre de personnes des menages (moyenne)",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 7843,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:36:53,956",
+      "duration": 15,
+      "result": {
+        "values": [
+          [
+            9.56450560703448,
+            216.26657509004912,
+            502.43760719581303,
+            473.2419494302487,
+            549.8936745212844,
+            760.9357898102944,
+            999.3336584970854,
+            739.4438520558523,
+            737.4713377157591,
+            1278.8428655342684,
+            1267.7713732784935
+          ],
+          [
+            56.92598627568472,
+            351.9092596834902,
+            877.3806606237683,
+            388.12795666271506,
+            284.48561130322787,
+            1133.8967901820977,
+            2526.238957596286,
+            1085.1976478580864,
+            735.2229007928606,
+            1180.0135392292968,
+            1265.6832730681806
+          ],
+          [
+            37.34525024570582,
+            136.93637595402896,
+            271.16866212810186,
+            154.93084364232521,
+            109.06408177510983,
+            291.934494258019,
+            550.8756126275437,
+            242.06460530279435,
+            222.09039070438126,
+            341.8058597082876,
+            289.0586549666423
+          ],
+          [
+            22.57341799714343,
+            97.1040413409365,
+            264.5378474100472,
+            128.6094883382254,
+            52.963334098512355,
+            296.89371962822077,
+            647.1137143947684,
+            287.5610315214967,
+            96.8395267897654,
+            234.50305386003095,
+            199.87615755960422
+          ],
+          [
+            48.25600902265748,
+            323.41615900143205,
+            772.7170686945567,
+            636.9313716776256,
+            288.3653773210439,
+            1025.7954710271538,
+            1261.6307889912978,
+            533.1121658560974,
+            679.520996688461,
+            1064.7323675977884,
+            591.2636353293365
+          ],
+          [
+            174.27630071983825,
+            3391.9984148082954,
+            5135.063246906508,
+            4478.646645886419,
+            2548.4813273785235,
+            11048.977978129082,
+            17437.008023071212,
+            9549.99712177139,
+            6232.710188114603,
+            12802.982608519686,
+            9445.728057005877
+          ],
+          [
+            11.44683070682523,
+            100.84025499473988,
+            284.46703189402086,
+            122.58116275257701,
+            34.6532630924646,
+            176.6965480849423,
+            331.65112498420433,
+            184.9007619964281,
+            92.56987069153708,
+            195.59739853387248,
+            96.65621415295408
+          ],
+          [
+            131.48970480812952,
+            596.5331380351519,
+            1353.2883834470074,
+            527.3905428114349,
+            443.6198588201848,
+            1052.1418788140695,
+            2658.020710904455,
+            974.15741342397,
+            556.4893735472332,
+            1043.6970825760022,
+            1337.6839187550918
+          ],
+          [
+            71.2714154127753,
+            330.1090014014978,
+            976.3049864780189,
+            756.8352614532112,
+            1203.08173661885,
+            928.8181390493758,
+            1438.8888398993256,
+            597.5517342879372,
+            527.2511325037419,
+            851.6847994361965,
+            550.4460247444556
+          ],
+          [
+            107.44763680408644,
+            16.00078875369154,
+            301.8123555962863,
+            92.09411163350863,
+            16.99301130602526,
+            117.32885408351378,
+            132.91503685653643,
+            75.20395772631045,
+            78.66472970933494,
+            33.09265800793254,
+            72.28282496238884
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              },
+              {
+                "value": "Aucun diplôme mais scolarité au delà du collège",
+                "children": null
+              },
+              {
+                "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                "children": null
+              },
+              {
+                "value": "BEPC, brevet élémentaire, brevet des collèges",
+                "children": null
+              },
+              {
+                "value": "Certificat d\u0027études primaires",
+                "children": null
+              },
+              {
+                "value": "Brevet d\u0027études professionnelles",
+                "children": null
+              },
+              {
+                "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                "children": null
+              },
+              {
+                "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                "children": null
+              },
+              {
+                "value": "Baccalauréat général, brevet supérieur",
+                "children": null
+              },
+              {
+                "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                "children": null
+              },
+              {
+                "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Femme vivant seule",
+                "children": null
+              },
+              {
+                "value": "Homme vivant seul",
+                "children": null
+              },
+              {
+                "value": "Plusieurs personnes sans famille",
+                "children": null
+              },
+              {
+                "value": "Famille principale monoparentale composée d\u0027un homme avec enfant(s)",
+                "children": null
+              },
+              {
+                "value": "Famille principale monoparentale composée d\u0027une femme avec enfant(s)",
+                "children": null
+              },
+              {
+                "value": "Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"",
+                "children": null
+              },
+              {
+                "value": "Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"",
+                "children": null
+              },
+              {
+                "value": "Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"",
+                "children": null
+              },
+              {
+                "value": "Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"",
+                "children": null
+              },
+              {
+                "value": "Hors logement ordinaire",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 7896,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:37:08,565",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            66.4904918827192,
+            568.1758347735393,
+            1379.8182678195828,
+            861.3699060929639,
+            834.3792858245123,
+            1894.8325799923928,
+            3525.57261609337,
+            1824.6414999139392,
+            1472.694238508621,
+            2458.856404763567,
+            2533.4546463466772
+          ],
+          [
+            37.34525024570582,
+            136.93637595402896,
+            271.16866212810186,
+            154.93084364232521,
+            109.06408177510983,
+            291.934494258019,
+            550.8756126275437,
+            242.06460530279435,
+            222.09039070438126,
+            341.8058597082876,
+            289.0586549666423
+          ],
+          [
+            70.82942701980089,
+            420.52020034236847,
+            1037.2549161046045,
+            765.5408600158513,
+            341.3287114195563,
+            1322.689190655375,
+            1908.7445033860658,
+            820.6731973775941,
+            776.3605234782266,
+            1299.2354214578195,
+            791.1397928889417
+          ],
+          [
+            388.4842516475683,
+            4419.480809239683,
+            7749.123648725568,
+            5885.453612903649,
+            4229.836185910017,
+            13206.634544077462,
+            21865.568698859202,
+            11306.607031479733,
+            7409.020564857122,
+            14893.961889065782,
+            11430.514214658375
+          ],
+          [
+            107.44763680408644,
+            16.00078875369154,
+            301.8123555962863,
+            92.09411163350863,
+            16.99301130602526,
+            117.32885408351378,
+            132.91503685653643,
+            75.20395772631045,
+            78.66472970933494,
+            33.09265800793254,
+            72.28282496238884
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              },
+              {
+                "value": "Aucun diplôme mais scolarité au delà du collège",
+                "children": null
+              },
+              {
+                "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                "children": null
+              },
+              {
+                "value": "BEPC, brevet élémentaire, brevet des collèges",
+                "children": null
+              },
+              {
+                "value": "Certificat d\u0027études primaires",
+                "children": null
+              },
+              {
+                "value": "Brevet d\u0027études professionnelles",
+                "children": null
+              },
+              {
+                "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                "children": null
+              },
+              {
+                "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                "children": null
+              },
+              {
+                "value": "Baccalauréat général, brevet supérieur",
+                "children": null
+              },
+              {
+                "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                "children": null
+              },
+              {
+                "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Ménages d\u0027une personne seule sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages de plusieurs personnes sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale monoparentale",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale composée d\u0027un couple",
+                "children": null
+              },
+              {
+                "value": "Hors logement ordinaire",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 8095,
+      "query": "select NON EMPTY {Hierarchize({[Statut d\u0027emploi.STATEMPL_Hierarchie].[tous les statuts confondus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:37:47,268",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            17420.285772011957
+          ],
+          [
+            2647.2748313129377
+          ],
+          [
+            9554.316744146214
+          ],
+          [
+            102784.6854514239
+          ],
+          [
+            1043.8359654396154
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "tous les statuts confondus",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Ménages d\u0027une personne seule sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages de plusieurs personnes sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale monoparentale",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale composée d\u0027un couple",
+                "children": null
+              },
+              {
+                "value": "Hors logement ordinaire",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 8132,
+      "query": "select NON EMPTY {Hierarchize({[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:37:56,378",
+      "duration": 31,
+      "result": {
+        "values": [
+          [
+            15751.05006006987,
+            1669.2357119419544
+          ],
+          [
+            2363.5762815766006,
+            283.6985497363383
+          ],
+          [
+            8798.722496176933,
+            755.5942479692618
+          ],
+          [
+            90944.45158277493,
+            11840.233868652176
+          ],
+          [
+            916.843372979451,
+            126.99259246016517
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Salariés",
+                "children": null
+              },
+              {
+                "value": "Non salariés",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Ménages d\u0027une personne seule sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages de plusieurs personnes sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale monoparentale",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale composée d\u0027un couple",
+                "children": null
+              },
+              {
+                "value": "Hors logement ordinaire",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 8172,
+      "query": "select NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members}})} ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:38:00,378",
+      "duration": 31,
+      "result": {
+        "values": [
+          [
+            15751.05006006987,
+            318.8261084993868,
+            13417.885578053649,
+            2014.3383735169075,
+            1669.2357119419544
+          ],
+          [
+            2363.5762815766006,
+            70.08017706881363,
+            1832.4945804571307,
+            461.00152405065836,
+            283.6985497363383
+          ],
+          [
+            8798.722496176933,
+            493.6636262725109,
+            6864.131527422585,
+            1440.927342481852,
+            755.5942479692618
+          ],
+          [
+            90944.45158277493,
+            1881.6443372432357,
+            79160.80417266642,
+            9902.00307286103,
+            11840.233868652176
+          ],
+          [
+            916.843372979451,
+            252.33076657847124,
+            445.03439060649026,
+            219.47821579448828,
+            126.99259246016517
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Salariés",
+                "children": null
+              },
+              {
+                "value": "Salariés en formation",
+                "children": null
+              },
+              {
+                "value": "Salariés non précaires",
+                "children": null
+              },
+              {
+                "value": "Salariés précaires",
+                "children": null
+              },
+              {
+                "value": "Non salariés",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Ménages d\u0027une personne seule sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages de plusieurs personnes sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale monoparentale",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale composée d\u0027un couple",
+                "children": null
+              },
+              {
+                "value": "Hors logement ordinaire",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 8224,
+      "query": "select NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:38:05,456",
+      "duration": 15,
+      "result": {
+        "values": [
+          [
+            15751.05006006987,
+            318.8261084993868,
+            263.15907018424696,
+            55.66703831513976,
+            13417.885578053649,
+            13417.885578053649,
+            2014.3383735169075,
+            1517.6579542709233,
+            156.7829645096271,
+            339.8974547363575,
+            1669.2357119419544,
+            1669.2357119419544,
+            12.90946222474863,
+            658.399926601523
+          ],
+          [
+            2363.5762815766006,
+            70.08017706881363,
+            62.101453664558306,
+            7.9787234042553195,
+            1832.4945804571307,
+            1832.4945804571307,
+            461.00152405065836,
+            304.61794365539083,
+            38.847733320606686,
+            117.5358470746609,
+            283.6985497363383,
+            283.6985497363383,
+            4.88550193634214,
+            110.72254178019796
+          ],
+          [
+            8798.722496176933,
+            493.6636262725109,
+            464.4690079363297,
+            29.19461833618118,
+            6864.131527422585,
+            6864.131527422585,
+            1440.927342481852,
+            1019.6704699117769,
+            114.3478033203866,
+            306.90906924968806,
+            755.5942479692618,
+            755.5942479692618,
+            4.0,
+            305.14071518880604
+          ],
+          [
+            90944.45158277493,
+            1881.6443372432357,
+            1771.9788091205073,
+            109.6655281227286,
+            79160.80417266642,
+            79160.80417266642,
+            9902.00307286103,
+            7279.403169745703,
+            395.9244796846467,
+            2226.67542343065,
+            11840.233868652176,
+            11840.233868652176,
+            173.97165853201616,
+            5415.487530798078
+          ],
+          [
+            916.843372979451,
+            252.33076657847124,
+            243.55919154987657,
+            8.77157502859467,
+            445.03439060649026,
+            445.03439060649026,
+            219.47821579448828,
+            150.5985679175373,
+            58.87963289942881,
+            10.00001497752222,
+            126.99259246016517,
+            126.99259246016517,
+            null,
+            0.999979882013665
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Salariés",
+                "children": null
+              },
+              {
+                "value": "Salariés en formation",
+                "children": null
+              },
+              {
+                "value": "En contrat d\u0027apprentissage",
+                "children": null
+              },
+              {
+                "value": "Stagiaires rémunérés en entreprise",
+                "children": null
+              },
+              {
+                "value": "Salariés non précaires",
+                "children": null
+              },
+              {
+                "value": "Emplois sans limite de durée, CDI, titulaire de la fonction publique",
+                "children": null
+              },
+              {
+                "value": "Salariés précaires",
+                "children": null
+              },
+              {
+                "value": "Autres emplois à durée limitée, CDD, contrat court, vacataire...",
+                "children": null
+              },
+              {
+                "value": "Emplois-jeunes, CES, contrats de qualification",
+                "children": null
+              },
+              {
+                "value": "Placés par une agence d\u0027intérim",
+                "children": null
+              },
+              {
+                "value": "Non salariés",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Aides familiaux",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Employeurs",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Indépendants",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Ménages d\u0027une personne seule sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages de plusieurs personnes sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale monoparentale",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale composée d\u0027un couple",
+                "children": null
+              },
+              {
+                "value": "Hors logement ordinaire",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 8317,
+      "query": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:38:26,362",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            15751.05006006987,
+            2363.5762815766006,
+            8798.722496176933,
+            90944.45158277493,
+            916.843372979451
+          ],
+          [
+            318.8261084993868,
+            70.08017706881363,
+            493.6636262725109,
+            1881.6443372432357,
+            252.33076657847124
+          ],
+          [
+            263.15907018424696,
+            62.101453664558306,
+            464.4690079363297,
+            1771.9788091205073,
+            243.55919154987657
+          ],
+          [
+            55.66703831513976,
+            7.9787234042553195,
+            29.19461833618118,
+            109.6655281227286,
+            8.77157502859467
+          ],
+          [
+            13417.885578053649,
+            1832.4945804571307,
+            6864.131527422585,
+            79160.80417266642,
+            445.03439060649026
+          ],
+          [
+            13417.885578053649,
+            1832.4945804571307,
+            6864.131527422585,
+            79160.80417266642,
+            445.03439060649026
+          ],
+          [
+            2014.3383735169075,
+            461.00152405065836,
+            1440.927342481852,
+            9902.00307286103,
+            219.47821579448828
+          ],
+          [
+            1517.6579542709233,
+            304.61794365539083,
+            1019.6704699117769,
+            7279.403169745703,
+            150.5985679175373
+          ],
+          [
+            156.7829645096271,
+            38.847733320606686,
+            114.3478033203866,
+            395.9244796846467,
+            58.87963289942881
+          ],
+          [
+            339.8974547363575,
+            117.5358470746609,
+            306.90906924968806,
+            2226.67542343065,
+            10.00001497752222
+          ],
+          [
+            1669.2357119419544,
+            283.6985497363383,
+            755.5942479692618,
+            11840.233868652176,
+            126.99259246016517
+          ],
+          [
+            1669.2357119419544,
+            283.6985497363383,
+            755.5942479692618,
+            11840.233868652176,
+            126.99259246016517
+          ],
+          [
+            12.90946222474863,
+            4.88550193634214,
+            4.0,
+            173.97165853201616,
+            null
+          ],
+          [
+            658.399926601523,
+            110.72254178019796,
+            305.14071518880604,
+            5415.487530798078,
+            0.999979882013665
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Ménages d\u0027une personne seule sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages de plusieurs personnes sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale monoparentale",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale composée d\u0027un couple",
+                "children": null
+              },
+              {
+                "value": "Hors logement ordinaire",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Salariés",
+                "children": null
+              },
+              {
+                "value": "Salariés en formation",
+                "children": null
+              },
+              {
+                "value": "En contrat d\u0027apprentissage",
+                "children": null
+              },
+              {
+                "value": "Stagiaires rémunérés en entreprise",
+                "children": null
+              },
+              {
+                "value": "Salariés non précaires",
+                "children": null
+              },
+              {
+                "value": "Emplois sans limite de durée, CDI, titulaire de la fonction publique",
+                "children": null
+              },
+              {
+                "value": "Salariés précaires",
+                "children": null
+              },
+              {
+                "value": "Autres emplois à durée limitée, CDD, contrat court, vacataire...",
+                "children": null
+              },
+              {
+                "value": "Emplois-jeunes, CES, contrats de qualification",
+                "children": null
+              },
+              {
+                "value": "Placés par une agence d\u0027intérim",
+                "children": null
+              },
+              {
+                "value": "Non salariés",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Aides familiaux",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Employeurs",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Indépendants",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 8484,
+      "query": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:39:02,268",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            15751.05006006987,
+            2363.5762815766006,
+            8798.722496176933,
+            90944.45158277493,
+            916.843372979451
+          ],
+          [
+            263.15907018424696,
+            62.101453664558306,
+            464.4690079363297,
+            1771.9788091205073,
+            243.55919154987657
+          ],
+          [
+            55.66703831513976,
+            7.9787234042553195,
+            29.19461833618118,
+            109.6655281227286,
+            8.77157502859467
+          ],
+          [
+            13417.885578053649,
+            1832.4945804571307,
+            6864.131527422585,
+            79160.80417266642,
+            445.03439060649026
+          ],
+          [
+            1517.6579542709233,
+            304.61794365539083,
+            1019.6704699117769,
+            7279.403169745703,
+            150.5985679175373
+          ],
+          [
+            156.7829645096271,
+            38.847733320606686,
+            114.3478033203866,
+            395.9244796846467,
+            58.87963289942881
+          ],
+          [
+            339.8974547363575,
+            117.5358470746609,
+            306.90906924968806,
+            2226.67542343065,
+            10.00001497752222
+          ],
+          [
+            1669.2357119419544,
+            283.6985497363383,
+            755.5942479692618,
+            11840.233868652176,
+            126.99259246016517
+          ],
+          [
+            12.90946222474863,
+            4.88550193634214,
+            4.0,
+            173.97165853201616,
+            null
+          ],
+          [
+            658.399926601523,
+            110.72254178019796,
+            305.14071518880604,
+            5415.487530798078,
+            0.999979882013665
+          ],
+          [
+            997.9263231156831,
+            168.09050601979823,
+            446.45353278045565,
+            6250.774679322062,
+            125.99261257815151
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Ménages d\u0027une personne seule sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages de plusieurs personnes sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale monoparentale",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale composée d\u0027un couple",
+                "children": null
+              },
+              {
+                "value": "Hors logement ordinaire",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Salariés",
+                "children": null
+              },
+              {
+                "value": "En contrat d\u0027apprentissage",
+                "children": null
+              },
+              {
+                "value": "Stagiaires rémunérés en entreprise",
+                "children": null
+              },
+              {
+                "value": "Emplois sans limite de durée, CDI, titulaire de la fonction publique",
+                "children": null
+              },
+              {
+                "value": "Autres emplois à durée limitée, CDD, contrat court, vacataire...",
+                "children": null
+              },
+              {
+                "value": "Emplois-jeunes, CES, contrats de qualification",
+                "children": null
+              },
+              {
+                "value": "Placés par une agence d\u0027intérim",
+                "children": null
+              },
+              {
+                "value": "Non salariés",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Aides familiaux",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Employeurs",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Indépendants",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 8565,
+      "query": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:39:04,159",
+      "duration": 15,
+      "result": {
+        "values": [
+          [
+            15751.05006006987,
+            2363.5762815766006,
+            8798.722496176933,
+            90944.45158277493,
+            916.843372979451
+          ],
+          [
+            263.15907018424696,
+            62.101453664558306,
+            464.4690079363297,
+            1771.9788091205073,
+            243.55919154987657
+          ],
+          [
+            55.66703831513976,
+            7.9787234042553195,
+            29.19461833618118,
+            109.6655281227286,
+            8.77157502859467
+          ],
+          [
+            13417.885578053649,
+            1832.4945804571307,
+            6864.131527422585,
+            79160.80417266642,
+            445.03439060649026
+          ],
+          [
+            1517.6579542709233,
+            304.61794365539083,
+            1019.6704699117769,
+            7279.403169745703,
+            150.5985679175373
+          ],
+          [
+            156.7829645096271,
+            38.847733320606686,
+            114.3478033203866,
+            395.9244796846467,
+            58.87963289942881
+          ],
+          [
+            339.8974547363575,
+            117.5358470746609,
+            306.90906924968806,
+            2226.67542343065,
+            10.00001497752222
+          ],
+          [
+            1669.2357119419544,
+            283.6985497363383,
+            755.5942479692618,
+            11840.233868652176,
+            126.99259246016517
+          ],
+          [
+            12.90946222474863,
+            4.88550193634214,
+            4.0,
+            173.97165853201616,
+            null
+          ],
+          [
+            658.399926601523,
+            110.72254178019796,
+            305.14071518880604,
+            5415.487530798078,
+            0.999979882013665
+          ],
+          [
+            997.9263231156831,
+            168.09050601979823,
+            446.45353278045565,
+            6250.774679322062,
+            125.99261257815151
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Ménages d\u0027une personne seule sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages de plusieurs personnes sans famille",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale monoparentale",
+                "children": null
+              },
+              {
+                "value": "Ménages avec famille principale composée d\u0027un couple",
+                "children": null
+              },
+              {
+                "value": "Hors logement ordinaire",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Salariés",
+                "children": null
+              },
+              {
+                "value": "En contrat d\u0027apprentissage",
+                "children": null
+              },
+              {
+                "value": "Stagiaires rémunérés en entreprise",
+                "children": null
+              },
+              {
+                "value": "Emplois sans limite de durée, CDI, titulaire de la fonction publique",
+                "children": null
+              },
+              {
+                "value": "Autres emplois à durée limitée, CDD, contrat court, vacataire...",
+                "children": null
+              },
+              {
+                "value": "Emplois-jeunes, CES, contrats de qualification",
+                "children": null
+              },
+              {
+                "value": "Placés par une agence d\u0027intérim",
+                "children": null
+              },
+              {
+                "value": "Non salariés",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Aides familiaux",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Employeurs",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Indépendants",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 8732,
+      "query": "select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}) ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:39:38,549",
+      "duration": 47,
+      "result": {
+        "values": [
+          [
+            1.0,
+            2.7068128994657368,
+            2.6796450891926313,
+            3.2498061249344437
+          ],
+          [
+            1.0,
+            2.9376733569726636,
+            3.017595141496005,
+            4.02683352229809
+          ],
+          [
+            1.0,
+            2.0,
+            2.6195784850355106,
+            3.54216398010458
+          ],
+          [
+            1.0,
+            2.6556669083974787,
+            2.6526631359832673,
+            3.2274997098569678
+          ],
+          [
+            1.0,
+            2.8724525040512927,
+            2.6953086886493898,
+            3.272043871113916
+          ],
+          [
+            1.0,
+            2.7384181316909646,
+            2.823493956757969,
+            3.2525009062651518
+          ],
+          [
+            1.0,
+            2.990495363355167,
+            2.6717387080382484,
+            3.3368918505735077
+          ],
+          [
+            1.0,
+            2.5219222421529905,
+            2.53174668546856,
+            3.172443662256442
+          ],
+          [
+            1.0,
+            2.0,
+            3.0,
+            3.2058984533069834
+          ],
+          [
+            1.0,
+            2.5299526485738055,
+            2.4691741814008403,
+            3.220549230584973
+          ],
+          [
+            1.0,
+            2.5318020691196743,
+            2.5703182368616186,
+            3.129835296958787
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Ménages d\u0027une personne seule sans famille",
+                "children": [
+                  {
+                    "value": "Nombre de personnes des menages (moyenne)",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Ménages de plusieurs personnes sans famille",
+                "children": [
+                  {
+                    "value": "Nombre de personnes des menages (moyenne)",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Ménages avec famille principale monoparentale",
+                "children": [
+                  {
+                    "value": "Nombre de personnes des menages (moyenne)",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Ménages avec famille principale composée d\u0027un couple",
+                "children": [
+                  {
+                    "value": "Nombre de personnes des menages (moyenne)",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Salariés",
+                "children": null
+              },
+              {
+                "value": "En contrat d\u0027apprentissage",
+                "children": null
+              },
+              {
+                "value": "Stagiaires rémunérés en entreprise",
+                "children": null
+              },
+              {
+                "value": "Emplois sans limite de durée, CDI, titulaire de la fonction publique",
+                "children": null
+              },
+              {
+                "value": "Autres emplois à durée limitée, CDD, contrat court, vacataire...",
+                "children": null
+              },
+              {
+                "value": "Emplois-jeunes, CES, contrats de qualification",
+                "children": null
+              },
+              {
+                "value": "Placés par une agence d\u0027intérim",
+                "children": null
+              },
+              {
+                "value": "Non salariés",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Aides familiaux",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Employeurs",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Indépendants",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 8840,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:39:40,768",
+      "duration": 31,
+      "result": {
+        "values": [
+          [
+            2.8733245349200613
+          ],
+          [
+            3.2020603536781445
+          ],
+          [
+            2.5395766488091476
+          ],
+          [
+            2.8704588732000174
+          ],
+          [
+            2.8192813511040766
+          ],
+          [
+            2.4500679392934224
+          ],
+          [
+            2.9795037359355323
+          ],
+          [
+            2.8523336351067625
+          ],
+          [
+            3.026133510170289
+          ],
+          [
+            2.947704108798271
+          ],
+          [
+            2.77059239630684
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Nombre de personnes des menages (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Salariés",
+                "children": null
+              },
+              {
+                "value": "En contrat d\u0027apprentissage",
+                "children": null
+              },
+              {
+                "value": "Stagiaires rémunérés en entreprise",
+                "children": null
+              },
+              {
+                "value": "Emplois sans limite de durée, CDI, titulaire de la fonction publique",
+                "children": null
+              },
+              {
+                "value": "Autres emplois à durée limitée, CDD, contrat court, vacataire...",
+                "children": null
+              },
+              {
+                "value": "Emplois-jeunes, CES, contrats de qualification",
+                "children": null
+              },
+              {
+                "value": "Placés par une agence d\u0027intérim",
+                "children": null
+              },
+              {
+                "value": "Non salariés",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Aides familiaux",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Employeurs",
+                "children": null
+              },
+              {
+                "value": "Non salariés : Indépendants",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 8900,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:39:47,034",
+      "duration": 15,
+      "result": {
+        "values": [
+          [
+            2.8733245349200613
+          ],
+          [
+            2.8523336351067625
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Nombre de personnes des menages (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Salariés",
+                "children": null
+              },
+              {
+                "value": "Non salariés",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

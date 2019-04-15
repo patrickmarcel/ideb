@@ -1,0 +1,1061 @@
+{
+  "user": {
+    "id": "dibstudent05",
+    "name": "Kevin",
+    "group": "groupe2"
+  },
+  "cube": "Cube chauffage",
+  "title": "Analyse les logements par niveau d\u0027instruction et annee",
+  "comment": "Analyse listé par l\u0027étudiant\nObs: dibstudent12, dibstudent10 et dibstudent05, sessions en parallelle",
+  "queries": [
+    {
+      "id": 132826,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members})} ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 08:16:08,590",
+      "duration": 328,
+      "result": {
+        "values": [
+          [
+            58.01027727588824,
+            270.75378145019727,
+            706.2406239079364,
+            258.37826690015584,
+            360.169442906258,
+            732.4151143183565,
+            1575.0373417200526,
+            807.8518267229953,
+            474.36515345708506,
+            808.9456662957225,
+            807.3847372409672
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              },
+              {
+                "value": "Aucun diplôme mais scolarité au delà du collège",
+                "children": null
+              },
+              {
+                "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                "children": null
+              },
+              {
+                "value": "BEPC, brevet élémentaire, brevet des collèges",
+                "children": null
+              },
+              {
+                "value": "Certificat d\u0027études primaires",
+                "children": null
+              },
+              {
+                "value": "Brevet d\u0027études professionnelles",
+                "children": null
+              },
+              {
+                "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                "children": null
+              },
+              {
+                "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                "children": null
+              },
+              {
+                "value": "Baccalauréat général, brevet supérieur",
+                "children": null
+              },
+              {
+                "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                "children": null
+              },
+              {
+                "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 132884,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 08:16:15,887",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            58.01027727588824
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 132925,
+      "query": "select NON EMPTY Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members) ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 08:16:35,449",
+      "duration": 266,
+      "result": {
+        "values": [
+          [
+            58.01027727588824
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": [
+                  {
+                    "value": "Résidences principales",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 132981,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members)) ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 08:16:39,762",
+      "duration": 109,
+      "result": {
+        "values": [
+          [
+            58.01027727588824
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Résidences principales",
+                    "children": [
+                      {
+                        "value": "Hommes",
+                        "children": null
+                      },
+                      {
+                        "value": "Femmes",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 133038,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members)) ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 08:16:45,590",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            58.01027727588824
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Résidences principales",
+                    "children": [
+                      {
+                        "value": "Hommes",
+                        "children": null
+                      },
+                      {
+                        "value": "Femmes",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 133081,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members)) ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 08:16:48,574",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            58.01027727588824
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Résidences principales",
+                    "children": [
+                      {
+                        "value": "Hommes",
+                        "children": null
+                      },
+                      {
+                        "value": "Femmes",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 133124,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube4Chauffage] where {[Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members}",
+      "datetime": "2016-09-26 08:16:50,793",
+      "duration": 172,
+      "result": {
+        "values": [
+          [
+            58.01027727588824
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 133389,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)) ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 08:16:54,231",
+      "duration": 156,
+      "result": {
+        "values": [
+          [
+            58.01027727588824
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 133511,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)) ON ROWS from [Cube4Chauffage] where {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}",
+      "datetime": "2016-09-26 08:17:22,074",
+      "duration": 219,
+      "result": {
+        "values": [
+          [
+            4.933778807788916
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 133556,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}))) ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 08:17:30,824",
+      "duration": 188,
+      "result": {
+        "values": [
+          [
+            4.933778807788916
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": [
+                          {
+                            "value": "Salariés",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": [
+                          {
+                            "value": "Salariés",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 133680,
+      "query": "select NON EMPTY Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, {[Age du referent.REF_AGE_Hierarchie_1].[tous les ages regroupes]}) ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}))) ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 08:17:51,074",
+      "duration": 141,
+      "result": {
+        "values": [
+          [
+            4.933778807788916
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": [
+                  {
+                    "value": "tous les ages regroupes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": [
+                          {
+                            "value": "Salariés",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": [
+                          {
+                            "value": "Salariés",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 133737,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, Crossjoin({[Age du referent.REF_AGE_Hierarchie_1].[tous les ages regroupes]}, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]})))) ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 08:17:54,856",
+      "duration": 109,
+      "result": {
+        "values": [
+          [
+            4.933778807788916
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": [
+                          {
+                            "value": "tous les ages regroupes",
+                            "children": [
+                              {
+                                "value": "Salariés",
+                                "children": null
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": [
+                          {
+                            "value": "tous les ages regroupes",
+                            "children": [
+                              {
+                                "value": "Salariés",
+                                "children": null
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 133809,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}))) ON ROWS from [Cube4Chauffage] where {[Age du referent.REF_AGE_Hierarchie_1].[tous les ages regroupes]}",
+      "datetime": "2016-09-26 08:17:58,981",
+      "duration": 15,
+      "result": {
+        "values": [
+          [
+            4.933778807788916
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Pas de scolarité",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": [
+                          {
+                            "value": "Salariés",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": [
+                          {
+                            "value": "Salariés",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 133862,
+      "query": "select NON EMPTY Crossjoin({[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}, {[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}) ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)) ON ROWS from [Cube4Chauffage] where {[Age du referent.REF_AGE_Hierarchie_1].[tous les ages regroupes]}",
+      "datetime": "2016-09-26 08:18:03,059",
+      "duration": 172,
+      "result": {
+        "values": [
+          [
+            4.933778807788916
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Salariés",
+                "children": [
+                  {
+                    "value": "Pas de scolarité",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 133914,
+      "query": "select NON EMPTY Crossjoin({[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}, {[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}) ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)) ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 08:18:08,449",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            4.933778807788916
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Salariés",
+                "children": [
+                  {
+                    "value": "Pas de scolarité",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 133977,
+      "query": "select NON EMPTY Crossjoin({[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}, {[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}) ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)) ON ROWS from [Cube4Chauffage] where {[Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members}",
+      "datetime": "2016-09-26 08:18:16,012",
+      "duration": 250,
+      "result": {
+        "values": [
+          [
+            4.933778807788916
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Salariés",
+                "children": [
+                  {
+                    "value": "Pas de scolarité",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 134027,
+      "query": "select NON EMPTY Crossjoin({[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}, {[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}) ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members))) ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 08:18:19,168",
+      "duration": 188,
+      "result": {
+        "values": [
+          [
+            3.9420076030778146
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Salariés",
+                "children": [
+                  {
+                    "value": "Pas de scolarité",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": [
+                      {
+                        "value": "40 à 54 ans",
+                        "children": [
+                          {
+                            "value": "Résidences principales",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "55 à 64 ans",
+                        "children": [
+                          {
+                            "value": "Résidences principales",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": [
+                      {
+                        "value": "40 à 54 ans",
+                        "children": [
+                          {
+                            "value": "Résidences principales",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 134100,
+      "query": "select NON EMPTY Crossjoin({[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}, Crossjoin([Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members, {[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})) ON COLUMNS, NON EMPTY Crossjoin({[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)) ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 08:18:29,199",
+      "duration": 172,
+      "result": {
+        "values": [
+          [
+            3.9420076030778146
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Salariés",
+                "children": [
+                  {
+                    "value": "40 à 54 ans",
+                    "children": [
+                      {
+                        "value": "Pas de scolarité",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "55 à 64 ans",
+                    "children": [
+                      {
+                        "value": "Pas de scolarité",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Année  2007",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": [
+                      {
+                        "value": "Résidences principales",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

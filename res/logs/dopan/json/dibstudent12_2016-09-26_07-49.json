@@ -1,0 +1,3809 @@
+{
+  "user": {
+    "id": "dibstudent12",
+    "name": "Salim",
+    "group": "groupe3"
+  },
+  "cube": "Cube mobsco",
+  "title": "Mobilité d\u0027individus ayant differentes CSP",
+  "comment": "Analyse 2 listé par l\u0027étudiant\nObs: au milieu, repète plusieurs fois la même requête",
+  "queries": [
+    {
+      "id": 129969,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:49:15,812",
+      "duration": 94,
+      "result": {
+        "values": [
+          [
+            533.9561647532383
+          ],
+          [
+            3641.07839650413
+          ],
+          [
+            3717.339886965375
+          ],
+          [
+            3737.29107397175
+          ],
+          [
+            19534.820134410158
+          ],
+          [
+            15843.991470274705
+          ],
+          [
+            11208.541620203127
+          ],
+          [
+            8517.696155327629
+          ],
+          [
+            523.8288343500273
+          ],
+          [
+            1329.624640495748
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2 ans",
+                "children": null
+              },
+              {
+                "value": "3 ans",
+                "children": null
+              },
+              {
+                "value": "4 ans",
+                "children": null
+              },
+              {
+                "value": "5 ans",
+                "children": null
+              },
+              {
+                "value": "6-10 ans",
+                "children": null
+              },
+              {
+                "value": "11-14 ans",
+                "children": null
+              },
+              {
+                "value": "15-17 ans",
+                "children": null
+              },
+              {
+                "value": "18-24 ans",
+                "children": null
+              },
+              {
+                "value": "25-29 ans",
+                "children": null
+              },
+              {
+                "value": "30 ans ou plus",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130022,
+      "query": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Marche à pied]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:49:36,062",
+      "duration": 31,
+      "result": {
+        "values": null,
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": null
+          },
+          {
+            "value": "ROWS",
+            "children": null
+          }
+        ]
+      }
+    },
+    {
+      "id": 130067,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Marche à pied]})} ON COLUMNS, NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:49:50,640",
+      "duration": 16,
+      "result": {
+        "values": null,
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": null
+          },
+          {
+            "value": "ROWS",
+            "children": null
+          }
+        ]
+      }
+    },
+    {
+      "id": 130104,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode inconnu].[Mode inconnu]})} ON COLUMNS, NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:50:06,624",
+      "duration": 0,
+      "result": {
+        "values": [
+          [
+            533.9561647532383
+          ],
+          [
+            3641.07839650413
+          ],
+          [
+            3717.339886965375
+          ],
+          [
+            3737.29107397175
+          ],
+          [
+            19534.820134410158
+          ],
+          [
+            15843.991470274705
+          ],
+          [
+            11208.541620203127
+          ],
+          [
+            8517.696155327629
+          ],
+          [
+            523.8288343500273
+          ],
+          [
+            1329.624640495748
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2 ans",
+                "children": null
+              },
+              {
+                "value": "3 ans",
+                "children": null
+              },
+              {
+                "value": "4 ans",
+                "children": null
+              },
+              {
+                "value": "5 ans",
+                "children": null
+              },
+              {
+                "value": "6-10 ans",
+                "children": null
+              },
+              {
+                "value": "11-14 ans",
+                "children": null
+              },
+              {
+                "value": "15-17 ans",
+                "children": null
+              },
+              {
+                "value": "18-24 ans",
+                "children": null
+              },
+              {
+                "value": "25-29 ans",
+                "children": null
+              },
+              {
+                "value": "30 ans ou plus",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130154,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]})} ON COLUMNS, NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:50:23,609",
+      "duration": 0,
+      "result": {
+        "values": null,
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": null
+          },
+          {
+            "value": "ROWS",
+            "children": null
+          }
+        ]
+      }
+    },
+    {
+      "id": 130192,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:50:32,874",
+      "duration": 0,
+      "result": {
+        "values": [
+          [
+            533.9561647532383
+          ],
+          [
+            3641.07839650413
+          ],
+          [
+            3717.339886965375
+          ],
+          [
+            3737.29107397175
+          ],
+          [
+            19534.820134410158
+          ],
+          [
+            15843.991470274705
+          ],
+          [
+            11208.541620203127
+          ],
+          [
+            8517.696155327629
+          ],
+          [
+            523.8288343500273
+          ],
+          [
+            1329.624640495748
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2 ans",
+                "children": null
+              },
+              {
+                "value": "3 ans",
+                "children": null
+              },
+              {
+                "value": "4 ans",
+                "children": null
+              },
+              {
+                "value": "5 ans",
+                "children": null
+              },
+              {
+                "value": "6-10 ans",
+                "children": null
+              },
+              {
+                "value": "11-14 ans",
+                "children": null
+              },
+              {
+                "value": "15-17 ans",
+                "children": null
+              },
+              {
+                "value": "18-24 ans",
+                "children": null
+              },
+              {
+                "value": "25-29 ans",
+                "children": null
+              },
+              {
+                "value": "30 ans ou plus",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130245,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[25-29 ans], [Age revolu en 10 classes.AgeRev10_Hierarchie_1].[15-17 ans]}})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:50:57,718",
+      "duration": 31,
+      "result": {
+        "values": [
+          [
+            11208.541620203127
+          ],
+          [
+            523.8288343500273
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "15-17 ans",
+                "children": null
+              },
+              {
+                "value": "25-29 ans",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130284,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[25-29 ans]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[15-17 ans]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:51:10,468",
+      "duration": 94,
+      "result": {
+        "values": [
+          [
+            5818.870049859024
+          ],
+          [
+            5389.67157034404
+          ],
+          [
+            242.60090712736266
+          ],
+          [
+            281.2279272226646
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "15-17 ans",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "25-29 ans",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130333,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[25-29 ans]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[15-17 ans]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:52:10,140",
+      "duration": 203,
+      "result": {
+        "values": [
+          [
+            206.77115429079834
+          ],
+          [
+            179.60564220859453
+          ],
+          [
+            null
+          ],
+          [
+            null
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Agriculteurs exploitants",
+                    "children": null
+                  },
+                  {
+                    "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                    "children": null
+                  },
+                  {
+                    "value": "Cadres et professions intellectuelles supérieures",
+                    "children": null
+                  },
+                  {
+                    "value": "Professions Intermédiaires",
+                    "children": null
+                  },
+                  {
+                    "value": "Employés",
+                    "children": null
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": null
+                  },
+                  {
+                    "value": "Retraités",
+                    "children": null
+                  },
+                  {
+                    "value": "Autres personnes sans activité professionnelle",
+                    "children": null
+                  },
+                  {
+                    "value": "Sans objet",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "15-17 ans",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "25-29 ans",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130411,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:53:42,890",
+      "duration": 94,
+      "result": {
+        "values": [
+          [
+            921.0361513742333
+          ],
+          [
+            900.2224348690145
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Agriculteurs exploitants",
+                    "children": null
+                  },
+                  {
+                    "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                    "children": null
+                  },
+                  {
+                    "value": "Cadres et professions intellectuelles supérieures",
+                    "children": null
+                  },
+                  {
+                    "value": "Professions Intermédiaires",
+                    "children": null
+                  },
+                  {
+                    "value": "Employés",
+                    "children": null
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": null
+                  },
+                  {
+                    "value": "Retraités",
+                    "children": null
+                  },
+                  {
+                    "value": "Autres personnes sans activité professionnelle",
+                    "children": null
+                  },
+                  {
+                    "value": "Sans objet",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": null
+              },
+              {
+                "value": "Femmes",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130479,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:54:27,421",
+      "duration": 125,
+      "result": {
+        "values": [
+          [
+            4812.478341486935
+          ],
+          [
+            4841.687907138182
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Employés",
+                    "children": null
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": null
+              },
+              {
+                "value": "Femmes",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130523,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:54:55,374",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            4812.478341486935
+          ],
+          [
+            4841.687907138182
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Employés",
+                    "children": null
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": null
+              },
+              {
+                "value": "Femmes",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130567,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:55:04,702",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            4812.478341486935
+          ],
+          [
+            4841.687907138182
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Employés",
+                    "children": null
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": null
+              },
+              {
+                "value": "Femmes",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130611,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:55:09,999",
+      "duration": 0,
+      "result": {
+        "values": [
+          [
+            4812.478341486935
+          ],
+          [
+            4841.687907138182
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Employés",
+                    "children": null
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": null
+              },
+              {
+                "value": "Femmes",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130655,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:55:13,640",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            4812.478341486935
+          ],
+          [
+            4841.687907138182
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Employés",
+                    "children": null
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": null
+              },
+              {
+                "value": "Femmes",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130699,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:55:17,796",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            4812.478341486935
+          ],
+          [
+            4841.687907138182
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Employés",
+                    "children": null
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": null
+              },
+              {
+                "value": "Femmes",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130744,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre de personnes scolarisees des menages (min)]}) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:55:19,499",
+      "duration": 172,
+      "result": {
+        "values": [
+          [
+            1.0
+          ],
+          [
+            1.0
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Employés",
+                    "children": null
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": [
+                  {
+                    "value": "Nombre de personnes scolarisees des menages (min)",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Femmes",
+                "children": [
+                  {
+                    "value": "Nombre de personnes scolarisees des menages (min)",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130773,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:55:24,156",
+      "duration": 15,
+      "result": {
+        "values": [
+          [
+            4812.478341486935
+          ],
+          [
+            4841.687907138182
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Employés",
+                    "children": null
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": null
+              },
+              {
+                "value": "Femmes",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130818,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:55:30,718",
+      "duration": 109,
+      "result": {
+        "values": [
+          [
+            12.868467757820303
+          ],
+          [
+            14.78112129793102
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Employés",
+                    "children": null
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Femmes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130854,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)))) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:56:07,937",
+      "duration": 281,
+      "result": {
+        "values": [
+          [
+            12.868467757820303
+          ],
+          [
+            14.78112129793102
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Employés",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Femmes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130901,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)))) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:56:15,671",
+      "duration": 78,
+      "result": {
+        "values": [
+          [
+            12.868467757820303
+          ],
+          [
+            14.78112129793102
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Employés",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Femmes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 130945,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:56:59,452",
+      "duration": 297,
+      "result": {
+        "values": [
+          [
+            17.551084194079742
+          ],
+          [
+            16.97903939714709
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Agriculteurs exploitants",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Cadres et professions intellectuelles supérieures",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Professions Intermédiaires",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Employés",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Retraités",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Autres personnes sans activité professionnelle",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Sans objet",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Femmes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 131002,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members))) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:57:50,046",
+      "duration": 406,
+      "result": {
+        "values": [
+          [
+            34.288762203144316
+          ],
+          [
+            21.349487330298903
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Agriculteurs exploitants",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Aucun diplôme mais scolarité au delà du collège",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                            "children": null
+                          },
+                          {
+                            "value": "BEPC, brevet élémentaire, brevet des collèges",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027études primaires",
+                            "children": null
+                          },
+                          {
+                            "value": "Brevet d\u0027études professionnelles",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                            "children": null
+                          },
+                          {
+                            "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                            "children": null
+                          },
+                          {
+                            "value": "Baccalauréat général, brevet supérieur",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                            "children": null
+                          },
+                          {
+                            "value": "Sans objet",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Pas de scolarité",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité au delà du collège",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                            "children": null
+                          },
+                          {
+                            "value": "BEPC, brevet élémentaire, brevet des collèges",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027études primaires",
+                            "children": null
+                          },
+                          {
+                            "value": "Brevet d\u0027études professionnelles",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                            "children": null
+                          },
+                          {
+                            "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                            "children": null
+                          },
+                          {
+                            "value": "Baccalauréat général, brevet supérieur",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                            "children": null
+                          },
+                          {
+                            "value": "Sans objet",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Cadres et professions intellectuelles supérieures",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Pas de scolarité",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité au delà du collège",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                            "children": null
+                          },
+                          {
+                            "value": "BEPC, brevet élémentaire, brevet des collèges",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027études primaires",
+                            "children": null
+                          },
+                          {
+                            "value": "Brevet d\u0027études professionnelles",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                            "children": null
+                          },
+                          {
+                            "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                            "children": null
+                          },
+                          {
+                            "value": "Baccalauréat général, brevet supérieur",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                            "children": null
+                          },
+                          {
+                            "value": "Sans objet",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Professions Intermédiaires",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Pas de scolarité",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité au delà du collège",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                            "children": null
+                          },
+                          {
+                            "value": "BEPC, brevet élémentaire, brevet des collèges",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027études primaires",
+                            "children": null
+                          },
+                          {
+                            "value": "Brevet d\u0027études professionnelles",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                            "children": null
+                          },
+                          {
+                            "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                            "children": null
+                          },
+                          {
+                            "value": "Baccalauréat général, brevet supérieur",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                            "children": null
+                          },
+                          {
+                            "value": "Sans objet",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Employés",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Pas de scolarité",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité au delà du collège",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                            "children": null
+                          },
+                          {
+                            "value": "BEPC, brevet élémentaire, brevet des collèges",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027études primaires",
+                            "children": null
+                          },
+                          {
+                            "value": "Brevet d\u0027études professionnelles",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                            "children": null
+                          },
+                          {
+                            "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                            "children": null
+                          },
+                          {
+                            "value": "Baccalauréat général, brevet supérieur",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                            "children": null
+                          },
+                          {
+                            "value": "Sans objet",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Pas de scolarité",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité au delà du collège",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                            "children": null
+                          },
+                          {
+                            "value": "BEPC, brevet élémentaire, brevet des collèges",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027études primaires",
+                            "children": null
+                          },
+                          {
+                            "value": "Brevet d\u0027études professionnelles",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                            "children": null
+                          },
+                          {
+                            "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                            "children": null
+                          },
+                          {
+                            "value": "Baccalauréat général, brevet supérieur",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                            "children": null
+                          },
+                          {
+                            "value": "Sans objet",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Retraités",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Pas de scolarité",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité au delà du collège",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                            "children": null
+                          },
+                          {
+                            "value": "BEPC, brevet élémentaire, brevet des collèges",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027études primaires",
+                            "children": null
+                          },
+                          {
+                            "value": "Brevet d\u0027études professionnelles",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                            "children": null
+                          },
+                          {
+                            "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                            "children": null
+                          },
+                          {
+                            "value": "Baccalauréat général, brevet supérieur",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                            "children": null
+                          },
+                          {
+                            "value": "Sans objet",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Autres personnes sans activité professionnelle",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Pas de scolarité",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité au delà du collège",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                            "children": null
+                          },
+                          {
+                            "value": "BEPC, brevet élémentaire, brevet des collèges",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027études primaires",
+                            "children": null
+                          },
+                          {
+                            "value": "Brevet d\u0027études professionnelles",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                            "children": null
+                          },
+                          {
+                            "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                            "children": null
+                          },
+                          {
+                            "value": "Baccalauréat général, brevet supérieur",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                            "children": null
+                          },
+                          {
+                            "value": "Sans objet",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Sans objet",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Pas de scolarité",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité au delà du collège",
+                            "children": null
+                          },
+                          {
+                            "value": "Aucun diplôme mais scolarité jusqu\u0027en école primaire ou au collège",
+                            "children": null
+                          },
+                          {
+                            "value": "BEPC, brevet élémentaire, brevet des collèges",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027études primaires",
+                            "children": null
+                          },
+                          {
+                            "value": "Brevet d\u0027études professionnelles",
+                            "children": null
+                          },
+                          {
+                            "value": "Certificat d\u0027aptitudes professionnelles,  brevet de compagnon",
+                            "children": null
+                          },
+                          {
+                            "value": "Bac technologique ou professionnel, brevet professionnel ou de technicien, BEC, BEI, BEH, capacité en droit",
+                            "children": null
+                          },
+                          {
+                            "value": "Baccalauréat général, brevet supérieur",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          },
+                          {
+                            "value": "Diplôme universitaire de 2ème ou 3ème cycle (y compris médecine, pharmacie, dentaire), diplôme d\u0027ingénieur, d\u0027une grande école, doctorat, etc.",
+                            "children": null
+                          },
+                          {
+                            "value": "Sans objet",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Femmes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 131473,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}))) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:58:07,327",
+      "duration": 125,
+      "result": {
+        "values": [
+          [
+            50.29494517017327
+          ],
+          [
+            72.17771975893895
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Agriculteurs exploitants",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Cadres et professions intellectuelles supérieures",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Professions Intermédiaires",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Employés",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Retraités",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Autres personnes sans activité professionnelle",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Sans objet",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Femmes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 131539,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]})) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:58:34,999",
+      "duration": 157,
+      "result": {
+        "values": [
+          [
+            50.29494517017327
+          ],
+          [
+            72.17771975893895
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Agriculteurs exploitants",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Cadres et professions intellectuelles supérieures",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Professions Intermédiaires",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Employés",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Retraités",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Autres personnes sans activité professionnelle",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Sans objet",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": [
+                      {
+                        "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "value": "Femmes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": [
+                      {
+                        "value": "Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 131598,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS from [Cube2MobScoInd] where {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}",
+      "datetime": "2016-09-26 07:58:40,718",
+      "duration": 188,
+      "result": {
+        "values": [
+          [
+            50.29494517017327
+          ],
+          [
+            72.17771975893895
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Agriculteurs exploitants",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Cadres et professions intellectuelles supérieures",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Professions Intermédiaires",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Employés",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Retraités",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Autres personnes sans activité professionnelle",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Sans objet",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Femmes",
+                "children": [
+                  {
+                    "value": "Distance trajet domicile - etudes (moyenne)",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 131662,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}))), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, {[Measures].[Nombre total d\u0027individus]}))))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd] where {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}",
+      "datetime": "2016-09-26 08:00:51,499",
+      "duration": 360,
+      "result": {
+        "values": [
+          [
+            3.2504786230623
+          ],
+          [
+            12.035246358086031
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Mode inconnu",
+                "children": [
+                  {
+                    "value": "Agriculteurs exploitants",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Nombre total d\u0027individus",
+                            "children": null
+                          },
+                          {
+                            "value": "Distance trajet domicile - etudes (moyenne)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Nombre total d\u0027individus",
+                            "children": null
+                          },
+                          {
+                            "value": "Distance trajet domicile - etudes (moyenne)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Cadres et professions intellectuelles supérieures",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Nombre total d\u0027individus",
+                            "children": null
+                          },
+                          {
+                            "value": "Distance trajet domicile - etudes (moyenne)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Professions Intermédiaires",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Nombre total d\u0027individus",
+                            "children": null
+                          },
+                          {
+                            "value": "Distance trajet domicile - etudes (moyenne)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Employés",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Nombre total d\u0027individus",
+                            "children": null
+                          },
+                          {
+                            "value": "Distance trajet domicile - etudes (moyenne)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Ouvriers",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Nombre total d\u0027individus",
+                            "children": null
+                          },
+                          {
+                            "value": "Distance trajet domicile - etudes (moyenne)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Retraités",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Nombre total d\u0027individus",
+                            "children": null
+                          },
+                          {
+                            "value": "Distance trajet domicile - etudes (moyenne)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Autres personnes sans activité professionnelle",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Nombre total d\u0027individus",
+                            "children": null
+                          },
+                          {
+                            "value": "Distance trajet domicile - etudes (moyenne)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Sans objet",
+                    "children": [
+                      {
+                        "value": "2010",
+                        "children": [
+                          {
+                            "value": "Nombre total d\u0027individus",
+                            "children": null
+                          },
+                          {
+                            "value": "Distance trajet domicile - etudes (moyenne)",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": null
+              },
+              {
+                "value": "Femmes",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 131752,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members))), Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members))))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd] where {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}",
+      "datetime": "2016-09-26 08:01:10,093",
+      "duration": 125,
+      "result": {
+        "values": [
+          [
+            3.2504786230623,
+            11.93267182244631
+          ],
+          [
+            12.035246358086031,
+            28.69469721105274
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Nombre total d\u0027individus",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Agriculteurs exploitants",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Cadres et professions intellectuelles supérieures",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Employés",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Ouvriers",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Autres personnes sans activité professionnelle",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Sans objet",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Agriculteurs exploitants",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Cadres et professions intellectuelles supérieures",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Employés",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Ouvriers",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Autres personnes sans activité professionnelle",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      },
+                      {
+                        "value": "Sans objet",
+                        "children": [
+                          {
+                            "value": "2010",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": null
+              },
+              {
+                "value": "Femmes",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 131840,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)), Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}",
+      "datetime": "2016-09-26 08:01:29,031",
+      "duration": 156,
+      "result": {
+        "values": [
+          [
+            3.2504786230623,
+            11.93267182244631
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Nombre total d\u0027individus",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Agriculteurs exploitants",
+                        "children": null
+                      },
+                      {
+                        "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                        "children": null
+                      },
+                      {
+                        "value": "Cadres et professions intellectuelles supérieures",
+                        "children": null
+                      },
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": null
+                      },
+                      {
+                        "value": "Employés",
+                        "children": null
+                      },
+                      {
+                        "value": "Ouvriers",
+                        "children": null
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": null
+                      },
+                      {
+                        "value": "Autres personnes sans activité professionnelle",
+                        "children": null
+                      },
+                      {
+                        "value": "Sans objet",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Agriculteurs exploitants",
+                        "children": null
+                      },
+                      {
+                        "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                        "children": null
+                      },
+                      {
+                        "value": "Cadres et professions intellectuelles supérieures",
+                        "children": null
+                      },
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": null
+                      },
+                      {
+                        "value": "Employés",
+                        "children": null
+                      },
+                      {
+                        "value": "Ouvriers",
+                        "children": null
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": null
+                      },
+                      {
+                        "value": "Autres personnes sans activité professionnelle",
+                        "children": null
+                      },
+                      {
+                        "value": "Sans objet",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2010",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 131907,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}",
+      "datetime": "2016-09-26 08:01:53,531",
+      "duration": 78,
+      "result": {
+        "values": [
+          [
+            50.29494517017327
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Agriculteurs exploitants",
+                        "children": null
+                      },
+                      {
+                        "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                        "children": null
+                      },
+                      {
+                        "value": "Cadres et professions intellectuelles supérieures",
+                        "children": null
+                      },
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": null
+                      },
+                      {
+                        "value": "Employés",
+                        "children": null
+                      },
+                      {
+                        "value": "Ouvriers",
+                        "children": null
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": null
+                      },
+                      {
+                        "value": "Autres personnes sans activité professionnelle",
+                        "children": null
+                      },
+                      {
+                        "value": "Sans objet",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2010",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 131962,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}",
+      "datetime": "2016-09-26 08:04:33,224",
+      "duration": 62,
+      "result": {
+        "values": [
+          [
+            50.29494517017327
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Agriculteurs exploitants",
+                        "children": null
+                      },
+                      {
+                        "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                        "children": null
+                      },
+                      {
+                        "value": "Cadres et professions intellectuelles supérieures",
+                        "children": null
+                      },
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": null
+                      },
+                      {
+                        "value": "Employés",
+                        "children": null
+                      },
+                      {
+                        "value": "Ouvriers",
+                        "children": null
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": null
+                      },
+                      {
+                        "value": "Autres personnes sans activité professionnelle",
+                        "children": null
+                      },
+                      {
+                        "value": "Sans objet",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2010",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 132017,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 08:05:33,130",
+      "duration": 313,
+      "result": {
+        "values": [
+          [
+            17.551084194079742
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Agriculteurs exploitants",
+                        "children": null
+                      },
+                      {
+                        "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                        "children": null
+                      },
+                      {
+                        "value": "Cadres et professions intellectuelles supérieures",
+                        "children": null
+                      },
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": null
+                      },
+                      {
+                        "value": "Employés",
+                        "children": null
+                      },
+                      {
+                        "value": "Ouvriers",
+                        "children": null
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": null
+                      },
+                      {
+                        "value": "Autres personnes sans activité professionnelle",
+                        "children": null
+                      },
+                      {
+                        "value": "Sans objet",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2010",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 132077,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}",
+      "datetime": "2016-09-26 08:05:55,474",
+      "duration": 47,
+      "result": {
+        "values": [
+          [
+            50.29494517017327
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Agriculteurs exploitants",
+                        "children": null
+                      },
+                      {
+                        "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                        "children": null
+                      },
+                      {
+                        "value": "Cadres et professions intellectuelles supérieures",
+                        "children": null
+                      },
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": null
+                      },
+                      {
+                        "value": "Employés",
+                        "children": null
+                      },
+                      {
+                        "value": "Ouvriers",
+                        "children": null
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": null
+                      },
+                      {
+                        "value": "Autres personnes sans activité professionnelle",
+                        "children": null
+                      },
+                      {
+                        "value": "Sans objet",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2010",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 132143,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}",
+      "datetime": "2016-09-26 08:06:25,161",
+      "duration": 94,
+      "result": {
+        "values": [
+          [
+            119.53178454030243
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": null
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2010",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 132197,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE]}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]})",
+      "datetime": "2016-09-26 08:10:55,786",
+      "duration": 235,
+      "result": {
+        "values": [
+          [
+            119.53178454030243
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": null
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2010",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 132239,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS from [Cube2MobScoInd] where {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}",
+      "datetime": "2016-09-26 08:11:07,021",
+      "duration": 140,
+      "result": {
+        "values": [
+          [
+            119.53178454030243
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": null
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2010",
+                "children": [
+                  {
+                    "value": "CENTRE",
+                    "children": [
+                      {
+                        "value": "Hommes",
+                        "children": null
+                      },
+                      {
+                        "value": "Femmes",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 132287,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE]}, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]}))), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE]}, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]}))))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}",
+      "datetime": "2016-09-26 08:11:13,990",
+      "duration": 93,
+      "result": {
+        "values": [
+          [
+            119.53178454030243
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "CENTRE",
+                        "children": [
+                          {
+                            "value": "Professions Intermédiaires",
+                            "children": null
+                          },
+                          {
+                            "value": "Retraités",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2010",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 132333,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}",
+      "datetime": "2016-09-26 08:11:19,302",
+      "duration": 31,
+      "result": {
+        "values": [
+          [
+            119.53178454030243
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": null
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2010",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 132381,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[toutes les classes d\u0027ages revolus]})) ON ROWS from [Cube2MobScoInd] where {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}",
+      "datetime": "2016-09-26 08:11:34,161",
+      "duration": 94,
+      "result": {
+        "values": [
+          [
+            119.53178454030243
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": null
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2010",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": [
+                      {
+                        "value": "toutes les classes d\u0027ages revolus",
+                        "children": null
+                      }
+                    ]
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": [
+                      {
+                        "value": "toutes les classes d\u0027ages revolus",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 132427,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[toutes les classes d\u0027ages revolus]}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]})",
+      "datetime": "2016-09-26 08:11:37,833",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            119.53178454030243
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": null
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2010",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 132475,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[toutes les classes d\u0027ages revolus]}, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]}))), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[toutes les classes d\u0027ages revolus]}, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]}))))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}",
+      "datetime": "2016-09-26 08:11:41,849",
+      "duration": 78,
+      "result": {
+        "values": [
+          [
+            119.53178454030243
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "toutes les classes d\u0027ages revolus",
+                        "children": [
+                          {
+                            "value": "Professions Intermédiaires",
+                            "children": null
+                          },
+                          {
+                            "value": "Retraités",
+                            "children": null
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2010",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 132519,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d\u0027infirmier(ère)]}",
+      "datetime": "2016-09-26 08:11:49,005",
+      "duration": 47,
+      "result": {
+        "values": [
+          [
+            119.53178454030243
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - etudes (moyenne)",
+                "children": [
+                  {
+                    "value": "Mode inconnu",
+                    "children": [
+                      {
+                        "value": "Professions Intermédiaires",
+                        "children": null
+                      },
+                      {
+                        "value": "Retraités",
+                        "children": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "2010",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,6931 @@
+{
+  "user": {
+    "id": "dibstudent04",
+    "name": "Willeme",
+    "group": "groupe1"
+  },
+  "cube": "Cube mobpro",
+  "title": "Les cadres parcourent plus de distance",
+  "comment": "Analyse 1 listé par l\u0027étudiant\nObs: en collaboration avec dibstudent01, dibstudent02 et dibstudent05",
+  "queries": [
+    {
+      "id": 69714,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:22:45,675",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            792.228
+          ],
+          [
+            745.702
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (max)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": null
+              },
+              {
+                "value": "Femmes",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 69731,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:25:50,816",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            792.228,
+            22.542133874762413
+          ],
+          [
+            745.702,
+            16.1126798394429
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (max)",
+                "children": null
+              },
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": null
+              },
+              {
+                "value": "Femmes",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 69753,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:26:35,488",
+      "duration": 265,
+      "result": {
+        "values": [
+          [
+            394.285,
+            379.133,
+            398.332,
+            443.243,
+            666.1266251114168,
+            522.372,
+            792.228,
+            682.963,
+            527.804,
+            594.86,
+            376.635,
+            618.5078022967148,
+            535.296,
+            615.243,
+            712.13,
+            534.889,
+            215.4337422951881,
+            26.76837264270841,
+            21.349586431991202,
+            24.45970851847669,
+            28.332664550043084,
+            26.358635972217318,
+            28.025418338006396,
+            24.646095094841048,
+            23.31689740301912,
+            21.91111490663426,
+            19.90791079147171,
+            19.273452417693697,
+            25.396731144331934,
+            19.509415777386987,
+            23.70762642748126,
+            30.547334398373117,
+            21.20366003778263,
+            28.3944255720777
+          ],
+          [
+            262.141,
+            363.113,
+            531.258,
+            390.7,
+            199.73,
+            439.368,
+            739.892,
+            485.64,
+            667.8730503617611,
+            745.702,
+            197.42444537901827,
+            496.587,
+            170.4076301636239,
+            636.2120587569275,
+            176.2871157199516,
+            427.076,
+            350.544,
+            21.51627391037741,
+            18.529439916982206,
+            21.3404443970866,
+            20.56225130437816,
+            19.51630203523127,
+            20.553394069584577,
+            17.117841941816312,
+            15.542037386460011,
+            16.818439840510223,
+            13.726615609129928,
+            15.067842763067063,
+            18.153620955472487,
+            16.147276388171782,
+            15.932319125669888,
+            16.88675570214295,
+            16.456622792869673,
+            16.792518444886596
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (max)",
+                "children": [
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE LIGÉRIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ORATORIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "CŒUR DE SOLOGNE",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES ETANGS",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES RIVIÈRES",
+                    "children": null
+                  },
+                  {
+                    "value": "CHER À LA LOIRE",
+                    "children": null
+                  },
+                  {
+                    "value": "ROMORANTINAIS ET  MONESTOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VAL-DE-CHER - CONTROIS",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "GRAND CHAMBORD",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": [
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE LIGÉRIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ORATORIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "CŒUR DE SOLOGNE",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES ETANGS",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES RIVIÈRES",
+                    "children": null
+                  },
+                  {
+                    "value": "CHER À LA LOIRE",
+                    "children": null
+                  },
+                  {
+                    "value": "ROMORANTINAIS ET  MONESTOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VAL-DE-CHER - CONTROIS",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "GRAND CHAMBORD",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": null
+              },
+              {
+                "value": "Femmes",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 69807,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:26:40,753",
+      "duration": 79,
+      "result": {
+        "values": [
+          [
+            394.285,
+            26.76837264270841
+          ],
+          [
+            379.133,
+            21.349586431991202
+          ],
+          [
+            398.332,
+            24.45970851847669
+          ],
+          [
+            443.243,
+            28.332664550043084
+          ],
+          [
+            666.1266251114168,
+            26.358635972217318
+          ],
+          [
+            522.372,
+            28.025418338006396
+          ],
+          [
+            792.228,
+            24.646095094841048
+          ],
+          [
+            682.963,
+            23.31689740301912
+          ],
+          [
+            527.804,
+            21.91111490663426
+          ],
+          [
+            594.86,
+            19.90791079147171
+          ],
+          [
+            376.635,
+            19.273452417693697
+          ],
+          [
+            618.5078022967148,
+            25.396731144331934
+          ],
+          [
+            535.296,
+            19.509415777386987
+          ],
+          [
+            615.243,
+            23.70762642748126
+          ],
+          [
+            712.13,
+            30.547334398373117
+          ],
+          [
+            534.889,
+            21.20366003778263
+          ],
+          [
+            215.4337422951881,
+            28.3944255720777
+          ],
+          [
+            262.141,
+            21.51627391037741
+          ],
+          [
+            363.113,
+            18.529439916982206
+          ],
+          [
+            531.258,
+            21.3404443970866
+          ],
+          [
+            390.7,
+            20.56225130437816
+          ],
+          [
+            199.73,
+            19.51630203523127
+          ],
+          [
+            439.368,
+            20.553394069584577
+          ],
+          [
+            739.892,
+            17.117841941816312
+          ],
+          [
+            485.64,
+            15.542037386460011
+          ],
+          [
+            667.8730503617611,
+            16.818439840510223
+          ],
+          [
+            745.702,
+            13.726615609129928
+          ],
+          [
+            197.42444537901827,
+            15.067842763067063
+          ],
+          [
+            496.587,
+            18.153620955472487
+          ],
+          [
+            170.4076301636239,
+            16.147276388171782
+          ],
+          [
+            636.2120587569275,
+            15.932319125669888
+          ],
+          [
+            176.2871157199516,
+            16.88675570214295
+          ],
+          [
+            427.076,
+            16.456622792869673
+          ],
+          [
+            350.544,
+            16.792518444886596
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (max)",
+                "children": null
+              },
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": [
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE LIGÉRIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ORATORIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "CŒUR DE SOLOGNE",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES ETANGS",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES RIVIÈRES",
+                    "children": null
+                  },
+                  {
+                    "value": "CHER À LA LOIRE",
+                    "children": null
+                  },
+                  {
+                    "value": "ROMORANTINAIS ET  MONESTOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VAL-DE-CHER - CONTROIS",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "GRAND CHAMBORD",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Femmes",
+                "children": [
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE LIGÉRIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ORATORIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "CŒUR DE SOLOGNE",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES ETANGS",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES RIVIÈRES",
+                    "children": null
+                  },
+                  {
+                    "value": "CHER À LA LOIRE",
+                    "children": null
+                  },
+                  {
+                    "value": "ROMORANTINAIS ET  MONESTOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VAL-DE-CHER - CONTROIS",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "GRAND CHAMBORD",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 69895,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:26:56,488",
+      "duration": 47,
+      "result": {
+        "values": [
+          [
+            394.285,
+            379.133,
+            398.332,
+            443.243,
+            666.1266251114168,
+            522.372,
+            792.228,
+            682.963,
+            527.804,
+            594.86,
+            376.635,
+            618.5078022967148,
+            535.296,
+            615.243,
+            712.13,
+            534.889,
+            215.4337422951881,
+            26.76837264270841,
+            21.349586431991202,
+            24.45970851847669,
+            28.332664550043084,
+            26.358635972217318,
+            28.025418338006396,
+            24.646095094841048,
+            23.31689740301912,
+            21.91111490663426,
+            19.90791079147171,
+            19.273452417693697,
+            25.396731144331934,
+            19.509415777386987,
+            23.70762642748126,
+            30.547334398373117,
+            21.20366003778263,
+            28.3944255720777
+          ],
+          [
+            262.141,
+            363.113,
+            531.258,
+            390.7,
+            199.73,
+            439.368,
+            739.892,
+            485.64,
+            667.8730503617611,
+            745.702,
+            197.42444537901827,
+            496.587,
+            170.4076301636239,
+            636.2120587569275,
+            176.2871157199516,
+            427.076,
+            350.544,
+            21.51627391037741,
+            18.529439916982206,
+            21.3404443970866,
+            20.56225130437816,
+            19.51630203523127,
+            20.553394069584577,
+            17.117841941816312,
+            15.542037386460011,
+            16.818439840510223,
+            13.726615609129928,
+            15.067842763067063,
+            18.153620955472487,
+            16.147276388171782,
+            15.932319125669888,
+            16.88675570214295,
+            16.456622792869673,
+            16.792518444886596
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (max)",
+                "children": [
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE LIGÉRIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ORATORIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "CŒUR DE SOLOGNE",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES ETANGS",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES RIVIÈRES",
+                    "children": null
+                  },
+                  {
+                    "value": "CHER À LA LOIRE",
+                    "children": null
+                  },
+                  {
+                    "value": "ROMORANTINAIS ET  MONESTOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VAL-DE-CHER - CONTROIS",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "GRAND CHAMBORD",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": [
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE LIGÉRIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ORATORIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "CŒUR DE SOLOGNE",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES ETANGS",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES RIVIÈRES",
+                    "children": null
+                  },
+                  {
+                    "value": "CHER À LA LOIRE",
+                    "children": null
+                  },
+                  {
+                    "value": "ROMORANTINAIS ET  MONESTOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VAL-DE-CHER - CONTROIS",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "GRAND CHAMBORD",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Hommes",
+                "children": null
+              },
+              {
+                "value": "Femmes",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 69949,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON COLUMNS, NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:27:09,253",
+      "duration": 47,
+      "result": {
+        "values": [
+          [
+            394.285,
+            26.76837264270841
+          ],
+          [
+            262.141,
+            21.51627391037741
+          ],
+          [
+            379.133,
+            21.349586431991202
+          ],
+          [
+            363.113,
+            18.529439916982206
+          ],
+          [
+            398.332,
+            24.45970851847669
+          ],
+          [
+            531.258,
+            21.3404443970866
+          ],
+          [
+            443.243,
+            28.332664550043084
+          ],
+          [
+            390.7,
+            20.56225130437816
+          ],
+          [
+            666.1266251114168,
+            26.358635972217318
+          ],
+          [
+            199.73,
+            19.51630203523127
+          ],
+          [
+            522.372,
+            28.025418338006396
+          ],
+          [
+            439.368,
+            20.553394069584577
+          ],
+          [
+            792.228,
+            24.646095094841048
+          ],
+          [
+            739.892,
+            17.117841941816312
+          ],
+          [
+            682.963,
+            23.31689740301912
+          ],
+          [
+            485.64,
+            15.542037386460011
+          ],
+          [
+            527.804,
+            21.91111490663426
+          ],
+          [
+            667.8730503617611,
+            16.818439840510223
+          ],
+          [
+            594.86,
+            19.90791079147171
+          ],
+          [
+            745.702,
+            13.726615609129928
+          ],
+          [
+            376.635,
+            19.273452417693697
+          ],
+          [
+            197.42444537901827,
+            15.067842763067063
+          ],
+          [
+            618.5078022967148,
+            25.396731144331934
+          ],
+          [
+            496.587,
+            18.153620955472487
+          ],
+          [
+            535.296,
+            19.509415777386987
+          ],
+          [
+            170.4076301636239,
+            16.147276388171782
+          ],
+          [
+            615.243,
+            23.70762642748126
+          ],
+          [
+            636.2120587569275,
+            15.932319125669888
+          ],
+          [
+            712.13,
+            30.547334398373117
+          ],
+          [
+            176.2871157199516,
+            16.88675570214295
+          ],
+          [
+            534.889,
+            21.20366003778263
+          ],
+          [
+            427.076,
+            16.456622792869673
+          ],
+          [
+            215.4337422951881,
+            28.3944255720777
+          ],
+          [
+            350.544,
+            16.792518444886596
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (max)",
+                "children": null
+              },
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "BEAUCE ET FORÊT",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "BEAUCE LIGÉRIENNE",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "BEAUCE ORATORIENNE",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "CŒUR DE SOLOGNE",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "SOLOGNE DES ETANGS",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "SOLOGNE DES RIVIÈRES",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "CHER À LA LOIRE",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "ROMORANTINAIS ET  MONESTOIS",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "VAL-DE-CHER - CONTROIS",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "AGGLOPOLYS",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "GRAND CHAMBORD",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "BEAUCE ET GÂTINE",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "COLLINES DU PERCHE",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "PAYS DE VENDÔME",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "PERCHE ET HAUT-VENDÔMOIS",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "VALLÉES LOIR ET BRAYE",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "VENDÔMOIS RURAL",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70037,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:27:11,097",
+      "duration": 235,
+      "result": {
+        "values": [
+          [
+            394.285,
+            262.141,
+            26.76837264270841,
+            21.51627391037741
+          ],
+          [
+            379.133,
+            363.113,
+            21.349586431991202,
+            18.529439916982206
+          ],
+          [
+            398.332,
+            531.258,
+            24.45970851847669,
+            21.3404443970866
+          ],
+          [
+            443.243,
+            390.7,
+            28.332664550043084,
+            20.56225130437816
+          ],
+          [
+            666.1266251114168,
+            199.73,
+            26.358635972217318,
+            19.51630203523127
+          ],
+          [
+            522.372,
+            439.368,
+            28.025418338006396,
+            20.553394069584577
+          ],
+          [
+            792.228,
+            739.892,
+            24.646095094841048,
+            17.117841941816312
+          ],
+          [
+            682.963,
+            485.64,
+            23.31689740301912,
+            15.542037386460011
+          ],
+          [
+            527.804,
+            667.8730503617611,
+            21.91111490663426,
+            16.818439840510223
+          ],
+          [
+            594.86,
+            745.702,
+            19.90791079147171,
+            13.726615609129928
+          ],
+          [
+            376.635,
+            197.42444537901827,
+            19.273452417693697,
+            15.067842763067063
+          ],
+          [
+            618.5078022967148,
+            496.587,
+            25.396731144331934,
+            18.153620955472487
+          ],
+          [
+            535.296,
+            170.4076301636239,
+            19.509415777386987,
+            16.147276388171782
+          ],
+          [
+            615.243,
+            636.2120587569275,
+            23.70762642748126,
+            15.932319125669888
+          ],
+          [
+            712.13,
+            176.2871157199516,
+            30.547334398373117,
+            16.88675570214295
+          ],
+          [
+            534.889,
+            427.076,
+            21.20366003778263,
+            16.456622792869673
+          ],
+          [
+            215.4337422951881,
+            350.544,
+            28.3944255720777,
+            16.792518444886596
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (max)",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "BEAUCE ET FORÊT",
+                "children": null
+              },
+              {
+                "value": "BEAUCE LIGÉRIENNE",
+                "children": null
+              },
+              {
+                "value": "BEAUCE ORATORIENNE",
+                "children": null
+              },
+              {
+                "value": "CŒUR DE SOLOGNE",
+                "children": null
+              },
+              {
+                "value": "SOLOGNE DES ETANGS",
+                "children": null
+              },
+              {
+                "value": "SOLOGNE DES RIVIÈRES",
+                "children": null
+              },
+              {
+                "value": "CHER À LA LOIRE",
+                "children": null
+              },
+              {
+                "value": "ROMORANTINAIS ET  MONESTOIS",
+                "children": null
+              },
+              {
+                "value": "VAL-DE-CHER - CONTROIS",
+                "children": null
+              },
+              {
+                "value": "AGGLOPOLYS",
+                "children": null
+              },
+              {
+                "value": "GRAND CHAMBORD",
+                "children": null
+              },
+              {
+                "value": "BEAUCE ET GÂTINE",
+                "children": null
+              },
+              {
+                "value": "COLLINES DU PERCHE",
+                "children": null
+              },
+              {
+                "value": "PAYS DE VENDÔME",
+                "children": null
+              },
+              {
+                "value": "PERCHE ET HAUT-VENDÔMOIS",
+                "children": null
+              },
+              {
+                "value": "VALLÉES LOIR ET BRAYE",
+                "children": null
+              },
+              {
+                "value": "VENDÔMOIS RURAL",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70089,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:29:09,832",
+      "duration": 15,
+      "result": {
+        "values": [
+          [
+            594.86,
+            745.702,
+            19.90791079147171,
+            13.726615609129928
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (max)",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "AGGLOPOLYS",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70122,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:31:36,753",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            594.86,
+            745.702,
+            19.90791079147171,
+            13.726615609129928
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (max)",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "AGGLOPOLYS",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70165,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:31:51,644",
+      "duration": 5031,
+      "result": {
+        "values": [
+          [
+            111.87,
+            48.431,
+            18.608720595446883,
+            21.193222673368478
+          ],
+          [
+            228.867,
+            126.237,
+            24.129167217742612,
+            20.77034381561138
+          ],
+          [
+            205.08749047024733,
+            18.96,
+            24.813099364683154,
+            8.251412282945344
+          ],
+          [
+            477.039,
+            488.868,
+            25.633393897503474,
+            27.746706068732124
+          ],
+          [
+            186.6652662320135,
+            176.1785426694991,
+            31.843481958662764,
+            13.09114800285671
+          ],
+          [
+            172.22195695302344,
+            67.961,
+            28.43256527900335,
+            24.016993939904932
+          ],
+          [
+            188.386,
+            37.61011619896957,
+            17.48491733590778,
+            15.638604362108488
+          ],
+          [
+            169.39395528810084,
+            39.83,
+            26.666518875651132,
+            17.84274068476202
+          ],
+          [
+            190.3245907436344,
+            66.565,
+            20.26940365492834,
+            14.021681557853722
+          ],
+          [
+            272.779,
+            636.2120587569275,
+            24.530391832835722,
+            24.80528113492993
+          ],
+          [
+            182.45095808972255,
+            24.755,
+            91.22547904486127,
+            21.2025
+          ],
+          [
+            27.127,
+            60.221,
+            6.723985839577136,
+            12.008873046196342
+          ],
+          [
+            266.207,
+            88.08610706078849,
+            34.77930289650695,
+            22.210239004676044
+          ],
+          [
+            16.186,
+            16.186,
+            7.476751527254289,
+            10.940501527254291
+          ],
+          [
+            440.662,
+            458.915,
+            33.7554580652019,
+            25.80973387514325
+          ],
+          [
+            398.332,
+            42.22155199666654,
+            32.217440381330384,
+            18.09888502060965
+          ],
+          [
+            591.746,
+            595.373,
+            19.244534307523395,
+            13.46890951858054
+          ],
+          [
+            44.284,
+            29.235,
+            10.106701529577734,
+            8.510219793352803
+          ],
+          [
+            30.839,
+            11.61,
+            10.2142,
+            6.252494323644906
+          ],
+          [
+            203.299,
+            86.596,
+            19.58825627652072,
+            13.123181819971295
+          ],
+          [
+            155.478,
+            170.4076301636239,
+            31.25206456010325,
+            45.87393157200273
+          ],
+          [
+            178.429,
+            75.082,
+            18.96119932461227,
+            13.211301620408706
+          ],
+          [
+            20.616,
+            60.308,
+            6.805416583750301,
+            25.527571428571427
+          ],
+          [
+            43.434,
+            78.259,
+            20.3576,
+            45.255
+          ],
+          [
+            222.621,
+            188.106,
+            25.579237339102068,
+            19.32565865753445
+          ],
+          [
+            155.46,
+            13.913,
+            20.004923008437316,
+            9.516646128163995
+          ],
+          [
+            274.39,
+            180.614,
+            20.24060351018209,
+            13.505711222819244
+          ],
+          [
+            392.469,
+            79.41072620258302,
+            23.461660711983242,
+            12.254367838426678
+          ],
+          [
+            44.14,
+            227.98,
+            18.17779773232541,
+            20.14470443515303
+          ],
+          [
+            391.815,
+            48.818,
+            38.47832901631864,
+            20.332036397846565
+          ],
+          [
+            90.054,
+            45.965,
+            17.59036077721533,
+            12.890614098481407
+          ],
+          [
+            345.872,
+            230.93197845464917,
+            23.479694398039975,
+            23.241167535847627
+          ],
+          [
+            427.51,
+            60.1,
+            34.64715107799064,
+            17.222228330020005
+          ],
+          [
+            187.332,
+            48.32325009849206,
+            23.984042781898935,
+            14.801497378675531
+          ],
+          [
+            339.011,
+            390.7,
+            34.711605603265326,
+            30.85229233966269
+          ],
+          [
+            429.966,
+            20.302,
+            72.90534604232812,
+            8.759273495556496
+          ],
+          [
+            78.541,
+            156.902,
+            18.03918960549453,
+            18.346650343717506
+          ],
+          [
+            218.83497033495647,
+            177.317,
+            25.96841989973621,
+            15.061787185032964
+          ],
+          [
+            215.004,
+            43.076,
+            23.858074183837815,
+            11.477346188486303
+          ],
+          [
+            210.7400991658944,
+            210.79209947847428,
+            19.05680637409598,
+            15.545533592754031
+          ],
+          [
+            157.893,
+            31.778,
+            15.769711463239995,
+            6.4479911971963615
+          ],
+          [
+            272.859,
+            214.452,
+            36.517761904761905,
+            35.57601375220646
+          ],
+          [
+            236.02758665242737,
+            80.657537132192,
+            22.363449026172855,
+            11.659125250478354
+          ],
+          [
+            61.19,
+            52.776,
+            19.210162796492927,
+            21.95127907970216
+          ],
+          [
+            54.472,
+            43.171,
+            19.5736804961845,
+            14.788429271339815
+          ],
+          [
+            512.013,
+            667.8730503617611,
+            24.484669978521396,
+            19.72764480367007
+          ],
+          [
+            49.172,
+            34.184,
+            8.58306363651932,
+            9.215019351119144
+          ],
+          [
+            212.25307544465352,
+            66.762,
+            23.43858053729653,
+            14.428949120375258
+          ],
+          [
+            205.28,
+            66.94780771116531,
+            24.459131709341754,
+            15.797150908710769
+          ],
+          [
+            68.72941310446296,
+            218.239,
+            11.948132253726332,
+            24.501026635219812
+          ],
+          [
+            48.48,
+            52.061538449597435,
+            16.8019375,
+            13.35592692247987
+          ],
+          [
+            156.205,
+            184.45366437056964,
+            16.78955346901154,
+            19.433428565856463
+          ],
+          [
+            229.0772815623241,
+            128.098,
+            28.93049023758417,
+            13.854027960321412
+          ],
+          [
+            60.105,
+            31.994,
+            19.07561225941541,
+            15.896954545454541
+          ],
+          [
+            50.456,
+            219.04575455965835,
+            11.887594603442334,
+            36.89552640323148
+          ],
+          [
+            185.2216056793348,
+            175.245,
+            21.515447004505805,
+            31.189889609854678
+          ],
+          [
+            198.53415358644503,
+            30.533,
+            27.932021328597372,
+            12.791110742556194
+          ],
+          [
+            183.17830939316215,
+            182.05726939121905,
+            27.963623743684366,
+            20.730014930099923
+          ],
+          [
+            126.585,
+            45.116,
+            16.719099473380098,
+            16.88308366883174
+          ],
+          [
+            172.4945268855675,
+            70.573,
+            29.135124840117637,
+            11.953399577661653
+          ],
+          [
+            270.083,
+            155.897,
+            39.59252373036179,
+            16.559314959987443
+          ],
+          [
+            203.306,
+            245.24178053427767,
+            15.34594972427597,
+            20.960902831643143
+          ],
+          [
+            184.51044942362665,
+            177.30225372329656,
+            29.627682920598918,
+            24.53091968002991
+          ],
+          [
+            26.584,
+            33.358,
+            14.567245640936479,
+            15.24750923051337
+          ],
+          [
+            366.381,
+            53.468,
+            28.455214555370517,
+            13.214551931862324
+          ],
+          [
+            171.53612151194568,
+            170.72548736096564,
+            55.91364555283826,
+            22.14422944925425
+          ],
+          [
+            58.114,
+            58.114,
+            15.623871059464895,
+            14.833265907664451
+          ],
+          [
+            182.659,
+            29.388,
+            25.19188235294117,
+            15.288812235480526
+          ],
+          [
+            216.176,
+            40.931,
+            17.60347248350465,
+            8.728905241332878
+          ],
+          [
+            527.804,
+            34.281,
+            26.668583959933784,
+            12.608162327390119
+          ],
+          [
+            22.379,
+            33.392,
+            14.229061281760947,
+            12.197530640880471
+          ],
+          [
+            77.85426778717017,
+            62.053,
+            16.51938964165287,
+            13.80759681239065
+          ],
+          [
+            173.75047260744992,
+            72.445,
+            23.47096430874276,
+            13.714935431096459
+          ],
+          [
+            303.077,
+            93.17224638884193,
+            30.50091357185245,
+            17.278089186115817
+          ],
+          [
+            26.524,
+            50.13463572683594,
+            14.166605981917842,
+            16.530063231455852
+          ],
+          [
+            189.326,
+            189.326,
+            23.887242344658073,
+            33.04965324800708
+          ],
+          [
+            54.741,
+            157.475,
+            15.927383801340767,
+            14.61691112804086
+          ],
+          [
+            534.889,
+            217.27181001988328,
+            40.556261020222266,
+            26.576359464428247
+          ],
+          [
+            588.028,
+            209.0717448481305,
+            55.04556945497456,
+            18.511957653156898
+          ],
+          [
+            250.217,
+            76.39464145741414,
+            20.873297463491397,
+            12.977977454273562
+          ],
+          [
+            64.138,
+            164.53277576255996,
+            19.592103954842834,
+            23.17124379114724
+          ],
+          [
+            56.951,
+            31.891,
+            22.169642857142854,
+            20.840099999999996
+          ],
+          [
+            28.239,
+            61.889,
+            12.900719645842221,
+            16.479705882352935
+          ],
+          [
+            244.262,
+            283.339,
+            30.356280475070474,
+            26.307171225549528
+          ],
+          [
+            169.941,
+            30.241,
+            18.220378873560417,
+            11.216896115133139
+          ],
+          [
+            62.577,
+            169.7038754693246,
+            16.047937206124587,
+            35.611454962385004
+          ],
+          [
+            229.589,
+            194.31594220207893,
+            13.521196557483389,
+            8.975551471601893
+          ],
+          [
+            44.71,
+            66.97,
+            26.864706144069803,
+            27.636857142857142
+          ],
+          [
+            326.759,
+            61.87131513071796,
+            31.002865695793897,
+            18.286791372273044
+          ],
+          [
+            109.798,
+            36.492,
+            18.144693865641358,
+            15.78152109504104
+          ],
+          [
+            25.468,
+            64.181,
+            10.84896391998574,
+            15.988250000000003
+          ],
+          [
+            533.215,
+            39.535,
+            48.16131774935632,
+            20.968875000000004
+          ],
+          [
+            211.287,
+            169.29097548063265,
+            30.945393224683848,
+            15.62753323195311
+          ],
+          [
+            443.243,
+            90.363,
+            24.649696491055487,
+            16.748870997156207
+          ],
+          [
+            346.506,
+            67.783,
+            35.47627067236803,
+            14.44912045672903
+          ],
+          [
+            173.113,
+            53.767,
+            20.511504303397874,
+            15.40769961672729
+          ],
+          [
+            130.568,
+            101.238,
+            29.794052975520543,
+            27.017897217517653
+          ],
+          [
+            60.479,
+            147.608,
+            10.211921824516386,
+            58.92076760445753
+          ],
+          [
+            41.231,
+            4.560380415190163,
+            14.67523006919836,
+            4.560380415190163
+          ],
+          [
+            142.11,
+            31.738,
+            21.689449486223438,
+            13.775956014519073
+          ],
+          [
+            43.271,
+            20.027,
+            18.190399999999997,
+            10.253888888888886
+          ],
+          [
+            24.572,
+            23.73,
+            8.510402441193662,
+            14.220333333333334
+          ],
+          [
+            215.68082823090745,
+            227.3689020016775,
+            35.58664758121194,
+            30.76126755088885
+          ],
+          [
+            575.648,
+            53.743,
+            22.138645204302776,
+            13.178298460561582
+          ],
+          [
+            85.039,
+            170.21493553299192,
+            28.889564056632288,
+            32.013106646790334
+          ],
+          [
+            37.217,
+            171.262,
+            16.535588549371276,
+            23.250687984107905
+          ],
+          [
+            105.657,
+            49.126,
+            15.419140931301326,
+            15.053777777777777
+          ],
+          [
+            615.243,
+            195.28943404519825,
+            27.469147469083243,
+            15.068114701208755
+          ],
+          [
+            137.965,
+            27.183,
+            28.085439469925852,
+            13.119099999999996
+          ],
+          [
+            383.538,
+            32.152,
+            33.3779947825032,
+            14.506980472280098
+          ],
+          [
+            78.822,
+            35.468,
+            10.927249999999997,
+            10.824904761904769
+          ],
+          [
+            46.079,
+            286.426,
+            18.64145684681321,
+            33.19215742999333
+          ],
+          [
+            205.71,
+            60.593,
+            24.320715189658458,
+            13.964936926673678
+          ],
+          [
+            57.249,
+            33.706,
+            10.006475646001086,
+            10.252573574645483
+          ],
+          [
+            303.028,
+            53.37051542381958,
+            24.255019008184775,
+            13.156773782066924
+          ],
+          [
+            73.621,
+            73.113,
+            19.09568739792458,
+            17.311839152854205
+          ],
+          [
+            196.49020175031657,
+            232.756,
+            39.30257234055916,
+            24.478731960838935
+          ],
+          [
+            179.871,
+            36.312,
+            25.196402226428756,
+            17.446218378033166
+          ],
+          [
+            288.386,
+            132.605,
+            32.32555358515855,
+            25.08179547201999
+          ],
+          [
+            251.361,
+            337.256,
+            26.20991631391,
+            21.9915114529125
+          ],
+          [
+            76.169,
+            148.643,
+            20.70499822800882,
+            19.411106914438854
+          ],
+          [
+            311.5649587668363,
+            363.113,
+            23.123503204103056,
+            17.92527449391435
+          ],
+          [
+            236.25,
+            294.653,
+            29.024541005327663,
+            31.865535897119855
+          ],
+          [
+            187.32375391028657,
+            50.477,
+            53.573431225458975,
+            10.6510437298613
+          ],
+          [
+            211.225,
+            438.115,
+            19.665118438661544,
+            25.514321350029185
+          ],
+          [
+            63.399,
+            199.73,
+            17.48847425288671,
+            18.848495907181977
+          ],
+          [
+            147.054,
+            47.98,
+            25.254428550929415,
+            18.225923316313146
+          ],
+          [
+            505.546,
+            205.9325221136245,
+            35.25981499312393,
+            33.77206959443387
+          ],
+          [
+            164.745,
+            68.16722765049003,
+            15.401393092158147,
+            8.87809861929708
+          ],
+          [
+            384.452,
+            40.47399754905855,
+            36.11716274652959,
+            18.728632166934233
+          ],
+          [
+            517.378,
+            33.251,
+            30.732971453404083,
+            14.093316460789778
+          ],
+          [
+            186.816,
+            56.47885526183312,
+            18.500025744929427,
+            10.480647191915637
+          ],
+          [
+            59.362,
+            186.276,
+            12.641641326385084,
+            16.136876223763636
+          ],
+          [
+            217.37651052100932,
+            427.076,
+            20.517908972034686,
+            15.30493616303163
+          ],
+          [
+            172.002,
+            197.42444537901827,
+            18.860497713392594,
+            13.243078551093806
+          ],
+          [
+            636.6033937516645,
+            575.631,
+            21.049889918465535,
+            16.897426743786454
+          ],
+          [
+            76.884,
+            34.247,
+            20.890842109110896,
+            11.856571313816826
+          ],
+          [
+            394.891,
+            193.763,
+            66.1716132686389,
+            53.951661610059034
+          ],
+          [
+            506.985,
+            149.17,
+            33.17439071818448,
+            15.52670600903026
+          ],
+          [
+            379.133,
+            46.88340903238909,
+            16.132455109281516,
+            13.604551432465287
+          ],
+          [
+            153.713,
+            28.399,
+            22.085219630159827,
+            12.77362164915599
+          ],
+          [
+            411.347,
+            485.64,
+            27.014480404924594,
+            27.089090651278045
+          ],
+          [
+            194.35770115923668,
+            350.544,
+            27.76241375111967,
+            16.328929230167724
+          ],
+          [
+            121.588,
+            186.70903474148793,
+            20.23623275538824,
+            22.661721965692937
+          ],
+          [
+            47.831,
+            27.322,
+            16.171021662288215,
+            17.74926608958627
+          ],
+          [
+            409.209,
+            256.861,
+            25.64761420267649,
+            20.81688685785038
+          ],
+          [
+            414.618,
+            234.07843224919185,
+            24.479014291376185,
+            17.1230212299232
+          ],
+          [
+            55.59,
+            61.379,
+            15.147833333333333,
+            27.86175
+          ],
+          [
+            357.044,
+            27.105,
+            39.92504096687181,
+            9.782302145405678
+          ],
+          [
+            512.177,
+            388.663,
+            26.0484395297212,
+            19.85413462542439
+          ],
+          [
+            69.096,
+            51.065,
+            15.017006660648379,
+            12.817288219554898
+          ],
+          [
+            41.131,
+            23.925,
+            13.48207420690686,
+            13.050103578496044
+          ],
+          [
+            143.723,
+            171.4038816545085,
+            18.55025951145559,
+            18.690972624925756
+          ],
+          [
+            160.794,
+            48.226,
+            41.573348764178384,
+            24.362161264178372
+          ],
+          [
+            138.557,
+            531.258,
+            21.374216734454368,
+            22.380371598333603
+          ],
+          [
+            150.115,
+            38.698,
+            18.394267603172764,
+            12.154038266881411
+          ],
+          [
+            168.61,
+            87.59,
+            24.40199993143607,
+            18.276375077625527
+          ],
+          [
+            792.228,
+            81.033,
+            31.404165405101775,
+            12.830683042310294
+          ],
+          [
+            252.112,
+            35.94,
+            20.403165065544247,
+            11.750388193624124
+          ],
+          [
+            618.5078022967148,
+            40.098,
+            57.37480143256372,
+            15.08122951339425
+          ],
+          [
+            72.661,
+            33.152,
+            25.078964966020497,
+            19.26816772492077
+          ],
+          [
+            175.38,
+            89.514,
+            21.637828263219685,
+            20.11771207419378
+          ],
+          [
+            463.866,
+            216.042590334992,
+            21.8096679408791,
+            13.356290570957311
+          ],
+          [
+            182.99485455923423,
+            43.049,
+            30.924428284359358,
+            13.097949999999994
+          ],
+          [
+            35.629,
+            28.69,
+            13.646100000000004,
+            13.04943393186179
+          ],
+          [
+            60.021,
+            36.416,
+            18.12139690147334,
+            22.398810563420838
+          ],
+          [
+            55.275,
+            157.81,
+            23.168836674410734,
+            28.173298099603738
+          ],
+          [
+            35.062,
+            34.45,
+            13.696163535914483,
+            15.626645303871722
+          ],
+          [
+            0.0,
+            44.186,
+            0.0,
+            20.521
+          ],
+          [
+            712.13,
+            12.456,
+            72.81534827089786,
+            5.746505504334415
+          ],
+          [
+            682.963,
+            224.291,
+            22.688664565150663,
+            13.998402847085082
+          ],
+          [
+            8.322,
+            33.487,
+            4.324333333333333,
+            15.653500000000001
+          ],
+          [
+            28.461,
+            162.86198675594622,
+            9.285467117593356,
+            32.935720390652165
+          ],
+          [
+            535.296,
+            15.529,
+            43.350154469714425,
+            7.217020322000231
+          ],
+          [
+            240.90146785949273,
+            523.477,
+            19.638823901348616,
+            19.286308433144086
+          ],
+          [
+            203.2680259229901,
+            210.70162517133977,
+            22.192229975156533,
+            17.086031732092746
+          ],
+          [
+            20.953,
+            27.298,
+            8.778037285196172,
+            13.942978461666758
+          ],
+          [
+            27.385,
+            141.252,
+            7.635907904934284,
+            32.91430176526323
+          ],
+          [
+            189.77,
+            71.5307745378694,
+            17.12204051634369,
+            12.01881337635248
+          ],
+          [
+            214.959,
+            74.60381146842168,
+            19.97165717098979,
+            10.78187691768102
+          ],
+          [
+            47.037,
+            224.52912406075885,
+            17.752975907349196,
+            59.62576528633287
+          ],
+          [
+            386.903,
+            478.547,
+            30.96337798651553,
+            18.769035362918636
+          ],
+          [
+            142.117,
+            40.376,
+            17.745172413154023,
+            12.318783035450016
+          ],
+          [
+            192.61752995465028,
+            29.232,
+            19.74016817351201,
+            6.326352941176468
+          ],
+          [
+            47.61,
+            25.644,
+            21.117102381674453,
+            17.091
+          ],
+          [
+            26.637,
+            27.237,
+            14.231166666666669,
+            18.66475477286072
+          ],
+          [
+            746.0795778527206,
+            58.312,
+            38.211933943958954,
+            16.571914913831204
+          ],
+          [
+            185.141,
+            204.93707416522233,
+            12.07417539025102,
+            10.449515948905102
+          ],
+          [
+            17.299,
+            27.656,
+            9.1805,
+            9.019999589238745
+          ],
+          [
+            478.341,
+            176.2871157199516,
+            37.606773281442976,
+            20.828820157614487
+          ],
+          [
+            321.105,
+            165.10990474467178,
+            33.14613815267834,
+            27.94428555310277
+          ],
+          [
+            147.041,
+            739.892,
+            14.240890601454959,
+            33.50599892892679
+          ],
+          [
+            198.213,
+            25.231,
+            21.311550467305793,
+            8.584074147500798
+          ],
+          [
+            376.635,
+            100.742,
+            20.9611719219562,
+            18.59843084151759
+          ],
+          [
+            159.5,
+            156.248,
+            24.96609313403724,
+            22.541974295914038
+          ],
+          [
+            66.916,
+            45.909,
+            25.170014400599918,
+            17.150701561154946
+          ],
+          [
+            203.60038708386983,
+            30.082,
+            23.27310622741002,
+            7.947824386525435
+          ],
+          [
+            181.08365546883664,
+            25.016,
+            45.908836654609665,
+            11.383099999999999
+          ],
+          [
+            213.67852631536545,
+            211.65042052405033,
+            17.44116406280565,
+            20.296211125961253
+          ],
+          [
+            203.389,
+            187.04211635807468,
+            22.290177540308946,
+            13.765395363713152
+          ],
+          [
+            200.2660325396377,
+            19.636,
+            31.038663365751002,
+            8.798807825846069
+          ],
+          [
+            479.175,
+            92.54,
+            26.902127730791683,
+            13.095412400951968
+          ],
+          [
+            143.054,
+            72.51621626002107,
+            12.246253976059972,
+            9.465298324383953
+          ],
+          [
+            465.163,
+            181.741,
+            25.256351936757085,
+            18.64340909647988
+          ],
+          [
+            522.372,
+            439.368,
+            26.026300270394444,
+            19.764458475466906
+          ],
+          [
+            246.569,
+            86.61146326124205,
+            27.26584235864443,
+            17.315130489835425
+          ],
+          [
+            219.28,
+            23.327,
+            29.07903747354536,
+            14.36554371913626
+          ],
+          [
+            182.564,
+            85.042,
+            17.321202812094565,
+            14.769601638054977
+          ],
+          [
+            15.49,
+            36.485,
+            7.3437360402933125,
+            17.723
+          ],
+          [
+            216.813,
+            50.484,
+            24.043358250202697,
+            13.60090721806306
+          ],
+          [
+            191.093990293857,
+            171.498,
+            18.28905977765732,
+            14.291475314814463
+          ],
+          [
+            247.578,
+            44.11,
+            15.821029540429537,
+            8.986074439827696
+          ],
+          [
+            315.186,
+            44.786,
+            33.69577590126267,
+            15.193514403393234
+          ],
+          [
+            234.0776415260082,
+            96.962,
+            20.91723057235208,
+            14.350875579472007
+          ],
+          [
+            592.601,
+            496.587,
+            25.887006340320994,
+            32.09285712853925
+          ],
+          [
+            19.67,
+            44.439,
+            19.67,
+            23.805867174451922
+          ],
+          [
+            394.285,
+            26.299,
+            32.33056521739131,
+            11.032846303633132
+          ],
+          [
+            45.821,
+            23.176,
+            12.94053853572022,
+            11.304672841142121
+          ],
+          [
+            214.44197408506145,
+            128.323,
+            21.33087851744868,
+            12.895328562138886
+          ],
+          [
+            174.95736876396722,
+            65.684,
+            20.82249366639343,
+            18.089434362339677
+          ],
+          [
+            209.558,
+            105.981,
+            36.45072097310119,
+            21.47224191658635
+          ],
+          [
+            62.754,
+            45.36,
+            13.125221834894507,
+            13.839358781155804
+          ],
+          [
+            184.247,
+            166.436,
+            29.277073603222725,
+            29.85754917860432
+          ],
+          [
+            69.085,
+            69.085,
+            14.266833443365586,
+            14.548954700017761
+          ],
+          [
+            55.928,
+            45.647,
+            18.685043363337332,
+            19.252941176470593
+          ],
+          [
+            96.794,
+            7.996,
+            13.031430537033742,
+            4.933958079764985
+          ],
+          [
+            459.854,
+            238.5549283594727,
+            31.738244080646,
+            25.062906533552734
+          ],
+          [
+            80.492,
+            89.057,
+            18.37460199777232,
+            15.583074050844427
+          ],
+          [
+            143.819,
+            50.306,
+            17.5829725501203,
+            12.987983199768337
+          ],
+          [
+            200.69917508162948,
+            194.24356744498124,
+            19.924158642823496,
+            19.361760729449898
+          ],
+          [
+            80.281,
+            36.774,
+            19.583136796838087,
+            16.495222222222225
+          ],
+          [
+            183.771,
+            33.197,
+            16.897705405976307,
+            13.463000079321235
+          ],
+          [
+            43.017,
+            53.044,
+            18.56380179019112,
+            20.567333333333334
+          ],
+          [
+            206.66727664664168,
+            206.66727664664168,
+            24.87198115996154,
+            27.515141100420983
+          ],
+          [
+            15.619,
+            20.673,
+            7.278356425202778,
+            13.979260708671296
+          ],
+          [
+            231.5103871296969,
+            370.671,
+            21.425653147792627,
+            29.010451930734423
+          ],
+          [
+            57.839,
+            37.096,
+            21.1409455844723,
+            17.949
+          ],
+          [
+            459.467,
+            572.406,
+            22.730467452151636,
+            14.987237318295131
+          ],
+          [
+            130.002,
+            41.529,
+            24.957586425378896,
+            17.556007895868753
+          ],
+          [
+            251.503,
+            48.075,
+            25.482430598335487,
+            15.339961164907516
+          ],
+          [
+            30.224,
+            38.88904917460867,
+            16.818457969035805,
+            19.024354243502987
+          ],
+          [
+            391.23,
+            169.0782519469941,
+            40.548661649083726,
+            26.17333669138574
+          ],
+          [
+            42.43,
+            18.725,
+            14.953750000000005,
+            11.032222222222222
+          ],
+          [
+            502.8689446739131,
+            446.666,
+            18.03685736657337,
+            9.919427086736711
+          ],
+          [
+            61.014,
+            37.059,
+            17.7771469932884,
+            14.437112657717865
+          ],
+          [
+            46.829,
+            186.195,
+            14.568869334603285,
+            24.738750386938804
+          ],
+          [
+            188.645,
+            227.7763204062706,
+            16.300660055733694,
+            14.959265083813415
+          ],
+          [
+            572.159,
+            19.291,
+            41.00456854244749,
+            13.472705807974885
+          ],
+          [
+            201.218,
+            47.056,
+            19.51133713324885,
+            13.176718392825814
+          ],
+          [
+            71.56542067643882,
+            30.332,
+            17.703113109204544,
+            15.890117647058826
+          ],
+          [
+            19.148,
+            22.552,
+            6.382666666666666,
+            15.034666666666665
+          ],
+          [
+            172.195,
+            104.242,
+            29.662141461753624,
+            22.272881594640324
+          ],
+          [
+            215.4337422951881,
+            89.276,
+            14.826369815875035,
+            12.830030303030314
+          ],
+          [
+            201.68,
+            30.375,
+            15.077383896852954,
+            8.984714722316632
+          ],
+          [
+            121.687,
+            39.115,
+            23.105142857142855,
+            18.714022735775377
+          ],
+          [
+            25.45,
+            21.501,
+            7.437225603314273,
+            9.907666666666671
+          ],
+          [
+            27.871,
+            44.605,
+            11.455384796183104,
+            12.347083333333336
+          ],
+          [
+            11.699,
+            20.797,
+            7.279812107804644,
+            8.451495954847475
+          ],
+          [
+            192.83882883416072,
+            203.54384526281336,
+            35.62654737330153,
+            22.85348902569633
+          ],
+          [
+            243.738,
+            202.2011684977798,
+            14.648631742399024,
+            10.596233735703542
+          ],
+          [
+            439.479,
+            125.156,
+            33.13493967762744,
+            20.39563925605568
+          ],
+          [
+            666.1266251114168,
+            174.1528212391852,
+            59.354630183011906,
+            29.344346548315368
+          ],
+          [
+            225.7832991126865,
+            27.2,
+            34.75799317367314,
+            9.678497036985224
+          ],
+          [
+            162.08796521551477,
+            143.145,
+            39.83962197705333,
+            34.91871863568009
+          ],
+          [
+            105.908,
+            51.177,
+            19.614238130101825,
+            17.260847642290106
+          ],
+          [
+            590.4,
+            71.821,
+            67.73297597833788,
+            15.412594999857168
+          ],
+          [
+            329.746,
+            745.702,
+            15.72887686302521,
+            18.16838947976418
+          ],
+          [
+            151.083,
+            177.51613325653366,
+            20.83833408475047,
+            22.25451688385216
+          ],
+          [
+            334.203,
+            55.83699969979632,
+            34.48509905024308,
+            20.333164841048205
+          ],
+          [
+            396.576,
+            64.642,
+            31.133747125250487,
+            22.461695652173926
+          ],
+          [
+            23.481,
+            24.398,
+            11.918296242894213,
+            19.1654
+          ],
+          [
+            159.682,
+            207.11486173281543,
+            22.837495102841014,
+            38.060976955469236
+          ],
+          [
+            388.232,
+            262.141,
+            50.39720761924413,
+            29.045476163397478
+          ],
+          [
+            41.38,
+            41.67640420831992,
+            17.795767950404954,
+            18.822319654922254
+          ],
+          [
+            187.54923357403212,
+            26.109,
+            22.61340197487329,
+            14.927923076923076
+          ],
+          [
+            190.46067578312756,
+            182.9110291029686,
+            31.761375910257915,
+            19.454344201124204
+          ],
+          [
+            45.671,
+            40.431,
+            26.99715798084656,
+            23.333948077606248
+          ],
+          [
+            15.919,
+            15.919,
+            6.533527328767031,
+            10.647113664383514
+          ],
+          [
+            22.297,
+            32.161,
+            10.567530587517465,
+            13.611181578616153
+          ],
+          [
+            64.454,
+            275.0483180035715,
+            22.305512596171656,
+            45.590439362213615
+          ],
+          [
+            472.816,
+            35.251,
+            50.20911953078087,
+            13.316193088184463
+          ],
+          [
+            63.068,
+            9.945,
+            24.479529529579427,
+            7.695753153242973
+          ],
+          [
+            594.86,
+            22.558,
+            111.14554148908879,
+            18.69475
+          ],
+          [
+            56.93,
+            22.482,
+            24.121057138205327,
+            16.05966666666667
+          ],
+          [
+            33.738,
+            33.738,
+            20.458048972039215,
+            29.055571428571426
+          ],
+          [
+            21.353,
+            4.888,
+            12.323855035589249,
+            4.888
+          ],
+          [
+            15.655,
+            14.788,
+            7.763707748299271,
+            6.834383552478104
+          ],
+          [
+            31.526,
+            37.1,
+            8.39448996621245,
+            14.476555555555557
+          ],
+          [
+            42.158,
+            10.293,
+            23.53625,
+            7.6922500000000005
+          ],
+          [
+            18.709,
+            21.262,
+            15.053451707140047,
+            16.099571428571434
+          ],
+          [
+            72.499,
+            44.027,
+            28.412783410054615,
+            28.94825633631144
+          ],
+          [
+            43.773501192996875,
+            43.773501192996875,
+            17.525733721571385,
+            24.46641686549948
+          ],
+          [
+            25.152,
+            48.17676608898417,
+            15.072083333333337,
+            20.402978735362197
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (max)",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": [
+                  {
+                    "value": "Hommes",
+                    "children": null
+                  },
+                  {
+                    "value": "Femmes",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "CHARSONVILLE",
+                "children": null
+              },
+              {
+                "value": "EPIEDS-EN-BEAUCE",
+                "children": null
+              },
+              {
+                "value": "AMBLOY",
+                "children": null
+              },
+              {
+                "value": "ANGE",
+                "children": null
+              },
+              {
+                "value": "AREINES",
+                "children": null
+              },
+              {
+                "value": "ARVILLE",
+                "children": null
+              },
+              {
+                "value": "AUTHON",
+                "children": null
+              },
+              {
+                "value": "AVARAY",
+                "children": null
+              },
+              {
+                "value": "AVERDON",
+                "children": null
+              },
+              {
+                "value": "AZE",
+                "children": null
+              },
+              {
+                "value": "BAIGNEAUX",
+                "children": null
+              },
+              {
+                "value": "BAILLOU",
+                "children": null
+              },
+              {
+                "value": "BAUZY",
+                "children": null
+              },
+              {
+                "value": "BEAUVILLIERS",
+                "children": null
+              },
+              {
+                "value": "BILLY",
+                "children": null
+              },
+              {
+                "value": "BINAS",
+                "children": null
+              },
+              {
+                "value": "BLOIS",
+                "children": null
+              },
+              {
+                "value": "BONNEVEAU",
+                "children": null
+              },
+              {
+                "value": "BOUFFRY",
+                "children": null
+              },
+              {
+                "value": "BOURRE",
+                "children": null
+              },
+              {
+                "value": "BOURSAY",
+                "children": null
+              },
+              {
+                "value": "BRACIEUX",
+                "children": null
+              },
+              {
+                "value": "BREVAINVILLE",
+                "children": null
+              },
+              {
+                "value": "BRIOU",
+                "children": null
+              },
+              {
+                "value": "CANDE-SUR-BEUVRON",
+                "children": null
+              },
+              {
+                "value": "CELLE",
+                "children": null
+              },
+              {
+                "value": "CELLETTES",
+                "children": null
+              },
+              {
+                "value": "CHAMBON-SUR-CISSE",
+                "children": null
+              },
+              {
+                "value": "CHAMPIGNY-EN-BEAUCE",
+                "children": null
+              },
+              {
+                "value": "CHAON",
+                "children": null
+              },
+              {
+                "value": "CHATEAUVIEUX",
+                "children": null
+              },
+              {
+                "value": "CHATILLON-SUR-CHER",
+                "children": null
+              },
+              {
+                "value": "CHATRES-SUR-CHER",
+                "children": null
+              },
+              {
+                "value": "CHAUMONT-SUR-LOIRE",
+                "children": null
+              },
+              {
+                "value": "CHAUMONT-SUR-THARONNE",
+                "children": null
+              },
+              {
+                "value": "CHAUVIGNY-DU-PERCHE",
+                "children": null
+              },
+              {
+                "value": "CHEMERY",
+                "children": null
+              },
+              {
+                "value": "CHEVERNY",
+                "children": null
+              },
+              {
+                "value": "CHISSAY-EN-TOURAINE",
+                "children": null
+              },
+              {
+                "value": "CHITENAY",
+                "children": null
+              },
+              {
+                "value": "CHOUE",
+                "children": null
+              },
+              {
+                "value": "CHOUSSY",
+                "children": null
+              },
+              {
+                "value": "CHOUZY-SUR-CISSE",
+                "children": null
+              },
+              {
+                "value": "CONAN",
+                "children": null
+              },
+              {
+                "value": "CONCRIERS",
+                "children": null
+              },
+              {
+                "value": "CONTRES",
+                "children": null
+              },
+              {
+                "value": "CORMENON",
+                "children": null
+              },
+              {
+                "value": "CORMERAY",
+                "children": null
+              },
+              {
+                "value": "COUDDES",
+                "children": null
+              },
+              {
+                "value": "COUFFY",
+                "children": null
+              },
+              {
+                "value": "COULANGES",
+                "children": null
+              },
+              {
+                "value": "COULOMMIERS-LA-TOUR",
+                "children": null
+              },
+              {
+                "value": "COUR-CHEVERNY",
+                "children": null
+              },
+              {
+                "value": "COURMEMIN",
+                "children": null
+              },
+              {
+                "value": "COUTURE-SUR-LOIR",
+                "children": null
+              },
+              {
+                "value": "CROUY-SUR-COSSON",
+                "children": null
+              },
+              {
+                "value": "CRUCHERAY",
+                "children": null
+              },
+              {
+                "value": "DANZE",
+                "children": null
+              },
+              {
+                "value": "DHUIZON",
+                "children": null
+              },
+              {
+                "value": "DROUE",
+                "children": null
+              },
+              {
+                "value": "EPUISAY",
+                "children": null
+              },
+              {
+                "value": "FAVEROLLES-SUR-CHER",
+                "children": null
+              },
+              {
+                "value": "FAYE",
+                "children": null
+              },
+              {
+                "value": "FEINGS",
+                "children": null
+              },
+              {
+                "value": "FONTAINE-LES-COTEAUX",
+                "children": null
+              },
+              {
+                "value": "FONTAINE-RAOUL",
+                "children": null
+              },
+              {
+                "value": "FONTAINES-EN-SOLOGNE",
+                "children": null
+              },
+              {
+                "value": "FORTAN",
+                "children": null
+              },
+              {
+                "value": "FOSSE",
+                "children": null
+              },
+              {
+                "value": "FOUGERES-SUR-BIEVRE",
+                "children": null
+              },
+              {
+                "value": "FRANCAY",
+                "children": null
+              },
+              {
+                "value": "FRESNES",
+                "children": null
+              },
+              {
+                "value": "FRETEVAL",
+                "children": null
+              },
+              {
+                "value": "GIEVRES",
+                "children": null
+              },
+              {
+                "value": "GOMBERGEAN",
+                "children": null
+              },
+              {
+                "value": "GY-EN-SOLOGNE",
+                "children": null
+              },
+              {
+                "value": "HERBAULT",
+                "children": null
+              },
+              {
+                "value": "HOUSSAY",
+                "children": null
+              },
+              {
+                "value": "HUISSEAU-EN-BEAUCE",
+                "children": null
+              },
+              {
+                "value": "HUISSEAU-SUR-COSSON",
+                "children": null
+              },
+              {
+                "value": "JOSNES",
+                "children": null
+              },
+              {
+                "value": "LA CHAPELLE-ENCHERIE",
+                "children": null
+              },
+              {
+                "value": "LA CHAPELLE-MONTMARTIN",
+                "children": null
+              },
+              {
+                "value": "LA CHAPELLE-SAINT-MARTIN-EN-PLAINE",
+                "children": null
+              },
+              {
+                "value": "LA CHAPELLE-VENDOMOISE",
+                "children": null
+              },
+              {
+                "value": "LA CHAPELLE-VICOMTESSE",
+                "children": null
+              },
+              {
+                "value": "LA CHAUSSEE-SAINT-VICTOR",
+                "children": null
+              },
+              {
+                "value": "LA COLOMBE",
+                "children": null
+              },
+              {
+                "value": "LA FERTE-IMBAULT",
+                "children": null
+              },
+              {
+                "value": "LA FERTE-SAINT-CYR",
+                "children": null
+              },
+              {
+                "value": "LA FONTENELLE",
+                "children": null
+              },
+              {
+                "value": "LA MAROLLE-EN-SOLOGNE",
+                "children": null
+              },
+              {
+                "value": "LA VILLE-AUX-CLERCS",
+                "children": null
+              },
+              {
+                "value": "LAMOTTE-BEUVRON",
+                "children": null
+              },
+              {
+                "value": "LANDES-LE-GAULOIS",
+                "children": null
+              },
+              {
+                "value": "LANGON",
+                "children": null
+              },
+              {
+                "value": "LE GAULT-PERCHE",
+                "children": null
+              },
+              {
+                "value": "LE PLESSIS-DORIN",
+                "children": null
+              },
+              {
+                "value": "LE PLESSIS-L\u0027ECHELLE",
+                "children": null
+              },
+              {
+                "value": "LE POISLAY",
+                "children": null
+              },
+              {
+                "value": "LE TEMPLE",
+                "children": null
+              },
+              {
+                "value": "LES ESSARTS",
+                "children": null
+              },
+              {
+                "value": "LES HAYES",
+                "children": null
+              },
+              {
+                "value": "LES MONTILS",
+                "children": null
+              },
+              {
+                "value": "LESTIOU",
+                "children": null
+              },
+              {
+                "value": "LIGNIERES",
+                "children": null
+              },
+              {
+                "value": "LOREUX",
+                "children": null
+              },
+              {
+                "value": "LUNAY",
+                "children": null
+              },
+              {
+                "value": "MARAY",
+                "children": null
+              },
+              {
+                "value": "MARCHENOIR",
+                "children": null
+              },
+              {
+                "value": "MARCILLY-EN-BEAUCE",
+                "children": null
+              },
+              {
+                "value": "MARCILLY-EN-GAULT",
+                "children": null
+              },
+              {
+                "value": "MAREUIL-SUR-CHER",
+                "children": null
+              },
+              {
+                "value": "MAROLLES",
+                "children": null
+              },
+              {
+                "value": "MASLIVES",
+                "children": null
+              },
+              {
+                "value": "MAVES",
+                "children": null
+              },
+              {
+                "value": "MAZANGE",
+                "children": null
+              },
+              {
+                "value": "MEHERS",
+                "children": null
+              },
+              {
+                "value": "MEMBROLLES",
+                "children": null
+              },
+              {
+                "value": "MENARS",
+                "children": null
+              },
+              {
+                "value": "MENNETOU-SUR-CHER",
+                "children": null
+              },
+              {
+                "value": "MER",
+                "children": null
+              },
+              {
+                "value": "MESLAND",
+                "children": null
+              },
+              {
+                "value": "MESLAY",
+                "children": null
+              },
+              {
+                "value": "MEUSNES",
+                "children": null
+              },
+              {
+                "value": "MILLANCAY",
+                "children": null
+              },
+              {
+                "value": "MOISY",
+                "children": null
+              },
+              {
+                "value": "MOLINEUF",
+                "children": null
+              },
+              {
+                "value": "MONDOUBLEAU",
+                "children": null
+              },
+              {
+                "value": "MONTEAUX",
+                "children": null
+              },
+              {
+                "value": "MONTHOU-SUR-BIEVRE",
+                "children": null
+              },
+              {
+                "value": "MONTHOU-SUR-CHER",
+                "children": null
+              },
+              {
+                "value": "MONTLIVAULT",
+                "children": null
+              },
+              {
+                "value": "MONTOIRE-SUR-LE-LOIR",
+                "children": null
+              },
+              {
+                "value": "MONT-PRES-CHAMBORD",
+                "children": null
+              },
+              {
+                "value": "MONTRICHARD",
+                "children": null
+              },
+              {
+                "value": "MONTRIEUX-EN-SOLOGNE",
+                "children": null
+              },
+              {
+                "value": "MONTROUVEAU",
+                "children": null
+              },
+              {
+                "value": "MOREE",
+                "children": null
+              },
+              {
+                "value": "MUIDES-SUR-LOIRE",
+                "children": null
+              },
+              {
+                "value": "MULSANS",
+                "children": null
+              },
+              {
+                "value": "MUR-DE-SOLOGNE",
+                "children": null
+              },
+              {
+                "value": "NAVEIL",
+                "children": null
+              },
+              {
+                "value": "NEUNG-SUR-BEUVRON",
+                "children": null
+              },
+              {
+                "value": "NEUVY",
+                "children": null
+              },
+              {
+                "value": "NOUAN-LE-FUZELIER",
+                "children": null
+              },
+              {
+                "value": "NOYERS-SUR-CHER",
+                "children": null
+              },
+              {
+                "value": "OIGNY",
+                "children": null
+              },
+              {
+                "value": "OISLY",
+                "children": null
+              },
+              {
+                "value": "ONZAIN",
+                "children": null
+              },
+              {
+                "value": "ORCHAISE",
+                "children": null
+              },
+              {
+                "value": "OUCHAMPS",
+                "children": null
+              },
+              {
+                "value": "OUCQUES",
+                "children": null
+              },
+              {
+                "value": "OUZOUER-LE-DOYEN",
+                "children": null
+              },
+              {
+                "value": "OUZOUER-LE-MARCHE",
+                "children": null
+              },
+              {
+                "value": "PEZOU",
+                "children": null
+              },
+              {
+                "value": "PIERREFITTE-SUR-SAULDRE",
+                "children": null
+              },
+              {
+                "value": "PONTLEVOY",
+                "children": null
+              },
+              {
+                "value": "POUILLE",
+                "children": null
+              },
+              {
+                "value": "PRAY",
+                "children": null
+              },
+              {
+                "value": "PRENOUVELLON",
+                "children": null
+              },
+              {
+                "value": "PRUNAY-CASSEREAU",
+                "children": null
+              },
+              {
+                "value": "PRUNIERS-EN-SOLOGNE",
+                "children": null
+              },
+              {
+                "value": "RAHART",
+                "children": null
+              },
+              {
+                "value": "RENAY",
+                "children": null
+              },
+              {
+                "value": "RHODON",
+                "children": null
+              },
+              {
+                "value": "RILLY-SUR-LOIRE",
+                "children": null
+              },
+              {
+                "value": "ROCE",
+                "children": null
+              },
+              {
+                "value": "ROCHES",
+                "children": null
+              },
+              {
+                "value": "ROMILLY",
+                "children": null
+              },
+              {
+                "value": "ROMORANTIN-LANTHENAY",
+                "children": null
+              },
+              {
+                "value": "ROUGEOU",
+                "children": null
+              },
+              {
+                "value": "RUAN-SUR-EGVONNE",
+                "children": null
+              },
+              {
+                "value": "SAINT-AGIL",
+                "children": null
+              },
+              {
+                "value": "SAINT-AIGNAN",
+                "children": null
+              },
+              {
+                "value": "SAINT-AMAND-LONGPRE",
+                "children": null
+              },
+              {
+                "value": "SAINT-ARNOULT",
+                "children": null
+              },
+              {
+                "value": "SAINT-AVIT",
+                "children": null
+              },
+              {
+                "value": "SAINT-BOHAIRE",
+                "children": null
+              },
+              {
+                "value": "SAINT-CLAUDE-DE-DIRAY",
+                "children": null
+              },
+              {
+                "value": "SAINT-CYR-DU-GAULT",
+                "children": null
+              },
+              {
+                "value": "SAINT-DENIS-SUR-LOIRE",
+                "children": null
+              },
+              {
+                "value": "SAINT-DYE-SUR-LOIRE",
+                "children": null
+              },
+              {
+                "value": "SAINTE-ANNE",
+                "children": null
+              },
+              {
+                "value": "SAINTE-GEMMES",
+                "children": null
+              },
+              {
+                "value": "SAINT-ETIENNE-DES-GUERETS",
+                "children": null
+              },
+              {
+                "value": "SAINT-GEORGES-SUR-CHER",
+                "children": null
+              },
+              {
+                "value": "SAINT-GERVAIS-LA-FORET",
+                "children": null
+              },
+              {
+                "value": "SAINT-GOURGON",
+                "children": null
+              },
+              {
+                "value": "SAINT-HILAIRE-LA-GRAVELLE",
+                "children": null
+              },
+              {
+                "value": "SAINT-JEAN-FROIDMENTEL",
+                "children": null
+              },
+              {
+                "value": "SAINT-JULIEN-DE-CHEDON",
+                "children": null
+              },
+              {
+                "value": "SAINT-JULIEN-SUR-CHER",
+                "children": null
+              },
+              {
+                "value": "SAINT-LAURENT-NOUAN",
+                "children": null
+              },
+              {
+                "value": "SAINT-LEONARD-EN-BEAUCE",
+                "children": null
+              },
+              {
+                "value": "SAINT-LOUP",
+                "children": null
+              },
+              {
+                "value": "SAINT-LUBIN-EN-VERGONNOIS",
+                "children": null
+              },
+              {
+                "value": "SAINT-MARC-DU-COR",
+                "children": null
+              },
+              {
+                "value": "SAINT-MARTIN-DES-BOIS",
+                "children": null
+              },
+              {
+                "value": "SAINT-OUEN",
+                "children": null
+              },
+              {
+                "value": "SAINT-RIMAY",
+                "children": null
+              },
+              {
+                "value": "SAINT-ROMAIN-SUR-CHER",
+                "children": null
+              },
+              {
+                "value": "SAINT-SULPICE-DE-POMMERAY",
+                "children": null
+              },
+              {
+                "value": "SAINT-VIATRE",
+                "children": null
+              },
+              {
+                "value": "SALBRIS",
+                "children": null
+              },
+              {
+                "value": "SAMBIN",
+                "children": null
+              },
+              {
+                "value": "SANTENAY",
+                "children": null
+              },
+              {
+                "value": "SARGE-SUR-BRAYE",
+                "children": null
+              },
+              {
+                "value": "SASNIERES",
+                "children": null
+              },
+              {
+                "value": "SASSAY",
+                "children": null
+              },
+              {
+                "value": "SAVIGNY-SUR-BRAYE",
+                "children": null
+              },
+              {
+                "value": "SEIGY",
+                "children": null
+              },
+              {
+                "value": "SELLES-SAINT-DENIS",
+                "children": null
+              },
+              {
+                "value": "SELLES-SUR-CHER",
+                "children": null
+              },
+              {
+                "value": "SELOMMES",
+                "children": null
+              },
+              {
+                "value": "SEMERVILLE",
+                "children": null
+              },
+              {
+                "value": "SERIS",
+                "children": null
+              },
+              {
+                "value": "SEUR",
+                "children": null
+              },
+              {
+                "value": "SOINGS-EN-SOLOGNE",
+                "children": null
+              },
+              {
+                "value": "SOUDAY",
+                "children": null
+              },
+              {
+                "value": "SOUESMES",
+                "children": null
+              },
+              {
+                "value": "SOUGE",
+                "children": null
+              },
+              {
+                "value": "SOUVIGNY-EN-SOLOGNE",
+                "children": null
+              },
+              {
+                "value": "SUEVRES",
+                "children": null
+              },
+              {
+                "value": "TALCY",
+                "children": null
+              },
+              {
+                "value": "TERNAY",
+                "children": null
+              },
+              {
+                "value": "THEILLAY",
+                "children": null
+              },
+              {
+                "value": "THENAY",
+                "children": null
+              },
+              {
+                "value": "THESEE",
+                "children": null
+              },
+              {
+                "value": "THORE-LA-ROCHETTE",
+                "children": null
+              },
+              {
+                "value": "THOURY",
+                "children": null
+              },
+              {
+                "value": "TOUR-EN-SOLOGNE",
+                "children": null
+              },
+              {
+                "value": "TREHET",
+                "children": null
+              },
+              {
+                "value": "TROO",
+                "children": null
+              },
+              {
+                "value": "VALAIRE",
+                "children": null
+              },
+              {
+                "value": "VALLIERES-LES-GRANDES",
+                "children": null
+              },
+              {
+                "value": "VEILLEINS",
+                "children": null
+              },
+              {
+                "value": "VENDOME",
+                "children": null
+              },
+              {
+                "value": "VERDES",
+                "children": null
+              },
+              {
+                "value": "VERNOU-EN-SOLOGNE",
+                "children": null
+              },
+              {
+                "value": "VEUVES",
+                "children": null
+              },
+              {
+                "value": "VIEVY-LE-RAYE",
+                "children": null
+              },
+              {
+                "value": "VILLAVARD",
+                "children": null
+              },
+              {
+                "value": "VILLEBAROU",
+                "children": null
+              },
+              {
+                "value": "VILLECHAUVE",
+                "children": null
+              },
+              {
+                "value": "VILLEDIEU-LE-CHATEAU",
+                "children": null
+              },
+              {
+                "value": "VILLEFRANCHE-SUR-CHER",
+                "children": null
+              },
+              {
+                "value": "VILLEFRANCOEUR",
+                "children": null
+              },
+              {
+                "value": "VILLEHERVIERS",
+                "children": null
+              },
+              {
+                "value": "VILLEMARDY",
+                "children": null
+              },
+              {
+                "value": "VILLENEUVE-FROUVILLE",
+                "children": null
+              },
+              {
+                "value": "VILLENY",
+                "children": null
+              },
+              {
+                "value": "VILLERABLE",
+                "children": null
+              },
+              {
+                "value": "VILLERBON",
+                "children": null
+              },
+              {
+                "value": "VILLERMAIN",
+                "children": null
+              },
+              {
+                "value": "VILLEROMAIN",
+                "children": null
+              },
+              {
+                "value": "VILLETRUN",
+                "children": null
+              },
+              {
+                "value": "VILLIERSFAUX",
+                "children": null
+              },
+              {
+                "value": "VILLIERS-SUR-LOIR",
+                "children": null
+              },
+              {
+                "value": "VINEUIL",
+                "children": null
+              },
+              {
+                "value": "VOUZON",
+                "children": null
+              },
+              {
+                "value": "YVOY-LE-MARRON",
+                "children": null
+              },
+              {
+                "value": "ARTINS",
+                "children": null
+              },
+              {
+                "value": "AUTAINVILLE",
+                "children": null
+              },
+              {
+                "value": "BEAUCHENE",
+                "children": null
+              },
+              {
+                "value": "BUSLOUP",
+                "children": null
+              },
+              {
+                "value": "CHAILLES",
+                "children": null
+              },
+              {
+                "value": "COURBOUZON",
+                "children": null
+              },
+              {
+                "value": "LA FERTE-BEAUHARNAIS",
+                "children": null
+              },
+              {
+                "value": "LANCE",
+                "children": null
+              },
+              {
+                "value": "LANCOME",
+                "children": null
+              },
+              {
+                "value": "LAVARDIN",
+                "children": null
+              },
+              {
+                "value": "LORGES",
+                "children": null
+              },
+              {
+                "value": "ORCAY",
+                "children": null
+              },
+              {
+                "value": "PERIGNY",
+                "children": null
+              },
+              {
+                "value": "SAINT-FIRMIN-DES-PRES",
+                "children": null
+              },
+              {
+                "value": "SAINT-LAURENT-DES-BOIS",
+                "children": null
+              },
+              {
+                "value": "VILLEBOUT",
+                "children": null
+              },
+              {
+                "value": "CHAMBORD",
+                "children": null
+              },
+              {
+                "value": "COUR-SUR-LOIRE",
+                "children": null
+              },
+              {
+                "value": "LASSAY-SUR-CROISNE",
+                "children": null
+              },
+              {
+                "value": "NOURRAY",
+                "children": null
+              },
+              {
+                "value": "SEILLAC",
+                "children": null
+              },
+              {
+                "value": "BOISSEAU",
+                "children": null
+              },
+              {
+                "value": "EPIAIS",
+                "children": null
+              },
+              {
+                "value": "LA MADELEINE-VILLEFROUIN",
+                "children": null
+              },
+              {
+                "value": "LES ROCHES-L\u0027EVEQUE",
+                "children": null
+              },
+              {
+                "value": "LISLE",
+                "children": null
+              },
+              {
+                "value": "SAINT-JACQUES-DES-GUERETS",
+                "children": null
+              },
+              {
+                "value": "TOURAILLES",
+                "children": null
+              },
+              {
+                "value": "TRIPLEVILLE",
+                "children": null
+              },
+              {
+                "value": "VILLEPORCHER",
+                "children": null
+              },
+              {
+                "value": "VILLEXANTON",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70485,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Depense trajet domicile - travail (max)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:35:10,540",
+      "duration": 47,
+      "result": {
+        "values": [
+          [
+            54.08200286902062
+          ],
+          [
+            43.14219383435421
+          ],
+          [
+            49.53185981187516
+          ],
+          [
+            53.6606328892311
+          ],
+          [
+            41.74761150365321
+          ],
+          [
+            51.64719513038138
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Depense trajet domicile - travail (max)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70505,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes scolarisees des menages (max)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:35:41,017",
+      "duration": 51,
+      "result": {
+        "values": [
+          [
+            4.0
+          ],
+          [
+            6.0
+          ],
+          [
+            6.0
+          ],
+          [
+            6.0
+          ],
+          [
+            7.0
+          ],
+          [
+            7.0
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Nombre de personnes scolarisees des menages (max)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70526,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Nombre de personnes scolarisees des menages (max)], [Measures].[Nombre de personnes scolarisees des menages (moyenne)]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:36:04,811",
+      "duration": 78,
+      "result": {
+        "values": [
+          [
+            4.0,
+            0.7032821087490939
+          ],
+          [
+            6.0,
+            0.8439378518523787
+          ],
+          [
+            6.0,
+            0.8147848085064643
+          ],
+          [
+            6.0,
+            0.7873315865551661
+          ],
+          [
+            7.0,
+            0.8164888601200431
+          ],
+          [
+            7.0,
+            0.7945684901733449
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Nombre de personnes scolarisees des menages (max)",
+                "children": null
+              },
+              {
+                "value": "Nombre de personnes scolarisees des menages (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70545,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes scolarisees des menages (max)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:36:10,545",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            4.0
+          ],
+          [
+            6.0
+          ],
+          [
+            6.0
+          ],
+          [
+            6.0
+          ],
+          [
+            7.0
+          ],
+          [
+            7.0
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Nombre de personnes scolarisees des menages (max)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70565,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes scolarisees des menages (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:36:23,905",
+      "duration": 0,
+      "result": {
+        "values": [
+          [
+            0.7032821087490939
+          ],
+          [
+            0.8439378518523787
+          ],
+          [
+            0.8147848085064643
+          ],
+          [
+            0.7873315865551661
+          ],
+          [
+            0.8164888601200431
+          ],
+          [
+            0.7945684901733449
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Nombre de personnes scolarisees des menages (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70585,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre de voitures des menages (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:36:33,373",
+      "duration": 47,
+      "result": {
+        "values": [
+          [
+            1.631308555650788
+          ],
+          [
+            1.6070256959325793
+          ],
+          [
+            1.7755035537041768
+          ],
+          [
+            1.7687347363211001
+          ],
+          [
+            1.703586233075868
+          ],
+          [
+            1.7063682073218618
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Nombre de voitures des menages (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70606,
+      "query": "select NON EMPTY {Hierarchize({[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:37:06,092",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            2724.6742415559825,
+            8.04060913705584,
+            35.682363883667584,
+            437.94226163081333,
+            70.27470318859261,
+            4.00000998501482
+          ],
+          [
+            6817.222332747776,
+            36.7520558754736,
+            304.93089073680636,
+            1427.946856051715,
+            166.49303295994983,
+            117.99280124996082
+          ],
+          [
+            11023.783122609588,
+            80.28557357606294,
+            339.1939788261791,
+            2383.81413940262,
+            270.5060772768456,
+            53.52009269707802
+          ],
+          [
+            22677.619380541928,
+            99.64866266593694,
+            1994.0030713697035,
+            5424.705333767537,
+            611.4816764095614,
+            216.12875924616358
+          ],
+          [
+            24298.720280704376,
+            175.84152874076383,
+            5583.46616211994,
+            7008.699464141624,
+            1321.1444442328125,
+            196.98283283018017
+          ],
+          [
+            23418.84334061717,
+            305.1789538727713,
+            6128.577953595272,
+            6678.0777539054325,
+            553.0125527523686,
+            455.21146943121767
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Propriétaire",
+                "children": null
+              },
+              {
+                "value": "Locataire ou sous-locataire d\u0027un logement loué meublé ou d\u0027une chambre d\u0027hôtel",
+                "children": null
+              },
+              {
+                "value": "Locataire ou sous-locataire d\u0027un logement loué vide HLM",
+                "children": null
+              },
+              {
+                "value": "Locataire ou sous-locataire d\u0027un logement loué vide non HLM",
+                "children": null
+              },
+              {
+                "value": "Logé gratuitement",
+                "children": null
+              },
+              {
+                "value": "Hors logement ordinaire",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70646,
+      "query": "select NON EMPTY {Hierarchize({[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:37:40,639",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            2724.6742415559825,
+            8.04060913705584,
+            35.682363883667584,
+            437.94226163081333,
+            70.27470318859261,
+            4.00000998501482
+          ],
+          [
+            6817.222332747776,
+            36.7520558754736,
+            304.93089073680636,
+            1427.946856051715,
+            166.49303295994983,
+            117.99280124996082
+          ],
+          [
+            11023.783122609588,
+            80.28557357606294,
+            339.1939788261791,
+            2383.81413940262,
+            270.5060772768456,
+            53.52009269707802
+          ],
+          [
+            22677.619380541928,
+            99.64866266593694,
+            1994.0030713697035,
+            5424.705333767537,
+            611.4816764095614,
+            216.12875924616358
+          ],
+          [
+            24298.720280704376,
+            175.84152874076383,
+            5583.46616211994,
+            7008.699464141624,
+            1321.1444442328125,
+            196.98283283018017
+          ],
+          [
+            23418.84334061717,
+            305.1789538727713,
+            6128.577953595272,
+            6678.0777539054325,
+            553.0125527523686,
+            455.21146943121767
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Propriétaire",
+                "children": null
+              },
+              {
+                "value": "Locataire ou sous-locataire d\u0027un logement loué meublé ou d\u0027une chambre d\u0027hôtel",
+                "children": null
+              },
+              {
+                "value": "Locataire ou sous-locataire d\u0027un logement loué vide HLM",
+                "children": null
+              },
+              {
+                "value": "Locataire ou sous-locataire d\u0027un logement loué vide non HLM",
+                "children": null
+              },
+              {
+                "value": "Logé gratuitement",
+                "children": null
+              },
+              {
+                "value": "Hors logement ordinaire",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70689,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Depense trajet domicile - travail (max)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:37:55,139",
+      "duration": 0,
+      "result": {
+        "values": [
+          [
+            54.08200286902062
+          ],
+          [
+            43.14219383435421
+          ],
+          [
+            49.53185981187516
+          ],
+          [
+            53.6606328892311
+          ],
+          [
+            41.74761150365321
+          ],
+          [
+            51.64719513038138
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Depense trajet domicile - travail (max)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70710,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Depense trajet domicile - travail (max)], [Measures].[Depense trajet domicile - travail (moyenne)]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:38:22,686",
+      "duration": 78,
+      "result": {
+        "values": [
+          [
+            54.08200286902062,
+            0.44448581822864713
+          ],
+          [
+            43.14219383435421,
+            0.8090235605619367
+          ],
+          [
+            49.53185981187516,
+            1.6190852443067718
+          ],
+          [
+            53.6606328892311,
+            1.3820284250879742
+          ],
+          [
+            41.74761150365321,
+            0.8717352039790313
+          ],
+          [
+            51.64719513038138,
+            1.1110118078895235
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Depense trajet domicile - travail (max)",
+                "children": null
+              },
+              {
+                "value": "Depense trajet domicile - travail (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70729,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Depense trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:38:43,811",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            0.44448581822864713
+          ],
+          [
+            0.8090235605619367
+          ],
+          [
+            1.6190852443067718
+          ],
+          [
+            1.3820284250879742
+          ],
+          [
+            0.8717352039790313
+          ],
+          [
+            1.1110118078895235
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Depense trajet domicile - travail (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70750,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Duree trajet domicile - travail (moyenne)]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:38:57,561",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            14.608827512485021,
+            0.44448581822864713
+          ],
+          [
+            19.531864220422204,
+            0.8090235605619367
+          ],
+          [
+            34.179918791463066,
+            1.6190852443067718
+          ],
+          [
+            27.592478260238142,
+            1.3820284250879742
+          ],
+          [
+            22.33473548992818,
+            0.8717352039790313
+          ],
+          [
+            24.08509486485901,
+            1.1110118078895235
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Duree trajet domicile - travail (moyenne)",
+                "children": null
+              },
+              {
+                "value": "Depense trajet domicile - travail (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70773,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Duree trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:39:19,702",
+      "duration": 31,
+      "result": {
+        "values": [
+          [
+            7.235336014769457,
+            14.608827512485021,
+            0.44448581822864713
+          ],
+          [
+            12.621255877286158,
+            19.531864220422204,
+            0.8090235605619367
+          ],
+          [
+            34.3975134649522,
+            34.179918791463066,
+            1.6190852443067718
+          ],
+          [
+            23.145756642258142,
+            27.592478260238142,
+            1.3820284250879742
+          ],
+          [
+            15.379652865668874,
+            22.33473548992818,
+            0.8717352039790313
+          ],
+          [
+            17.71675367919534,
+            24.08509486485901,
+            1.1110118078895235
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": null
+              },
+              {
+                "value": "Duree trajet domicile - travail (moyenne)",
+                "children": null
+              },
+              {
+                "value": "Depense trajet domicile - travail (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70794,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:39:29,264",
+      "duration": 16,
+      "result": {
+        "values": [
+          [
+            7.235336014769457,
+            0.44448581822864713
+          ],
+          [
+            12.621255877286158,
+            0.8090235605619367
+          ],
+          [
+            34.3975134649522,
+            1.6190852443067718
+          ],
+          [
+            23.145756642258142,
+            1.3820284250879742
+          ],
+          [
+            15.379652865668874,
+            0.8717352039790313
+          ],
+          [
+            17.71675367919534,
+            1.1110118078895235
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": null
+              },
+              {
+                "value": "Depense trajet domicile - travail (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70813,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:39:37,780",
+      "duration": 31,
+      "result": {
+        "values": [
+          [
+            7.235336014769457
+          ],
+          [
+            12.621255877286158
+          ],
+          [
+            34.3975134649522
+          ],
+          [
+            23.145756642258142
+          ],
+          [
+            15.379652865668874
+          ],
+          [
+            17.71675367919534
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70835,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:40:13,795",
+      "duration": 282,
+      "result": {
+        "values": [
+          [
+            3.3558818668511687
+          ],
+          [
+            16.50329187836784
+          ],
+          [
+            36.80952978819894
+          ],
+          [
+            30.76767424004134
+          ],
+          [
+            23.09568208559765
+          ],
+          [
+            24.59010750317183
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": [
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE LIGÉRIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ORATORIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "CŒUR DE SOLOGNE",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES ETANGS",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES RIVIÈRES",
+                    "children": null
+                  },
+                  {
+                    "value": "CHER À LA LOIRE",
+                    "children": null
+                  },
+                  {
+                    "value": "ROMORANTINAIS ET  MONESTOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VAL-DE-CHER - CONTROIS",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "GRAND CHAMBORD",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70874,
+      "query": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS, NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:40:32,998",
+      "duration": 47,
+      "result": {
+        "values": [
+          [
+            3.3558818668511687,
+            16.50329187836784,
+            36.80952978819894,
+            30.76767424004134,
+            23.09568208559765,
+            24.59010750317183
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": [
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE LIGÉRIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ORATORIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "CŒUR DE SOLOGNE",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES ETANGS",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES RIVIÈRES",
+                    "children": null
+                  },
+                  {
+                    "value": "CHER À LA LOIRE",
+                    "children": null
+                  },
+                  {
+                    "value": "ROMORANTINAIS ET  MONESTOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VAL-DE-CHER - CONTROIS",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "GRAND CHAMBORD",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70916,
+      "query": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS, NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VENDÔMOIS RURAL]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:42:34,233",
+      "duration": 47,
+      "result": {
+        "values": [
+          [
+            4.5698218060649936,
+            25.29090759906716,
+            66.39446802383281,
+            24.16689547909186,
+            11.410728998533365,
+            13.771058103603446
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": null
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": null
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": null
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": null
+              },
+              {
+                "value": "Employés",
+                "children": null
+              },
+              {
+                "value": "Ouvriers",
+                "children": null
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": [
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 70943,
+      "query": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members) ON COLUMNS, NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VENDÔMOIS RURAL]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:42:50,420",
+      "duration": 219,
+      "result": {
+        "values": [
+          [
+            34.85,
+            20.797,
+            9.989889789201365,
+            2.4038569809389227,
+            350.544,
+            31.785,
+            22.14,
+            5.934322662098538,
+            17.67141304965944,
+            3.2178243894725145,
+            183.741,
+            190.97090669254447,
+            64.048,
+            22.884,
+            33.6267944331888,
+            62.694415506958244,
+            25.72332663316583,
+            5.850175008108565,
+            31.369,
+            8.98486110728942,
+            3.348996743541262,
+            187.97346263416745,
+            27.333,
+            176.95686002053336,
+            232.756,
+            22.884,
+            42.868,
+            54.516,
+            61.076,
+            33.740967325786016,
+            57.51182705197699,
+            18.207,
+            23.586865583898003,
+            5.9971447896850565,
+            13.447,
+            14.485556003459367,
+            3.7549130185951394,
+            163.93396671578694,
+            58.457,
+            183.7033205246285,
+            34.013574885981896,
+            53.00233333333333,
+            10.729857268544304,
+            25.188499999999998,
+            5.982549361133526,
+            23.599333880678707,
+            15.397515791538728,
+            3.3728733002871754,
+            169.6619375615035,
+            191.45487488616564,
+            23.43,
+            35.062
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": [
+                  {
+                    "value": "CC INCONNUE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": [
+                  {
+                    "value": "CC INCONNUE",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": [
+                  {
+                    "value": "CC INCONNUE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": [
+                  {
+                    "value": "CC INCONNUE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE LIGÉRIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "CHER À LA LOIRE",
+                    "children": null
+                  },
+                  {
+                    "value": "VAL-DE-CHER - CONTROIS",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Employés",
+                "children": [
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "CC INCONNUE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Ouvriers",
+                "children": [
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE LIGÉRIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ORATORIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES ETANGS",
+                    "children": null
+                  },
+                  {
+                    "value": "ROMORANTINAIS ET  MONESTOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "GRAND CHAMBORD",
+                    "children": null
+                  },
+                  {
+                    "value": "CC INCONNUE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": [
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 71096,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VENDÔMOIS RURAL]}) ON COLUMNS, NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:43:02,483",
+      "duration": 94,
+      "result": {
+        "values": [
+          [
+            34.85
+          ],
+          [
+            20.797
+          ],
+          [
+            9.989889789201365
+          ],
+          [
+            2.4038569809389227
+          ],
+          [
+            350.544
+          ],
+          [
+            31.785
+          ],
+          [
+            22.14
+          ],
+          [
+            5.934322662098538
+          ],
+          [
+            17.67141304965944
+          ],
+          [
+            3.2178243894725145
+          ],
+          [
+            183.741
+          ],
+          [
+            190.97090669254447
+          ],
+          [
+            64.048
+          ],
+          [
+            22.884
+          ],
+          [
+            33.6267944331888
+          ],
+          [
+            62.694415506958244
+          ],
+          [
+            25.72332663316583
+          ],
+          [
+            5.850175008108565
+          ],
+          [
+            31.369
+          ],
+          [
+            8.98486110728942
+          ],
+          [
+            3.348996743541262
+          ],
+          [
+            187.97346263416745
+          ],
+          [
+            27.333
+          ],
+          [
+            176.95686002053336
+          ],
+          [
+            232.756
+          ],
+          [
+            22.884
+          ],
+          [
+            42.868
+          ],
+          [
+            54.516
+          ],
+          [
+            61.076
+          ],
+          [
+            33.740967325786016
+          ],
+          [
+            57.51182705197699
+          ],
+          [
+            18.207
+          ],
+          [
+            23.586865583898003
+          ],
+          [
+            5.9971447896850565
+          ],
+          [
+            13.447
+          ],
+          [
+            14.485556003459367
+          ],
+          [
+            3.7549130185951394
+          ],
+          [
+            163.93396671578694
+          ],
+          [
+            58.457
+          ],
+          [
+            183.7033205246285
+          ],
+          [
+            34.013574885981896
+          ],
+          [
+            53.00233333333333
+          ],
+          [
+            10.729857268544304
+          ],
+          [
+            25.188499999999998
+          ],
+          [
+            5.982549361133526
+          ],
+          [
+            23.599333880678707
+          ],
+          [
+            15.397515791538728
+          ],
+          [
+            3.3728733002871754
+          ],
+          [
+            169.6619375615035
+          ],
+          [
+            191.45487488616564
+          ],
+          [
+            23.43
+          ],
+          [
+            35.062
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": [
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Agriculteurs exploitants",
+                "children": [
+                  {
+                    "value": "CC INCONNUE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Artisans, commerçants et chefs d\u0027entreprise",
+                "children": [
+                  {
+                    "value": "CC INCONNUE",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": [
+                  {
+                    "value": "CC INCONNUE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Professions Intermédiaires",
+                "children": [
+                  {
+                    "value": "CC INCONNUE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE LIGÉRIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "CHER À LA LOIRE",
+                    "children": null
+                  },
+                  {
+                    "value": "VAL-DE-CHER - CONTROIS",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Employés",
+                "children": [
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "CC INCONNUE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              },
+              {
+                "value": "Ouvriers",
+                "children": [
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE LIGÉRIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ORATORIENNE",
+                    "children": null
+                  },
+                  {
+                    "value": "SOLOGNE DES ETANGS",
+                    "children": null
+                  },
+                  {
+                    "value": "ROMORANTINAIS ET  MONESTOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "GRAND CHAMBORD",
+                    "children": null
+                  },
+                  {
+                    "value": "CC INCONNUE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET GÂTINE",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 71260,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VENDÔMOIS RURAL]}) ON COLUMNS, NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:43:14,405",
+      "duration": 109,
+      "result": {
+        "values": [
+          [
+            64.048
+          ]
+        ],
+        "headers": [
+          {
+            "value": "COLUMNS",
+            "children": [
+              {
+                "value": "Distance trajet domicile - travail (moyenne)",
+                "children": [
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": "ROWS",
+            "children": [
+              {
+                "value": "Cadres et professions intellectuelles supérieures",
+                "children": [
+                  {
+                    "value": "CC INCONNUE",
+                    "children": null
+                  },
+                  {
+                    "value": "BEAUCE ET FORÊT",
+                    "children": null
+                  },
+                  {
+                    "value": "AGGLOPOLYS",
+                    "children": null
+                  },
+                  {
+                    "value": "COLLINES DU PERCHE",
+                    "children": null
+                  },
+                  {
+                    "value": "PAYS DE VENDÔME",
+                    "children": null
+                  },
+                  {
+                    "value": "PERCHE ET HAUT-VENDÔMOIS",
+                    "children": null
+                  },
+                  {
+                    "value": "VALLÉES LOIR ET BRAYE",
+                    "children": null
+                  },
+                  {
+                    "value": "VENDÔMOIS RURAL",
+                    "children": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
