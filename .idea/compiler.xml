@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ideb" />
+        <module name="storytelling" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="ideb" target="1.8" />
+      <module name="storytelling" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
