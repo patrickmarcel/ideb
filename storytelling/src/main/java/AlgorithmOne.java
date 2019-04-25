@@ -1,9 +1,9 @@
 import builder.*;
 import model.AbstractModel;
 import olap.CellSet;
+import org.olap4j.Axis;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class AlgorithmOne {
 
@@ -28,16 +28,28 @@ public class AlgorithmOne {
         this.modelScoreBuilder = modelScoreBuilder;
     }
 
-    public void compute(){
+    public void compute() {
+        int col = newCellSet.getAxes().get(Axis.COLUMNS.axisOrdinal()).getPositionCount();
+        int row = newCellSet.getAxes().get(Axis.ROWS.axisOrdinal()).getPositionCount();
         Double[][] oldSignificance = significanceBuilder.computeScore(oldCellSet);
         Double[][] newSignificance = significanceBuilder.computeScore(newCellSet);
-        Double[][] proxies = proxyBuilder.computeProxyMatrix(oldCellSet, newCellSet);
+        Map<List<Integer>, Set<List<Integer>>> proxies = proxyBuilder.computeProxyMatrix(newCellSet, oldCellSet);
 
-        Double[][] surprise = surpriseBuilder.computeScore(oldSignificance, newSignificance);
+        Double[][] surprise = new Double[row][col];
+        for (int m = 0; m < surprise.length; m++) {
+            for (int n = 0; n < surprise[m].length; n++) {
+                List<Double> proxySignificance = new ArrayList<>();
+                List<Integer> coordinates = Arrays.asList(m, n);
+                for (List<Integer> proxyIndexes : proxies.get(coordinates)) {
+                    proxySignificance.add(oldSignificance[proxyIndexes.get(0)][proxyIndexes.get(1)]);
+                }
+                surprise[m][n] = surpriseBuilder.computeScore(newSignificance[m][n], proxySignificance);
+            }
+        }
         List<Double> modelScoreList = new ArrayList<>();
         for (AbstractModel model : modelList) {
             List<Double> modelComponentScoreList = new ArrayList<>();
-            for(Boolean[][] modelComponent : model.fitAndPredict(newCellSet)){
+            for (Boolean[][] modelComponent : model.fitAndPredict(newCellSet)) {
                 modelComponentScoreList.add(componentScoreBuilder.computeScore(modelComponent, surprise));
             }
             modelScoreList.add(modelScoreBuilder.computeScore(modelComponentScoreList));

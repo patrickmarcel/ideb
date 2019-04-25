@@ -8,10 +8,12 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * <p>This class act like a wrapper for the {@link org.olap4j.CellSet CellSet} interface.</p>
+ * <p>This class act like a wrapper for the {@link org.olap4j.CellSet CellSet} interface. The main purpose is to store
+ * the cell set values into a <code>Double[][]</code> matrix for a simpler accessing</p>
+ * <p><b><i>"But why just not extends/implement CellSet ?"</i></b></p>
  * <p>When executing an MDX query, a {@link org.olap4j.CellSet CellSet} implementation is retrieved. The implementation
- * depends of which driver was used for the connection. That's why we can't just implement the CellSet interface, we
- * can't extends the implementation returned</p>
+ * depends of which driver was used for the connection. Mondrian for example return an <code>MondrianOlap4jCellSet</code>
+ * which is a private class ! That means we can't extends it (curse you Mondrian !).</p>
  * <p>This class is also named CellSet, that may be stupid. We could change it if we find a better name</p>
  */
 public class CellSet {
@@ -20,9 +22,16 @@ public class CellSet {
      */
     private org.olap4j.CellSet cellSet;
 
+    private int nbOfRows;
+    private int nbOfColumns;
+    private int nbOfCells;
 
     public CellSet(org.olap4j.CellSet cellSet) {
+        //TODO: check if cellSet is 2D, else throw an exception
         this.cellSet = cellSet;
+        nbOfRows = cellSet.getAxes().get(Axis.ROWS.axisOrdinal()).getPositionCount();
+        nbOfColumns = cellSet.getAxes().get(Axis.COLUMNS.axisOrdinal()).getPositionCount();
+        nbOfCells = nbOfColumns * nbOfRows;
     }
 
     public Double[][] getValues() {
@@ -47,11 +56,31 @@ public class CellSet {
         return res;
     }
 
-    public List<CellSetAxis> getAxes(){
+    public List<CellSetAxis> getAxes() {
         return this.cellSet.getAxes();
     }
 
-    public Cell getCell(List<Integer> list){
+    public Cell getCell(List<Integer> list) {
         return this.cellSet.getCell(list);
+    }
+
+    public Cell getCell(int ordinal) {
+        return this.cellSet.getCell(ordinal);
+    }
+
+    public List<Integer> ordinalToCoordinates(int ordinal) {
+        return cellSet.ordinalToCoordinates(ordinal);
+    }
+
+    public int getNbOfRows() {
+        return nbOfRows;
+    }
+
+    public int getNbOfColumns() {
+        return nbOfColumns;
+    }
+
+    public int getNbOfCells() {
+        return nbOfCells;
     }
 }

@@ -11,7 +11,7 @@ public abstract class AbstractModel {
      *
      * @see #fit(CellSet)
      */
-    private List<Boolean[][]> modelComponentList;
+    protected List<Boolean[][]> modelComponentList;
 
     /**
      * <p>Fit the model to the given <code>cellSet</code></p>

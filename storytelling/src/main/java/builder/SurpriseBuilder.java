@@ -1,8 +1,8 @@
 package builder;
 
-import olap.CellSet;
+import java.util.List;
 
 public interface SurpriseBuilder {
 
-    public abstract Double[][] computeScore(Double[][] significanceScoresOld, Double[][] significanceScoresNew);
+    public Double computeScore(double significanceScoreNew, List<Double> significanceScoreProxyList);
 }
