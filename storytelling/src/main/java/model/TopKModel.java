@@ -21,7 +21,7 @@ public class TopKModel extends AbstractModel {
      */
     @Override
     public void fit(CellSet cellSet) {
-        Double[][] values = cellSet.getValues();
+        Double[][] values = cellSet.getData();
 
         TreeMap<Double, int[]> sortedIndexTreeMap = new TreeMap<>();
         List<int[]> nullIndexList = new ArrayList<>();

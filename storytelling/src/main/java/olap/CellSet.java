@@ -22,9 +22,21 @@ public class CellSet {
      */
     private org.olap4j.CellSet cellSet;
 
+    /**
+     * Cells values matrix. Empty cells are null
+     */
+    private Double[][] data;
+
     private int nbOfRows;
     private int nbOfColumns;
     private int nbOfCells;
+
+    /**
+     * <p>Constructor used for testing. You should not build your cell set with this constructor.
+     * Instead use {@link CellSet#CellSet(org.olap4j.CellSet)}</p>
+     */
+    public CellSet() {
+    }
 
     public CellSet(org.olap4j.CellSet cellSet) {
         //TODO: check if cellSet is 2D, else throw an exception
@@ -32,26 +44,32 @@ public class CellSet {
         nbOfRows = cellSet.getAxes().get(Axis.ROWS.axisOrdinal()).getPositionCount();
         nbOfColumns = cellSet.getAxes().get(Axis.COLUMNS.axisOrdinal()).getPositionCount();
         nbOfCells = nbOfColumns * nbOfRows;
-    }
 
-    public Double[][] getValues() {
-        if (this.cellSet == null) {
-            return null;
-        } else if (cellSet.getAxes().size() != 2) {
-            //throw new UtilException("CellSet must be 2 dimensional (CellSet provided is " + cellSet.getAxes().size() + "d");
-        }
-        int rowCount = this.cellSet.getAxes().get(Axis.ROWS.axisOrdinal()).getPositionCount();
-        int colCount = cellSet.getAxes().get(Axis.COLUMNS.axisOrdinal()).getPositionCount();
-        Double[][] res = new Double[rowCount][colCount];
-        for (int m = 0; m < rowCount; m++) {
-            for (int n = 0; n < colCount; n++) {
-                Cell cell = cellSet.getCell(Arrays.asList(n, m));
+        data = new Double[nbOfRows][nbOfColumns];
+        for (int row = 0; row < nbOfRows; row++) {
+            for (int col = 0; col < nbOfColumns; col++) {
+                Cell cell = cellSet.getCell(Arrays.asList(col, row));
                 if (cell != null && !cell.isError() && !cell.isNull() && !cell.isEmpty()) {
-                    res[m][n] = Double.valueOf(cell.getFormattedValue());
+                    data[row][col] = Double.valueOf(cell.getFormattedValue());
                 } else {
-                    res[m][n] = null;
+                    data[row][col] = null;
                 }
             }
+        }
+    }
+
+    public Double[][] getData() {
+        return data;
+    }
+
+    public void setData(Double[][] data) {
+        this.data = data;
+    }
+
+    public Double[] getFlatData() {
+        Double[] res = new Double[nbOfCells];
+        for (int ordinal = 0; ordinal < nbOfCells; ordinal++) {
+            res[ordinal] = data[ordinal / nbOfColumns][ordinal % nbOfColumns];
         }
         return res;
     }
@@ -76,11 +94,23 @@ public class CellSet {
         return nbOfRows;
     }
 
+    public void setNbOfRows(int nbOfRows) {
+        this.nbOfRows = nbOfRows;
+    }
+
     public int getNbOfColumns() {
         return nbOfColumns;
     }
 
+    public void setNbOfColumns(int nbOfColumns) {
+        this.nbOfColumns = nbOfColumns;
+    }
+
     public int getNbOfCells() {
         return nbOfCells;
+    }
+
+    public void setNbOfCells(int nbOfCells) {
+        this.nbOfCells = nbOfCells;
     }
 }

@@ -9,7 +9,7 @@ public class ZScoreSignificanceBuilder implements SignificanceBuilder {
     public Double[][] computeScore(CellSet cellSet) {
         Double[][] significanceScores = new Double[cellSet.getNbOfRows()][cellSet.getNbOfColumns()];
         SummaryStatistics stats = new SummaryStatistics();
-        Double[][] data = cellSet.getValues();
+        Double[][] data = cellSet.getData();
 
         for (Double[] row : data) {
             for (Double val : row) {
