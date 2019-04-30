@@ -10,7 +10,7 @@ import java.util.*;
 
 public class AncestorOrDescendantProxyBuilder implements ProxyBuilder {
     @Override
-    public Map<List<Integer>, Set<List<Integer>>> computeProxyMatrix(CellSet cellSetNew, CellSet cellSetOld) {
+    public Map<List<Integer>, Set<List<Integer>>> computeProxyMatrix(CellSet cellSetNew, CellSet cellSetOld) { //TODO coordinates are currently (col, row) change it to (row, col)
         Map<List<Integer>, Set<List<Integer>>> proxy = new HashMap<>();
 
         List<CellSetAxis> axesNew = cellSetNew.getAxes();

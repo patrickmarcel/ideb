@@ -19,7 +19,8 @@ public class ZScoreSignificanceBuilder implements SignificanceBuilder {
 
         for (int row = 0; row < significanceScores.length; row++) {
             for (int col = 0; col < significanceScores[row].length; col++) {
-                significanceScores[row][col] = (data[row][col] - stats.getMean()) / stats.getStandardDeviation();
+                if (data[row][col] != null)
+                    significanceScores[row][col] = (data[row][col] - stats.getMean()) / stats.getStandardDeviation();
             }
         }
 

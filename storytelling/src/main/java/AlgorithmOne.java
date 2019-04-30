@@ -1,7 +1,6 @@
 import builder.*;
 import model.AbstractModel;
 import olap.CellSet;
-import org.olap4j.Axis;
 
 import java.util.*;
 
@@ -28,9 +27,9 @@ public class AlgorithmOne {
         this.modelScoreBuilder = modelScoreBuilder;
     }
 
-    public void compute() {
-        int col = newCellSet.getAxes().get(Axis.COLUMNS.axisOrdinal()).getPositionCount();
-        int row = newCellSet.getAxes().get(Axis.ROWS.axisOrdinal()).getPositionCount();
+    public Boolean[][] compute() {
+        int col = newCellSet.getNbOfColumns();
+        int row = newCellSet.getNbOfRows();
         Double[][] oldSignificance = significanceBuilder.computeScore(oldCellSet);
         Double[][] newSignificance = significanceBuilder.computeScore(newCellSet);
         Map<List<Integer>, Set<List<Integer>>> proxies = proxyBuilder.computeProxyMatrix(newCellSet, oldCellSet);
@@ -38,23 +37,28 @@ public class AlgorithmOne {
         Double[][] surprise = new Double[row][col];
         for (int m = 0; m < surprise.length; m++) {
             for (int n = 0; n < surprise[m].length; n++) {
-                List<Double> proxySignificance = new ArrayList<>();
-                List<Integer> coordinates = Arrays.asList(m, n);
-                for (List<Integer> proxyIndexes : proxies.get(coordinates)) {
-                    proxySignificance.add(oldSignificance[proxyIndexes.get(0)][proxyIndexes.get(1)]);
+                Double significance = newSignificance[m][n];
+                if (significance != null) {
+                    List<Double> proxySignificance = new ArrayList<>();
+                    List<Integer> coordinates = Arrays.asList(n, m);
+                    Set<List<Integer>> proxiesSet = proxies.get(coordinates);
+                    if (proxiesSet != null) {
+                        for (List<Integer> proxyIndexes : proxiesSet) {
+                            proxySignificance.add(oldSignificance[proxyIndexes.get(1)][proxyIndexes.get(0)]);
+                        }
+                        surprise[m][n] = surpriseBuilder.computeScore(significance, proxySignificance);
+                    }
                 }
-                surprise[m][n] = surpriseBuilder.computeScore(newSignificance[m][n], proxySignificance);
             }
         }
-        List<Double> modelScoreList = new ArrayList<>();
+        //List<Double> modelScoreList = new ArrayList<>();
+        TreeMap<Double, Boolean[][]> modelComponentScoreMap = new TreeMap<>();
         for (AbstractModel model : modelList) {
-            List<Double> modelComponentScoreList = new ArrayList<>();
             for (Boolean[][] modelComponent : model.fitAndPredict(newCellSet)) {
-                modelComponentScoreList.add(componentScoreBuilder.computeScore(modelComponent, surprise));
+                modelComponentScoreMap.put(componentScoreBuilder.computeScore(modelComponent, surprise), modelComponent);
             }
-            modelScoreList.add(modelScoreBuilder.computeScore(modelComponentScoreList));
+            // modelScoreList.add(modelScoreBuilder.computeScore(modelComponentScoreList));
         }
-
-
+        return modelComponentScoreMap.lastEntry().getValue();
     }
 }

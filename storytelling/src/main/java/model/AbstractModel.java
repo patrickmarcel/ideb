@@ -34,4 +34,8 @@ public abstract class AbstractModel {
         fit(cellSet);
         return this.modelComponentList;
     }
+
+    public List<Boolean[][]> getModelComponentList() {
+        return modelComponentList;
+    }
 }

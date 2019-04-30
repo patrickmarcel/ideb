@@ -50,7 +50,7 @@ public class CellSet {
             for (int col = 0; col < nbOfColumns; col++) {
                 Cell cell = cellSet.getCell(Arrays.asList(col, row));
                 if (cell != null && !cell.isError() && !cell.isNull() && !cell.isEmpty()) {
-                    data[row][col] = Double.valueOf(cell.getFormattedValue());
+                    data[row][col] = Double.valueOf(cell.getFormattedValue().replace(",", "")); //TODO: find something prettier than replace method
                 } else {
                     data[row][col] = null;
                 }

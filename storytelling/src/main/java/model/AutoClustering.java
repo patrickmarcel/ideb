@@ -7,7 +7,6 @@ import com.apporiented.algorithm.clustering.SingleLinkageStrategy;
 import olap.CellSet;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,23 +28,30 @@ public class AutoClustering extends AbstractModel {
         }
         String[] names = ordinalList.toArray(new String[0]);
 
-        double[] distances = new double[cleanedData.size() * (cleanedData.size() + 1) / 2];
         double[][] distanceMatrix = new double[cleanedData.size()][cleanedData.size()];
-        int c = 0;
         for (int i = 0; i < cleanedData.size(); i++) {
             for (int j = 0; j < cleanedData.size(); j++) {
                 double dist = Math.abs(cleanedData.get(i) - cleanedData.get(j));
                 distanceMatrix[i][j] = dist;
-                if (j >= i) {
-                    distances[c] = dist;
-                    c++;
-                }
             }
         }
-        Arrays.sort(distances);
-        double threshold = findThreshold(distances);
 
-        List<Cluster> clusterList = algo.performFlatClustering(distanceMatrix, names, new SingleLinkageStrategy(), threshold);
+        Cluster root = algo.performClustering(distanceMatrix, names, new SingleLinkageStrategy());
+        List<Double> linkageDistance = new ArrayList<>();
+        List<Cluster> clusterList = new ArrayList<>();
+        clusterList.add(root);
+        while (!clusterList.isEmpty()) {
+            Cluster c = clusterList.remove(0);
+            if (!c.isLeaf()) {
+                linkageDistance.add(c.getDistanceValue());
+                clusterList.addAll(c.getChildren());
+            }
+        }
+        Collections.sort(linkageDistance);
+        double threshold = findThreshold(linkageDistance);
+
+        clusterList = algo.performFlatClustering(distanceMatrix, names, new SingleLinkageStrategy(), threshold);
+
 
         this.modelComponentList = new ArrayList<>();
         for (Cluster cluster : clusterList) {
@@ -58,6 +64,9 @@ public class AutoClustering extends AbstractModel {
             }
             modelComponentList.add(modelComponent);
         }
+
+        System.out.println(modelComponentList.size() + " component.s");
+        System.out.println();
     }
 
     private List<String> getAllLeaves(Cluster cluster) {
@@ -73,15 +82,15 @@ public class AutoClustering extends AbstractModel {
         }
     }
 
-    private double findThreshold(double[] d) {
-        if (d.length == 0) return 0;
-        if (d.length < 3) return d[0];
+    private double findThreshold(List<Double> d) {
+        if (d.size() == 0) return 0;
+        if (d.size() < 3) return d.get(0);
         List<Double> angleList = new ArrayList<>();
-        for (int i = 1; i < d.length - 1; i++) {
-            double angle = Math.PI - Math.atan(d[i + 1] - d[i]) + Math.atan(d[i] - d[i - 1]);
+        for (int i = 1; i < d.size() - 1; i++) {
+            double angle = Math.PI - Math.atan(d.get(i + 1) - d.get(i)) + Math.atan(d.get(i) - d.get(i - 1));
             angleList.add(angle);
         }
         double angleMin = Collections.min(angleList);
-        return d[angleList.indexOf(angleMin) + 1];
+        return d.get(angleList.indexOf(angleMin) + 1);
     }
 }
