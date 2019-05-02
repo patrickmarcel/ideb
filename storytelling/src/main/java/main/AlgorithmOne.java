@@ -1,3 +1,5 @@
+package main;
+
 import builder.*;
 import model.AbstractModel;
 import olap.CellSet;
@@ -51,7 +53,7 @@ public class AlgorithmOne {
                 }
             }
         }
-        //List<Double> modelScoreList = new ArrayList<>();
+        // List<Double> modelScoreList = new ArrayList<>();
         TreeMap<Double, Boolean[][]> modelComponentScoreMap = new TreeMap<>();
         for (AbstractModel model : modelList) {
             for (Boolean[][] modelComponent : model.fitAndPredict(newCellSet)) {
