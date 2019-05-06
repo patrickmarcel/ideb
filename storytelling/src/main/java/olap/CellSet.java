@@ -85,8 +85,11 @@ public class CellSet {
             HeaderTree parent = root;
             for (Member member : position.getMembers()) {
                 HeaderTree child = parent.getChildNamed(member.getName());
-                if (child == null) parent.getChildren().add(new HeaderTree(member.getName()));
-                else parent = child;
+                if (child == null) {
+                    child = new HeaderTree(member.getName());
+                    parent.getChildren().add(child);
+                }
+                parent = child;
             }
         }
         root.updateSpanAndTrimChildren();
