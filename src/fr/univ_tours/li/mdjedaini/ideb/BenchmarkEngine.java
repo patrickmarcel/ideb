@@ -222,6 +222,8 @@ public class BenchmarkEngine {
             ic_tmp.loadDataFromMondrianCube();
             this.benchmarkData.setInternalCube(ic_tmp);
             System.out.println("Cube loaded!");
+            
+            
         }
     }
     

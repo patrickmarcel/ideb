@@ -105,6 +105,8 @@ public class SelectionFragment extends Fragment {
     public String toString() {
         String result   = "";
         
+        
+        
         result  += this.level.getUniqueName() + "=\"" + this.value.getUniqueName() + "\"";
         
         return result;

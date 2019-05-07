@@ -166,7 +166,13 @@ public class SaikuLogLoader implements I_LogLoader {
                     d               = sdf.parse(date);
                     Long tsAfter    = d.getTime();
                     
+                    
+                    System.out.println(currentQuery);
+                    System.out.println(currentQuery.length());
+                    
                     Query q_tmp = new QueryMdx(this.be.getInternalCubeByName(cubeName), currentQuery);
+                    
+                    
                     
                     result.addQuery(q_tmp, tsBefore, tsAfter);
                 }

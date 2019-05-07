@@ -90,6 +90,8 @@ public class XMLLogLoader implements I_LogLoader {
 	    final Element racine = document.getDocumentElement();
             this.root            = racine;
             
+            
+            
 	    // get all the session tags
 	    final NodeList sessionTags  = racine.getElementsByTagName("Session");
 	    final int nbSessions        = sessionTags.getLength();
@@ -100,7 +102,7 @@ public class XMLLogLoader implements I_LogLoader {
 	        if(sessionTags.item(i).getNodeType() == Node.ELEMENT_NODE) {
 	            final Element session = (Element)sessionTags.item(i);
                     
-                    
+	           
                     
                     this.sessionList.add(session);
 	        }
@@ -124,18 +126,33 @@ public class XMLLogLoader implements I_LogLoader {
         s.addMetaData("template", arg_sessionElement.getAttribute("template"));
         s.addMetaData("name", this.root.getElementsByTagName("Date-Time").item(0).getTextContent() + "-" + arg_sessionElement.getAttribute("progressive") + "-" + arg_sessionElement.getAttribute("template"));
         
+       // s.addMetaData("path", arg_sessionElement);
+       // s.addMetaData("filename", new File(arg_sessionElement).getName());
+        System.out.println("Loading session: " + s.getMetadata("name"));
+        
+        
+        
         // get all the session tags
         final NodeList queryTags    = arg_sessionElement.getElementsByTagName("Query");
         final int nbQueries         = queryTags.getLength();
+        
+       
+    	
         
         // iterate over sessions
 	for (int i = 0; i < nbQueries; i++) {
                 
 	    if(queryTags.item(i).getNodeType() == Node.ELEMENT_NODE) {
+	    	
+	    	
+	    	
 	        final Element query = (Element)queryTags.item(i);
 
                 // chargement de la requete
                 QueryTriplet qt = this.loadQuery(query);
+                
+                
+                
                 
                 Integer numberOfCells   = qt.computeNumberOfCells();
                 //s.addQuery(qt);
@@ -162,6 +179,9 @@ public class XMLLogLoader implements I_LogLoader {
     public QueryTriplet loadQuery(Element arg_queryElement) {
         QueryTriplet q  = new QueryTriplet(this.be.getDefaultCube());
           
+        
+        
+        
         // Measures
         NodeList measureElements    = arg_queryElement.getElementsByTagName("Measures").item(0).getChildNodes();
         int nbMeasures              = measureElements.getLength();
@@ -171,6 +191,8 @@ public class XMLLogLoader implements I_LogLoader {
                 
 	    if(measureElements.item(i).getNodeType() == Node.ELEMENT_NODE) {
 	        final Element measureElement    = (Element)measureElements.item(i);
+	        
+	        
 
                 MeasureFragment mf  = new MeasureFragment(q, measureElement.getAttribute("value"));
                 q.addMeasure(mf);
@@ -238,6 +260,7 @@ public class XMLLogLoader implements I_LogLoader {
             
 	    }
         
+	
         return q;
     }
     
