@@ -4,6 +4,9 @@ IDEB is a software that has been built in the context of Mahfoud Djedaini's PhD.
 
 **References**
 
+Patrick Marcel, Verónika Peralta and Panos Vassiliadis: A framework for learning cell interestingness from cube explorations. ADBIS 2019.
+
+
 [Mahfoud Djedaini, Krista Drushku, Nicolas Labroche, Patrick Marcel, Verónika Peralta, Willeme Verdeaux: Automatic assessment of interactive OLAP explorations. Inf. Syst. 82: 148-163 (2019)
 2017](https://doi.org/10.1016/j.is.2018.06.008)
 
