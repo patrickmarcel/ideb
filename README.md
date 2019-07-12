@@ -1,7 +1,7 @@
 **Interactive Database Exploration Benchmark (IDEB)**
 
 IDEB is a software that has been built in the context of Mahfoud Djedaini's PhD.
-If you wish to use the code, please cite the reference below.
+If you wish to use the code, please cite one of the references below.
 
 **References**
 
