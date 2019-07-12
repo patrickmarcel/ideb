@@ -1,0 +1,8 @@
+**Interactive Database Exploration Benchmark (IDEB)**
+
+IDEB is a software that has been built in the context of Mahfoud Djedaini's PhD.
+
+**References**
+
+
+
