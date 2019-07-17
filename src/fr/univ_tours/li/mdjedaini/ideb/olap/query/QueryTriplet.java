@@ -153,7 +153,7 @@ public class QueryTriplet extends Query implements java.io.Serializable {
      * @param arg_p the projection fragment.
      */
     public void addProjectionIfMoreDetailed(ProjectionFragment arg_p) {
-        
+        //System.out.println(arg_p);
         EAB_Level currentLevel  = this.getProjectionFragmentByHierarchy(arg_p.getLevel().getHierarchy()).getLevel();
         EAB_Level newLevel      = arg_p.getLevel();
 
@@ -172,6 +172,7 @@ public class QueryTriplet extends Query implements java.io.Serializable {
      */
     public void addProjection(ProjectionFragment arg_p) {
         // we remove the previous GBS for this hierarchy
+    	//System.out.println(arg_p);
         this.removeProjectionByHierarchy(arg_p.getLevel().getHierarchy());
         
         if (!this.projectionList.contains(arg_p)) {
@@ -581,6 +582,27 @@ public class QueryTriplet extends Query implements java.io.Serializable {
         
         return result;
     }
+    
+    /**
+     * Computes the number of cells in the result without computing cells.
+     * @return 
+     */
+    public double computeNumberOfCellsD() {
+        double result  = 1;
+        
+        Map<EAB_Hierarchy, Set<EAB_Member>> mlbh    = this.computeMemberListByHierarchy();
+        
+        for(EAB_Hierarchy eab_h : this.getCube().getHierarchyList()) {
+            result  = result * mlbh.get(eab_h).size();
+        }
+        
+        
+        
+        return result;
+    }
+    
+    
+    
     
     /**
      * Return hierarchies for which projections are under selection.

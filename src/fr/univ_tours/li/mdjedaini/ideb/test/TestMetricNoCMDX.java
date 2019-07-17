@@ -56,7 +56,8 @@ public class TestMetricNoCMDX {
 
 	
 
-	static String DOPANlogDirectory="res/logs/dopan/cleanLogs/"; ///6/10/14?
+	static String DOPANlogDirectory="res/logs/dopan/supplementary/"; ///6/10/14?
+//	static String DOPANlogDirectory="res/logs/dopan/cleanLogs/"; ///6/10/14?
 	//static String DOPANlogDirectory="res/logs/dopan/cleanLogs/dibstudent16--2016-10-06--22-03.log";
 	
 	
