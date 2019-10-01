@@ -236,6 +236,7 @@ public class Result {
         return this.mondrianResult;
     }
     
+    
     /**
      * Computes the list of members for each hierarchy in a map.
      * @return 
